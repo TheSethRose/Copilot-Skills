@@ -38,6 +38,14 @@ htmlcov/
 *.swo
 *~
 
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+package-lock.json
+
 # Environment
 .env
 .env.*
