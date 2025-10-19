@@ -1,10 +1,10 @@
-# Analyze Codebase & Generate Instructions
+# Generate Instructions
 
 ---
-description: "Analyze codebases to discover patterns and generate AI instruction files"
+description: "Generate AI instruction files by analyzing codebase patterns and conventions"
 ---
 
-Analyze a codebase to create or update `.github/copilot-instructions.md` files that guide AI agents to be immediately productive.
+Generate `.github/copilot-instructions.md` files that guide AI agents to be immediately productive by analyzing your codebase.
 
 ## When to Use This Skill
 
@@ -16,7 +16,7 @@ Analyze a codebase to create or update `.github/copilot-instructions.md` files t
 - Analyzing multi-component architectures
 - Consolidating multiple AI convention files
 
-**Keywords**: analyze codebase, generate instructions, copilot-instructions, discover patterns, analyze project, codebase analysis
+**Keywords**: generate instructions, copilot-instructions, discover patterns, codebase analysis, create instructions, AI instructions
 
 ## Instructions
 

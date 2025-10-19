@@ -93,9 +93,9 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Suggest:** `/cleanup`
 **Skill:** `.github/prompts/cleanup.skill.prompt.md`
 
-#### Analyze Codebase & Generate Instructions
-**Keywords:** analyze codebase, generate instructions, copilot-instructions, discover patterns, analyze project, codebase analysis
-**Suggest:** `/analyze-codebase`
+#### Generate Instructions
+**Keywords:** generate instructions, copilot-instructions, discover patterns, create instructions, AI instructions, codebase analysis
+**Suggest:** `/generate-instructions`
 **Skill:** `.github/copilot-skills/copilot-instructions-generator/SKILL.md`
 
 #### Brand Guidelines & Visual Identity

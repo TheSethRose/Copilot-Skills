@@ -1,14 +1,14 @@
 ---
-description: "Auto-loaded context for analyzing codebases and generating copilot-instructions.md files"
+description: "Auto-loaded context for generating copilot-instructions.md files from codebase analysis"
 applyTo: "**/{.github/copilot-instructions.md,.cursor/instructions.md,AI_INSTRUCTIONS.md,INSTRUCTIONS.md}"
 ---
 
-# Analyze Codebase - Automatic Context Instructions
+# Generate Instructions - Automatic Context Instructions
 
-**Related Prompt:** `/analyze-codebase`  
+**Related Prompt:** `/generate-instructions`  
 **Related Skill:** `.github/copilot-skills/copilot-instructions-generator/SKILL.md`
 
-**Triggers:** analyze codebase, generate instructions, copilot-instructions, discover patterns, AI instructions, cursor instructions, analyze project, codebase analysis
+**Triggers:** generate instructions, copilot-instructions, discover patterns, AI instructions, cursor instructions, create instructions, codebase analysis
 
 ## Context: AI Instructions Generation and Codebase Analysis
 
@@ -16,8 +16,8 @@ When working with AI instruction files or when user queries contain analysis/gen
 
 ## Default Behaviors
 
-### When user mentions "analyze codebase" or "generate instructions"
-1. Suggest `/analyze-codebase` skill prompt
+### When user mentions "generate instructions" or "copilot-instructions"
+1. Suggest `/generate-instructions` skill prompt
 2. Load `.github/copilot-skills/copilot-instructions-generator/SKILL.md`
 3. Use bundled scripts for automated analysis
 4. Generate structured output based on project patterns
@@ -223,7 +223,7 @@ When updating existing instructions:
 ## Next Steps
 
 When generating instructions:
-1. Use `/analyze-codebase` prompt for guided workflow
+1. Use `/generate-instructions` prompt for guided workflow
 2. Run analysis scripts to gather data
 3. Review generated instructions for accuracy
 4. Add domain-specific guidance manually
