@@ -8,545 +8,559 @@ When working with documentation scraping, skill generation, or queries containin
 
 ## Core Purpose
 
-Transform ANY documentation website into a production-ready Claude skill automatically. Scrape, organize, enhance, and package documentation using the Skill Seekers toolchain.
+Teach AI agents how to discover and use documentation scraping tools to transform ANY documentation website into production-ready Claude skills.
 
-**Key Distinction**: This skill GENERATES Claude skills from documentation. For project documentation, use `/document-project`.
+**Key Distinction**: This skill GENERATES Claude skills from external documentation. For project documentation, use `/document-project`.
 
-## Default Behaviors
+## Auto-Loaded Behaviors
 
 ### When user mentions "docs to skill" or "scrape docs"
+
+**Immediate Actions**:
 1. Suggest `/docs-to-skill` skill
-2. Check if Skill Seekers is available in `examples/Skill_Seekers/`
-3. Determine workflow: preset, interactive, or custom
-4. Estimate page count before scraping
-5. Recommend enhancement after scraping
+2. Discover available documentation scraping tools
+3. Validate tool capabilities  
+4. Guide workflow selection
+
+**Discovery Pattern**:
+```bash
+# Find documentation scraping tools
+find . -name "*doc*scrap*" -o -name "*skill*seek*" -type d
+
+# Validate Python scraping tools
+find . -name "doc_scraper.py" -type f
+
+# Check for configuration directories
+find . -name "configs" -type d -path "*/examples/*" -o -path "*/tools/*"
+```
 
 ### When user has documentation URL
-1. Suggest creating config file
-2. Run page estimation first
-3. Choose appropriate workflow based on page count:
-   - <500 pages: Standard scrape
-   - 500-10K pages: Standard with checkpoint
-   - >10K pages: Split strategy recommended
+
+**Immediate Actions**:
+1. Discover available tool
+2. Check for matching preset
+3. Estimate documentation size
+4. Recommend appropriate strategy
+
+**Decision Tree**:
+```
+Has URL → Find tool → Check presets → Estimate → Choose strategy
+                                          ↓
+                           <500pg  500-10K  >10K
+                              ↓       ↓       ↓
+                          Standard  +Checkpoint  Split
+```
 
 ### When analyzing documentation sites
+
+**Validate Before Scraping**:
 1. Check `robots.txt` compliance
-2. Estimate total pages
-3. Identify documentation structure
+2. Identify documentation structure
+3. Estimate total pages
 4. Recommend selectors and patterns
-5. Suggest appropriate rate limiting
+5. Suggest appropriate rate limiting (0.5s minimum)
 
-## Quality Guidelines
+## Tool Discovery Protocol
 
-### ✅ Do
-- Always estimate page count before scraping
-- Use presets when available (React, Godot, Django, etc.)
-- Enable checkpoints for scrapes >1000 pages
-- Use local enhancement (free, fast, high quality)
-- Split documentation >10K pages
-- Respect `robots.txt` and rate limits
-- Test with `--dry-run` first
-- Package skills before uploading
+### Step 1: Find Available Tools
 
-### ❌ Don't
-- Scrape without estimating first
-- Skip enhancement (75-line vs 500-line SKILL.md)
-- Ignore robots.txt or rate limits
-- Set rate_limit <0.3 seconds
-- Scrape non-documentation content
-- Generate skills for this Copilot Skills system itself
-- Overwrite existing skills without backup
-
-## Workflow Templates
-
-### Standard Workflow (200-500 pages)
 ```bash
-# 1. Estimate (1-2 minutes)
-python3 examples/Skill_Seekers/cli/estimate_pages.py examples/Skill_Seekers/configs/react.json
+# Search for documentation scraping directories
+SCRAPER_DIRS=$(find . -maxdepth 3 -name "*doc*scrap*" -o -name "*skill*seek*" -type d)
 
-# 2. Scrape (20-40 minutes)
-python3 examples/Skill_Seekers/cli/doc_scraper.py --config examples/Skill_Seekers/configs/react.json
+# Search for scraping scripts
+SCRAPER_SCRIPTS=$(find . -name "doc_scraper.py" -o -name "*scrape*.py" -type f)
 
-# 3. Enhance (60 seconds)
-python3 examples/Skill_Seekers/cli/enhance_skill_local.py examples/Skill_Seekers/output/react/
-
-# 4. Package (instant)
-python3 examples/Skill_Seekers/cli/package_skill.py examples/Skill_Seekers/output/react/
-
-# Result: examples/Skill_Seekers/output/react.zip ready to upload!
+# Common locations to check:
+# - examples/Skill_Seekers/
+# - examples/*/cli/
+# - tools/doc_scraper/
+# - scripts/scraping/
 ```
 
-### Large Documentation Workflow (10K-40K+ pages)
+### Step 2: Validate Tool Capabilities
+
 ```bash
-# 1. Estimate
-python3 examples/Skill_Seekers/cli/estimate_pages.py examples/Skill_Seekers/configs/godot.json
-# Output: ~40,000 pages
+# Get tool help
+python3 <discovered-path>/doc_scraper.py --help
 
-# 2. Split into focused sub-skills
-python3 examples/Skill_Seekers/cli/split_config.py \
-  examples/Skill_Seekers/configs/godot.json \
-  --strategy router \
-  --target-pages 5000
+# Check for essential capabilities:
+grep -i "config\|estimate\|interactive\|dry-run\|resume\|enhance"
 
-# 3. Scrape all in parallel
-for config in examples/Skill_Seekers/configs/godot-*.json; do
-  python3 examples/Skill_Seekers/cli/doc_scraper.py --config $config &
-done
-wait
-
-# 4. Generate router skill
-python3 examples/Skill_Seekers/cli/generate_router.py examples/Skill_Seekers/configs/godot-*.json
-
-# 5. Package all
-python3 examples/Skill_Seekers/cli/package_multi.py examples/Skill_Seekers/output/godot*/
+# Validate Python dependencies
+python3 -c "import requests, bs4" 2>/dev/null && echo "✓ Dependencies OK"
 ```
 
-### Interactive Custom Workflow
-```bash
-# 1. Interactive configuration
-python3 examples/Skill_Seekers/cli/doc_scraper.py --interactive
-# Wizard guides through:
-# - Skill name, base URL, description
-# - CSS selectors, URL patterns
-# - Rate limiting, max pages
+### Step 3: Discover Configuration Templates
 
-# 2. Estimate
-python3 examples/Skill_Seekers/cli/estimate_pages.py examples/Skill_Seekers/configs/my-docs.json
+```bash
+# Find config directory
+CONFIG_DIR=$(find . -name "configs" -type d | head -1)
+
+# List available presets
+[ -d "$CONFIG_DIR" ] && ls $CONFIG_DIR/*.json | xargs -n1 basename | sed 's/.json//'
+
+# Common presets to look for:
+# Frontend: react, vue, svelte, angular
+# Backend: django, fastapi, laravel, rails
+# Game: godot, unity
+# CSS: tailwind, bootstrap
+```
+
+## Universal Workflow Templates
+
+### Template 1: Standard Workflow (<500 pages)
+
+**Use When**: Documentation is well-structured, < 500 pages
+
+```bash
+# 1. Discover tool
+TOOL=$(find . -name "doc_scraper.py" | head -1)
+TOOL_DIR=$(dirname $TOOL)
+
+# 2. Estimate (if available)
+find $TOOL_DIR -name "*estimate*.py" -exec python3 {} configs/my-docs.json \;
 
 # 3. Scrape
-python3 examples/Skill_Seekers/cli/doc_scraper.py --config examples/Skill_Seekers/configs/my-docs.json
+python3 $TOOL --config configs/my-docs.json
 
-# 4. Enhance
-python3 examples/Skill_Seekers/cli/enhance_skill_local.py examples/Skill_Seekers/output/my-docs/
+# 4. Enhance (if available)
+find $TOOL_DIR -name "*enhance*.py" -exec python3 {} output/my-docs/ \;
 
-# 5. Package
-python3 examples/Skill_Seekers/cli/package_skill.py examples/Skill_Seekers/output/my-docs/
+# 5. Package (if available)
+find $TOOL_DIR -name "*package*.py" -exec python3 {} output/my-docs/ \;
 ```
 
-## Configuration Schema
+### Template 2: Large Documentation Workflow (>10K pages)
 
-### Minimal Config
+**Use When**: Documentation is massive (game engines, cloud providers)
+
+```bash
+# 1. Discover tool and capabilities
+TOOL=$(find . -name "doc_scraper.py" | head -1)
+TOOL_DIR=$(dirname $TOOL)
+
+# 2. Estimate
+python3 $TOOL_DIR/*estimate*.py configs/large.json
+# Output: ~40,000 pages detected
+
+# 3. Check for splitting capability
+SPLIT_TOOL=$(find $TOOL_DIR -name "*split*.py" | head -1)
+
+if [ -n "$SPLIT_TOOL" ]; then
+  # 4. Split into sub-skills
+  python3 $SPLIT_TOOL configs/large.json --strategy router
+  
+  # 5. Scrape all in parallel
+  for config in configs/large-*.json; do
+    python3 $TOOL --config $config &
+  done
+  wait
+  
+  # 6. Generate router (if available)
+  find $TOOL_DIR -name "*router*.py" -exec python3 {} configs/large-*.json \;
+  
+  # 7. Package all (if available)
+  find $TOOL_DIR -name "*package_multi*.py" -exec python3 {} output/large*/ \;
+else
+  echo "⚠️  Splitting not available - proceed with caution"
+  echo "→ Consider manual splitting or reducing max_pages"
+fi
+```
+
+### Template 3: Interactive Custom Workflow
+
+**Use When**: Creating config for new/unknown documentation
+
+```bash
+# 1. Discover tool
+TOOL=$(find . -name "doc_scraper.py" | head -1)
+
+# 2. Check for interactive mode
+python3 $TOOL --help | grep -i interactive
+
+if [ $? -eq 0 ]; then
+  # 3. Run interactive wizard
+  python3 $TOOL --interactive
+  
+  # 4. Test generated config
+  python3 $TOOL --config configs/generated.json --dry-run
+  
+  # 5. Full scrape
+  python3 $TOOL --config configs/generated.json
+else
+  echo "→ Interactive mode not available, create config manually"
+fi
+```
+
+## Configuration Principles
+
+### Universal Configuration Schema
+
+Every documentation scraping tool should support this basic schema:
+
 ```json
 {
-  "name": "my-docs",
+  "name": "skill-name",
+  "description": "AI trigger description",
   "base_url": "https://docs.example.com/",
-  "description": "My documentation skill",
-  "rate_limit": 0.5,
-  "max_pages": 200
+  "max_pages": 200,
+  "rate_limit": 0.5
 }
 ```
 
-### Full Config
+### Extended Configuration (Tool-Specific)
+
 ```json
 {
-  "name": "my-docs",
-  "description": "Comprehensive documentation skill",
+  "name": "skill-name",
+  "description": "When to use this skill",
   "base_url": "https://docs.example.com/",
-  "start_urls": [
-    "https://docs.example.com/guide/",
-    "https://docs.example.com/api/"
-  ],
-  "rate_limit": 0.5,
+  "start_urls": ["https://docs.example.com/guide/"],
   "max_pages": 500,
+  "rate_limit": 0.5,
+  
   "selectors": {
-    "main_content": "div[role='main']",
-    "title": "title",
-    "code_blocks": "pre code",
-    "navigation": "nav.sidebar"
+    "main_content": "article, div[role='main']",
+    "title": "h1, title",
+    "code_blocks": "pre code"
   },
+  
   "url_patterns": {
     "include": ["^https://docs\\.example\\.com/(guide|api)/.*"],
-    "exclude": ["^https://docs\\.example\\.com/blog/.*"]
+    "exclude": ["^https://docs\\.example\\.com/blog/.*"],
+    "category_hints": {
+      "/api/": "api_reference",
+      "/guide/": "guides",
+      "/tutorial/": "tutorials"
+    }
   },
+  
   "checkpoint": {
     "enabled": true,
     "interval": 1000
-  },
-  "split_strategy": "auto",
-  "split_config": {
-    "target_pages_per_skill": 5000,
-    "create_router": true
   }
 }
 ```
 
-## Available Scripts
-
-### estimate_pages.py
-**Purpose**: Estimate page count before scraping
+### Configuration Validation
 
 ```bash
-python3 examples/Skill_Seekers/cli/estimate_pages.py CONFIG_FILE [--max-discovery N]
+# Check if tool has validation
+TOOL_DIR=$(dirname $(find . -name "doc_scraper.py" | head -1))
+find $TOOL_DIR -name "*validate*.py"
+
+# If available, validate config
+python3 $TOOL_DIR/*validate*.py configs/my-docs.json
 ```
 
-**Output**:
-```
-📊 Estimation Results:
-Base URL: https://react.dev/
-Discovered URLs: 287
-Estimated Total: 250-300 pages
-Recommendation: Standard scrape (20-40 min)
-```
+## Strategy Selection Guide
 
-### doc_scraper.py
-**Purpose**: Main scraping tool
+### Decision Matrix
 
-```bash
-python3 examples/Skill_Seekers/cli/doc_scraper.py [OPTIONS]
-```
+| Pages | Complexity | Strategy | Checkpoints | Splitting | Time |
+|-------|-----------|----------|-------------|-----------|------|
+| <500 | Simple | Standard | Optional | No | 15-30 min |
+| 500-5K | Moderate | Standard | Yes | No | 1-3 hours |
+| 5K-10K | Complex | Standard | Yes | Consider | 3-6 hours |
+| 10K-40K | Very Complex | Split | Yes | Required | 4-8 hours |
+| >40K | Massive | Split + Router | Yes | Required | 8-24 hours |
 
-**Options**:
-- `--config FILE` - Load from config file
-- `--interactive` - Interactive wizard
-- `--name NAME` - Skill name
-- `--url URL` - Base URL
-- `--dry-run` - Preview without scraping
-- `--resume` - Resume from checkpoint
-- `--enhance-local` - Enhance after scraping (local)
-- `--enhance` - Enhance after scraping (API, requires key)
+### Strategy Implementation
 
-### enhance_skill_local.py
-**Purpose**: AI enhancement using Claude Code Max (FREE)
-
-```bash
-python3 examples/Skill_Seekers/cli/enhance_skill_local.py OUTPUT_DIR
-```
-
-**What it does**:
-- Reads reference files
-- Opens Claude Code in new terminal
-- Extracts best 5-10 code examples
-- Creates comprehensive SKILL.md
-- Backs up original
-
-**Time**: 60 seconds  
-**Cost**: Free (uses Claude Code Max plan)
-
-### enhance_skill.py
-**Purpose**: AI enhancement using Anthropic API
-
-```bash
-export ANTHROPIC_API_KEY=sk-ant-...
-python3 examples/Skill_Seekers/cli/enhance_skill.py OUTPUT_DIR
-```
-
-**Cost**: ~$0.15-$0.30 per skill
-
-### package_skill.py
-**Purpose**: Create uploadable .zip file
-
-```bash
-python3 examples/Skill_Seekers/cli/package_skill.py OUTPUT_DIR
-```
-
-**Output**: `output/skill-name.zip`
-
-### split_config.py
-**Purpose**: Split large documentation configs
-
-```bash
-python3 examples/Skill_Seekers/cli/split_config.py CONFIG_FILE --strategy STRATEGY
-```
-
-**Strategies**:
-- `auto` - Intelligently detect best strategy
-- `category` - Split by documentation categories
-- `router` - Create hub + specialized sub-skills (recommended)
-- `size` - Split every N pages
-
-### generate_router.py
-**Purpose**: Generate router/hub skill
-
-```bash
-python3 examples/Skill_Seekers/cli/generate_router.py PATTERN
-```
-
-**Example**:
-```bash
-python3 examples/Skill_Seekers/cli/generate_router.py examples/Skill_Seekers/configs/godot-*.json
-```
-
-## Generated Structure
-
-```
-examples/Skill_Seekers/output/
-├── skill-name_data/          # Raw scraped data
-│   ├── pages/                # JSON files (one per page)
-│   ├── summary.json          # Overview
-│   └── checkpoint.json       # Resume checkpoint
-│
-└── skill-name/               # The Claude skill
-    ├── SKILL.md              # Main skill file (enhanced)
-    ├── SKILL.md.backup       # Original (pre-enhancement)
-    ├── references/           # Categorized documentation
-    │   ├── index.md          # Navigation index
-    │   ├── api.md            # API reference
-    │   ├── guides.md         # Tutorials/guides
-    │   └── ...               # Auto-categorized
-    ├── scripts/              # (empty, for custom tools)
-    └── assets/               # (empty, for templates)
-```
-
-## Features
-
-### Smart Categorization
-Automatically organizes content by:
-- URL structure analysis
-- Page title patterns
-- Content keywords
-- Category scoring
-
-**Example categories**: api, guides, tutorials, reference, getting_started, advanced
-
-### Code Language Detection
-Auto-detects and annotates:
-- Python (`def`, `import`, `from`)
-- JavaScript (`const`, `let`, `=>`, `function`)
-- TypeScript (`.ts`, type annotations)
-- GDScript (`func`, `var`, `extends`)
-- C++ (`#include`, `int main`, `::`)
-- Go (`package`, `func`, `import`)
-- Rust (`fn`, `let`, `impl`)
-- And more...
-
-### Checkpoint/Resume System
-- Auto-saves every N pages (configurable)
-- Stores: visited URLs, scraped pages, progress
-- Resume with `--resume` flag
-- Never lose progress on long scrapes
-
-### Large Documentation Support
-Handle 10K-40K+ pages:
-- **Split strategies** for focused sub-skills
-- **Parallel scraping** for faster completion
-- **Router skills** for intelligent query routing
-- **Target pages per skill** configurable
-
-## Enhancement Details
-
-### What Enhancement Does
-1. Reads all reference files (api.md, guides.md, etc.)
-2. Analyzes documentation structure
-3. Extracts 5-10 best code examples
-4. Creates practical quick reference
-5. Writes domain-specific triggers
-6. Adds navigation guidance
-7. Backs up original SKILL.md
-
-### Before Enhancement (Auto-Generated)
-```markdown
-## Quick Reference
-
-### Common Patterns
-
-*Quick reference patterns will be added as you use the skill.*
-```
-
-**Length**: ~75 lines
-
-### After Enhancement (AI-Powered)
-```markdown
-## Quick Reference
-
-### Common Patterns
-
-**1. Create a Component**
-```javascript
-function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+**Standard Strategy**:
+```json
+{
+  "max_pages": 500,
+  "rate_limit": 0.5,
+  "checkpoint": {"enabled": true, "interval": 100}
 }
 ```
 
-**2. Use State Hook**
-```javascript
-const [count, setCount] = useState(0);
-```
-
-...10 more practical examples...
-```
-
-**Length**: ~500+ lines  
-**Quality**: 9/10 based on testing
-
-## Common Patterns
-
-### Pattern 1: Quick Preset Scrape
+**Splitting Strategy** (requires tool support):
 ```bash
-# For known documentation
-python3 examples/Skill_Seekers/cli/doc_scraper.py \
-  --config examples/Skill_Seekers/configs/react.json \
-  --enhance-local
+# Auto-detect and split
+python3 <tool>/split*.py config.json --strategy auto
 
-python3 examples/Skill_Seekers/cli/package_skill.py \
-  examples/Skill_Seekers/output/react/
+# Or manual strategies:
+# - router: Hub + specialized sub-skills (recommended)
+# - category: Split by content categories
+# - size: Split every N pages
 ```
 
-### Pattern 2: Custom Documentation
+## Enhancement Patterns
+
+### Discovery Pattern
+
 ```bash
-# Interactive config
-python3 examples/Skill_Seekers/cli/doc_scraper.py --interactive
+# Find enhancement tools
+TOOL_DIR=$(dirname $(find . -name "doc_scraper.py" | head -1))
+find $TOOL_DIR -name "*enhance*.py"
 
-# Estimate
-python3 examples/Skill_Seekers/cli/estimate_pages.py examples/Skill_Seekers/configs/custom.json
-
-# Scrape with checkpoint
-python3 examples/Skill_Seekers/cli/doc_scraper.py \
-  --config examples/Skill_Seekers/configs/custom.json
-
-# Enhance locally
-python3 examples/Skill_Seekers/cli/enhance_skill_local.py \
-  examples/Skill_Seekers/output/custom/
-
-# Package
-python3 examples/Skill_Seekers/cli/package_skill.py \
-  examples/Skill_Seekers/output/custom/
+# Types usually available:
+# - enhance_skill_local.py (FREE - uses local AI)
+# - enhance_skill.py (Paid - uses API)
 ```
 
-### Pattern 3: Large Documentation (Router Strategy)
+### Enhancement Execution
+
+**Local Enhancement** (Preferred - FREE):
 ```bash
-# Estimate first
-python3 examples/Skill_Seekers/cli/estimate_pages.py examples/Skill_Seekers/configs/large.json
-# Output: 25,000 pages
+# Find local enhancement tool
+ENHANCE_LOCAL=$(find $TOOL_DIR -name "*enhance*local*.py" | head -1)
 
-# Split with router
-python3 examples/Skill_Seekers/cli/split_config.py \
-  examples/Skill_Seekers/configs/large.json \
-  --strategy router \
-  --target-pages 5000
+if [ -n "$ENHANCE_LOCAL" ]; then
+  python3 $ENHANCE_LOCAL output/skill-name/
+else
+  echo "→ Local enhancement not available"
+fi
+```
 
-# Scrape all in parallel
-for config in examples/Skill_Seekers/configs/large-*.json; do
-  python3 examples/Skill_Seekers/cli/doc_scraper.py --config $config &
-done
-wait
+**API Enhancement** (Alternative):
+```bash
+# Check for API enhancement
+ENHANCE_API=$(find $TOOL_DIR -name "enhance_skill.py" | head -1)
 
-# Generate router
-python3 examples/Skill_Seekers/cli/generate_router.py \
-  examples/Skill_Seekers/configs/large-*.json
+if [ -n "$ENHANCE_API" ]; then
+  # Requires API key
+  export ANTHROPIC_API_KEY=sk-ant-...
+  python3 $ENHANCE_API output/skill-name/
+else
+  echo "→ API enhancement not available"
+fi
+```
 
-# Package all
-python3 examples/Skill_Seekers/cli/package_multi.py \
-  examples/Skill_Seekers/output/large*/
+### Enhancement Quality Expectations
+
+**Before Enhancement**:
+- ~75 lines
+- Generic templates
+- No code examples
+- Basic structure
+
+**After Enhancement**:
+- ~500+ lines
+- Real code examples (5-10)
+- Domain-specific guidance
+- Navigation instructions
+- Quality: 9/10 (tested across multiple frameworks)
+
+## Expected Output Structure
+
+Regardless of tool version, expect this structure:
+
+```
+output/
+├── {skill-name}_data/           # Cache (optional)
+│   ├── pages/
+│   │   ├── 001_*.json
+│   │   ├── 002_*.json
+│   │   └── ...
+│   ├── summary.json
+│   └── checkpoint.json
+│
+└── {skill-name}/                # Generated skill
+    ├── SKILL.md                 # Main file (enhanced)
+    ├── SKILL.md.backup          # Original backup
+    ├── references/              # Organized docs
+    │   ├── index.md
+    │   ├── getting_started.md
+    │   ├── api.md
+    │   ├── guides.md
+    │   └── [auto-categories].md
+    ├── scripts/                 # (empty)
+    └── assets/                  # (empty)
+```
+
+## Quality Standards
+
+### ✅ Before Scraping Checklist
+
+```bash
+# 1. Tool discovered and validated
+[ -f "$TOOL" ] && echo "✓ Tool found" || echo "✗ Tool missing"
+
+# 2. Configuration created or preset selected
+[ -f "configs/my-docs.json" ] && echo "✓ Config ready"
+
+# 3. Estimation run
+python3 $TOOL_DIR/*estimate*.py configs/my-docs.json
+
+# 4. robots.txt checked
+curl -s https://docs.example.com/robots.txt | grep -i "disallow"
+
+# 5. Dry-run tested (if available)
+python3 $TOOL --config configs/my-docs.json --dry-run 2>/dev/null
+
+# 6. Checkpoints enabled (for >1000 pages)
+grep -q '"checkpoint".*true' configs/my-docs.json && echo "✓ Checkpoints enabled"
+```
+
+### ✅ During Scraping Monitoring
+
+```bash
+# Watch progress
+tail -f <output-dir>/scraping.log
+
+# Check for errors
+grep -i "error\|fail\|warn" <output-dir>/scraping.log
+
+# Monitor page count
+find <output-dir>_data/pages/ -name "*.json" | wc -l
+```
+
+### ✅ After Scraping Validation
+
+```bash
+# 1. Check generated structure
+[ -f "output/skill/SKILL.md" ] && echo "✓ SKILL.md generated"
+[ -d "output/skill/references" ] && echo "✓ References created"
+
+# 2. Count reference files
+ls output/skill/references/*.md | wc -l
+
+# 3. Validate SKILL.md size
+SIZE=$(wc -l < output/skill/SKILL.md)
+[ $SIZE -gt 50 ] && echo "✓ SKILL.md has content ($SIZE lines)"
+
+# 4. Check for enhancement backup
+[ -f "output/skill/SKILL.md.backup" ] && echo "✓ Backup exists (enhancement was applied)"
 ```
 
 ## Error Handling
 
-### "No such file or directory"
+### Common Issues & Solutions
+
+**Issue: Tool Not Found**
 ```bash
-# Ensure Skill Seekers is in examples/
-ls examples/Skill_Seekers/
-# If missing, user needs to clone it
+# Solution: Check common locations
+find . -maxdepth 3 -name "*doc*scrap*" -type d
+find . -name "Skill_Seekers" -type d
+
+# If not found:
+echo "→ Install documentation scraper tool"
+echo "Example: git clone https://github.com/yusufkaraaslan/Skill_Seekers examples/Skill_Seekers"
 ```
 
-### "Too many pages estimated"
+**Issue: Estimation Shows >10K Pages**
 ```bash
-# Use splitting
-python3 examples/Skill_Seekers/cli/split_config.py CONFIG --strategy router
+# Solution: Check for splitting capability
+SPLIT_TOOL=$(find $TOOL_DIR -name "*split*.py" | head -1)
+
+if [ -n "$SPLIT_TOOL" ]; then
+  python3 $SPLIT_TOOL configs/large.json --strategy router
+else
+  echo "→ Reduce max_pages or scrape in batches"
+fi
 ```
 
-### "Scrape interrupted"
+**Issue: Scrape Interrupted**
 ```bash
-# Resume from checkpoint
-python3 examples/Skill_Seekers/cli/doc_scraper.py --config CONFIG --resume
+# Solution: Resume from checkpoint
+python3 $TOOL --config configs/my-docs.json --resume
+
+# If resume not available:
+# Check checkpoint file
+[ -f "output/my-docs_data/checkpoint.json" ] && \
+  echo "→ Checkpoint available but resume not supported" || \
+  echo "→ No checkpoint, must restart"
 ```
 
-### "Enhancement failed"
-```bash
-# Restore backup
-mv examples/Skill_Seekers/output/SKILL/SKILL.md.backup \
-   examples/Skill_Seekers/output/SKILL/SKILL.md
-
-# Try local enhancement
-python3 examples/Skill_Seekers/cli/enhance_skill_local.py examples/Skill_Seekers/output/SKILL/
+**Issue: Poor Categorization**
+```json
+// Solution: Add category hints to config
+{
+  "url_patterns": {
+    "category_hints": {
+      "/api/": "api_reference",
+      "/guide/": "guides",
+      "/tutorial/": "tutorials",
+      "/reference/": "reference",
+      "/getting-started/": "getting_started"
+    }
+  }
+}
 ```
 
-### "Rate limit exceeded"
+**Issue: Enhancement Failed**
 ```bash
-# Increase rate_limit in config
-"rate_limit": 1.0  # seconds between requests
+# Solution 1: Restore backup
+[ -f "output/skill/SKILL.md.backup" ] && \
+  cp output/skill/SKILL.md.backup output/skill/SKILL.md
+
+# Solution 2: Try alternative enhancement method
+# If local failed, try API; if API failed, try local
+
+# Solution 3: Manual enhancement
+echo "→ Edit SKILL.md manually to add examples and guidance"
 ```
 
-### "robots.txt disallows"
+**Issue: Rate Limit Exceeded**
+```json
+// Solution: Increase delay in config
+{
+  "rate_limit": 1.0  // Increase from 0.5 to 1.0 seconds
+}
+```
+
+**Issue: robots.txt Disallows Scraping**
 ```bash
-# Check robots.txt first
+# Check robots.txt
 curl https://docs.example.com/robots.txt
 
-# Respect restrictions or contact site owner
+# If disallowed:
+echo "→ Respect robots.txt restrictions"
+echo "→ Contact site owner for permission"
+echo "→ Look for official API or data export"
 ```
-
-## Best Practices
-
-### Before Scraping
-1. Check `robots.txt` for restrictions
-2. Estimate page count
-3. Start with lower `max_pages` for testing
-4. Use `--dry-run` to preview
-5. Enable checkpoints for >1000 pages
-
-### During Scraping
-1. Monitor progress in terminal
-2. Check for errors in output
-3. Respect rate limits
-4. Don't interrupt unnecessarily
-
-### After Scraping
-1. Always enhance SKILL.md (local or API)
-2. Review generated content
-3. Test package before uploading
-4. Document custom selectors used
-
-### For Large Documentation
-1. Always split >10K pages
-2. Use router strategy
-3. Scrape sub-skills in parallel
-4. Generate router last
-5. Package all together
 
 ## Integration with Other Skills
 
-### With /create-skill
+### With `/create-skill`
 ```bash
-# After generating skill, customize it
+# After generating skill, customize it further
 /create-skill
-# Modify SKILL.md, add custom scripts
+# Add custom scripts, modify SKILL.md, enhance references
 ```
 
-### With /document-project
+### With `/document-project`
 ```bash
-# Document YOUR project, not convert external docs
+# Different use case - document YOUR project
 /document-project
+# This skill is for EXTERNAL documentation → Claude skills
 ```
 
-### With /git-ops
+### With `/git-ops`
 ```bash
 # Commit generated skills
-git add examples/Skill_Seekers/output/my-skill.zip
-git commit -m "feat: add my-skill Claude skill"
+git add output/skill-name.zip
+git commit -m "feat(skills): add skill-name Claude skill"
 ```
 
 ## Performance Tips
 
 ### Faster Scraping
-- Use parallel scraping for split configs
-- Enable checkpoint for resume capability
-- Set appropriate `rate_limit` (0.3-0.5)
-- Limit `max_pages` for testing
+- Use parallel scraping for split configurations
+- Enable checkpoints for resume capability
+- Set appropriate rate_limit (0.3-0.5s minimum)
+- Limit max_pages for testing (increase after validation)
 
 ### Better Quality
 - Always use enhancement (local or API)
 - Choose meaningful skill names
 - Write clear descriptions
-- Test selectors with `--dry-run`
+- Test selectors with dry-run (if available)
+- Add category hints for better organization
 
 ### Resource Usage
 - Monitor disk space (scraped data can be large)
-- Use `--skip-scrape` to regenerate without re-scraping
-- Clean old data: `rm -rf examples/Skill_Seekers/output/*_data/`
+- Clean old data periodically: `rm -rf output/*_data/`
+- Use caching to rebuild without re-scraping
 
 ## Self-Awareness Rule
 
 **CRITICAL**: This skill NEVER generates skills for:
-- This Copilot Skills system
+- This Copilot Skills system itself
 - Skill architecture documentation
 - This skill's own implementation
 - Other skills in this repository
@@ -567,16 +581,15 @@ git commit -m "feat(skills): add react-docs Claude skill"
 git commit -m "docs(skills): update godot-docs with latest documentation"
 
 # Fix skill
-git commit -m "fix(skills): correct vue-docs selectors"
+git commit -m "fix(skills): correct vue-docs selectors for proper content extraction"
 ```
 
 ## Related Resources
 
-- **Skill Seekers**: https://github.com/yusufkaraaslan/Skill_Seekers
-- **Skill Directory**: `.github/copilot-skills/docs-to-skill/`
-- **Scripts**: `.github/copilot-skills/docs-to-skill/scripts/`
-- **Examples**: `examples/Skill_Seekers/`
+- **Skill Directory**: `.github/copilot-skills/skills/docs-to-skill/`
+- **Skill Prompt**: `.github/prompts/docs-to-skill.prompt.md`
+- **Reference Tool**: [Skill Seekers](https://github.com/yusufkaraaslan/Skill_Seekers)
 
 ---
 
-**Key Principle**: Always estimate first, enhance after scraping, and respect documentation site policies.
+**Key Principle**: This skill teaches **discovery and adaptation**. Tools evolve, paths change, but the principles remain constant. Always discover first, validate capabilities, then execute with appropriate strategy. 🚀
