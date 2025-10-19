@@ -26,6 +26,14 @@
 **When to use**: Reference when creating new skills; copy SKILL.md template and customize for your domain.
 **Tags**: `example`, `template`, `architecture`
 
+### PDF Document Handling
+**Path**: `.github/copilot-skills/pdf-handling/SKILL.md`
+**Description**: Extract text and tables, create new PDFs, merge/split documents, handle forms programmatically.
+**When to use**: PDF parsing, form extraction, table extraction, document generation, form filling (government forms, applications), text extraction, PDF manipulation, watermarks, password protection.
+**Tags**: `documents`, `pdf`, `forms`, `text-extraction`, `tables`, `reportlab`, `pypdf`, `pdfplumber`
+**Detail Files**: `forms.md` (form filling), `reference.md` (advanced API)
+**Scripts**: `extract_form_field_info.py`, `fill_fillable_fields.py`, `convert_pdf_to_images.py`, `check_bounding_boxes.py`
+
 ---
 
 ## Skill Metadata Fields
