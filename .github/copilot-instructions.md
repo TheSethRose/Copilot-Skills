@@ -1,93 +1,160 @@
 # Copilot Instructions
 
-This repository is a Copilot Skills Architecture system — not a typical application. It provides a framework for organizing domain knowledge into discoverable, composable skills that keep AI agents focused and context-efficient.
+This repository demonstrates a **Copilot Skills Architecture system** — a framework for organizing domain knowledge into discoverable, composable skills that keep AI agents focused and context-efficient.
 
-## What is This Repository?
+This is NOT a traditional application to build/run. It's a **meta-system** for creating and managing reusable skills.
 
-Purpose: Framework and examples for implementing the Copilot Skills Architecture in any GitHub repository.
+## What This Repository Is
 
-Core Insight: LLMs excel at coding but struggle with organization. This system provides structured domain knowledge through progressive disclosure—loading information only when needed, keeping context lean.
+A complete implementation of the Copilot Skills Architecture featuring:
 
-## Three-Part Architecture
+- **Skill Files** - Self-contained documentation + bundled scripts (`.github/copilot-skills/`)
+- **Skill Prompts** - AI-executable workflows (`.github/prompts/`)
+- **Constitutional Framework** - 5 architectural principles all skills follow
+- **Reference Implementations** - Example skills from Anthropic, Obra, and the community
+- **Automation Tools** - Scripts for creating, validating, and managing skills
 
-1. **Skill Prompts** (`.github/prompts/{skill-name}.skill.prompt.md`)
-   - YAML frontmatter with metadata (name, description, version, tags, dependencies)
-   - "When to Use This Skill" section describing use cases
-   - Detailed instructions for AI agents on HOW to execute the skill
-   - Examples, workflows, configuration, and troubleshooting
-   - These are the canonical skill definitions used by `/skill-{name}` commands
+## Core Architecture
 
-2. **Skill Scripts** (`.github/copilot-skills/{skill-name}/scripts/`)
-   - Bundled executable tools (bash, Python) for the skill
-   - Self-contained and deterministic
-   - Output to terminal only (no file generation)
-   - Referenced by the skill prompt file
+### Three-Part System
 
-3. **Skills Registry** (`.github/copilot-skills/index.md`)
-   - Searchable index of all available skills
-   - Points to prompt files for discovery
-   - Enables dynamic skill loading
+1. **Skill Definitions** (`.github/copilot-skills/{skill-name}/`)
+   - `SKILL.md` - Core documentation with YAML metadata
+   - Detail files (`patterns.md`, `reference.md`) - Progressive disclosure layers
+   - `scripts/` - Bundled tools for deterministic operations
+
+2. **Skill Prompts** (`.github/prompts/{skill-name}.skill.prompt.md`)
+   - Defines WHEN a skill is relevant (use cases)
+   - Defines HOW to use it step-by-step (workflow)
+   - Enables `/skill-{name}` slash commands in Copilot
+
+3. **Management System** (`.github/copilot-skills/`)
+   - `index.md` - Registry of all available skills
+   - `README.md` - System architecture overview
+   - `scripts/` - Tools for creating, validating, analyzing skills
+   - `templates/` - Scaffolding for new skills
 
 ## Five Constitutional Principles
 
-All skills must follow these (see `.specify/memory/constitution.md`):
+**All skills must follow these principles** (see `.specify/memory/constitution.md`):
 
-1. **Progressive Disclosure** - Information in skill prompt loads: metadata → use cases → instructions → examples
-2. **File-Based Organization** - Skills are prompt files with YAML frontmatter + scripts directory
-3. **Dynamic Discovery** - `.github/copilot-skills/index.md` registry enables AI to find skills
-4. **Deterministic Execution** - Bundled scripts in `scripts/` produce consistent terminal output (no file generation)
-5. **Composability** - Skills reference each other with explicit dependencies in frontmatter
+1. **Progressive Disclosure** - Metadata → core → details. Each layer independent, scannable in <3 min
+2. **File-Based Organization** - Skills are directories with SKILL.md + YAML frontmatter + bundled scripts
+3. **Dynamic Discovery** - `.github/copilot-skills/index.md` enables AI to find skills automatically
+4. **Deterministic Execution** - Scripts in `scripts/` produce consistent terminal output (no file generation)
+5. **Composability** - Skills reference each other with explicit dependencies, clear boundaries
 
-## Current Skills
+## Available Skills
 
-- Hello Skill - Example demonstrating architecture
-- Skill Template - Boilerplate for new skills
-- PDF Document Handling - Extract/create PDFs, forms, tables
-- Git Operations Assistant - Safe git operations, branching, conflicts
-- Copilot Instructions Generator - Analyze codebases, generate instructions
+Check `.github/copilot-skills/index.md` for the complete registry of available skills.
 
 ## Working with Skills
 
 ### Discover Skills
-1. Check `.github/copilot-skills/index.md` for relevant skill
-2. Click path to open `SKILL.md` (~3 min read)
-3. Reference detail files for deeper knowledge
-4. Run bundled scripts from `scripts/` directory
+```
+1. Check .github/copilot-skills/index.md
+2. Find relevant skill
+3. Read skill SKILL.md (~3 min)
+4. Load detail files (patterns.md, reference.md) as needed
+5. Use bundled scripts or examples
+```
 
-## Working with Skills
+### Run Bundled Scripts
 
-### Discover Skills
-1. Check `.github/copilot-skills/index.md` for relevant skill
-2. Index points to `.github/prompts/{skill-name}.skill.prompt.md`
-3. Read skill prompt (~3-5 min) for full instructions
-4. Run bundled scripts from `.github/copilot-skills/{skill-name}/scripts/`
+Each skill has a `scripts/` directory with bundled tools:
+
+```bash
+# Example: Run a skill's bundled script
+bash .github/copilot-skills/{skill-name}/scripts/{script}.sh [options]
+
+# Scripts output to terminal only (no files generated)
+# Output can be parsed by AI agents as a data source
+```
+
+See `.github/copilot-skills/index.md` to find which scripts each skill provides.
 
 ### Create New Skill
 ```bash
-# 1. Create scripts directory
+# 1. Create directory
 mkdir -p .github/copilot-skills/{skill-name}/scripts
 
-# 2. Create skill prompt with YAML frontmatter
-# File: .github/prompts/{skill-name}.skill.prompt.md
+# 2. Copy template
+cp .github/copilot-skills/templates/SKILL.template.md \
+   .github/copilot-skills/{skill-name}/SKILL.md
 
-# 3. Add bundled scripts in scripts/ directory
+# 3. Create skill prompt
+cp .github/copilot-skills/templates/skill-prompt.template.md \
+   .github/prompts/{skill-name}.skill.prompt.md
 
-# 4. Register in .github/copilot-skills/index.md
+# 4. Add bundled scripts (terminal output only)
 
-# 5. Test the skill with real usage
+# 5. Register in index
+# Add entry to .github/copilot-skills/index.md
+
+# 6. Validate compliance
+# Ensure follows 5 constitutional principles
 ```
 
-## Key Files
+## Project Structure
 
-- `.github/copilot-skills/index.md` - Skills registry (START HERE)
-- `.github/prompts/{skill-name}.skill.prompt.md` - Skill definitions
-- `.github/copilot-skills/{skill-name}/scripts/` - Bundled tools
-- `.specify/memory/constitution.md` - Canonical principles
-- `readme.md` - Project rationale and examples
+```
+.github/
+├── copilot-instructions.md              # This file
+├── copilot-skills/                      # Skills system
+│   ├── index.md                         # Skills registry
+│   ├── README.md                        # Architecture overview
+│   ├── templates/                       # Scaffolding
+│   ├── scripts/                         # Automation tools
+│   ├── copilot-instructions-generator/  # Skill: generate instructions
+│   ├── git-ops/                         # Skill: git operations
+│   ├── pdf-handling/                    # Skill: PDF manipulation
+│   └── skill-template/                  # Template for new skills
+├── prompts/                             # Skill execution workflows
+│   ├── generate-copilot-instructions.skill.prompt.md
+│   ├── git-ops.skill.prompt.md
+│   ├── pdf-handling.skill.prompt.md
+│   └── [other skill prompts]
+└── .specify/
+    └── memory/
+        └── constitution.md              # Canonical principles
+
+.gitignore                               # Respects .gitignore patterns
+examples/                                # Third-party skill collections
+readme.md                                # Project overview (UPDATE THIS)
+copilot-skills.md                        # Technical deep-dive
+```
+
+## Key Files to Understand
+
+- **.github/copilot-instructions.md** - This file - Main guidance for AI agents
+- **.github/copilot-skills/index.md** - Skills discovery registry
+- **.github/copilot-skills/README.md** - Complete architecture explanation
+- **.specify/memory/constitution.md** - Canonical 5 principles
+- **readme.md** - High-level project overview
+- **copilot-skills.md** - Technical architecture details
+
+## Development Workflows
+
+### Respecting .gitignore
+
+Scripts automatically exclude per `.gitignore`:
+- `.env`, `.env.*`, `*.log` (environment/secrets)
+- `node_modules/`, `__pycache__/`, `.venv/` (dependencies)
+- `.vscode/`, `.idea/` (IDE files)
+- Build artifacts, example directories, temporary files
+
+This prevents analyzing third-party code or sensitive files.
+
+### Bundled Scripts
+
+- Output to **terminal only** (no file generation)
+- Self-contained and deterministic
+- Respect `.gitignore` patterns
+- Documented in SKILL.md with usage examples
 
 ## Code Patterns
 
-### Skill Metadata (YAML frontmatter)
+### Skill YAML Metadata
 ```yaml
 ---
 name: "Skill Name"
@@ -98,42 +165,34 @@ dependencies: ["tool1", "tool2"]
 ---
 ```
 
-### Bundled Scripts
-- Output to terminal only (no file generation)
-- Self-contained and deterministic
-- Clear error messages with exit codes
-- Documented in SKILL.md with usage examples
-
 ### Progressive Disclosure
 ```
-Index Entry (2 lines) → SKILL.md (~100 lines) → Detail Files (deep) → Scripts (executable)
+index.md (1 line)
+→ .skill.prompt.md (workflow)
+→ SKILL.md (core, ~100 lines)
+→ patterns.md, reference.md (details)
+→ scripts/ (tools)
 ```
 
-## Best Practices
+## This Is NOT
 
-- Keep skills focused (one domain per skill)
-- Layer information (metadata → core → details)
-- Test bundled scripts output to terminal only
-- Reference specific examples, not generic advice
-- Validate new skills against constitutional principles
-- Use semantic versioning for skill versions
-- Declare all dependencies in YAML frontmatter
+- ❌ A software application to build or run
+- ❌ A typical repository with source code
+- ❌ A framework or library to depend on
+- ❌ A CI/CD system or deployment pipeline
 
-## This is NOT a Software Application
+## This IS
 
-Do not treat this as a typical codebase:
-- No "build", "run", or "deploy" commands for the repository itself
-- Skills are documentation + scripts, not application code
-- No test framework or CI/CD for the repository
-- Purpose is to demonstrate reusable skill patterns
-- Each skill may have scripts, but the repo doesn't "execute"
+- ✅ A meta-system for creating reusable skills
+- ✅ A framework for organizing domain knowledge
+- ✅ A demonstration of progressive disclosure
+- ✅ Portable skills for multiple AI agents
 
-## Examples Directory
+## Resources
 
-Third-party skill collections in `examples/`:
-- `anthropics-skills/` - Anthropic's official agent skills
-- `obra-superpowers/` - Advanced development workflows
-- `superpowers-skills/` - Problem-solving patterns
-- `tfriedel-claude-office-skills/` - Office document handling
+- **Architecture**: `copilot-skills.md`
+- **Overview**: `readme.md`
+- **Skills Registry**: `.github/copilot-skills/index.md`
+- **Principles**: `.specify/memory/constitution.md`
+- **Examples**: `examples/` directory
 
-These demonstrate different approaches and serve as reference implementations.
