@@ -74,19 +74,19 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Keywords:** PDF, pdf, report, export, document, form, fillable, extract text, merge pdf, split pdf, watermark, table extraction
 **Suggest:** `/pdf-handling`
 **Auto-context:** `.github/instructions/pdf-handling.instructions.md` (when editing PDF-related files)
-**Skill:** `.github/copilot-skills/pdf-handling/SKILL.md`
+**Skill:** `.github/copilot-skills/operations/pdf-handling/SKILL.md`
 
 #### Git & Version Control
 **Keywords:** git, commit, merge, rebase, push, pull, branch, checkout, stash, conflict, github, pull request, PR, force push, worktree
 **Suggest:** `/git-ops`
 **Auto-context:** `.github/instructions/git-ops.instructions.md` (when editing .git/, .gitignore, .github/)
-**Skill:** `.github/copilot-skills/git-ops/README.md`
+**Skill:** `.github/copilot-skills/operations/git-ops/README.md`
 
 #### New Project Creation & Scaffolding
 **Keywords:** new project, create project, initialize, setup, scaffold, boilerplate, template, starter, project setup
 **Suggest:** `/new-project`
 **Auto-context:** `.github/instructions/new-project.instructions.md` (when editing package.json, requirements.txt, etc.)
-**Skill:** `.github/copilot-skills/skill-template/README.md`
+**Skill:** `.github/copilot-skills/skills/skill-template/README.md`
 
 #### Cleanup & Maintenance
 **Keywords:** cleanup, remove, delete, unused, stale, orphan, tidy
@@ -96,32 +96,38 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 #### Generate Instructions
 **Keywords:** generate instructions, copilot-instructions, discover patterns, create instructions, AI instructions, codebase analysis
 **Suggest:** `/generate-instructions`
-**Skill:** `.github/copilot-skills/copilot-instructions-generator/SKILL.md`
+**Skill:** `.github/copilot-skills/generators/copilot-instructions-generator/SKILL.md`
 
 #### Brand Guidelines & Visual Identity
 **Keywords:** branding, brand colors, typography, visual identity, styling, brand guidelines, corporate design, Anthropic brand
 **Suggest:** `/brand-guidelines`
 **Auto-context:** `.github/instructions/brand-guidelines.instructions.md` (when editing brand/style/design files)
-**Skill:** `.github/copilot-skills/brand-guidelines/README.md`
+**Skill:** `.github/copilot-skills/builders/brand-guidelines/README.md`
 
 #### Create Skill
 **Keywords:** create skill, new skill, skill creation, build skill, skill architecture, meta skill, design skill
 **Suggest:** `/create-skill`
 **Chatmode:** `/switch Skill Creator`
 **Auto-context:** `.github/instructions/create-skill.instructions.md` (when editing skill-related files)
-**Skill:** `.github/copilot-skills/create-skill/README.md`
+**Skill:** `.github/copilot-skills/skills/create-skill/README.md`
 
 #### Document Project
 **Keywords:** document project, generate docs, documentation, setup docs, create documentation, project documentation
 **Suggest:** `/document-project`
 **Auto-context:** `.github/instructions/document-project.instructions.md` (when editing docs-related files)
-**Skill:** `.github/copilot-skills/document-project/README.md`
+**Skill:** `.github/copilot-skills/generators/document-project/README.md`
+
+#### Docs to Skill
+**Keywords:** docs to skill, documentation scraper, doc to skill, convert documentation, scrape docs, generate skill, claude skill, skill generator, documentation converter, skill seeker
+**Suggest:** `/docs-to-skill`
+**Auto-context:** `.github/instructions/docs-to-skill.instructions.md` (when working with documentation sites or skill generation)
+**Skill:** `.github/copilot-skills/skills/docs-to-skill/README.md`
 
 #### MCP Server Development
 **Keywords:** mcp, model context protocol, mcp server, agent tools, llm integration, api integration, fastmcp, tool design
 **Suggest:** `/mcp-builder`
 **Auto-context:** `.github/instructions/mcp-builder.instructions.md` (when editing MCP-related files)
-**Skill:** `.github/copilot-skills/mcp-builder/README.md`
+**Skill:** `.github/copilot-skills/builders/mcp-builder/README.md`
 
 ### Escalation Hierarchy
 
