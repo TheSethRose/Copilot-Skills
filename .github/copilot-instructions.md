@@ -98,6 +98,25 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Suggest:** `/generate-copilot-instructions`
 **Skill:** `.github/copilot-skills/copilot-instructions-generator/SKILL.md`
 
+#### Brand Guidelines & Visual Identity
+**Keywords:** branding, brand colors, typography, visual identity, styling, brand guidelines, corporate design, Anthropic brand
+**Suggest:** `/brand-guidelines`
+**Auto-context:** `.github/instructions/brand-guidelines.instructions.md` (when editing brand/style/design files)
+**Skill:** `.github/copilot-skills/brand-guidelines/README.md`
+
+#### Document Operations (Multi-Format)
+**Keywords:** document, docx, pptx, xlsx, word, powerpoint, excel, spreadsheet, document processing
+**Suggest:** `/document-skills`
+**Auto-context:** `.github/instructions/document-skills.instructions.md` (when editing document files)
+**Skill:** `.github/copilot-skills/document-skills/README.md`
+**Note:** PDF operations use specialized `/pdf-handling` sub-skill
+
+#### MCP Server Development
+**Keywords:** mcp, model context protocol, mcp server, agent tools, llm integration, api integration, fastmcp, tool design
+**Suggest:** `/mcp-builder`
+**Auto-context:** `.github/instructions/mcp-builder.instructions.md` (when editing MCP-related files)
+**Skill:** `.github/copilot-skills/mcp-builder/README.md`
+
 ### Escalation Hierarchy
 
 When responding to user queries, follow this decision tree:

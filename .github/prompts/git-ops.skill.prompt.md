@@ -20,10 +20,12 @@ This command guides you through safe git operations with automatic safety checks
 - Inspect repository state and history
 - Stage and commit changes with meaningful messages
 - Create and manage feature branches
+- Create isolated worktrees for parallel development
 - Merge or rebase with conflict detection
+- Finish development branches with multiple completion options
 - Push/pull with upstream validation
 - Safely revert commits or recover from errors
-- Handle complex workflows (conflicts, rebases, cherry-picks)
+- Handle complex workflows (conflicts, rebases, cherry-picks, worktrees)
 
 ## Safety Rules
 
@@ -48,6 +50,8 @@ $ARGUMENTS
    - If user requests conflict help - run conflict resolver
    - If user wants commit message - run commit helper
    - If user provides branch/merge info - handle merge workflow
+   - If user wants isolated workspace - create worktree workflow
+   - If user wants to finish branch - branch completion workflow
 
 2. **Invoke appropriate script**:
    ```bash
@@ -238,11 +242,63 @@ Agent can read directly from terminal:
 
 ## Common Workflows
 
+### Create Isolated Worktree
+```bash
+# 1. Check existing worktree directories
+ls -d .worktrees 2>/dev/null || ls -d worktrees 2>/dev/null
+
+# 2. Verify .gitignore (for project-local)
+grep -q "^\.worktrees/$" .gitignore || echo ".worktrees/" >> .gitignore
+
+# 3. Create worktree with new branch
+git worktree add .worktrees/feature-name -b feature/feature-name
+
+# 4. Navigate and setup
+cd .worktrees/feature-name
+npm install  # or cargo build, pip install, etc.
+
+# 5. Verify clean test baseline
+npm test
+```
+
 ### Feature Development
 ```bash
 bash scripts/git_safe_exec.sh --backup checkout -b feature/user-auth
 bash scripts/commit_helper.sh --type feat --scope auth
 bash scripts/git_safe_exec.sh --backup push -u origin feature/user-auth
+```
+
+### Finish Development Branch
+```bash
+# 1. Verify tests pass
+npm test  # or appropriate test command
+
+# 2. Present 4 options to user:
+#    1. Merge locally
+#    2. Create PR
+#    3. Keep as-is
+#    4. Discard
+
+# 3a. If Option 1 (Merge locally):
+git checkout main
+git pull
+git merge feature/feature-name
+npm test
+git branch -d feature/feature-name
+git worktree remove .worktrees/feature-name  # if using worktree
+
+# 3b. If Option 2 (Create PR):
+git push -u origin feature/feature-name
+gh pr create --title "feat: Description" --body "Summary"
+
+# 3c. If Option 3 (Keep as-is):
+# No action - keep branch and worktree
+
+# 3d. If Option 4 (Discard):
+# Confirm first, then:
+git checkout main
+git branch -D feature/feature-name
+git worktree remove .worktrees/feature-name  # if using worktree
 ```
 
 ### Safe Rebase

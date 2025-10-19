@@ -57,6 +57,21 @@ When working with Git-related files or when user queries contain version control
 3. Use bundled script: `.github/copilot-skills/git-ops/scripts/conflict_resolver.sh`
 4. Explain merge markers and resolution strategies
 
+### When user mentions "worktree" or "isolated workspace"
+1. Suggest `/git-ops` skill prompt with worktree workflow
+2. Check for existing worktree directories (.worktrees/ or worktrees/)
+3. Verify .gitignore includes worktree directory (for project-local)
+4. Create worktree with new branch
+5. Run project setup (npm install, cargo build, etc.)
+6. Verify clean test baseline before work begins
+
+### When user mentions "finish branch" or "complete work"
+1. Suggest `/git-ops` skill prompt with branch finishing workflow
+2. Verify tests pass before offering options
+3. Present 4 completion options: merge locally, create PR, keep as-is, discard
+4. Execute chosen workflow
+5. Clean up worktree if appropriate
+
 ## Quality Guidelines
 
 ### ✅ Do
@@ -115,6 +130,30 @@ git pull origin main
 git checkout -b feature/your-feature-name
 ```
 
+### Create Isolated Worktree
+```bash
+# Check for existing worktree directories
+ls -d .worktrees 2>/dev/null || ls -d worktrees 2>/dev/null
+
+# Verify .gitignore includes worktree directory
+grep -q "^\.worktrees/$" .gitignore || echo ".worktrees/" >> .gitignore
+
+# Create worktree with new branch
+git worktree add .worktrees/feature-name -b feature/feature-name
+
+# Navigate to worktree
+cd .worktrees/feature-name
+
+# Run project setup
+if [ -f package.json ]; then npm install; fi
+if [ -f Cargo.toml ]; then cargo build; fi
+if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+if [ -f pyproject.toml ]; then poetry install; fi
+
+# Verify clean test baseline
+npm test  # or cargo test, pytest, go test
+```
+
 ### Safe Commit Process
 ```bash
 git status                    # Check what's changed
@@ -123,6 +162,33 @@ git add <specific-files>      # Stage intentionally
 git diff --staged             # Review staged changes
 git commit -m "type(scope): message"
 git push origin feature/your-feature-name
+```
+
+### Finish Development Branch
+```bash
+# Step 1: Verify tests pass
+npm test  # or appropriate test command
+
+# Step 2: Choose completion option
+# Option 1: Merge locally
+git checkout main
+git pull
+git merge feature/your-feature-name
+npm test  # verify on merged result
+git branch -d feature/your-feature-name
+
+# Option 2: Create PR
+git push -u origin feature/your-feature-name
+gh pr create --title "feat: Description" --body "Summary of changes"
+
+# Option 3: Keep as-is (no action)
+
+# Option 4: Discard (requires confirmation)
+git checkout main
+git branch -D feature/your-feature-name
+
+# Step 3: Clean up worktree (if used)
+git worktree remove .worktrees/feature-name
 ```
 
 ### Resolve Merge Conflicts
@@ -140,6 +206,13 @@ git reset HEAD~1              # Undo last commit (keep changes)
 git reset --hard HEAD~1       # Undo last commit (discard changes)
 git checkout -- <file>        # Discard file changes
 git clean -fd                 # Remove untracked files
+```
+
+### List and Manage Worktrees
+```bash
+git worktree list             # Show all worktrees
+git worktree remove <path>    # Remove worktree
+git worktree prune            # Clean up stale worktree data
 ```
 
 ## Bundled Scripts
