@@ -117,7 +117,7 @@ mkdir -p .github/copilot-skills/{skill-name}/scripts
 ### Available Skills
 
 #### Core Skills
-- **[PDF Handling]((.github/copilot-skills/pdf-handling/)** – PDF manipulation, form filling, extraction
+- **[PDF Handling](.github/copilot-skills/pdf-handling/)** – PDF manipulation, form filling, extraction
 - **[Git Operations](.github/copilot-skills/git-ops/)** – Version control, commits, merge conflicts
 - **[Document Project](.github/copilot-skills/document-project/)** – Generate project documentation
 - **[Create Skill](.github/copilot-skills/create-skill/)** – Build new skills with guided workflow
