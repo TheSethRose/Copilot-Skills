@@ -1,0 +1,36 @@
+{
+  "name": "shadcn",
+  "description": "Beautiful and accessible component library built with Radix UI and Tailwind CSS",
+  "base_url": "https://ui.shadcn.com/",
+  "start_urls": [
+    "https://ui.shadcn.com/docs"
+  ],
+  "max_pages": 200,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.tsx",
+    "**/*.jsx",
+    "**/components.json",
+    "**/tailwind.config.*"
+  ],
+  "selectors": {
+    "main_content": "main, article",
+    "title": "h1, title",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://ui\\.shadcn\\.com/docs/.*"],
+    "exclude": ["/blog/.*", "#.*", "/examples$", "/blocks$", "/charts$", "/themes$"]
+  },
+  "categories": {
+    "installation": ["installation", "install", "setup", "getting-started"],
+    "components": ["component", "accordion", "alert", "avatar", "badge", "button", "card", "checkbox", "dialog", "dropdown", "form", "input", "label", "popover", "select", "sheet", "table", "tabs", "toast", "tooltip"],
+    "cli": ["cli", "command", "add"],
+    "theming": ["theme", "theming", "dark-mode", "colors"],
+    "examples": ["example", "demo"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 20
+  }
+}

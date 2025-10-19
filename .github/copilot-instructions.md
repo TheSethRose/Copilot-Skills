@@ -129,6 +129,18 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Auto-context:** `.github/instructions/mcp-builder.instructions.md` (when editing MCP-related files)
 **Skill:** `.github/copilot-skills/builders/mcp-builder/README.md`
 
+#### ShadCN UI Components
+**Keywords:** shadcn, shadcn/ui, radix ui, ui components, component library, tailwind components, accessible components, button, card, dialog, form, input, select, sheet, table, tabs, toast, tooltip
+**Suggest:** `/shadcn`
+**Auto-context:** `.github/instructions/shadcn.instructions.md` (when editing .tsx, .jsx, components.json, tailwind.config.*)
+**Skill:** `.github/copilot-skills/shadcn/`
+
+#### OpenCode Multi-Agent Orchestration
+**Keywords:** opencode, multi-agent, sub-agent, subagent, agent orchestration, spawn agents, delegate tasks, @mention, primary agent, agent workflow, agent coordination, parallel agents, agent pipeline
+**Suggest:** `/opencode`
+**Auto-context:** `.github/instructions/opencode.instructions.md` (when editing Python/TypeScript/JavaScript files, agent configs, workflow files)
+**Skill:** `.github/copilot-skills/opencode/`
+
 ### Escalation Hierarchy
 
 When responding to user queries, follow this decision tree:
