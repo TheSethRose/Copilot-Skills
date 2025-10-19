@@ -43,8 +43,9 @@ $ARGUMENTS
 ```
 User: /skills.create "PDF Handling"
 → Prompts for: description, tags, dependencies
-→ Creates: .github/copilot-skills/pdf-handling/SKILL.md
-→ Updates: .github/copilot-skills/index.md
+→ Creates: .github/prompts/pdf-handling.skill.prompt.md
+→ Creates: .github/instructions/pdf-handling.instructions.md
+→ Updates: keyword routing map in .github/copilot-instructions.md
 ```
 
 ### Example 2: With full description
@@ -67,13 +68,14 @@ The `create-skill.sh` script will:
 1. Validate skill name format (lowercase-with-dashes)
 2. Check if skill already exists (error if duplicate)
 3. Prompt for metadata (if --interactive flag set)
-4. Load SKILL.template.md and substitute placeholders
-5. Create directory structure (.github/copilot-skills/{skill-name}/)
-6. Write SKILL.md with YAML frontmatter
-7. Create scripts/ subdirectory
-8. Update index.md with new skill entry
-9. Run validate-skill.sh for compliance check
-10. Output success message with next steps
+4. Load templates and substitute placeholders
+5. Create .github/prompts/{skill-name}.skill.prompt.md
+6. Create .github/instructions/{skill-name}.instructions.md
+7. Create directory structure (.github/copilot-skills/{skill-name}/) if needed
+8. Create scripts/ subdirectory if needed
+9. Update keyword routing map in .github/copilot-instructions.md
+10. Run validate-skill.sh for compliance check
+11. Output success message with next steps
 
 ## Success Output
 

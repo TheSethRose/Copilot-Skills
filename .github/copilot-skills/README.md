@@ -4,19 +4,19 @@ Organize domain-specific knowledge into discoverable, composable skills that kee
 
 ## What Is the Skills Architecture?
 
-The Copilot Skills Architecture is a modular system for organizing specialized knowledge in GitHub repositories. Instead of one monolithic `copilot-instructions.md` file, skills are:
+The Copilot Skills Architecture is a modular system for organizing specialized knowledge in GitHub repositories. Skills follow a three-part architecture:
 
-- **Discoverable**: Listed in `.github/copilot-skills/index.md` with clear metadata
-- **Progressive**: Information loads in layers (index → SKILL.md → detail files → scripts)
+- **Discoverable**: Keyword routing map in `.github/copilot-instructions.md` enables AI to find skills
+- **Progressive**: Information loads in layers (routing map → prompt → detail files → scripts)
 - **Deterministic**: Bundled scripts provide consistent, reusable operations
 - **Composable**: Skills reference each other for complex workflows
 - **Independently tested**: Each skill can be validated against constitutional principles
 
 ## Core Principles (5 Constitutional Principles)
 
-1. **Progressive Disclosure** - Layer information: metadata → core → details. Each file independently useful.
-2. **File-Based Organization** - Skills are directories with SKILL.md + detail files + scripts/
-3. **Dynamic Discovery** - `.github/copilot-skills/index.md` enables AI to find relevant skills
+1. **Progressive Disclosure** - Layer information: routing map → prompt → details. Each file independently useful.
+2. **File-Based Organization** - Skills are prompt + instructions + bundled scripts (three-part system)
+3. **Dynamic Discovery** - Keyword routing map in `.github/copilot-instructions.md` enables AI to find relevant skills
 4. **Deterministic Execution** - Bundled scripts produce consistent results
 5. **Composability** - Skills reference each other; explicit dependencies; clear boundaries
 
@@ -26,29 +26,30 @@ See [`.specify/memory/constitution.md`](../../.specify/memory/constitution.md) f
 
 ### Discovering Skills
 
-1. Open `.github/copilot-skills/index.md`
-2. Scan the registry for skills relevant to your task
-3. Click the skill path to open its SKILL.md
-4. Read core capabilities (~3 minutes)
-5. Link to detail files when you need deeper information
+1. Check keyword routing map in `.github/copilot-instructions.md`
+2. Look for keywords matching your task
+3. Use suggested `/skill-{name}` command
+4. Follow the skill prompt workflow
+5. Load detail files when you need deeper information
 
 ### Using a Skill
 
 ```
 User: "I need to extract form fields from a PDF"
-→ Copilot scans .github/copilot-skills/index.md
-→ Finds "PDF Handling" skill
-→ Loads .github/copilot-skills/pdf-handling/SKILL.md
+→ Copilot checks keyword routing map
+→ Finds "PDF" triggers PDF Handling skill
+→ Suggests `/pdf-handling` command
+→ Loads .github/prompts/pdf-handling.skill.prompt.md
 → Suggests bundled script in scripts/ directory
 ```
 
 ### Creating a New Skill
 
-1. Create directory: `.github/copilot-skills/{skill-name}/`
-2. Write SKILL.md with YAML frontmatter (see [AUTHORING.md](./AUTHORING.md) for template)
-3. Add detail files for deep topics (forms.md, reference.md, etc.)
-4. Add bundled scripts in scripts/ if needed
-5. Register in index.md
+1. Copy templates from `.github/copilot-skills/templates/`
+2. Create `.github/prompts/{skill-name}.skill.prompt.md`
+3. Create `.github/instructions/{skill-name}.instructions.md`
+4. Create directory `.github/copilot-skills/{skill-name}/` if needed for scripts/detail files
+5. Add entry to keyword routing map in `.github/copilot-instructions.md`
 6. Run skill compliance checklist (`.specify/checklists/skill-compliance-checklist.md`)
 
 See [AUTHORING.md](./AUTHORING.md) for step-by-step guidance.
@@ -56,27 +57,31 @@ See [AUTHORING.md](./AUTHORING.md) for step-by-step guidance.
 ## Directory Structure
 
 ```
-.github/copilot-skills/
-├── index.md                  # Skills registry (start here)
-├── README.md                 # This file
-├── AUTHORING.md              # Guide for creating new skills
-├── GOVERNANCE.md             # PR review process and skill lifecycle
-├── MAINTENANCE.md            # Skill updates and version management
-├── TROUBLESHOOTING.md        # Common issues and solutions
-├── EXAMPLES.md               # Example workflows showing skill composition
-│
-├── skill-template/           # Example skill showing structure
-│   ├── SKILL.md              # Core skill file with YAML frontmatter
-│   ├── patterns.md           # Detail file: pattern examples
-│   ├── reference.md          # Detail file: comprehensive reference
-│   └── scripts/
-│       ├── example-script.py # Python script example
-│       └── helper.sh         # Shell script example
-│
-└── [other-skills]/           # Additional skills follow same pattern
-    ├── SKILL.md
-    ├── [detail-file].md
-    └── scripts/
+.github/
+├── copilot-instructions.md     # Main routing + keyword map
+├── prompts/                    # Skill prompt files
+│   ├── git-ops.skill.prompt.md
+│   ├── pdf-handling.skill.prompt.md
+│   └── skill-template.skill.prompt.md
+├── instructions/               # Auto-loaded context
+│   ├── git-ops.instructions.md
+│   ├── pdf-handling.instructions.md
+│   └── skill-template.instructions.md
+└── copilot-skills/            # Bundled scripts + detail files
+    ├── README.md              # This file
+    ├── templates/             # Templates for new skills
+    ├── skill-template/        # Reference implementation
+    │   ├── README.md          # Structure overview
+    │   └── scripts/
+    │       ├── example-script.py
+    │       └── helper.sh
+    ├── git-ops/              # Example: scripts only
+    │   └── scripts/
+    ├── pdf-handling/         # Example: scripts + detail files
+    │   ├── forms.md
+    │   ├── reference.md
+    │   └── scripts/
+    └── [other-skills]/
 ```
 
 ## Key Concepts
@@ -101,36 +106,31 @@ dependencies: ["pypdf2", "pdfplumber"]
 Markdown files in a skill directory (e.g., forms.md, reference.md) providing focused information on specific topics. Each stands independently and can be read without reading others.
 
 ### Bundled Script
-Executable scripts (Python, Shell, JavaScript, etc.) in a skill's `scripts/` subdirectory. Used for deterministic operations documented in SKILL.md.
+Executable scripts (Python, Shell, JavaScript, etc.) in a skill's `scripts/` subdirectory. Used for deterministic operations documented in skill prompts.
 
-### Skills Registry
-The `.github/copilot-skills/index.md` file listing all available skills with lightweight metadata, enabling AI to discover relevant skills without parsing full documentation.
+### Keyword Routing Map
+The keyword routing map in `.github/copilot-instructions.md` listing all available skills with trigger keywords, enabling AI to discover relevant skills automatically.
 
-## Progressive Disclosure: 4-Layer Model
+## Progressive Disclosure: 3-Layer Model
 
-Skills use a 4-layer information architecture:
+Skills use a 3-layer information architecture:
 
-1. **Layer 1: Index Metadata** (30 seconds)
-   - Skill name, description, when_to_use, tags
-   - Enables AI to determine relevance
+1. **Layer 1: Keyword Routing** (30 seconds)
+   - Skill name, keywords, triggers in `.github/copilot-instructions.md`
+   - Enables AI to determine relevance and suggest skill
 
-2. **Layer 2: SKILL.md** (3 minutes)
-   - Core capabilities, quick start examples, patterns
+2. **Layer 2: Skill Prompt** (3 minutes)
+   - Workflow, use cases, step-by-step instructions in `.github/prompts/`
    - Sufficient for most common use cases
-   - Links to detail files for specific topics
+   - Directs to detail files for specific topics
 
-3. **Layer 3: Detail Files** (5-15 minutes)
+3. **Layer 3: Detail Files & Scripts** (5-15 minutes, on-demand)
    - Deep dives into specific topics (forms.md, reference.md, calculations.md)
-   - Each file focuses on single topic
-   - Only read when specific guidance needed
-
-4. **Layer 4: Scripts** (On-demand)
    - Bundled executables for deterministic operations
-   - Input/output contracts documented in SKILL.md
-   - Used when consistent results needed across codebase
+   - Only loaded when specific guidance needed
 
 **Benefits**: 
-- First-time users get oriented in 3 minutes
+- First-time users get oriented in 3 minutes via prompt
 - Advanced users find detailed information when needed
 - Context window stays lean (don't load what you don't need)
 
@@ -171,10 +171,10 @@ By implementing the skills architecture, we achieve:
 
 ### In `.github/copilot-instructions.md`
 
-The main Copilot instructions reference the skills system:
-- Link to `.github/copilot-skills/index.md` for skill discovery
+The main Copilot instructions contain the skills system:
+- Keyword routing map for skill discovery
 - Explain when to reference specific skills
-- Show example skill-based workflows
+- Show three-part architecture (prompt + instructions + directory)
 
 ### In `.specify/templates/`
 
@@ -205,8 +205,8 @@ Compliance checklist ensures all skills meet constitutional principles:
 
 ## Next Steps
 
-1. **For developers**: Read `.github/copilot-skills/index.md` to see available skills
-2. **For skill authors**: See [AUTHORING.md](./AUTHORING.md) for step-by-step guide
+1. **For developers**: Check keyword routing map in `.github/copilot-instructions.md` to see available skills
+2. **For skill authors**: Use `/skill-template` command or see `.github/copilot-skills/skill-template/README.md`
 3. **For skill reviews**: See [GOVERNANCE.md](./GOVERNANCE.md) for PR checklist
 4. **For maintenance**: See [MAINTENANCE.md](./MAINTENANCE.md) for updates and versioning
 5. **Troubleshooting**: See [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) for common issues
