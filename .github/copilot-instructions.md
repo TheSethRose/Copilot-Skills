@@ -77,25 +77,25 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Skill:** `.github/copilot-skills/pdf-handling/SKILL.md`
 
 #### Git & Version Control
-**Keywords:** git, commit, merge, rebase, push, pull, branch, checkout, stash, conflict, github, pull request, PR, force push
+**Keywords:** git, commit, merge, rebase, push, pull, branch, checkout, stash, conflict, github, pull request, PR, force push, worktree
 **Suggest:** `/git-ops`
 **Auto-context:** `.github/instructions/git-ops.instructions.md` (when editing .git/, .gitignore, .github/)
-**Skill:** `.github/copilot-skills/git-ops/SKILL.md`
+**Skill:** `.github/copilot-skills/git-ops/README.md`
 
-#### Project Creation & Scaffolding
-**Keywords:** create, new project, initialize, setup, scaffold, boilerplate, template, starter
-**Suggest:** `/create`
-**Auto-context:** `.github/instructions/create.instructions.md` (when editing package.json, requirements.txt, etc.)
-**Skill:** `.github/copilot-skills/skill-template/SKILL.md`
+#### New Project Creation & Scaffolding
+**Keywords:** new project, create project, initialize, setup, scaffold, boilerplate, template, starter, project setup
+**Suggest:** `/new-project`
+**Auto-context:** `.github/instructions/new-project.instructions.md` (when editing package.json, requirements.txt, etc.)
+**Skill:** `.github/copilot-skills/skill-template/README.md`
 
 #### Cleanup & Maintenance
 **Keywords:** cleanup, remove, delete, unused, stale, orphan, tidy
 **Suggest:** `/cleanup`
 **Skill:** `.github/prompts/cleanup.skill.prompt.md`
 
-#### Copilot Instructions Generation
-**Keywords:** analyze codebase, generate instructions, copilot-instructions, discover patterns
-**Suggest:** `/generate-copilot-instructions`
+#### Analyze Codebase & Generate Instructions
+**Keywords:** analyze codebase, generate instructions, copilot-instructions, discover patterns, analyze project, codebase analysis
+**Suggest:** `/analyze-codebase`
 **Skill:** `.github/copilot-skills/copilot-instructions-generator/SKILL.md`
 
 #### Brand Guidelines & Visual Identity

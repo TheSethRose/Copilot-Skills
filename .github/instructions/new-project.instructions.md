@@ -3,12 +3,12 @@ description: "Auto-loaded context for project creation and scaffolding: initiali
 applyTo: "**/{package.json,requirements.txt,Cargo.toml,go.mod,pom.xml,build.gradle,Gemfile,composer.json}"
 ---
 
-# Project Creation - Automatic Context Instructions
+# New Project Creation - Automatic Context Instructions
 
-**Related Prompt:** `/create`  
+**Related Prompt:** `/new-project`  
 **Related Skill:** `.github/copilot-skills/skill-template/SKILL.md`
 
-**Triggers:** create, new project, initialize, setup, scaffold, boilerplate, template, starter
+**Triggers:** new project, create project, initialize, setup, scaffold, boilerplate, template, starter, project setup
 
 ## Context: Project Creation and Scaffolding
 
@@ -31,8 +31,8 @@ When working with project configuration files or when user queries contain creat
 
 ## Default Behaviors
 
-### When user mentions "create" or "new project"
-1. Suggest `/create` skill prompt for guided setup
+### When user mentions "new project" or "create project"
+1. Suggest `/new-project` skill prompt for guided setup
 2. Detect project type from context or ask explicitly
 3. Check for existing project files to avoid conflicts
 4. Use language/framework-specific best practices
@@ -230,7 +230,7 @@ mkdir app templates static tests
 ## Next Steps
 
 When creating projects:
-1. Use `/create` prompt for guided project setup
+1. Use `/new-project` prompt for guided project setup
 2. Check `.github/copilot-skills/skill-template/SKILL.md` for skill structure reference
 3. Follow language/framework conventions
 4. Set up development tools before writing code

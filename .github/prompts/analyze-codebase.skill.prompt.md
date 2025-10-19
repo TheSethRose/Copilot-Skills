@@ -1,35 +1,22 @@
-# Generate Copilot Instructions
+# Analyze Codebase & Generate Instructions
 
 ---
-name: "Copilot Instructions Generator"
-description: "Analyze codebases and generate or update .github/copilot-instructions.md files for AI agent guidance"
-version: "1.0.0"
-created: "2025-10-19"
-tags: ["copilot", "instructions", "analysis", "ai-agents", "codebase", "documentation"]
-dependencies: ["git", "gh", "jq"]
-scripts:
-  - ".github/copilot-skills/copilot-instructions-generator/scripts/analyze_repo.sh"
-  - ".github/copilot-skills/copilot-instructions-generator/scripts/discover_conventions.sh"
-  - ".github/copilot-skills/copilot-instructions-generator/scripts/validate_instructions.sh"
+description: "Analyze codebases to discover patterns and generate AI instruction files"
 ---
 
-Analyze a codebase to create or update `.github/copilot-instructions.md` files that guide AI agents to be immediately productive. Combines automated script analysis with agent intelligence to discover essential project knowledge.
+Analyze a codebase to create or update `.github/copilot-instructions.md` files that guide AI agents to be immediately productive.
 
 ## When to Use This Skill
 
 - Creating AI instruction files for new projects
 - Updating existing instructions when architecture changes
 - Discovering undocumented patterns and conventions
-- Generating context for third-party AI agents
+- Generating context for AI agents (Copilot, Cursor, Claude)
 - Documenting project-specific workflows
 - Analyzing multi-component architectures
-- Consolidating multiple AI convention files (AGENT.md, .cursorrules, etc.)
+- Consolidating multiple AI convention files
 
-## User Input
-
-```text
-$ARGUMENTS
-```
+**Keywords**: analyze codebase, generate instructions, copilot-instructions, discover patterns, analyze project, codebase analysis
 
 ## Instructions
 
