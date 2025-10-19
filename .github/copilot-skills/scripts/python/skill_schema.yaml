@@ -1,0 +1,68 @@
+# YAML Schema for SKILL.md Frontmatter
+# Defines required and optional fields for skill metadata
+
+required:
+  - name          # Human-readable skill name (e.g., "PDF Handling")
+  - description   # Brief description of what the skill does
+  - version       # Semantic version (e.g., "1.0.0")
+  - tags          # Array of tags for discovery (e.g., ["documents", "pdf"])
+  - dependencies  # Array of dependencies (e.g., ["pypdf2", "pdfplumber"])
+
+optional:
+  - created       # ISO date when skill was created (e.g., "2025-10-18")
+  - updated       # ISO date when skill was last updated
+  - author        # Skill author name or identifier
+  - license       # License for the skill (e.g., "MIT")
+
+field_types:
+  name: string
+  description: string
+  version: string
+  tags: array[string]
+  dependencies: array[string]
+  created: string  # ISO date format YYYY-MM-DD
+  updated: string  # ISO date format YYYY-MM-DD
+  author: string
+  license: string
+
+validation_rules:
+  name:
+    min_length: 3
+    max_length: 100
+    pattern: "^[A-Z][A-Za-z0-9\\s-]+$"  # Must start with capital, allow spaces and hyphens
+  
+  description:
+    min_length: 10
+    max_length: 500
+  
+  version:
+    pattern: "^\\d+\\.\\d+\\.\\d+$"  # Semantic versioning: X.Y.Z
+  
+  tags:
+    min_items: 1
+    max_items: 10
+    item_pattern: "^[a-z0-9-]+$"  # Lowercase with hyphens only
+  
+  dependencies:
+    min_items: 0
+    max_items: 20
+    item_pattern: "^[a-zA-Z0-9_.-]+$"  # Package names
+
+examples:
+  valid_minimal:
+    name: "PDF Handling"
+    description: "Extract text, fill forms, and manipulate PDF documents programmatically"
+    version: "1.0.0"
+    tags: ["documents", "pdf", "forms"]
+    dependencies: ["pypdf2", "pdfplumber"]
+  
+  valid_complete:
+    name: "Database Migration"
+    description: "Generate type-safe database migrations with rollback support for Prisma schemas"
+    version: "1.2.0"
+    tags: ["database", "migrations", "prisma"]
+    dependencies: ["prisma", "@prisma/client"]
+    created: "2025-10-01"
+    updated: "2025-10-18"
+    author: "AI Agent"
+    license: "MIT"

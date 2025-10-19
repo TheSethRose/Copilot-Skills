@@ -154,3 +154,157 @@ EOF
 check_file() { [[ -f "$1" ]] && echo "  ✓ $2" || echo "  ✗ $2"; }
 check_dir() { [[ -d "$1" && -n $(ls -A "$1" 2>/dev/null) ]] && echo "  ✓ $2" || echo "  ✗ $2"; }
 
+#######################################
+# SKILL-SPECIFIC FUNCTIONS
+#######################################
+
+#######################################
+# Log a skill-related event with timestamp
+# Globals:
+#   None
+# Arguments:
+#   $1 - Log level (INFO, WARN, ERROR, SUCCESS)
+#   $2 - Message to log
+# Outputs:
+#   Formatted log message to stderr
+#######################################
+log_skill_event() {
+    local level="$1"
+    local message="$2"
+    local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+    local color=""
+    local reset="\033[0m"
+    
+    case "$level" in
+        INFO)    color="\033[0;36m" ;;  # Cyan
+        WARN)    color="\033[0;33m" ;;  # Yellow
+        ERROR)   color="\033[0;31m" ;;  # Red
+        SUCCESS) color="\033[0;32m" ;;  # Green
+        *)       color="" ;;
+    esac
+    
+    echo -e "${color}[${level}]${reset} ${timestamp} - ${message}" >&2
+}
+
+#######################################
+# Validate skill name format
+# Arguments:
+#   $1 - Skill name to validate
+# Returns:
+#   0 if valid, 1 if invalid
+#######################################
+validate_skill_name() {
+    local skill_name="$1"
+    
+    # Check if empty
+    if [[ -z "$skill_name" ]]; then
+        log_skill_event "ERROR" "Skill name cannot be empty"
+        return 1
+    fi
+    
+    # Check length (3-100 characters)
+    if [[ ${#skill_name} -lt 3 || ${#skill_name} -gt 100 ]]; then
+        log_skill_event "ERROR" "Skill name must be between 3 and 100 characters"
+        return 1
+    fi
+    
+    # Check format: lowercase-with-dashes
+    if [[ ! "$skill_name" =~ ^[a-z0-9-]+$ ]]; then
+        log_skill_event "ERROR" "Skill name must be lowercase with hyphens (a-z, 0-9, -)"
+        return 1
+    fi
+    
+    # Check doesn't start or end with hyphen
+    if [[ "$skill_name" =~ ^- || "$skill_name" =~ -$ ]]; then
+        log_skill_event "ERROR" "Skill name cannot start or end with a hyphen"
+        return 1
+    fi
+    
+    # Check for consecutive hyphens
+    if [[ "$skill_name" =~ -- ]]; then
+        log_skill_event "ERROR" "Skill name cannot contain consecutive hyphens"
+        return 1
+    fi
+    
+    return 0
+}
+
+#######################################
+# Get absolute path to a skill directory
+# Arguments:
+#   $1 - Skill name (lowercase-with-dashes)
+# Outputs:
+#   Absolute path to skill directory
+# Returns:
+#   0 if skill exists, 1 if not found
+#######################################
+get_skill_path() {
+    local skill_name="$1"
+    local repo_root=$(get_repo_root)
+    local skill_path="$repo_root/.github/copilot-skills/$skill_name"
+    
+    if [[ -d "$skill_path" ]]; then
+        echo "$skill_path"
+        return 0
+    else
+        log_skill_event "ERROR" "Skill not found: $skill_name"
+        return 1
+    fi
+}
+
+#######################################
+# Check if a skill already exists
+# Arguments:
+#   $1 - Skill name (lowercase-with-dashes)
+# Returns:
+#   0 if skill exists, 1 if not found
+#######################################
+skill_exists() {
+    local skill_name="$1"
+    local repo_root=$(get_repo_root)
+    local skill_path="$repo_root/.github/copilot-skills/$skill_name"
+    
+    [[ -d "$skill_path" ]]
+}
+
+#######################################
+# Convert human-readable name to skill directory name
+# Arguments:
+#   $1 - Human-readable name (e.g., "PDF Handling")
+# Outputs:
+#   Skill directory name (e.g., "pdf-handling")
+#######################################
+name_to_skill_dir() {
+    local name="$1"
+    echo "$name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-//;s/-$//'
+}
+
+#######################################
+# Get the skills root directory
+# Outputs:
+#   Absolute path to .github/copilot-skills/
+#######################################
+get_skills_root() {
+    local repo_root=$(get_repo_root)
+    echo "$repo_root/.github/copilot-skills"
+}
+
+#######################################
+# List all installed skills
+# Outputs:
+#   List of skill directory names, one per line
+#######################################
+list_skills() {
+    local skills_root=$(get_skills_root)
+    
+    if [[ ! -d "$skills_root" ]]; then
+        return 1
+    fi
+    
+    find "$skills_root" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | \
+        grep -v "^scripts$" | \
+        grep -v "^templates$" | \
+        grep -v "^prompts$" | \
+        sort
+}
+
