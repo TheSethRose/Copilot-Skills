@@ -72,3 +72,6 @@ tests/copilot-skills/fixtures/temp/
 drafts/
 *.bak
 *.tmp
+
+# Examples from external sources (keep for reference but don't track changes)
+examples/
