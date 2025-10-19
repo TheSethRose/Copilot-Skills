@@ -21,11 +21,11 @@ All paths relative to repository root `/Users/sethrose/Developer/Tests/copilot-s
 
 **Purpose**: Project initialization and basic structure for scripts
 
-- [ ] T001 Create scripts directory structure: `.github/copilot-skills/scripts/bash/` and `.github/copilot-skills/scripts/python/`
-- [ ] T002 Create templates directory: `.github/copilot-skills/templates/`
-- [ ] T003 Create prompts directory: `.github/prompts/` (if not exists)
-- [ ] T004 [P] Create tests directory: `tests/copilot-skills/` with subdirectories `fixtures/` and `scripts/`
-- [ ] T005 [P] Copy or symlink `.specify/scripts/bash/common.sh` to `.github/copilot-skills/scripts/bash/common.sh`
+- [X] T001 Create scripts directory structure: `.github/copilot-skills/scripts/bash/` and `.github/copilot-skills/scripts/python/`
+- [X] T002 Create templates directory: `.github/copilot-skills/templates/`
+- [X] T003 Create prompts directory: `.github/prompts/` (if not exists)
+- [X] T004 [P] Create tests directory: `tests/copilot-skills/` with subdirectories `fixtures/` and `scripts/`
+- [X] T005 [P] Copy or symlink `.specify/scripts/bash/common.sh` to `.github/copilot-skills/scripts/bash/common.sh`
 
 ---
 

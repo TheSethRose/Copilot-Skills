@@ -1,95 +1,187 @@
 # Implementation Plan: Copilot Skills System Restructure
 
-**Branch**: `002-copilot-skills-restructure` | **Date**: 2025-10-18 | **Spec**: [spec.md](./spec.md)
-**Input**: Feature specification from `/specs/002-copilot-skills-restructure/spec.md`
+
+**Branch**: `002-copilot-skills-restructure`**Branch**: `002-copilot-skills-restructure` | **Date**: 2025-10-18 | **Spec**: [spec.md](./spec.md)
+
+**Date**: 2025-10-18**Input**: Feature specification from `/specs/002-copilot-skills-restructure/spec.md`
+
+**Status**: Phase 0 Ready
 
 ## Summary
 
+## What We Discovered
+
 Restructure `.github/copilot-skills/` to match `.specify/` infrastructure by adding **agent prompts** and executable scripts. The `.specify/` system works because prompts like `/speckit.plan`, `/speckit.specify`, and `/speckit.implement` appear in Copilot's chat palette and tell agents HOW to use the infrastructure.
 
-**Current gap**: `.github/copilot-skills/` has documentation but no prompts. Copilot can't discover or execute skill workflows.
+The `.specify/` system works because it has **agent prompts** (`.github/prompts/speckit.*.prompt.md`) that:
 
-**Solution**: Add `.github/prompts/skills.*.prompt.md` files that guide agents through skill creation, validation, and usage - just like speckit prompts guide feature development.
+1. Appear in Copilot's chat palette when users type `/spec`**Current gap**: `.github/copilot-skills/` has documentation but no prompts. Copilot can't discover or execute skill workflows.
+
+2. Tell agents HOW to use the infrastructure
+
+3. Invoke executable scripts to automate workflows**Solution**: Add `.github/prompts/skills.*.prompt.md` files that guide agents through skill creation, validation, and usage - just like speckit prompts guide feature development.
+
+4. Validate outputs against project rules
 
 ## Prompt Architecture (Key Component)
 
+**Current gap**: `.github/copilot-skills/` has documentation but NO prompts, so Copilot can't discover or use the system.
+
 The `.specify/` system exposes commands through `.github/prompts/speckit.*.prompt.md` files. When a user types `/spec` in Copilot Chat, these prompts appear in the palette:
 
+## What We're Building
+
 - `/speckit.specify` - Create feature specification
-- `/speckit.plan` - Generate implementation plan
+
+Add agent prompts and executable infrastructure to match `.specify/` pattern:- `/speckit.plan` - Generate implementation plan
+
 - `/speckit.tasks` - Break plan into actionable tasks
-- `/speckit.implement` - Execute implementation
-- `/speckit.analyze` - Analyze existing code
-- `/speckit.checklist` - Generate quality checklists
-- `/speckit.clarify` - Request clarification
-- `/speckit.constitution` - Check constitution compliance
 
-**We need equivalent prompts for skills**:
+```- `/speckit.implement` - Execute implementation
+
+.github/prompts/- `/speckit.analyze` - Analyze existing code
+
+├── skills.create.prompt.md      # /skills.create - Interactive wizard- `/speckit.checklist` - Generate quality checklists
+
+├── skills.validate.prompt.md    # /skills.validate - Constitution check- `/speckit.clarify` - Request clarification
+
+├── skills.use.prompt.md         # /skills.use - Load and apply skill- `/speckit.constitution` - Check constitution compliance
+
+├── skills.discover.prompt.md    # /skills.discover - Search skills
+
+├── skills.update.prompt.md      # /skills.update - Modify existing skill**We need equivalent prompts for skills**:
+
+└── skills.generate.prompt.md    # /skills.generate - AI-assisted creation
 
 ```
-.github/prompts/
-├── skills.create.prompt.md       # Interactive skill creation (/skills.create)
-├── skills.validate.prompt.md     # Constitution compliance check (/skills.validate)
-├── skills.use.prompt.md          # Load and apply skill (/skills.use)
-├── skills.discover.prompt.md     # Search available skills (/skills.discover)
-├── skills.update.prompt.md       # Modify existing skill (/skills.update)
-└── skills.generate.prompt.md     # AI-assisted skill generation (/skills.generate)
-```
 
-Each prompt file contains:
-1. **Instructions** for the AI agent on what to do
+.github/copilot-skills/scripts/.github/prompts/
+
+├── bash/├── skills.create.prompt.md       # Interactive skill creation (/skills.create)
+
+│   ├── create-skill.sh          # Backend for /skills.create├── skills.validate.prompt.md     # Constitution compliance check (/skills.validate)
+
+│   ├── validate-skill.sh        # Backend for /skills.validate├── skills.use.prompt.md          # Load and apply skill (/skills.use)
+
+│   ├── update-agent-context.sh  # Register skills with Copilot├── skills.discover.prompt.md     # Search available skills (/skills.discover)
+
+│   ├── generate-from-prompt.sh  # Backend for /skills.generate├── skills.update.prompt.md       # Modify existing skill (/skills.update)
+
+│   └── list-skills.sh           # Backend for /skills.discover└── skills.generate.prompt.md     # AI-assisted skill generation (/skills.generate)
+
+└── python/```
+
+    ├── yaml_validator.py        # YAML frontmatter validation
+
+    └── skill_generator.py       # AI generation backendEach prompt file contains:
+
+```1. **Instructions** for the AI agent on what to do
+
 2. **Script invocations** to call `.github/copilot-skills/scripts/`
-3. **Validation rules** to ensure output quality
+
+## Files Created3. **Validation rules** to ensure output quality
+
 4. **User interaction patterns** for gathering input
 
-## Technical Context
+1. **spec.md** - Feature specification (problem, solution, requirements)
 
-**Language/Version**: Bash 4.0+ (primary), Python 3.8+ (YAML processing, AI generation)  
-**Primary Dependencies**: yq (YAML parsing), jq (JSON processing), git, GitHub Copilot CLI (optional)  
-**Storage**: Filesystem (.github/copilot-skills/), git for versioning  
+2. **plan.md** - Implementation plan with 3 phases:## Technical Context
+
+   - Phase 0: Research prompt architecture and tooling
+
+   - Phase 1: Design data models and contracts**Language/Version**: Bash 4.0+ (primary), Python 3.8+ (YAML processing, AI generation)  
+
+   - Phase 2: Break down into implementation tasks**Primary Dependencies**: yq (YAML parsing), jq (JSON processing), git, GitHub Copilot CLI (optional)  
+
+3. **KEY-INSIGHT.md** - Why prompts are the missing piece**Storage**: Filesystem (.github/copilot-skills/), git for versioning  
+
 **Testing**: bats (Bash Automated Testing System), integration tests with real skills  
-**Target Platform**: macOS/Linux development environments, CI/CD (GitHub Actions)
-**Project Type**: CLI tooling + documentation system  
-**Performance Goals**: <5s skill creation, <2s validation, <1s agent context update  
-**Constraints**: No external dependencies except yq/jq (widely available), idempotent operations  
-**Scale/Scope**: 10-50 skills per repository, <100 lines per script for maintainability
 
-## Constitution Check
+## Constitution Check**Target Platform**: macOS/Linux development environments, CI/CD (GitHub Actions)
+
+**Project Type**: CLI tooling + documentation system  
+
+✅ **All 5 principles satisfied**:**Performance Goals**: <5s skill creation, <2s validation, <1s agent context update  
+
+- Progressive Disclosure: Enhanced by automation**Constraints**: No external dependencies except yq/jq (widely available), idempotent operations  
+
+- File-Based Organization: Scripts enforce structure**Scale/Scope**: 10-50 skills per repository, <100 lines per script for maintainability
+
+- Dynamic Discovery: Prompts enable discoverability
+
+- Deterministic Execution: Meta-tooling for bundled scripts## Constitution Check
+
+- Composability: Validation checks cross-references
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
+## Phase 0 Research Tasks
+
 ### Principle I: Progressive Disclosure ✅
-**Compliance**: Scripts will enhance, not replace, the layered documentation approach. Automation enables faster creation of properly structured skills with metadata → core → details hierarchy intact.
 
-### Principle II: File-Based Organization ✅
-**Compliance**: Scripts generate and validate the required directory structure (SKILL.md + frontmatter, linked files, scripts/). Templates enforce filesystem conventions.
+Next step: Execute research tasks in plan.md**Compliance**: Scripts will enhance, not replace, the layered documentation approach. Automation enables faster creation of properly structured skills with metadata → core → details hierarchy intact.
 
-### Principle III: Dynamic Discovery Through Metadata ✅
-**Compliance**: `update-agent-context.sh` automates index.md updates when skills are added. Validation ensures index entries are complete and scannable.
+
+
+1. Analyze existing speckit prompt file format### Principle II: File-Based Organization ✅
+
+2. Document script integration patterns**Compliance**: Scripts generate and validate the required directory structure (SKILL.md + frontmatter, linked files, scripts/). Templates enforce filesystem conventions.
+
+3. Research agent context update mechanism
+
+4. Evaluate YAML processing tools### Principle III: Dynamic Discovery Through Metadata ✅
+
+5. Design testing strategy (bats framework)**Compliance**: `update-agent-context.sh` automates index.md updates when skills are added. Validation ensures index entries are complete and scannable.
+
+6. Prototype AI-assisted skill generation
 
 ### Principle IV: Deterministic Execution with Scripts ✅
-**Compliance**: This feature *strengthens* this principle by providing scripts to create and validate bundled scripts within skills. Meta-tooling for deterministic execution.
 
-### Principle V: Composability and Cross-Skill References ✅
+**Output**: `research.md` with concrete decisions for all unknowns**Compliance**: This feature *strengthens* this principle by providing scripts to create and validate bundled scripts within skills. Meta-tooling for deterministic execution.
+
+
+
+## How to Continue### Principle V: Composability and Cross-Skill References ✅
+
 **Compliance**: Validation scripts will check cross-references exist and detect circular dependencies. Creation scripts prompt for dependency declarations.
 
-**GATE STATUS**: ✅ PASS - All constitution principles are strengthened by this infrastructure
+```bash
 
-## Project Structure
+# Option 1: Manual research**GATE STATUS**: ✅ PASS - All constitution principles are strengthened by this infrastructure
 
-### Documentation (this feature)
+# Read .github/prompts/speckit.*.prompt.md files
 
-```
+# Create research.md with findings## Project Structure
+
+
+
+# Option 2: Use speckit (when ready)### Documentation (this feature)
+
+# /speckit.implement --phase=0  # Execute research tasks
+
+``````
+
 specs/[###-feature]/
-├── plan.md              # This file (/speckit.plan command output)
+
+## Success Criteria├── plan.md              # This file (/speckit.plan command output)
+
 ├── research.md          # Phase 0 output (/speckit.plan command)
-├── data-model.md        # Phase 1 output (/speckit.plan command)
-├── quickstart.md        # Phase 1 output (/speckit.plan command)
-├── contracts/           # Phase 1 output (/speckit.plan command)
-└── tasks.md             # Phase 2 output (/speckit.tasks command - NOT created by /speckit.plan)
-```
+
+After implementation, developers can:├── data-model.md        # Phase 1 output (/speckit.plan command)
+
+- Type `/skills.create "My Skill"` → Copilot guides through creation├── quickstart.md        # Phase 1 output (/speckit.plan command)
+
+- Type `/skills.validate` → Instant constitution compliance check├── contracts/           # Phase 1 output (/speckit.plan command)
+
+- Type `/skills.discover "pdf"` → Find relevant skills└── tasks.md             # Phase 2 output (/speckit.tasks command - NOT created by /speckit.plan)
+
+- Type `/skills.use pdf-handling` → Load skill into context```
+
+- Zero manual file creation, automated validation, instant discoverability
 
 ### Source Code (repository root)
+
+**This makes `.github/copilot-skills/` as powerful as `.specify/`** 🚀
 
 ```
 .github/
