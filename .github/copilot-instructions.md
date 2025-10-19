@@ -104,12 +104,18 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Auto-context:** `.github/instructions/brand-guidelines.instructions.md` (when editing brand/style/design files)
 **Skill:** `.github/copilot-skills/brand-guidelines/README.md`
 
-#### Document Operations (Multi-Format)
-**Keywords:** document, docx, pptx, xlsx, word, powerpoint, excel, spreadsheet, document processing
-**Suggest:** `/document-skills`
-**Auto-context:** `.github/instructions/document-skills.instructions.md` (when editing document files)
-**Skill:** `.github/copilot-skills/document-skills/README.md`
-**Note:** PDF operations use specialized `/pdf-handling` sub-skill
+#### Create Skill
+**Keywords:** create skill, new skill, skill creation, build skill, skill architecture, meta skill, design skill
+**Suggest:** `/create-skill`
+**Chatmode:** `/switch Skill Creator`
+**Auto-context:** `.github/instructions/create-skill.instructions.md` (when editing skill-related files)
+**Skill:** `.github/copilot-skills/create-skill/README.md`
+
+#### Document Project
+**Keywords:** document project, generate docs, documentation, setup docs, create documentation, project documentation
+**Suggest:** `/document-project`
+**Auto-context:** `.github/instructions/document-project.instructions.md` (when editing docs-related files)
+**Skill:** `.github/copilot-skills/document-project/README.md`
 
 #### MCP Server Development
 **Keywords:** mcp, model context protocol, mcp server, agent tools, llm integration, api integration, fastmcp, tool design

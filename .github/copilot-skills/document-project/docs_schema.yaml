@@ -1,0 +1,240 @@
+# Documentation Templates Schema
+# Defines standard documentation sets for different project types
+
+templates:
+  minimal:
+    name: "Minimal Documentation"
+    description: "Essential docs for small projects and prototypes"
+    files:
+      - path: "README.md"
+        action: "update"
+        required: true
+        description: "Project overview and quick start"
+      - path: "docs/getting-started.md"
+        action: "create"
+        required: true
+        description: "Installation and setup instructions"
+      - path: "docs/usage.md"
+        action: "create"
+        required: true
+        description: "Basic usage examples and patterns"
+
+  standard:
+    name: "Standard Documentation"
+    description: "Comprehensive docs for production projects"
+    files:
+      - path: "README.md"
+        action: "update"
+        required: true
+        description: "Project overview with features and quick start"
+      - path: "docs/getting-started.md"
+        action: "create"
+        required: true
+        description: "Detailed installation and configuration"
+      - path: "docs/usage.md"
+        action: "create"
+        required: true
+        description: "Common use cases and code examples"
+      - path: "docs/architecture.md"
+        action: "create"
+        required: true
+        description: "System design and component overview"
+      - path: "docs/api-reference.md"
+        action: "create"
+        required: true
+        description: "API documentation with signatures and examples"
+      - path: "docs/troubleshooting.md"
+        action: "create"
+        required: false
+        description: "Common issues and solutions"
+
+  open-source:
+    name: "Open-Source Documentation"
+    description: "Full documentation suite for public repositories"
+    files:
+      - path: "README.md"
+        action: "update"
+        required: true
+        description: "Comprehensive overview with badges and links"
+      - path: "CONTRIBUTING.md"
+        action: "create"
+        required: true
+        description: "Contribution guidelines and process"
+      - path: "LICENSE"
+        action: "create"
+        required: true
+        description: "Software license (MIT, Apache, GPL, etc.)"
+      - path: "CODE_OF_CONDUCT.md"
+        action: "create"
+        required: true
+        description: "Community standards and behavior expectations"
+      - path: "docs/getting-started.md"
+        action: "create"
+        required: true
+        description: "Installation, prerequisites, and first run"
+      - path: "docs/usage.md"
+        action: "create"
+        required: true
+        description: "Usage examples and common patterns"
+      - path: "docs/architecture.md"
+        action: "create"
+        required: true
+        description: "Architecture overview and design decisions"
+      - path: "docs/api-reference.md"
+        action: "create"
+        required: true
+        description: "Complete API documentation"
+      - path: "docs/development.md"
+        action: "create"
+        required: true
+        description: "Local development setup and workflow"
+      - path: "docs/troubleshooting.md"
+        action: "create"
+        required: false
+        description: "Common issues, FAQs, and support channels"
+
+# Template selection rules
+selection_rules:
+  minimal:
+    conditions:
+      - project_size: "small"
+      - visibility: "any"
+      - maturity: "prototype|mvp"
+  
+  standard:
+    conditions:
+      - project_size: "medium|large"
+      - visibility: "closed-source"
+      - maturity: "production"
+  
+  open-source:
+    conditions:
+      - visibility: "open-source"
+      - has_license: true
+      - maturity: "production|beta"
+
+# File content guidelines
+content_guidelines:
+  README.md:
+    sections:
+      - title
+      - badges (if open-source)
+      - description
+      - features
+      - installation
+      - quick_start
+      - documentation_link
+      - license (if open-source)
+      - contributing (if open-source)
+  
+  getting-started.md:
+    sections:
+      - prerequisites
+      - installation
+      - configuration
+      - verification
+      - next_steps
+  
+  usage.md:
+    sections:
+      - basic_usage
+      - common_patterns
+      - code_examples
+      - configuration_options
+      - tips_and_tricks
+  
+  architecture.md:
+    sections:
+      - overview
+      - components
+      - data_flow
+      - technology_stack
+      - design_decisions
+  
+  api-reference.md:
+    sections:
+      - overview
+      - authentication (if applicable)
+      - endpoints (if API)
+      - functions (if library)
+      - parameters
+      - return_values
+      - examples
+      - error_handling
+  
+  CONTRIBUTING.md:
+    sections:
+      - how_to_contribute
+      - code_style
+      - development_setup
+      - pull_request_process
+      - testing_requirements
+      - community_guidelines
+  
+  CODE_OF_CONDUCT.md:
+    sections:
+      - our_pledge
+      - standards
+      - responsibilities
+      - scope
+      - enforcement
+      - attribution
+
+# Markdown quality standards
+quality_standards:
+  headings:
+    - max_depth: 4
+    - one_h1_per_file: true
+    - sequential: true
+  
+  code_blocks:
+    - require_language_tag: true
+    - supported_languages:
+      - python
+      - javascript
+      - typescript
+      - bash
+      - shell
+      - json
+      - yaml
+      - markdown
+      - go
+      - rust
+      - java
+      - csharp
+  
+  links:
+    - check_internal: true
+    - check_external: false
+    - prefer_relative: true
+  
+  lists:
+    - consistent_markers: true
+    - proper_indentation: true
+
+# Language-specific patterns
+language_patterns:
+  python:
+    code_example_style: "docstring"
+    import_example: true
+    virtual_env_setup: true
+  
+  javascript:
+    code_example_style: "jsdoc"
+    package_manager: "npm|yarn|pnpm"
+    framework_specific: true
+  
+  typescript:
+    code_example_style: "tsdoc"
+    type_examples: true
+    tsconfig_reference: true
+  
+  go:
+    code_example_style: "godoc"
+    module_setup: true
+    cli_usage: true
+  
+  rust:
+    code_example_style: "rustdoc"
+    cargo_commands: true
+    crate_features: true

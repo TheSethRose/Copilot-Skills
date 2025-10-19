@@ -1,37 +1,88 @@
-# Copilot Skills
+# Copilot Skills Architecture
 
-## Overview
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/TheSethRose/copilot-skills?style=social)](https://github.com/TheSethRose/copilot-skills)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**Copilot Skills** is a system for organizing domain knowledge into reusable, discoverable skills that keep AI agents focused and efficient.
+**A framework for organizing domain knowledge into reusable, discoverable skills that keep AI agents focused and context-efficient.**
 
-Instead of one large instruction file, this design uses **progressive disclosure** — loading only what’s needed, when it’s needed. Agents discover skills automatically, read the core docs in about three minutes, and load details on demand.
+Instead of massive instruction files, this system uses **progressive disclosure** — loading only what's needed, when it's needed. AI agents discover skills automatically through keywords, read core workflows in under 3 minutes, and load detailed information on demand.
 
-This repository includes:
-- ✅ **Skill System** – Self-contained knowledge modules with scripts
-- ✅ **Progressive Disclosure** – Metadata → Core → Details layers
-- ✅ **Constitutional Framework** – Five architectural principles every skill follows
-- ✅ **Automation Tools** – Scripts for building, validating, and managing skills
-- ✅ **Reference Skills** – Examples from Anthropic, Obra, and the community
+## ✨ Features
 
-**Status**: Fully implemented and production-ready, with working examples and templates.
+- 🎯 **Progressive Disclosure** – Information loads in layers (metadata → core → details)
+- 🔍 **Dynamic Discovery** – AI agents find skills automatically via keyword routing
+- 📦 **Self-Contained Skills** – Each skill includes docs, workflows, and bundled scripts
+- ⚖️ **Constitutional Framework** – 5 architectural principles ensure quality and consistency
+- 🔧 **Deterministic Execution** – Scripts output to terminal only, no side effects
+- 🧩 **Composable** – Skills reference each other with explicit dependencies
+- 📚 **Battle-Tested** – Includes reference implementations from Anthropic, Obra, and community
+
+**Status**: ✅ Production-ready with 10+ working skills and comprehensive documentation
 
 ---
 
-## Quick Start
+## 📑 Table of Contents
 
-### Understand the System
-```bash
-# 1. Read the main architecture guide
-cat .github/copilot-skills/README.md
+- [Quick Start](#-quick-start)
+- [Documentation](#-documentation)
+- [Architecture](#️-architecture)
+- [Five Constitutional Principles](#five-constitutional-principles)
+- [Project Structure](#project-structure)
+- [Development Patterns](#development-patterns)
+- [What This Is](#what-this-repository-is)
+- [Success Metrics](#success-metrics)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Support](#-support)
 
-# 2. Review the 5 canonical principles
-cat .specify/memory/constitution.md
+---
 
-# 3. Check available skills
-cat .github/copilot-instructions.md  # See keyword routing map
-````
+## 🚀 Quick Start
 
-### Create a Skill
+### Using Skills in VS Code
+
+1. **Clone this repository**
+   ```bash
+   git clone https://github.com/TheSethRose/copilot-skills.git
+   cd copilot-skills
+   ```
+
+2. **Explore available skills**
+   ```bash
+   # View the keyword routing map
+   cat .github/copilot-instructions.md
+   ```
+
+3. **Use a skill in Copilot Chat**
+   ```
+   # In VS Code Copilot Chat
+   /pdf-handling
+   /git-ops
+   /create-skill
+   /document-project
+   ```
+
+### Creating Your First Skill
+
+Use the built-in skill creator:
+
+```
+# In VS Code Copilot Chat
+/create-skill
+
+# Or switch to expert mode
+/switch Skill Creator
+```
+
+Follow the 5-phase guided workflow:
+1. 📋 **Discovery** – Answer questions about your skill's purpose
+2. 🏗️ **Design** – Get architectural recommendations
+3. ✅ **Validation** – Verify constitutional compliance
+4. ⚙️ **Implementation** – Generate all required files
+5. 🔗 **Integration** – Register and test the skill
+
+### Manual Skill Creation
 
 ```bash
 # 1. Copy the prompt template
@@ -52,7 +103,41 @@ mkdir -p .github/copilot-skills/{skill-name}/scripts
 
 ---
 
-## Architecture
+## 📖 Documentation
+
+### Core Documentation
+
+| Document | Purpose |
+|----------|---------|
+| [Architecture Guide](.github/copilot-skills/README.md) | Complete system architecture and design patterns |
+| [Constitutional Principles](.specify/memory/constitution.md) | The 5 canonical principles all skills must follow |
+| [Keyword Routing Map](.github/copilot-instructions.md) | Main AI guidance and skill discovery |
+| [Templates](.github/copilot-skills/templates/) | Quick-start templates for new skills |
+
+### Available Skills
+
+#### Core Skills
+- **[PDF Handling]((.github/copilot-skills/pdf-handling/)** – PDF manipulation, form filling, extraction
+- **[Git Operations](.github/copilot-skills/git-ops/)** – Version control, commits, merge conflicts
+- **[Document Project](.github/copilot-skills/document-project/)** – Generate project documentation
+- **[Create Skill](.github/copilot-skills/create-skill/)** – Build new skills with guided workflow
+- **[MCP Builder](.github/copilot-skills/mcp-builder/)** – Model Context Protocol server development
+
+#### Utility Skills
+- **Cleanup** – Remove stale files and temporary artifacts
+- **Brand Guidelines** – Apply consistent branding
+- **Generate Instructions** – Auto-generate copilot-instructions.md
+
+### Example Collections
+
+Check the [`examples/`](examples/) directory for third-party skill collections:
+- [Anthropic Skills](examples/anthropics-skills/) – Official reference implementations
+- [Obra Superpowers](examples/obra-superpowers/) – Advanced development workflows
+- [Community Skills](examples/superpowers-skills/) – Community-contributed patterns
+
+---
+
+## 🏗️ Architecture
 
 ### Three-Part System
 
@@ -239,61 +324,156 @@ Templates make new skills easy to create:
 
 ## What This Repository Is
 
-✅ A reference for progressive disclosure
-✅ A framework for organizing domain knowledge
-✅ A system for reusable AI skills
-✅ A portable template for any team or agent
+**Copilot Skills Architecture** is:
+
+✅ A **framework** for organizing AI agent knowledge into reusable modules  
+✅ A **reference implementation** of progressive disclosure patterns  
+✅ A **template system** for creating new skills quickly  
+✅ A **collection** of battle-tested skills for common development tasks  
+✅ A **methodology** for keeping AI context focused and efficient  
+✅ **Portable** across teams, projects, and AI agents
 
 ## What This Repository Is Not
 
-❌ A deployable app
-❌ A source-code project
-❌ A CI/CD or build system
+❌ Not a deployable application with a runtime  
+❌ Not source code for a specific product  
+❌ Not a CI/CD or build system  
+❌ Not tied to any specific AI model or platform  
+❌ Not a replacement for proper code documentation
+
+**Think of it as**: A design pattern library for AI agent interactions, similar to how design systems work for UI components.
 
 ---
 
-## Success Metrics
+## 📊 Success Metrics
 
-* AI finds the right skill in under 2 minutes
-* SKILL.md readable in under 3 minutes
-* Context use cut by 60%
-* 95% of tasks use two or fewer skills
-* New skills built in under 30 minutes
-* Output always deterministic
-* All `.gitignore` rules respected
-* Skills composable and referenceable
+This system is designed to achieve:
 
----
-
-## Key Resources
-
-| File                                | Purpose                |
-| ----------------------------------- | ---------------------- |
-| `.github/copilot-instructions.md`   | Main AI guidance + keyword routing |
-| `.github/copilot-skills/README.md`  | Full architecture documentation |
-| `.specify/memory/constitution.md`   | Canonical 5 principles |
-| `examples/`                         | Third-party skills     |
-| `.github/copilot-skills/templates/` | Quick-start templates  |
-| `.github/prompts/`                  | Skill workflows        |
-| `.github/instructions/`             | Auto-loaded context    |
+- ⚡ **Discovery**: AI finds the right skill in <2 minutes
+- 📖 **Readability**: Core workflow scannable in <3 minutes  
+- 🎯 **Efficiency**: Context usage reduced by 60%+
+- 🔧 **Simplicity**: 95% of tasks use ≤2 skills
+- 🚀 **Speed**: New skills created in <30 minutes
+- ⚙️ **Reliability**: Scripts produce deterministic output
+- 🔒 **Safety**: All `.gitignore` rules respected
+- 🧩 **Composability**: Skills reference each other clearly
 
 ---
 
-## Contributing
+## 🔑 Key Resources
 
-To add a skill:
-
-1. Copy templates from `.github/copilot-skills/templates/`
-2. Create `.github/prompts/{skill-name}.skill.prompt.md`
-3. Create `.github/instructions/{skill-name}.instructions.md`
-4. Create `.github/copilot-skills/{skill-name}/` for scripts/details (if needed)
-5. Ensure scripts print to terminal only
-6. Follow all 5 principles
-7. Register in keyword routing map (`.github/copilot-instructions.md`)
-8. Test and document usage
-9. Submit a PR with skill, prompt, instructions, and docs
+| Resource | Description |
+|----------|-------------|
+| [📘 Copilot Instructions](.github/copilot-instructions.md) | Main AI guidance and keyword routing map |
+| [🏗️ Architecture Guide](.github/copilot-skills/README.md) | Complete system architecture |
+| [⚖️ Constitutional Principles](.specify/memory/constitution.md) | The 5 canonical principles |
+| [📝 Templates](.github/copilot-skills/templates/) | Quick-start templates |
+| [🎯 Skill Prompts](.github/prompts/) | Workflow definitions |
+| [📚 Instructions](.github/instructions/) | Auto-loaded context |
+| [💡 Examples](examples/) | Third-party skill collections |
 
 ---
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how to get involved:
+
+### Adding a New Skill
+
+1. **Use the skill creator** (recommended)
+   ```
+   /create-skill
+   ```
+
+2. **Or create manually**
+   ```bash
+   # Copy templates
+   cp .github/copilot-skills/templates/skill-prompt.template.md \
+      .github/prompts/{skill-name}.prompt.md
+   
+   cp .github/copilot-skills/templates/instructions.template.md \
+      .github/instructions/{skill-name}.instructions.md
+   
+   # Create skill directory (if needed)
+   mkdir -p .github/copilot-skills/{skill-name}/scripts
+   ```
+
+3. **Follow the 5 constitutional principles**
+   - Progressive Disclosure
+   - File-Based Organization
+   - Dynamic Discovery
+   - Deterministic Execution
+   - Composability
+
+4. **Register in keyword routing map**
+   - Add entry to `.github/copilot-instructions.md`
+
+5. **Submit a pull request**
+   - Include skill prompt, instructions, and documentation
+   - Add tests/examples if applicable
+   - Update this README with new skill
+
+### Contribution Guidelines
+
+- **Code Style**: Follow existing patterns in the repository
+- **Documentation**: Update relevant docs with your changes
+- **Testing**: Test your skill end-to-end before submitting
+- **Commits**: Use conventional commit format (`feat(skills): add xyz skill`)
+- **PRs**: One skill per PR, include motivation and examples
+
+### Areas for Contribution
+
+- 🆕 New skills for common development tasks
+- 📚 Improved documentation and examples
+- 🐛 Bug fixes and quality improvements
+- 🌍 Translations and internationalization
+- 🔧 Tooling and automation improvements
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Anthropic** – For the Claude Skills reference implementation and progressive disclosure patterns
+- **Obra** – For Superpowers skills and advanced development workflows  
+- **VS Code Team** – For the extensible Copilot platform
+- **Community Contributors** – For sharing skills and improvements
+
+---
+
+## 📞 Support
+
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/TheSethRose/copilot-skills/discussions)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/TheSethRose/copilot-skills/issues)
+- 📖 **Documentation**: See [Architecture Guide](.github/copilot-skills/README.md)
+- 🌟 **Star this repo** if you find it useful!
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] More built-in skills (database, testing, deployment)
+- [ ] Skill marketplace and discovery platform
+- [ ] VS Code extension for skill management
+- [ ] Automated skill validation CI/CD
+- [ ] Multi-language support (beyond English)
+- [ ] Performance metrics and analytics
+- [ ] Skill composition tools
+
+---
+
+<p align="center">
+  <strong>Built with ❤️ for the AI-assisted development community</strong>
+</p>
+
+<p align="center">
+  <a href="#copilot-skills-architecture">Back to Top ↑</a>
+</p>
 
 ## Learning Path
 
