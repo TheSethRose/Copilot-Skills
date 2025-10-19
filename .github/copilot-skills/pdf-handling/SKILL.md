@@ -107,19 +107,30 @@ c.save()
 
 Scripts located in `scripts/` directory:
 
-- `extract_form_fields.py` - Extract all form fields from a PDF to JSON
+- `analyze_pdf.py` - Comprehensive PDF analysis (text, tables, metadata)
   ```bash
-  python scripts/extract_form_fields.py input.pdf > fields.json
+  python scripts/analyze_pdf.py document.pdf
+  # Outputs: document_extracted.txt, document_tables.xlsx
   ```
 
-- `fill_form.py` - Fill PDF form from JSON data
+- `extract_form_field_info.py` - Extract all form fields from a PDF to JSON
   ```bash
-  python scripts/fill_form.py input.pdf data.json output.pdf
+  python scripts/extract_form_field_info.py input.pdf
   ```
 
-- `merge_pdfs.py` - Merge multiple PDFs (CLI wrapper)
+- `fill_fillable_fields.py` - Fill PDF form from data
   ```bash
-  python scripts/merge_pdfs.py doc1.pdf doc2.pdf doc3.pdf -o merged.pdf
+  python scripts/fill_fillable_fields.py input.pdf output.pdf
+  ```
+
+- `convert_pdf_to_images.py` - Convert PDF pages to images (for OCR)
+  ```bash
+  python scripts/convert_pdf_to_images.py input.pdf
+  ```
+
+- `check_bounding_boxes.py` - Check field positions and bounding boxes
+  ```bash
+  python scripts/check_bounding_boxes.py input.pdf
   ```
 
 ## Common Patterns

@@ -45,7 +45,21 @@ When this skill is invoked:
    - Location: `.github/copilot-skills/pdf-handling/SKILL.md`
    - Focus on: Overview, Core Capabilities, Quick Start
 
-2. **Determine user's specific need**:
+2. **Configure Python environment** (if not already configured)
+   - Use `configure_python_environment` tool
+   - Pass the workspace root path
+
+3. **Install required dependencies** (before any Python operations)
+   - Required packages: `pypdf`, `pdfplumber`, `reportlab`, `pandas`
+   - Optional for Excel output: `openpyxl`
+   - Optional for OCR: `pytesseract`, `pdf2image`
+   - Use `install_python_packages` tool with package list
+   - Installation command shown in SKILL.md:
+     ```bash
+     pip install pypdf pdfplumber reportlab pandas openpyxl
+     ```
+
+4. **Determine user's specific need**:
    - Text extraction → Show `pdfplumber` examples from SKILL.md
    - Table extraction → Show `pdfplumber` table examples
    - Document merging → Show `pypdf` merge pattern
@@ -53,35 +67,40 @@ When this skill is invoked:
    - Form filling → Load `forms.md` for detailed instructions
    - PDF creation → Show `reportlab` examples
 
-3. **For form-related tasks**:
+5. **For form-related tasks**:
    - Always load `forms.md` first
    - Follow the step-by-step process in forms.md
    - Suggest extracting field names before filling
    - Use bundled scripts for field inspection
 
-4. **For complex scenarios**:
+6. **For complex scenarios**:
    - Load `reference.md` for advanced API details
    - Check reference.md for JavaScript alternatives
    - Reference troubleshooting section for errors
 
-5. **Suggest bundled scripts**:
+7. **When suggesting bundled scripts**:
    - Scripts provide deterministic operations
-   - Always show usage example
+   - Always show usage example with correct Python path
    - Mention output format
+   - Ensure dependencies are installed first
 
 ## Common Task Patterns
 
 ### Task: Extract text from PDF
 **Response**:
-- Show `pdfplumber` quick start from SKILL.md
-- For layout-sensitive PDFs, mention `layout=True` option
-- For scanned PDFs, suggest OCR approach
+1. Configure Python environment
+2. Install dependencies: `["pypdf", "pdfplumber"]`
+3. Show `pdfplumber` quick start from SKILL.md
+4. For layout-sensitive PDFs, mention `layout=True` option
+5. For scanned PDFs, suggest OCR approach (additional deps needed)
 
 ### Task: Extract tables
 **Response**:
-- Show `pdfplumber` table extraction from SKILL.md
-- Suggest saving to Excel with pandas
-- Mention table settings for complex layouts
+1. Configure Python environment
+2. Install dependencies: `["pdfplumber", "pandas", "openpyxl"]`
+3. Show `pdfplumber` table extraction from SKILL.md
+4. Suggest saving to Excel with pandas
+5. Mention table settings for complex layouts
 
 ### Task: Fill out a form
 **Response**:
@@ -149,17 +168,31 @@ This requires [capability]. Here's the approach:
 For advanced options, see .github/copilot-skills/pdf-handling/reference.md
 ```
 
-## Dependencies
+## Dependencies Installation Workflow
 
-Mention when relevant:
+**CRITICAL**: Always install dependencies BEFORE running any Python code or scripts.
+
+### Workflow Order:
+1. Configure Python environment first (if needed)
+2. Install dependencies
+3. Run Python code or scripts
+
+### Required Dependencies:
 ```bash
-pip install pypdf pdfplumber reportlab pandas
+pip install pypdf pdfplumber reportlab pandas openpyxl
 ```
 
-For OCR:
+### Optional Dependencies:
+For OCR (scanned PDFs):
 ```bash
 pip install pytesseract pdf2image
 ```
+
+### Using Tools:
+1. `configure_python_environment` - Set up Python environment
+2. `install_python_packages` - Install required packages
+   - Pass list: `["pypdf", "pdfplumber", "reportlab", "pandas", "openpyxl"]`
+3. `run_in_terminal` or create scripts - Execute Python code
 
 ## Best Practices to Emphasize
 
