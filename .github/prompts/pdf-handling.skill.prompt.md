@@ -1,6 +1,25 @@
-# PDF Document Handling Skill
+# PDF Document Handling
 
-This skill teaches Copilot to work with PDF documents, including text extraction, table parsing, document manipulation, and form filling.
+---
+name: "PDF Document Handling"
+description: "Extract text and tables, create new PDFs, merge/split documents, handle forms programmatically"
+version: "1.0.0"
+created: "2025-10-18"
+tags: ["documents", "pdf", "forms", "text-extraction", "tables"]
+dependencies: ["pypdf", "pdfplumber", "reportlab", "qpdf"]
+source: "Adapted from Anthropic's PDF skill"
+---
+
+This skill provides comprehensive PDF manipulation using Python libraries (`pypdf`, `pdfplumber`, `reportlab`) and command-line tools (`qpdf`, `pdftotext`).
+
+## When to Use This Skill
+
+- Extract text or tables from PDF documents
+- Merge multiple PDFs or split a PDF into separate files
+- Create new PDF documents programmatically
+- Fill out or extract data from PDF forms
+- Analyze document structure and metadata
+- Convert between PDF and other formats
 
 ## User Input
 

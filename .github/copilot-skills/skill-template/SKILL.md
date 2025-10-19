@@ -1,17 +1,30 @@
 ---
-name: "Skill Template"
-description: "Example skill demonstrating YAML frontmatter, capabilities, patterns, detail files, and bundled scripts"
+name: "{Skill Name}"
+description: "{One-sentence purpose}"
 version: "1.0.0"
-created: "2025-10-18"
-tags: ["template", "example", "architecture"]
-dependencies: []
+created: "YYYY-MM-DD"
+tags: ["keyword1", "keyword2", "keyword3"]
+dependencies: ["tool1", "tool2"]
 ---
 
-# Skill Template
+# {Skill Name}
 
-## Overview
+**NOTE**: This is a template. The actual skill definition should be in `.github/prompts/{skill-name}.skill.prompt.md`.
 
-This is a template skill showing the structure, formatting, and best practices for creating new skills in the Copilot Skills Architecture. Use this as a reference when building domain-specific capabilities.
+This directory contains only:
+- `scripts/` - Bundled executable tools for this skill
+
+The skill prompt file (`.github/prompts/{skill-name}.skill.prompt.md`) should contain:
+1. YAML frontmatter with metadata (name, description, version, tags, dependencies)
+2. "When to Use This Skill" section
+3. Detailed instructions for the AI agent
+4. Examples and workflows
+5. Configuration and troubleshooting
+
+See existing skills for reference:
+- `.github/prompts/generate-copilot-instructions.skill.prompt.md`
+- `.github/prompts/git-ops.skill.prompt.md`
+- `.github/prompts/pdf-handling.skill.prompt.md`
 
 ## Core Capabilities
 

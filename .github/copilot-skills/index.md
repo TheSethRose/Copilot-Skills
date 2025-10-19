@@ -34,6 +34,22 @@
 **Detail Files**: `forms.md` (form filling), `reference.md` (advanced API)
 **Scripts**: `extract_form_field_info.py`, `fill_fillable_fields.py`, `convert_pdf_to_images.py`, `check_bounding_boxes.py`
 
+### Git Operations Assistant
+**Path**: `.github/copilot-skills/git-ops/SKILL.md`
+**Description**: Safely perform git operations including commits, branches, merges, and GitHub remote interactions.
+**When to use**: Git operations, version control, branching, merging, rebasing, conflict resolution, GitHub PR creation, commit management, repository recovery, git safety, force push, history rewriting.
+**Tags**: `git`, `github`, `version-control`, `repository`, `safety`, `merge`, `rebase`, `conflict-resolution`
+**Detail Files**: `safety.md` (safety guidelines and best practices)
+**Scripts**: `git_safe_exec.sh`, `commit_helper.sh`, `conflict_resolver.sh`
+
+### Copilot Instructions Generator
+**Path**: `.github/copilot-skills/copilot-instructions-generator/SKILL.md`
+**Description**: Analyze codebases and generate or update .github/copilot-instructions.md files for AI agent guidance.
+**When to use**: Creating AI instruction files, updating instructions after architecture changes, discovering undocumented patterns, consolidating multiple AI convention files, analyzing project structure, generating onboarding documentation.
+**Tags**: `copilot`, `instructions`, `analysis`, `ai-agents`, `codebase`, `documentation`, `patterns`, `discovery`
+**Detail Files**: `analysis.md` (detection algorithms), `config.md` (configuration guide), `patterns.md` (pattern examples)
+**Scripts**: `analyze_repo.sh`, `discover_conventions.sh`, `validate_instructions.sh`
+
 ---
 
 ## Skill Metadata Fields
