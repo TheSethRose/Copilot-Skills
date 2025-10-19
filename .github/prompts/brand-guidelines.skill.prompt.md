@@ -1,98 +1,188 @@
 # Brand Guidelines Assistant
 
 ---
-description: "Apply Anthropic's official brand colors and typography to artifacts requiring visual identity"
+description: "Help establish and document brand guidelines so AI agents consistently apply your visual identity"
 ---
 
 # Brand Guidelines Skill
 
-Apply Anthropic's official brand identity and style resources to any artifact that benefits from professional visual formatting.
+Create, document, and apply your project's brand guidelines so AI agents understand and follow your visual identity consistently across all generated artifacts.
 
 ## When to Use This Skill
 
 Use this skill when:
-- Creating branded documents, presentations, or visual content
-- Applying consistent corporate identity across artifacts
-- Needing official brand colors for styling
-- Working with typography and visual design standards
-- Post-processing artifacts with brand styling
+- Establishing brand identity for a new project
+- Documenting existing brand colors, fonts, and styling
+- Creating a brand reference for AI agents to follow
+- Ensuring visual consistency across generated artifacts
+- Setting up typography and color standards
+- Defining voice, tone, and messaging guidelines
 
-**Keywords**: branding, corporate identity, visual identity, post-processing, styling, brand colors, typography, visual formatting, visual design
+**Keywords**: brand guidelines, establish brand, brand identity, visual identity, style guide, brand documentation, corporate identity, design system
 
 ## Workflow
 
-### Step 1: Identify Brand Elements Needed
+### Step 1: Gather Brand Information
 
-Determine which brand elements to apply:
-- Color palette (dark, light, accent colors)
-- Typography (headings, body text)
-- Visual formatting guidelines
+Ask the user about their brand identity:
+- **Project/Company Name**: What is this brand for?
+- **Target Audience**: Who will see this brand?
+- **Brand Personality**: Professional, playful, technical, creative, etc.
+- **Existing Assets**: Do they have a logo, website, or existing materials?
 
-### Step 2: Load Brand Specifications
+### Step 2: Define Color Palette
 
-Reference the brand guidelines:
-- **Main colors**: Dark (`#141413`), Light (`#faf9f5`), Mid Gray (`#b0aea5`), Light Gray (`#e8e6dc`)
-- **Accent colors**: Orange (`#d97757`), Blue (`#6a9bcc`), Green (`#788c5d`)
-- **Typography**: Poppins for headings (24pt+), Lora for body text
-- **Fallbacks**: Arial for headings, Georgia for body
-
-### Step 3: Apply Brand Styling
-
-Apply appropriate brand elements:
+Help establish a color scheme:
 ```
-1. Use dark (#141413) for primary text and dark backgrounds
-2. Use light (#faf9f5) for light backgrounds and text on dark
-3. Apply Poppins font to headings (24pt and larger)
-4. Apply Lora font to body text
-5. Use accent colors (orange, blue, green) for highlights
-6. Ensure Arial/Georgia fallbacks for compatibility
+1. Primary Color: Main brand color (used for key elements)
+2. Secondary Color: Supporting color (accents, highlights)
+3. Neutral Colors: Background, text (usually grays or off-whites)
+4. Accent Colors: Call-to-action, alerts (optional)
+
+For each color, document:
+- Hex code (e.g., #3B82F6)
+- Usage guidelines (where/when to use)
+- Accessibility considerations (contrast ratios)
 ```
 
-### Step 4: Validate Visual Consistency
+### Step 3: Establish Typography
 
-Check that styling:
-- Maintains readability across all systems
-- Uses accessible color contrasts
-- Follows brand guidelines consistently
-- Has appropriate font fallbacks
+Define font hierarchy:
+```
+Headings:
+- Font family: (e.g., "Inter", "Helvetica", "Georgia")
+- Weights: (e.g., Bold 700 for H1, SemiBold 600 for H2)
+- Fallbacks: Always include web-safe fallbacks
+
+Body Text:
+- Font family: (usually same or complementary to headings)
+- Size: Base size (typically 16px or 1rem)
+- Line height: (1.5-1.6 for readability)
+- Fallbacks: Generic family (sans-serif, serif)
+```
+
+### Step 4: Document Visual Guidelines
+
+Create guidelines for:
+- **Spacing**: Margins, padding standards
+- **Borders**: Radius, width, style
+- **Shadows**: Drop shadows, elevation
+- **Icons**: Style (outline, filled, custom)
+- **Images**: Style (photography, illustrations, treatment)
+
+### Step 5: Define Voice & Tone
+
+Establish messaging guidelines:
+- **Voice**: Consistent personality (friendly, authoritative, casual)
+- **Tone**: Adaptive to context (supportive, urgent, celebratory)
+- **Language**: Technical level, jargon usage, formality
+- **Examples**: Sample phrases that match/don't match brand
+
+### Step 6: Create Brand Document
+
+Generate a comprehensive brand guidelines file:
+```markdown
+# Brand Guidelines: [Project Name]
+
+## Color Palette
+- Primary: #[hex] - [Usage]
+- Secondary: #[hex] - [Usage]
+- Neutral: #[hex] - [Usage]
+
+## Typography
+- Headings: [Font], [Weight], [Sizes]
+- Body: [Font], [Size], [Line Height]
+
+## Visual Style
+- Border Radius: [value]
+- Spacing Scale: [values]
+- Shadow: [CSS values]
+
+## Voice & Tone
+- Voice: [Description]
+- Tone: [Guidelines]
+- Examples: [Do/Don't]
+
+## Usage Examples
+[Code snippets showing proper usage]
+```
+
+### Step 7: Save and Reference
+
+Store guidelines where agents can access them:
+- Primary: `.github/brand-guidelines.md`
+- Alternative: `BRAND.md`, `docs/brand-guidelines.md`
+- Reference in `.github/copilot-instructions.md`
 
 ## Examples
 
-### Example 1: Styled Document Header
-```html
-<h1 style="font-family: Poppins, Arial; color: #141413; font-size: 36pt;">
-  Document Title
-</h1>
-<p style="font-family: Lora, Georgia; color: #141413; font-size: 12pt;">
-  Body content with appropriate typography
-</p>
+### Example 1: Interactive Brand Setup
+```
+User: Help me create brand guidelines
+
+Agent: I'll help you establish your brand guidelines. Let's start:
+
+1. What's your project/company name?
+User: "Acme Analytics"
+
+2. What's your brand personality?
+User: "Professional but approachable, data-focused"
+
+3. Do you have existing brand colors?
+User: "Blue and white, but not formalized"
+
+Agent: Great! Let me suggest a color palette:
+- Primary: #2563EB (Professional blue)
+- Secondary: #60A5FA (Lighter blue for accents)
+- Neutral Dark: #1F2937 (Text)
+- Neutral Light: #F9FAFB (Backgrounds)
+
+[Generates complete brand guidelines document]
 ```
 
-### Example 2: Branded Color Scheme
-```css
-:root {
-  --brand-dark: #141413;
-  --brand-light: #faf9f5;
-  --brand-accent: #d97757;
-  --heading-font: Poppins, Arial, sans-serif;
-  --body-font: Lora, Georgia, serif;
-}
+### Example 2: Document Existing Brand
+```
+User: I have a logo with colors #FF6B6B and #4ECDC4, help me document this
+
+Agent: I'll create comprehensive guidelines based on those colors:
+
+Primary Color: #FF6B6B (Coral Red)
+- Use for: CTAs, primary buttons, key highlights
+- Contrast: Passes WCAG AA on white backgrounds
+
+Secondary Color: #4ECDC4 (Turquoise)
+- Use for: Secondary actions, informational elements
+- Pairs well with neutral grays
+
+[Creates full brand document with typography, spacing, etc.]
+```
+
+### Example 3: Apply Existing Guidelines
+```
+User: Apply our brand guidelines from BRAND.md to this document
+
+Agent: [Reads .github/brand-guidelines.md or BRAND.md]
+[Applies documented colors, fonts, spacing]
+[Ensures consistency with established guidelines]
 ```
 
 ## Detail Files
 
-- **Color reference**: All official brand colors with usage guidelines
-- **Typography guide**: Font specifications and hierarchy
-- **Examples**: Branded artifact templates
+- **Template**: Brand guidelines document template
+- **Examples**: Sample brand guidelines for different industries
+- **Color Tools**: Accessibility checkers, palette generators
+- **Typography**: Font pairing recommendations
 
 ## Notes
 
-- Fonts should be pre-installed for best results
-- Always include fallback fonts for system compatibility
-- Maintain accessibility standards with color contrast
-- Brand guidelines apply to external-facing artifacts
+- Store guidelines in `.github/brand-guidelines.md` for agent access
+- Reference brand file in `.github/copilot-instructions.md`
+- Validate color contrast for accessibility (WCAG AA minimum)
+- Include fallback fonts for cross-platform compatibility
+- Update guidelines as brand evolves
 
 ## Related Skills
 
-- **Document Skills** - For creating branded documents
-- **Visual Design** - For additional design patterns
+- **Generate Instructions** - Reference brand guidelines in copilot-instructions.md
+- **Document Skills** - Apply brand to generated documents
+- **New Project** - Set up brand guidelines for new projects

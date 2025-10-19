@@ -1,6 +1,6 @@
 ---
-description: "Auto-loaded context for applying brand guidelines and visual identity to artifacts"
-applyTo: "**/*{brand,style,design,visual,identity,guidelines}*"
+description: "Auto-loaded context for establishing and applying brand guidelines in projects"
+applyTo: "**/*{brand,style,design,visual,identity,guidelines,BRAND}*"
 ---
 
 # Brand Guidelines - Automatic Context Instructions
@@ -8,122 +8,152 @@ applyTo: "**/*{brand,style,design,visual,identity,guidelines}*"
 **Related Prompt:** `/brand-guidelines`  
 **Related Skill:** `.github/copilot-skills/brand-guidelines/README.md`
 
-**Triggers:** branding, corporate identity, visual identity, post-processing, styling, brand colors, typography, visual formatting, visual design
+**Triggers:** brand guidelines, establish brand, brand identity, visual identity, style guide, brand documentation, create brand, design system
 
-## Context: Brand Styling and Visual Identity
+## Context: Creating and Applying Brand Guidelines
 
-When working with brand-related files or when user queries contain branding keywords, this context is automatically activated.
+When working with brand-related files or when user queries contain brand establishment keywords, this context is automatically activated.
 
 ## Default Behaviors
 
-### When user mentions "brand" or "styling"
+### When user mentions "create brand" or "establish brand"
 1. Suggest `/brand-guidelines` skill prompt
-2. Load official brand color palette
-3. Apply appropriate typography standards
-4. Ensure visual consistency with brand identity
+2. Guide through interactive brand setup
+3. Ask about colors, typography, voice/tone
+4. Generate comprehensive brand guidelines document
+5. Save to `.github/brand-guidelines.md` or `BRAND.md`
 
-### When user mentions "brand colors"
-1. Provide color palette with hex codes
-2. Suggest appropriate use cases for each color
-3. Ensure accessible color contrasts
-4. Include fallback colors for compatibility
+### When user mentions "brand colors" or "color palette"
+1. Help define primary, secondary, and neutral colors
+2. Validate accessibility (WCAG contrast ratios)
+3. Suggest complementary colors if needed
+4. Document hex codes and usage guidelines
+5. Provide CSS/design token examples
 
-### When user mentions "typography" or "fonts"
-1. Apply Poppins font to headings (24pt+)
-2. Apply Lora font to body text
-3. Include Arial/Georgia fallbacks
-4. Maintain readability standards
+### When user mentions "brand typography" or "fonts"
+1. Help select heading and body fonts
+2. Define font hierarchy (H1-H6, body, captions)
+3. Specify weights, sizes, line heights
+4. Include web-safe fallbacks
+5. Create typography scale
+
+### When user mentions "apply brand" or "use brand guidelines"
+1. Look for existing brand guidelines file
+2. Read `.github/brand-guidelines.md`, `BRAND.md`, or `docs/brand-guidelines.md`
+3. Apply documented colors, fonts, spacing
+4. Ensure consistency with established guidelines
+5. Reference brand file in generated artifacts
 
 ## Quality Guidelines
 
 ### ✅ Do
-- Use official brand colors only
-- Apply consistent typography hierarchy
-- Include font fallbacks for system compatibility
-- Maintain accessible color contrast ratios
-- Use brand styling for external-facing artifacts
-- Test visual elements across different systems
-- Follow typography sizing guidelines
+- Help users define their own brand colors and fonts
+- Validate accessibility (WCAG AA minimum contrast 4.5:1)
+- Include fallback fonts for cross-platform compatibility
+- Document usage guidelines for each color
+- Create reusable design tokens (CSS variables)
+- Store guidelines in accessible location (.github/, docs/)
+- Reference brand file in copilot-instructions.md
+- Update brand guidelines as project evolves
 
 ### ❌ Don't
-- Modify official brand colors
-- Mix brand fonts with unapproved alternatives
-- Ignore accessibility standards
-- Apply brand styling to internal debug artifacts
-- Use brand colors without proper contrast
-- Override brand guidelines with custom styles
+- Apply pre-defined brand colors without user input
+- Skip accessibility validation
+- Use colors without contrast checking
+- Create brand guidelines in hidden/obscure locations
+- Forget to document usage examples
+- Hardcode colors instead of using variables
+- Ignore existing brand assets
 
-## Brand Specifications
+## Brand Specification Template
 
-### Official Color Palette
+When creating brand guidelines, use this structure:
 
-**Main Colors:**
-- Dark: `#141413` - Primary text and dark backgrounds
-- Light: `#faf9f5` - Light backgrounds and text on dark
-- Mid Gray: `#b0aea5` - Secondary elements
-- Light Gray: `#e8e6dc` - Subtle backgrounds
+### Color Palette Template
+
+**Primary Colors:**
+- Primary: `#______` - Main brand color, used for key elements
+- Secondary: `#______` - Supporting color, used for accents  
+- Tertiary: `#______` - Optional third color
+
+**Neutral Colors:**
+- Dark: `#______` - Text, dark backgrounds
+- Light: `#______` - Light backgrounds, reversed text
+- Gray: `#______` - Secondary text, borders
 
 **Accent Colors:**
-- Orange: `#d97757` - Primary accent (use sparingly)
-- Blue: `#6a9bcc` - Secondary accent
-- Green: `#788c5d` - Tertiary accent
+- Success: `#______` - Positive actions, confirmations
+- Warning: `#______` - Warnings, caution
+- Error: `#______` - Errors, destructive actions
+- Info: `#______` - Informational elements
 
-### Typography Standards
+### Typography Template
 
-**Headings (24pt and larger):**
-- Primary: Poppins
-- Fallback: Arial, sans-serif
+**Headings:**
+- Font Family: [e.g., "Inter", "Helvetica Neue", sans-serif]
+- Weights: [e.g., 700 for H1, 600 for H2-H3, 500 for H4-H6]
+- Sizes: [H1: 36px, H2: 28px, H3: 24px, etc.]
 
 **Body Text:**
-- Primary: Lora
-- Fallback: Georgia, serif
-
-### Visual Hierarchy
-
-1. **H1 Headings**: Poppins 36pt, Dark color
-2. **H2 Headings**: Poppins 28pt, Dark color
-3. **H3 Headings**: Poppins 24pt, Dark color
-4. **Body Text**: Lora 12pt, Dark color
-5. **Secondary Text**: Lora 10pt, Mid Gray
-6. **Accents**: Orange, Blue, or Green for highlights
+- Font Family: [e.g., "Inter", system-ui, sans-serif]
+- Size: [e.g., 16px base]
+- Line Height: [e.g., 1.6]
+- Weight: [e.g., 400 normal, 600 bold]
 
 ## Common Workflows
 
-### Apply Brand Styling to Document
+### Create Brand Guidelines from Scratch
+
+```bash
+# 1. Start interactive brand setup
+/brand-guidelines
+
+# 2. Answer questions about brand identity
+# 3. Generate brand-guidelines.md file
+# 4. Reference in copilot-instructions.md
+```
+
+### Apply Brand Styling Example
 
 ```css
-/* CSS Example */
+/* Example CSS using established brand colors */
 :root {
-  --brand-dark: #141413;
-  --brand-light: #faf9f5;
-  --brand-mid-gray: #b0aea5;
-  --brand-light-gray: #e8e6dc;
-  --brand-orange: #d97757;
-  --brand-blue: #6a9bcc;
-  --brand-green: #788c5d;
-  --heading-font: Poppins, Arial, sans-serif;
-  --body-font: Lora, Georgia, serif;
+  /* User-defined brand colors */
+  --brand-primary: #3B82F6;
+  --brand-secondary: #8B5CF6;
+  --brand-dark: #1F2937;
+  --brand-light: #F9FAFB;
+  
+  /* User-defined typography */
+  --font-heading: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
 }
 
 h1, h2, h3 {
-  font-family: var(--heading-font);
+  font-family: var(--font-heading);
   color: var(--brand-dark);
 }
 
 body, p {
-  font-family: var(--body-font);
+  font-family: var(--font-body);
   color: var(--brand-dark);
+}
+
+.btn-primary {
+  background: var(--brand-primary);
+  color: white;
 }
 ```
 
 ### Validate Brand Compliance
 
 Check that styling includes:
-- [ ] Official brand colors only
-- [ ] Proper typography (Poppins/Lora with fallbacks)
-- [ ] Accessible color contrast
+- [ ] User-defined brand colors (not defaults)
+- [ ] Proper typography with fallbacks
+- [ ] Accessible color contrast (WCAG AA: 4.5:1 minimum)
 - [ ] Consistent visual hierarchy
 - [ ] Appropriate font sizing
+- [ ] CSS variables for reusability
 
 ## Next Steps
 
