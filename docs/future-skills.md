@@ -148,7 +148,7 @@ This document tracks the status of documentation skills in development.
 - [Python](https://docs.python.org/3/) ⏳ config ready, ~20 pages
 - [JavaScript (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [TypeScript](https://www.typescriptlang.org/docs/) ✅ skill generated, ~20 pages
-- [Go](https://go.dev/doc/)
+- [Go](https://go.dev/doc/) ✅ skill generated, ~20 pages
 - [Rust](https://doc.rust-lang.org/)
 - [Java](https://docs.oracle.com/en/java/)
 - [C#](https://learn.microsoft.com/en-us/dotnet/csharp/)
@@ -283,9 +283,9 @@ This document tracks the status of documentation skills in development.
 
 ## Summary
 
-- **Total Generated**: 21 skills
-- **Ready for Generation**: 2 configs (Django, Kubernetes, Python, Docker)
-- **Total Configs**: 46+
+- **Total Generated**: 22 skills
+- **Ready for Generation**: 3 configs (Django, Kubernetes, Python, Docker)
+- **Total Configs**: 47+
 - **Blocked**: 16+ sites
 
 ## Generate a Skill

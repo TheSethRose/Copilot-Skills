@@ -1,0 +1,23 @@
+{
+  "name": "go",
+  "description": "The Go Programming Language",
+  "base_url": "https://go.dev/doc/",
+  "max_pages": 100,
+  "rate_limit": 0.5,
+  "file_patterns": ["**/*.go"],
+  "selectors": {
+    "main_content": "main, article, .content",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://go\\.dev/doc/.*"],
+    "exclude": ["/blog/.*", "#.*"]
+  },
+  "categories": {
+    "getting": ["getting-started"],
+    "language": ["language-spec", "effective"],
+    "packages": ["packages"]
+  },
+  "checkpoint": {"enabled": true, "interval": 20}
+}
