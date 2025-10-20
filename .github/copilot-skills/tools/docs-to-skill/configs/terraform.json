@@ -1,0 +1,32 @@
+{
+  "name": "terraform",
+  "description": "Infrastructure as Code - Provision and manage cloud resources",
+  "base_url": "https://developer.hashicorp.com/terraform/docs/",
+  "max_pages": 250,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.tf",
+    "**/*.hcl",
+    "**/terraform*"
+  ],
+  "selectors": {
+    "main_content": "main, article, .docs-content",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://developer\\.hashicorp\\.com/terraform/docs/.*"],
+    "exclude": ["/tutorials/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["intro", "install", "cli"],
+    "configuration": ["language", "syntax", "functions"],
+    "state": ["state", "remote", "backend"],
+    "provisioning": ["provisioners", "modules"],
+    "import": ["import", "cloud", "enterprise"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 50
+  }
+}

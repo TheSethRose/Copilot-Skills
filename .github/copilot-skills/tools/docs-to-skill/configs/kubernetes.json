@@ -1,0 +1,33 @@
+{
+  "name": "kubernetes",
+  "description": "Open-source container orchestration platform",
+  "base_url": "https://kubernetes.io/docs/",
+  "max_pages": 300,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.yaml",
+    "**/*.yml",
+    "**/*pod*",
+    "**/*deployment*"
+  ],
+  "selectors": {
+    "main_content": "main, article, .content",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://kubernetes\\.io/docs/.*"],
+    "exclude": ["/blog/.*", "/news/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["setup", "learn", "tutorials"],
+    "concepts": ["overview", "architecture", "objects"],
+    "tasks": ["tasks", "administer", "configure"],
+    "reference": ["api", "kubectl", "config"],
+    "advanced": ["extend", "customize", "manage"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 60
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "sequelize",
+  "description": "Promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and MSSQL",
+  "base_url": "https://sequelize.org/docs/",
+  "max_pages": 150,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.js",
+    "**/*.ts",
+    "**/*model*"
+  ],
+  "selectors": {
+    "main_content": "main, article, .documentation",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://sequelize\\.org/docs/.*"],
+    "exclude": ["/legacy/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "installation"],
+    "models": ["models", "model-definition"],
+    "querying": ["querying", "raw-queries"],
+    "associations": ["associations", "belongs-to"],
+    "advanced": ["hooks", "transactions", "scopes"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}

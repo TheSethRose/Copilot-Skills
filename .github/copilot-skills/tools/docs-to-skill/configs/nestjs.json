@@ -1,0 +1,32 @@
+{
+  "name": "nestjs",
+  "description": "Progressive Node.js framework for building efficient server-side applications",
+  "base_url": "https://docs.nestjs.com/",
+  "max_pages": 200,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.ts",
+    "**/*nest*",
+    "**/*.module.ts"
+  ],
+  "selectors": {
+    "main_content": "main, .content, article",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://docs\\.nestjs\\.com/.*"],
+    "exclude": ["/resources/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["first-steps", "installation", "overview"],
+    "fundamentals": ["modules", "controllers", "providers", "services"],
+    "techniques": ["authentication", "pipes", "guards", "interceptors"],
+    "graphql": ["graphql", "apollo"],
+    "microservices": ["microservices", "message-queue"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 40
+  }
+}

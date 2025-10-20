@@ -1,0 +1,31 @@
+{
+  "name": "python",
+  "description": "Python programming language official documentation",
+  "base_url": "https://docs.python.org/3/",
+  "max_pages": 400,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.py",
+    "**/*.pyx"
+  ],
+  "selectors": {
+    "main_content": "main, #main-content, .body",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://docs\\.python\\.org/3/.*"],
+    "exclude": ["/whatsnew/.*", "#.*"]
+  },
+  "categories": {
+    "tutorial": ["tutorial", "introduction"],
+    "library": ["library", "reference", "built-in"],
+    "language": ["language-reference"],
+    "howto": ["howto", "faq"],
+    "extending": ["extending", "c-api"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 80
+  }
+}

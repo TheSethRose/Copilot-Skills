@@ -1,0 +1,33 @@
+{
+  "name": "django",
+  "description": "The web framework for perfectionists with deadlines",
+  "base_url": "https://docs.djangoproject.com/en/stable/",
+  "max_pages": 300,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.py",
+    "**/*models.py",
+    "**/*views.py"
+  ],
+  "selectors": {
+    "main_content": "main, article, .document",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://docs\\.djangoproject\\.com/.*"],
+    "exclude": ["/releases/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["intro", "install", "tutorial"],
+    "models": ["models", "database", "orm"],
+    "views": ["views", "request", "response"],
+    "templates": ["templates", "rendering"],
+    "forms": ["forms", "validation"],
+    "admin": ["admin", "site"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 50
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "aws",
+  "description": "Amazon Web Services - Cloud computing platform",
+  "base_url": "https://docs.aws.amazon.com/",
+  "max_pages": 300,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.json",
+    "**/*policy*",
+    "**/*cloudformation*"
+  ],
+  "selectors": {
+    "main_content": "main, article, .awsdocs-container",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://docs\\.aws\\.amazon\\.com/.*"],
+    "exclude": ["/index.html", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "setup"],
+    "compute": ["ec2", "lambda", "ecs"],
+    "storage": ["s3", "ebs", "efs"],
+    "database": ["rds", "dynamodb"],
+    "networking": ["vpc", "elb", "route53"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 60
+  }
+}

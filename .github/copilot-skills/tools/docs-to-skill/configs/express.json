@@ -1,0 +1,32 @@
+{
+  "name": "express",
+  "description": "Fast, unopinionated web framework for Node.js",
+  "base_url": "https://expressjs.com/en/",
+  "max_pages": 150,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.js",
+    "**/*.ts",
+    "**/express*"
+  ],
+  "selectors": {
+    "main_content": "main, .content, article",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://expressjs\\.com/.*"],
+    "exclude": ["/resources/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["starter", "installation", "hello", "basic"],
+    "routing": ["routing", "route", "path"],
+    "middleware": ["middleware", "app.use"],
+    "api": ["api", "request", "response"],
+    "advanced": ["advanced", "error", "security"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}
