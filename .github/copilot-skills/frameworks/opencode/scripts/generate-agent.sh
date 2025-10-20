@@ -44,7 +44,7 @@ Examples:
   generate-agent.sh remove hello-world
 
 Configuration: $HOME/.config/opencode/opencode.json
-Prompts: ./prompts/{agent-name}.txt
+Subagents: .github/copilot-skills/frameworks/opencode/subagents/{agent-name}.txt
 EOF
 }
 
@@ -63,11 +63,15 @@ EOL
 generate_config() {
     local name="$1"
     local purpose="$2"
-    local prompt_path="$(pwd)/prompts/${name}.txt"
+    local prompt_path="$(pwd)/.github/copilot-skills/frameworks/opencode/subagents/${name}.txt"
     local purpose_lower=$(echo "$purpose" | tr '[:upper:]' '[:lower:]')
     
     # Auto-detect settings based on purpose
-    if [[ $purpose_lower == *"review"* ]] || [[ $purpose_lower == *"quality"* ]]; then
+    if [[ $purpose_lower == *"autonomous"* ]] || [[ $purpose_lower == *"one-shot"* ]] || [[ $purpose_lower == *"auto"* ]]; then
+        local temp="0.8" write="true" edit="true" bash="true"
+    elif [[ $purpose_lower == *"skill"* ]] || [[ $purpose_lower == *"generator"* ]]; then
+        local temp="0.8" write="true" edit="true" bash="true"
+    elif [[ $purpose_lower == *"review"* ]] || [[ $purpose_lower == *"quality"* ]]; then
         local temp="0.1" write="false" edit="false" bash="false"
     elif [[ $purpose_lower == *"test"* ]]; then
         local temp="0.7" write="true" edit="false" bash="true"
@@ -77,6 +81,8 @@ generate_config() {
         local temp="0.3" write="false" edit="false" bash="true"
     elif [[ $purpose_lower == *"refactor"* ]]; then
         local temp="0.5" write="false" edit="true" bash="false"
+    elif [[ $purpose_lower == *"scrape"* ]] || [[ $purpose_lower == *"fetch"* ]] || [[ $purpose_lower == *"crawl"* ]]; then
+        local temp="0.5" write="true" edit="false" bash="true"
     else
         local temp="0.7" write="false" edit="false" bash="false"
     fi
@@ -201,12 +207,12 @@ cmd_create() {
     echo -e "${BLUE}Creating agent: ${CYAN}$name${NC}"
     echo ""
     
-    # Create prompts directory
-    mkdir -p prompts
+    # Create subagents directory in opencode skill
+    mkdir -p .github/copilot-skills/frameworks/opencode/subagents
     
-    # Generate prompt file
-    generate_prompt "$name" "$purpose" > "prompts/${name}.txt"
-    echo -e "${GREEN}✓${NC} Created prompts/${name}.txt"
+    # Generate prompt file in opencode/subagents
+    generate_prompt "$name" "$purpose" > ".github/copilot-skills/frameworks/opencode/subagents/${name}.txt"
+    echo -e "${GREEN}✓${NC} Created .github/copilot-skills/frameworks/opencode/subagents/${name}.txt"
     
     # Add to config
     add_to_config "$name" "$purpose"
@@ -266,9 +272,9 @@ cmd_remove() {
     remove_from_config "$name"
     
     # Optionally remove prompt file
-    if [ -f "prompts/${name}.txt" ]; then
-        rm "prompts/${name}.txt"
-        echo -e "${GREEN}✓${NC} Removed prompts/${name}.txt"
+    if [ -f ".github/copilot-skills/frameworks/opencode/subagents/${name}.txt" ]; then
+        rm ".github/copilot-skills/frameworks/opencode/subagents/${name}.txt"
+        echo -e "${GREEN}✓${NC} Removed .github/copilot-skills/frameworks/opencode/subagents/${name}.txt"
     fi
     
     echo -e "${GREEN}✓${NC} Agent deleted"
@@ -338,7 +344,7 @@ case "$ACTION" in
             echo -e "${RED}✗${NC} Agent name required"
             exit 1
         fi
-        ${EDITOR:-nano} "prompts/${AGENT_NAME}.txt"
+        ${EDITOR:-nano} ".github/copilot-skills/frameworks/opencode/subagents/${AGENT_NAME}.txt"
         ;;
     *)
         if [ -n "$ACTION" ]; then

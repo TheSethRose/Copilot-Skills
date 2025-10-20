@@ -49,16 +49,49 @@ When working with OpenCode projects:
 
 ### Creating Custom Agents
 
-1. Generate template:
+1. Generate template (with auto-detection of tool permissions):
    ```bash
-   bash .github/copilot-skills/opencode/scripts/generate-agent.sh [name] [mode]
+   bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh create [name] "[purpose]"
    ```
 
-2. Create prompt file in `prompts/[name].txt`
+2. Script auto-detects based on keywords in purpose:
+   - **auto/autonomous/one-shot** → write + edit + bash (0.8) - Full autonomy
+   - **skill/generator** → write + edit + bash (0.8)
+   - **test** → write + bash (0.7)
+   - **doc** → write + edit (0.8)
+   - **review/quality** → read-only (0.1)
+   - **debug** → bash only (0.3)
+   - **scrape/fetch/crawl** → write + bash (0.5)
 
-3. Add configuration to `opencode.config.json`
+3. Verify config created correctly:
+   ```bash
+   bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh list
+   ```
 
-4. Test with `@[name] [request]`
+4. Test immediately:
+   ```bash
+   bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh test [name] "[request]"
+   ```
+
+### Creating One-Shot Autonomous Agents
+
+For agents that need to complete entire workflows without asking for confirmation:
+
+```bash
+# Agent will have full autonomy to complete all tasks
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh create \
+  task-name \
+  "Autonomously [describe complete task] without asking for confirmation"
+```
+
+**Keywords that trigger one-shot mode**: `auto`, `autonomous`, `one-shot`
+
+**What one-shot agents do**:
+- ✅ Complete entire workflow in single message
+- ✅ No intermediate confirmations
+- ✅ Full tool access (write + edit + bash)
+- ✅ Report completion status
+- ✅ Handle all steps independently
 
 ### Agent Configuration
 
@@ -108,17 +141,17 @@ OpenCode supports Model Context Protocol for external tools:
 ### Helper Scripts
 ```bash
 # Generate agent template
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh [name] [mode]
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh [name] [mode]
 
 # View orchestration patterns
-bash .github/copilot-skills/opencode/scripts/orchestrate-agents.sh [pattern]
+bash .github/copilot-skills/frameworks/opencode/scripts/orchestrate-agents.sh [pattern]
 
 # Agent reference
-bash .github/copilot-skills/opencode/scripts/agent-reference.sh [agent]
+bash .github/copilot-skills/frameworks/opencode/scripts/agent-reference.sh [agent]
 ```
 
 ## Resources
 
 - Skill prompt: `.github/prompts/opencode.skill.prompt.md`
-- References: `.github/copilot-skills/opencode/references/`
+- References: `.github/copilot-skills/frameworks/opencode/references/`
 - Official docs: https://opencode.ai/

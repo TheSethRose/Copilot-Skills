@@ -98,7 +98,7 @@ Copy{
 
 ## Reference Documentation
 
-This skill includes comprehensive documentation in `.github/copilot-skills/shadcn/references/`:
+This skill includes comprehensive documentation in `.github/copilot-skills/ui/shadcn/references/`:
 
 - **cli.md** - Cli documentation
 - **components.md** - Components documentation

@@ -75,7 +75,7 @@ Use this skill when:
 
 **Generate and auto-setup agent (fully automated):**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh create hello-world "Prints Hello World and agent name"
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh create hello-world "Prints Hello World and agent name"
 ```
 
 This automatically:
@@ -86,27 +86,27 @@ This automatically:
 
 **Test the agent:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh test hello-world "Say hello and tell me your name"
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh test hello-world "Say hello and tell me your name"
 ```
 
 **Remove agent when done:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh remove hello-world
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh remove hello-world
 ```
 
 **List all agents:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh list
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh list
 ```
 
 **Show agent configuration:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh show hello-world
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh show hello-world
 ```
 
 **Edit agent prompt:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh edit hello-world
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh edit hello-world
 ```
 
 **Agent configuration structure:**
@@ -134,6 +134,40 @@ bash .github/copilot-skills/opencode/scripts/generate-agent.sh edit hello-world
 - **Docs Generator** (write + edit) - Documentation, examples, guides
 - **Debug Helper** (bash only) - Log analysis, investigation
 - **Refactoring Assistant** (edit only) - Code improvements
+- **Skill Generator** (write + edit + bash) - Documentation → Skills conversion
+- **One-Shot Autonomous** (full autonomy) - Complete tasks without follow-ups
+
+**Auto-Detection Intelligence:**
+
+The `generate-agent.sh` script automatically detects agent purpose and configures:
+
+| Keyword | Temperature | Write | Edit | Bash | One-Shot | Use Case |
+|---------|-------------|-------|------|------|----------|----------|
+| skill, generator | 0.8 | ✓ | ✓ | ✓ | ✓ | Creating skills from docs |
+| review, quality | 0.1 | ✗ | ✗ | ✗ | ✗ | Code review |
+| test | 0.7 | ✓ | ✗ | ✓ | ✗ | Test generation |
+| doc | 0.8 | ✓ | ✓ | ✗ | ✗ | Documentation |
+| debug | 0.3 | ✗ | ✗ | ✓ | ✗ | Debugging |
+| refactor | 0.5 | ✗ | ✓ | ✗ | ✗ | Refactoring |
+| scrape, fetch, crawl | 0.5 | ✓ | ✗ | ✓ | ✓ | Data collection |
+| auto, autonomous, one-shot | 0.8 | ✓ | ✓ | ✓ | ✓ | Full autonomy |
+| (default) | 0.7 | ✗ | ✗ | ✗ | ✗ | Analysis |
+
+**One-Shot Autonomous Agents:**
+
+For tasks requiring complete autonomy without follow-ups, specify in the purpose:
+```bash
+# Create a fully autonomous agent
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh create \
+  skill-generator \
+  "Autonomously convert documentation websites into production-ready Copilot Skills without asking for confirmation"
+```
+
+The agent will:
+- Complete entire workflow in one message
+- Not ask for intermediate confirmation
+- Handle all steps automatically
+- Report completion with full status
 
 ### 📋 Tool Access Matrix
 
@@ -151,22 +185,22 @@ bash .github/copilot-skills/opencode/scripts/generate-agent.sh edit hello-world
 **View orchestration patterns:**
 ```bash
 # Show all workflow patterns
-bash .github/copilot-skills/opencode/scripts/orchestrate-agents.sh all
+bash .github/copilot-skills/frameworks/opencode/scripts/orchestrate-agents.sh all
 
 # Show specific pattern
-bash .github/copilot-skills/opencode/scripts/orchestrate-agents.sh refactor
+bash .github/copilot-skills/frameworks/opencode/scripts/orchestrate-agents.sh refactor
 ```
 
 **Quick agent reference:**
 ```bash
 # Show all agents
-bash .github/copilot-skills/opencode/scripts/agent-reference.sh all
+bash .github/copilot-skills/frameworks/opencode/scripts/agent-reference.sh all
 
 # Show specific agent
-bash .github/copilot-skills/opencode/scripts/agent-reference.sh build
+bash .github/copilot-skills/frameworks/opencode/scripts/agent-reference.sh build
 
 # Compare tool access
-bash .github/copilot-skills/opencode/scripts/agent-reference.sh compare
+bash .github/copilot-skills/frameworks/opencode/scripts/agent-reference.sh compare
 ```
 
 ### Code Examples
@@ -216,7 +250,7 @@ Provide constructive feedback without making direct changes.
 
 ## Reference Documentation
 
-This skill includes comprehensive OpenCode documentation in `.github/copilot-skills/opencode/references/`:
+This skill includes comprehensive OpenCode documentation in `.github/copilot-skills/frameworks/opencode/references/`:
 
 - **agents.md** - Complete guide to agent types, configuration, and orchestration
 - **tools.md** - Tool integrations, MCP, custom tool creation
@@ -249,22 +283,22 @@ This skill includes comprehensive OpenCode documentation in `.github/copilot-ski
 
 **Create a new agent:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh create my-agent "Agent purpose here"
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh create my-agent "Agent purpose here"
 ```
 
 **Test an agent:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh test my-agent "Test message"
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh test my-agent "Test message"
 ```
 
 **Remove an agent:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh remove my-agent
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh remove my-agent
 ```
 
 **List all agents:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh list
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh list
 ```
 
 ### For Multi-Agent Orchestration
@@ -289,24 +323,24 @@ bash .github/copilot-skills/opencode/scripts/generate-agent.sh list
 
 **View available patterns:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/orchestrate-agents.sh all
+bash .github/copilot-skills/frameworks/opencode/scripts/orchestrate-agents.sh all
 ```
 
 **Get pattern details:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/orchestrate-agents.sh refactor
+bash .github/copilot-skills/frameworks/opencode/scripts/orchestrate-agents.sh refactor
 ```
 
 ### For Agent Reference
 
 **See all agents:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/agent-reference.sh all
+bash .github/copilot-skills/frameworks/opencode/scripts/agent-reference.sh all
 ```
 
 **Compare capabilities:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/agent-reference.sh compare
+bash .github/copilot-skills/frameworks/opencode/scripts/agent-reference.sh compare
 ```
 
 ## 🎯 Best Practices
@@ -341,7 +375,7 @@ Manage all aspects of custom agents: create, test, list, remove, edit, and show.
 
 **Create agent:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh create code-reviewer "Reviews code for quality and security"
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh create code-reviewer "Reviews code for quality and security"
 ```
 - Auto-generates prompt file
 - Adds to `~/.config/opencode/opencode.json`
@@ -350,41 +384,41 @@ bash .github/copilot-skills/opencode/scripts/generate-agent.sh create code-revie
 
 **Test agent:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh test code-reviewer "Review this function"
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh test code-reviewer "Review this function"
 ```
 
 **List all agents:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh list
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh list
 ```
 
 **Remove agent (cleanup when done):**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh remove code-reviewer
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh remove code-reviewer
 ```
 
 **Edit agent prompt:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh edit code-reviewer
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh edit code-reviewer
 ```
 
 **Show agent configuration:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh show code-reviewer
+bash .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh show code-reviewer
 ```
 
 ### orchestrate-agents.sh
 Shows multi-agent workflow patterns
 
 ```bash
-bash .github/copilot-skills/opencode/scripts/orchestrate-agents.sh [pattern]
+bash .github/copilot-skills/frameworks/opencode/scripts/orchestrate-agents.sh [pattern]
 ```
 
 ### agent-reference.sh
 Quick reference for agent capabilities
 
 ```bash
-bash .github/copilot-skills/opencode/scripts/agent-reference.sh [agent]
+bash .github/copilot-skills/frameworks/opencode/scripts/agent-reference.sh [agent]
 ```
 
 ## Related Skills
@@ -396,7 +430,7 @@ bash .github/copilot-skills/opencode/scripts/agent-reference.sh [agent]
 ## More Information
 
 - **Official Documentation**: https://opencode.ai/docs
-- **Agent Architecture**: `.github/copilot-skills/opencode/references/agents.md`
+- **Agent Architecture**: `.github/copilot-skills/frameworks/opencode/references/agents.md`
 - **Generated**: 2025-10-19
 - **Total Pages**: 20 documentation pages scraped
 - **Bundled Scripts**: 3 orchestration helpers included

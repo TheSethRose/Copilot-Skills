@@ -257,7 +257,7 @@ export function ContextMenu() {
 
 ## Reference Documentation
 
-This skill includes detailed information in `.github/copilot-skills/radix-ui/`:
+This skill includes detailed information in `.github/copilot-skills/ui/radix-ui/`:
 
 - **README.md** - Comprehensive overview and common patterns
 - **patterns.md** - Detailed usage patterns

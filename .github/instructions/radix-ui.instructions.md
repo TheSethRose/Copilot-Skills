@@ -6,7 +6,7 @@ applyTo: "**/*.tsx, **/*.jsx, **/*.ts, **/package.json"
 # Radix UI - Automatic Context Instructions
 
 **Related Prompt:** `/radix-ui`  
-**Related Skill:** `.github/copilot-skills/radix-ui/`
+**Related Skill:** `.github/copilot-skills/ui/radix-ui/`
 
 **Triggers:** radix-ui, @radix-ui/react-, Dialog, Select, Menu, Checkbox, primitives, composable components, unstyled components
 
@@ -169,7 +169,7 @@ npm install @radix-ui/react-*                 # Install all (optional)
 
 ## Bundled Scripts
 
-The radix-ui skill provides helper tools in `.github/copilot-skills/radix-ui/`:
+The radix-ui skill provides helper tools in `.github/copilot-skills/ui/radix-ui/`:
 
 - `README.md` - Full component reference and patterns
 - `patterns.md` - Detailed usage patterns
@@ -205,7 +205,7 @@ Compatible with:
 
 When working with Radix UI:
 1. Use `/radix-ui` prompt for guided implementation
-2. Check `.github/copilot-skills/radix-ui/README.md` for comprehensive patterns
+2. Check `.github/copilot-skills/ui/radix-ui/README.md` for comprehensive patterns
 3. Reference component-specific docs in `references/` directory
 4. Test keyboard navigation and screen reader compatibility
 5. Verify ARIA labels and semantic HTML structure

@@ -133,19 +133,19 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Keywords:** shadcn, shadcn/ui, radix ui, ui components, component library, tailwind components, accessible components, button, card, dialog, form, input, select, sheet, table, tabs, toast, tooltip
 **Suggest:** `/shadcn`
 **Auto-context:** `.github/instructions/shadcn.instructions.md` (when editing .tsx, .jsx, components.json, tailwind.config.*)
-**Skill:** `.github/copilot-skills/shadcn/`
+**Skill:** `.github/copilot-skills/ui/shadcn/`
 
 #### OpenCode Multi-Agent Orchestration
 **Keywords:** opencode, multi-agent, sub-agent, subagent, agent orchestration, spawn agents, delegate tasks, @mention, primary agent, agent workflow, agent coordination, parallel agents, agent pipeline
 **Suggest:** `/opencode`
 **Auto-context:** `.github/instructions/opencode.instructions.md` (when editing Python/TypeScript/JavaScript files, agent configs, workflow files)
-**Skill:** `.github/copilot-skills/opencode/`
+**Skill:** `.github/copilot-skills/frameworks/opencode/`
 
 #### Radix UI Primitives
 **Keywords:** radix-ui, @radix-ui/react-, primitives, unstyled components, accessible components, Dialog, Select, Dropdown, Menu, Checkbox, Radio, Toggle, Slider, Combobox, Tooltip, Popover, accessible UI, composable components, WAI-ARIA, a11y
 **Suggest:** `/radix-ui`
 **Auto-context:** `.github/instructions/radix-ui.instructions.md` (when editing .tsx, .jsx, .ts files with @radix-ui/ imports)
-**Skill:** `.github/copilot-skills/radix-ui/`
+**Skill:** `.github/copilot-skills/ui/radix-ui/`
 
 ### Escalation Hierarchy
 

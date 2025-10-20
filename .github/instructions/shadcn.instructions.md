@@ -43,5 +43,5 @@ Common issues and solutions documented in `references/` files.
 ## Resources
 
 - Skill prompt: `.github/prompts/shadcn.skill.prompt.md`
-- References: `.github/copilot-skills/shadcn/references/`
+- References: `.github/copilot-skills/ui/shadcn/references/`
 - Official docs: https://ui.shadcn.com/
