@@ -254,6 +254,76 @@ brew install jq
 - Check framework spelling
 - Use `list-frameworks.sh` to see available options
 
+## Going Deeper: Web Search + API Reference
+
+This skill is **perfect for quick API reference**, but Apple's documentation ecosystem is vast.
+
+### When to Combine Web Search
+
+**This Skill Best For:**
+- ✅ Quick symbol documentation
+- ✅ API signatures and availability
+- ✅ Platform compatibility
+- ✅ Related methods and properties
+
+**Web Search Best For:**
+- 🔍 Tutorials and guides
+- 🔍 Design patterns and best practices
+- 🔍 Real-world code examples
+- 🔍 Release notes and what's new
+- 🔍 Performance optimization
+
+### Recommended Web Resources
+
+```markdown
+**Official Sources:**
+- Swift.org Blog: https://www.swift.org/blog/
+- WWDC Videos: https://developer.apple.com/videos/
+- Apple Developer News: https://developer.apple.com/news/
+- Apple Sample Code: https://developer.apple.com/sample-code/
+
+**Community:**
+- GitHub: Real-world implementations
+- Stack Overflow: Common patterns and solutions
+- Swift Forums: https://forums.swift.org/
+- Reddit: r/swift, r/swiftui
+
+**Learning:**
+- Hacking with Swift: https://www.hackingwithswift.com/
+- Swift Playgrounds: Built-in learning app
+```
+
+### Example: Complete Workflow
+
+**Goal:** Build a custom button in SwiftUI
+
+**Step 1: Get API Reference** (This Skill)
+```bash
+bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swiftui/button
+bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swiftui "buttonstyle" --limit 5
+```
+
+**Step 2: Learn Best Practices** (Web Search)
+```
+Search: "SwiftUI custom button best practices"
+- Tutorials on button styling
+- ButtonStyle protocol usage
+- Accessibility guidelines
+```
+
+**Step 3: Find Examples** (GitHub)
+```
+Search: "swiftui custom button example"
+- Real project implementations
+- Design patterns
+- Production code
+```
+
+**Step 4: Verify Details** (Back to This Skill)
+```bash
+bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swiftui/buttonstyle
+```
+
 ## Credits
 
 API endpoints reverse-engineered from:

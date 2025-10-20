@@ -145,6 +145,69 @@ Scripts use Apple's official JSON API:
 - **Framework**: `documentation/{framework}.json`
 - **Symbol**: `documentation/{framework}/{symbol}.json`
 
+## Finding More Information
+
+### Using This Skill's Scripts
+The Apple Docs skill provides **reference documentation and API details** via Apple's official JSON API.
+
+### When You Need More
+If you need additional information beyond what's in the API:
+
+**🔍 Web Search for:**
+- Release notes and what's new
+- Tutorial articles and guides
+- Code examples and best practices
+- Community discussions
+- Integration patterns
+- Performance optimization tips
+
+**Recommended Resources:**
+- 📖 **Swift.org Blog**: https://www.swift.org/blog/ - Official Swift language updates
+- 🎥 **WWDC Videos**: https://developer.apple.com/videos/ - Apple's developer conference sessions
+- 📚 **Apple Developer News**: https://developer.apple.com/news/ - Latest announcements
+- 💬 **Swift Forums**: https://forums.swift.org/ - Community discussions
+- 📝 **GitHub Discussions**: Apple frameworks on GitHub for examples
+
+### Workflow: Combining This Skill + Web Search
+
+**Step 1: Check Official Docs (This Skill)**
+```bash
+bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swiftui/button
+```
+
+**Step 2: Search the Web (If Needed)**
+- Copy the symbol path or framework name
+- Search: "SwiftUI Button" + your specific question
+- Check WWDC sessions or blog posts
+
+**Step 3: Explore Examples**
+- Search GitHub for real-world usage
+- Check Stack Overflow for common patterns
+- Review Apple sample projects
+
+### Common Scenarios
+
+**Scenario 1: Understanding a Symbol**
+```
+1. Use this skill to get API documentation
+2. Web search for tutorials if needed
+3. Look for example code in Apple's sample projects
+```
+
+**Scenario 2: Learning New Features**
+```
+1. Search for feature on swift.org blog
+2. Use this skill to explore related APIs
+3. Watch WWDC session for detailed walkthrough
+```
+
+**Scenario 3: Solving a Specific Problem**
+```
+1. Search Stack Overflow or GitHub Discussions
+2. Use this skill to verify API details
+3. Check Apple's official samples for integration patterns
+```
+
 ## Output Format
 
 All scripts output structured data to terminal:

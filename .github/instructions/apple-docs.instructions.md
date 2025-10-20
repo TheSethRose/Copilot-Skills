@@ -124,6 +124,38 @@ bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swiftui/button --js
 - Wait and retry (rate limiting)
 - Use cached results if available
 
+## Going Deeper: Combining with Web Search
+
+This skill provides **official API documentation**. For richer learning:
+
+### When to Search the Web
+- Learning new language features
+- Understanding design patterns
+- Finding real-world examples
+- Reading release notes
+- Watching tutorials
+
+### Recommended Web Resources
+- **Swift.org**: https://www.swift.org/blog/
+- **WWDC Videos**: https://developer.apple.com/videos/
+- **Apple Developer News**: https://developer.apple.com/news/
+- **GitHub**: Search for example implementations
+- **Stack Overflow**: Common patterns and solutions
+
+### Combined Workflow
+```bash
+# Step 1: Get official docs
+bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swiftui/button
+
+# Step 2: If you need more context, search the web for:
+#   - "SwiftUI Button tutorial"
+#   - "SwiftUI Button best practices"
+#   - "SwiftUI Button examples"
+
+# Step 3: Find implementation examples on GitHub
+#   - Search: "swiftui button example"
+```
+
 ## Related Workflows
 
 - **API Design**: Reference Apple patterns when designing interfaces
