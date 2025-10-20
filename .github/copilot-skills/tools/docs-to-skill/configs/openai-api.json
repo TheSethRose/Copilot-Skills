@@ -1,0 +1,32 @@
+{
+  "name": "openai-api",
+  "description": "OpenAI API for GPT models and AI applications",
+  "base_url": "https://platform.openai.com/",
+  "start_urls": ["https://platform.openai.com/docs/introduction"],
+  "max_pages": 150,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.py",
+    "**/*.js",
+    "**/*.ts"
+  ],
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://platform\\.openai\\.com/docs/.*"],
+    "exclude": ["#.*"]
+  },
+  "categories": {
+    "introduction": ["introduction", "quickstart"],
+    "guides": ["guides", "text-generation", "embeddings"],
+    "api_reference": ["api-reference"],
+    "models": ["models", "gpt-4", "gpt-3.5"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}

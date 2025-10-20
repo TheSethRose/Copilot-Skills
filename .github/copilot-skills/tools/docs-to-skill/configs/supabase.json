@@ -1,0 +1,35 @@
+{
+  "name": "supabase",
+  "description": "Open source Firebase alternative with PostgreSQL database",
+  "base_url": "https://supabase.com/",
+  "start_urls": ["https://supabase.com/docs"],
+  "max_pages": 200,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.ts",
+    "**/*.js",
+    "**/*.tsx",
+    "**/*.jsx"
+  ],
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://supabase\\.com/docs/.*"],
+    "exclude": ["#.*", "/blog/.*"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "quickstart"],
+    "database": ["database", "postgres"],
+    "auth": ["auth", "authentication"],
+    "storage": ["storage"],
+    "functions": ["functions", "edge-functions"],
+    "realtime": ["realtime"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 40
+  }
+}

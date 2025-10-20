@@ -1,0 +1,32 @@
+{
+  "name": "react",
+  "description": "JavaScript library for building user interfaces",
+  "base_url": "https://react.dev/",
+  "start_urls": ["https://react.dev/learn"],
+  "max_pages": 150,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.jsx",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.ts"
+  ],
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://react\\.dev/.*"],
+    "exclude": ["#.*", "/blog/.*"]
+  },
+  "categories": {
+    "learn": ["learn", "quick-start", "thinking-in-react"],
+    "reference": ["reference", "api"],
+    "hooks": ["hooks", "use"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "version": "1.0.0",
+  "created": "2025-10-19",
+  "total_frameworks": 10,
+  "frameworks": [
+    {
+      "name": "chakra-ui",
+      "url": "https://chakra-ui.com/docs",
+      "status": "pending",
+      "max_pages": 100,
+      "last_attempt": null,
+      "error": null
+    },
+    {
+      "name": "material-ui",
+      "url": "https://mui.com/material-ui/getting-started/overview/",
+      "status": "success",
+      "max_pages": 120,
+      "last_attempt": "2025-10-20T02:22:01Z",
+      "error": null
+    },
+    {
+      "name": "ant-design",
+      "url": "https://ant.design/docs/react/introduce",
+      "status": "pending",
+      "max_pages": 100,
+      "last_attempt": null,
+      "error": null
+    },
+    {
+      "name": "mantine",
+      "url": "https://mantine.dev/docs/",
+      "status": "pending",
+      "max_pages": 80,
+      "last_attempt": null,
+      "error": null
+    },
+    {
+      "name": "daisyui",
+      "url": "https://daisyui.com/docs/",
+      "status": "pending",
+      "max_pages": 60,
+      "last_attempt": null,
+      "error": null
+    },
+    {
+      "name": "headless-ui",
+      "url": "https://headlessui.com/react",
+      "status": "pending",
+      "max_pages": 50,
+      "last_attempt": null,
+      "error": null
+    },
+    {
+      "name": "bootstrap",
+      "url": "https://getbootstrap.com/docs/",
+      "status": "pending",
+      "max_pages": 100,
+      "last_attempt": null,
+      "error": null
+    },
+    {
+      "name": "tailwind-css",
+      "url": "https://tailwindcss.com/docs",
+      "status": "pending",
+      "max_pages": 100,
+      "last_attempt": null,
+      "error": null
+    },
+    {
+      "name": "radix-ui",
+      "url": "https://www.radix-ui.com/docs",
+      "status": "pending",
+      "max_pages": 80,
+      "last_attempt": null,
+      "error": null
+    },
+    {
+      "name": "shadcn",
+      "url": "https://ui.shadcn.com/docs",
+      "status": "pending",
+      "max_pages": 70,
+      "last_attempt": null,
+      "error": null
+    }
+  ]
+}

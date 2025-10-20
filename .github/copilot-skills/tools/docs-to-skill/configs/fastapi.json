@@ -1,0 +1,31 @@
+{
+  "name": "fastapi",
+  "description": "Modern, fast web framework for building APIs with Python",
+  "base_url": "https://fastapi.tiangolo.com/",
+  "start_urls": ["https://fastapi.tiangolo.com/"],
+  "max_pages": 150,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.py",
+    "**/main.py"
+  ],
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://fastapi\\.tiangolo\\.com/.*"],
+    "exclude": ["#.*", "/alternatives/.*", "/external-links/.*"]
+  },
+  "categories": {
+    "tutorial": ["tutorial", "first-steps"],
+    "advanced": ["advanced", "security", "dependencies"],
+    "deployment": ["deployment"],
+    "reference": ["reference"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}

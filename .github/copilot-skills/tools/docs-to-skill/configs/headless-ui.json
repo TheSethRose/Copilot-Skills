@@ -1,0 +1,29 @@
+{
+  "name": "headless-ui",
+  "description": "Unstyled, accessible UI components for React and Vue",
+  "base_url": "https://headlessui.com/",
+  "start_urls": ["https://headlessui.com/react/menu"],
+  "max_pages": 50,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.tsx",
+    "**/*.jsx",
+    "**/*.vue"
+  ],
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://headlessui\\.com/.*"],
+    "exclude": ["#.*"]
+  },
+  "categories": {
+    "components": ["menu", "dialog", "listbox", "combobox", "switch", "disclosure", "popover", "radio", "tabs", "transition"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 20
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "mantine",
+  "description": "Fully featured React component library",
+  "base_url": "https://mantine.dev/",
+  "start_urls": ["https://mantine.dev/getting-started/"],
+  "max_pages": 200,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.tsx",
+    "**/*.jsx",
+    "**/*.ts"
+  ],
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://mantine\\.dev/.*"],
+    "exclude": ["#.*", "/changelog/.*"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "installation"],
+    "components": ["core", "component"],
+    "hooks": ["hooks"],
+    "theming": ["theme", "style"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 40
+  }
+}

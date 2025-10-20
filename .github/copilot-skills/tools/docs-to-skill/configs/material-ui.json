@@ -1,0 +1,13 @@
+{
+  "name": "material-ui",
+  "base_url": "https://mui.com/",
+  "start_urls": ["https://mui.com/material-ui/getting-started/overview/"],
+  "max_pages": 100,
+  "rate_limit": 0.8,
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article, div[role='main'], #content",
+    "code_blocks": "pre code, code[class*='language-']"
+  },
+  "checkpoint": {"enabled": true, "interval": 20}
+}

@@ -1,0 +1,35 @@
+{
+  "name": "nextjs",
+  "description": "React framework for production with hybrid static & server rendering",
+  "base_url": "https://nextjs.org/",
+  "start_urls": ["https://nextjs.org/docs"],
+  "max_pages": 200,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.jsx",
+    "**/*.tsx",
+    "**/next.config.*",
+    "**/app/**",
+    "**/pages/**"
+  ],
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://nextjs\\.org/docs/.*"],
+    "exclude": ["#.*", "/blog/.*", "/showcase/.*"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "installation"],
+    "app_router": ["app", "routing"],
+    "pages_router": ["pages"],
+    "api": ["api-reference"],
+    "optimization": ["optimization", "image", "font"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 40
+  }
+}

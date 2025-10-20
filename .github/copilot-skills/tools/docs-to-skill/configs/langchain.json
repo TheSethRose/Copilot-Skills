@@ -1,0 +1,32 @@
+{
+  "name": "langchain",
+  "description": "Framework for developing applications powered by language models",
+  "base_url": "https://python.langchain.com/",
+  "start_urls": ["https://python.langchain.com/docs/introduction/"],
+  "max_pages": 200,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.py",
+    "**/*.ipynb"
+  ],
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://python\\.langchain\\.com/docs/.*"],
+    "exclude": ["#.*"]
+  },
+  "categories": {
+    "introduction": ["introduction", "get-started"],
+    "modules": ["modules", "models", "prompts", "chains"],
+    "agents": ["agents", "tools"],
+    "memory": ["memory"],
+    "guides": ["guides", "how-to"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 40
+  }
+}

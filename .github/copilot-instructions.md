@@ -135,12 +135,6 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Auto-context:** `.github/instructions/shadcn.instructions.md` (when editing .tsx, .jsx, components.json, tailwind.config.*)
 **Skill:** `.github/copilot-skills/ui/shadcn/`
 
-#### OpenCode Multi-Agent Orchestration
-**Keywords:** opencode, multi-agent, sub-agent, subagent, agent orchestration, spawn agents, delegate tasks, @mention, primary agent, agent workflow, agent coordination, parallel agents, agent pipeline
-**Suggest:** `/opencode`
-**Auto-context:** `.github/instructions/opencode.instructions.md` (when editing Python/TypeScript/JavaScript files, agent configs, workflow files)
-**Skill:** `.github/copilot-skills/frameworks/opencode/`
-
 #### Radix UI Primitives
 **Keywords:** radix-ui, @radix-ui/react-, primitives, unstyled components, accessible components, Dialog, Select, Dropdown, Menu, Checkbox, Radio, Toggle, Slider, Combobox, Tooltip, Popover, accessible UI, composable components, WAI-ARIA, a11y
 **Suggest:** `/radix-ui`
@@ -152,6 +146,72 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Suggest:** `/chakra-ui`
 **Auto-context:** `.github/instructions/chakra-ui.instructions.md` (when editing .tsx, .jsx, files with @chakra-ui/ imports, chakra.config.*)
 **Skill:** `.github/copilot-skills/chakra-ui/`
+
+#### Kraken Analyst (Crypto Market Analysis)
+**Keywords:** crypto, cryptocurrency, kraken, market data, trading, signals, strategy, bitcoin, ethereum, btc, eth, technical analysis, momentum, RSI, moving average, OHLC, candlestick, volatility, buy signal, sell signal
+**Suggest:** `/kraken-analyst`
+**Auto-context:** `.github/instructions/kraken-analyst.instructions.md` (when editing files matching: **/*.py, **/*.js, **/*.ts, **/crypto*, **/trading*, **/market*, **/kraken*)
+**Skill:** `.github/copilot-skills/kraken-analyst/README.md`
+
+#### React
+**Keywords:** react, reactjs, jsx, hooks, usestate, useeffect, components, functional components, component lifecycle
+**Suggest:** `/react`
+**Auto-context:** `.github/instructions/react.instructions.md` (when editing .tsx, .jsx, .js files)
+**Skill:** `.github/copilot-skills/frontend/react/`
+
+#### Next.js
+**Keywords:** nextjs, next.js, next js, vercel, app router, pages router, ssr, ssg, static generation, server components, api routes
+**Suggest:** `/nextjs`
+**Auto-context:** `.github/instructions/nextjs.instructions.md` (when editing next.config.js, app/*, pages/*, .tsx, .jsx)
+**Skill:** `.github/copilot-skills/frontend/nextjs/`
+
+#### Vue
+**Keywords:** vue, vuejs, vue.js, vue 3, script setup, composition api, single file components, .vue files, pinia
+**Suggest:** `/vue`
+**Auto-context:** `.github/instructions/vue.instructions.md` (when editing .vue files)
+**Skill:** `.github/copilot-skills/frontend/vue/`
+
+#### Mantine
+**Keywords:** mantine, mantine hooks, mantine components, react component library, accessible components
+**Suggest:** `/mantine`
+**Auto-context:** `.github/instructions/mantine.instructions.md` (when editing .tsx, .jsx files with mantine imports)
+**Skill:** `.github/copilot-skills/frontend/mantine/`
+
+#### Headless UI
+**Keywords:** headless ui, headless-ui, @headlessui, unstyled components, accessible, dialog, menu, listbox, combobox
+**Suggest:** `/headless-ui`
+**Auto-context:** `.github/instructions/headless-ui.instructions.md` (when editing .tsx, .jsx, .vue files)
+**Skill:** `.github/copilot-skills/frontend/headless-ui/`
+
+#### Ant Design
+**Keywords:** ant design, antd, @ant-design, enterprise ui, design system, react components
+**Suggest:** `/ant-design`
+**Auto-context:** `.github/instructions/ant-design.instructions.md` (when editing .tsx, .jsx with antd imports)
+**Skill:** `.github/copilot-skills/frontend/ant-design/`
+
+#### Prisma ORM
+**Keywords:** prisma, prisma orm, @prisma/client, prisma schema, database orm, typescript orm, database migrations
+**Suggest:** `/prisma`
+**Auto-context:** `.github/instructions/prisma.instructions.md` (when editing prisma/schema.prisma, .ts files with Prisma)
+**Skill:** `.github/copilot-skills/backend/prisma/`
+
+#### Supabase
+**Keywords:** supabase, supabase database, postgres, realtime, supabase auth, edge functions, vector database, pgvector
+**Suggest:** `/supabase`
+**Auto-context:** `.github/instructions/supabase.instructions.md` (when editing .ts, .js files with supabase)
+**Skill:** `.github/copilot-skills/backend/supabase/`
+
+#### LangChain
+**Keywords:** langchain, llm chain, agents, vector store, embeddings, retrieval, rag, prompt templates
+**Suggest:** `/langchain`
+**Auto-context:** `.github/instructions/langchain.instructions.md` (when editing .py files with langchain)
+**Skill:** `.github/copilot-skills/backend/langchain/`
+
+#### FastAPI
+**Keywords:** fastapi, fast api, @app.get, @app.post, pydantic, async api, python web framework, uvicorn
+**Suggest:** `/fastapi`
+**Auto-context:** `.github/instructions/fastapi.instructions.md` (when editing fastapi .py files)
+**Skill:** `.github/copilot-skills/backend/fastapi/`
 
 ### Escalation Hierarchy
 

@@ -1,0 +1,32 @@
+{
+  "name": "daisyui",
+  "description": "Tailwind CSS component library",
+  "base_url": "https://daisyui.com/",
+  "start_urls": ["https://daisyui.com/docs/install/"],
+  "max_pages": 100,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.html",
+    "**/*.tsx",
+    "**/*.jsx",
+    "**/tailwind.config.*"
+  ],
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://daisyui\\.com/.*"],
+    "exclude": ["#.*"]
+  },
+  "categories": {
+    "getting_started": ["install", "use", "customize"],
+    "components": ["component"],
+    "themes": ["theme", "color"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 20
+  }
+}

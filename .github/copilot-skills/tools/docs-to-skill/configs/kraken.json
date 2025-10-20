@@ -1,0 +1,45 @@
+{
+  "name": "kraken",
+  "description": "Kraken cryptocurrency exchange REST and WebSocket API documentation",
+  "base_url": "https://docs.kraken.com/api/",
+  "max_pages": 300,
+  "rate_limit": 1.5,
+  "file_patterns": [
+    "**/*.py",
+    "**/*.js",
+    "**/*.ts",
+    "**/crypto*",
+    "**/trading*",
+    "**/market*"
+  ],
+  "selectors": {
+    "main_content": "main, article, div[role='main'], .content, .docs-content",
+    "title": "h1, h2, title",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": [
+      "^https://docs\\.kraken\\.com/.*"
+    ],
+    "exclude": [
+      "/blog/.*",
+      "#.*",
+      ".*\\.pdf$"
+    ]
+  },
+  "categories": {
+    "rest_api": ["rest", "api", "endpoint", "public", "private"],
+    "websocket": ["websocket", "ws", "stream", "subscribe"],
+    "authentication": ["authentication", "auth", "api-key", "signing"],
+    "market_data": ["ticker", "ohlc", "spreads", "trades", "orderbook"],
+    "trading": ["trading", "orders", "cancel", "query", "add-order"],
+    "staking": ["staking", "earn"],
+    "spot": ["spot", "pairs"],
+    "futures": ["futures", "derivatives"],
+    "getting_started": ["getting-started", "introduction", "overview", "installation"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 50
+  }
+}

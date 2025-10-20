@@ -1,0 +1,33 @@
+{
+  "name": "prisma",
+  "description": "Next-generation ORM for Node.js and TypeScript",
+  "base_url": "https://www.prisma.io/",
+  "start_urls": ["https://www.prisma.io/docs"],
+  "max_pages": 200,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/prisma/**",
+    "**/*.prisma",
+    "**/*.ts",
+    "**/*.js"
+  ],
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://www\\.prisma\\.io/docs/.*"],
+    "exclude": ["#.*"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "quickstart", "setup"],
+    "concepts": ["concepts", "components"],
+    "guides": ["guides", "database"],
+    "reference": ["reference", "api"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 40
+  }
+}

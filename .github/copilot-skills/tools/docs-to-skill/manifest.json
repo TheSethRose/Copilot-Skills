@@ -1,0 +1,90 @@
+{
+  "manifest": {
+    "version": "1.0.0",
+    "generated": "2025-10-19T20:00:00Z",
+    "total_frameworks": 8,
+    "ui_components": [
+      {
+        "name": "chakra-ui",
+        "url": "https://chakra-ui.com/docs",
+        "status": "failed",
+        "max_pages": 100,
+        "last_attempt": "2025-10-19T20:59:52.557775",
+        "error": "Insufficient pages scraped (< 2 pages)",
+        "files_generated": []
+      },
+      {
+        "name": "material-ui",
+        "url": "https://mui.com/material-ui/getting-started/overview/",
+        "status": "completed",
+        "max_pages": 120,
+        "last_attempt": "2025-10-19T21:01:04.445856",
+        "error": null,
+        "files_generated": [
+          ".github/prompts/material-ui.skill.prompt.md",
+          ".github/instructions/material-ui.instructions.md",
+          ".github/copilot-skills/material-ui/"
+        ]
+      },
+      {
+        "name": "ant-design",
+        "url": "https://ant.design/docs/react/introduce",
+        "status": "pending",
+        "max_pages": 100,
+        "last_attempt": null,
+        "error": null,
+        "files_generated": []
+      },
+      {
+        "name": "mantine",
+        "url": "https://mantine.dev/docs/",
+        "status": "pending",
+        "max_pages": 80,
+        "last_attempt": null,
+        "error": null,
+        "files_generated": []
+      },
+      {
+        "name": "daisyui",
+        "url": "https://daisyui.com/docs/",
+        "status": "pending",
+        "max_pages": 60,
+        "last_attempt": null,
+        "error": null,
+        "files_generated": []
+      },
+      {
+        "name": "headless-ui",
+        "url": "https://headlessui.com/react",
+        "status": "pending",
+        "max_pages": 50,
+        "last_attempt": null,
+        "error": null,
+        "files_generated": []
+      },
+      {
+        "name": "bootstrap",
+        "url": "https://getbootstrap.com/docs/",
+        "status": "pending",
+        "max_pages": 100,
+        "last_attempt": null,
+        "error": null,
+        "files_generated": []
+      },
+      {
+        "name": "tailwind-css",
+        "url": "https://tailwindcss.com/docs",
+        "status": "pending",
+        "max_pages": 100,
+        "last_attempt": null,
+        "error": null,
+        "files_generated": []
+      }
+    ],
+    "summary": {
+      "completed": 1,
+      "failed": 1,
+      "pending": 6
+    }
+  }
+}

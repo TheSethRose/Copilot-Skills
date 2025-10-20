@@ -1,0 +1,41 @@
+{
+  "name": "tailwind",
+  "description": "Utility-first CSS framework",
+  "base_url": "https://tailwindcss.com/",
+  "start_urls": ["https://tailwindcss.com/docs/installation/using-vite"],
+  "max_pages": 200,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.css",
+    "**/*.html",
+    "**/*.jsx",
+    "**/*.tsx",
+    "**/tailwind.config.*"
+  ],
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://tailwindcss\\.com/docs/.*"],
+    "exclude": ["#.*"]
+  },
+  "categories": {
+    "getting_started": ["installation", "editor-setup", "using-with-preprocessors"],
+    "core_concepts": ["utility-first", "responsive-design", "dark-mode"],
+    "customization": ["configuration", "theme", "plugins"],
+    "layout": ["container", "columns", "flex", "grid"],
+    "typography": ["font", "text", "list"],
+    "backgrounds": ["background", "gradient"],
+    "borders": ["border", "divide", "ring"],
+    "effects": ["shadow", "opacity", "mix-blend"],
+    "filters": ["blur", "brightness", "contrast"],
+    "transitions": ["transition", "animation"],
+    "transforms": ["scale", "rotate", "translate"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 40
+  }
+}

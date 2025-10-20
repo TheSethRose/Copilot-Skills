@@ -1,0 +1,31 @@
+{
+  "name": "ant-design",
+  "description": "Enterprise-class UI design language and React component library",
+  "base_url": "https://ant.design/",
+  "start_urls": ["https://ant.design/docs/react/introduce"],
+  "max_pages": 200,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.tsx",
+    "**/*.jsx",
+    "**/*.ts"
+  ],
+  "selectors": {
+    "title": "h1, title",
+    "main_content": "main, article, .markdown",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://ant\\.design/.*"],
+    "exclude": ["#.*", "/changelog.*"]
+  },
+  "categories": {
+    "getting_started": ["introduce", "getting-started", "installation"],
+    "components": ["components"],
+    "design": ["design", "pattern"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 40
+  }
+}
