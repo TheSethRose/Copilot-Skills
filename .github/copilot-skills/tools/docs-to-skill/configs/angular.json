@@ -1,0 +1,32 @@
+{
+  "name": "angular",
+  "description": "Platform for building mobile and desktop web applications",
+  "base_url": "https://angular.dev/docs/",
+  "max_pages": 200,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.ts",
+    "**/*.component.ts",
+    "**/app*"
+  ],
+  "selectors": {
+    "main_content": "main, article, .docs-content",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://angular\\.dev/docs/.*"],
+    "exclude": ["/guide/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["overview", "setup", "installation"],
+    "fundamentals": ["components", "templates", "directives"],
+    "services": ["services", "dependency-injection"],
+    "routing": ["routing"],
+    "forms": ["forms"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 40
+  }
+}

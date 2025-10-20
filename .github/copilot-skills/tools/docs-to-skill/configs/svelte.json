@@ -1,0 +1,32 @@
+{
+  "name": "svelte",
+  "description": "Cybernetically enhanced web apps",
+  "base_url": "https://svelte.dev/docs/",
+  "max_pages": 150,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.svelte",
+    "**/*.ts",
+    "**/*.js"
+  ],
+  "selectors": {
+    "main_content": "main, article, .content",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://svelte\\.dev/docs/.*"],
+    "exclude": ["/blog/.*", "#.*"]
+  },
+  "categories": {
+    "introduction": ["intro", "introduction"],
+    "basics": ["basic", "template-syntax"],
+    "advanced": ["advanced-bindings", "stores"],
+    "animations": ["animations", "transitions"],
+    "special": ["special-elements"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}

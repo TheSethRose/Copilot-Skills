@@ -1,0 +1,32 @@
+{
+  "name": "nuxt",
+  "description": "The Intuitive Vue Framework",
+  "base_url": "https://nuxt.com/docs/",
+  "max_pages": 200,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.vue",
+    "**/*.ts",
+    "**/nuxt*"
+  ],
+  "selectors": {
+    "main_content": "main, .content, article",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://nuxt\\.com/docs/.*"],
+    "exclude": ["/api/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["get-started", "install"],
+    "guide": ["guide", "concepts"],
+    "api": ["api", "composables"],
+    "examples": ["examples"],
+    "advanced": ["advanced", "advanced-guide"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 40
+  }
+}
