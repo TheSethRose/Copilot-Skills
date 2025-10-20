@@ -1,0 +1,12 @@
+{
+  "name": "webpack",
+  "description": "JavaScript module bundler",
+  "base_url": "https://webpack.js.org/concepts/",
+  "max_pages": 100,
+  "rate_limit": 0.5,
+  "file_patterns": ["**/webpack.config.*"],
+  "selectors": {"main_content": "main, article", "title": "h1", "code_blocks": "pre code"},
+  "url_patterns": {"include": ["^https://webpack\\.js\\.org/.*"], "exclude": ["#.*"]},
+  "categories": {"concepts": ["concepts"], "config": ["configuration"], "guides": ["guides"]},
+  "checkpoint": {"enabled": true, "interval": 20}
+}
