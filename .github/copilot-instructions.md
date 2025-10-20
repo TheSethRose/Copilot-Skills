@@ -129,6 +129,12 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Auto-context:** `.github/instructions/mcp-builder.instructions.md` (when editing MCP-related files)
 **Skill:** `.github/copilot-skills/builders/mcp-builder/README.md`
 
+#### Tailwind CSS v4
+**Keywords:** tailwind, tailwind css, utility classes, responsive design, dark mode, styling, css framework, breakpoint, hover state, @import tailwindcss, flex, grid, padding, margin, gap
+**Suggest:** `/tailwind`
+**Auto-context:** `.github/instructions/tailwind.instructions.md` (when editing **/*.{css,jsx,tsx,html}, **/tailwind.config.*)
+**Skill:** `.github/copilot-skills/frontend/tailwind-v4/`
+
 #### ShadCN UI Components
 **Keywords:** shadcn, shadcn/ui, radix ui, ui components, component library, tailwind components, accessible components, button, card, dialog, form, input, select, sheet, table, tabs, toast, tooltip
 **Suggest:** `/shadcn`
@@ -212,6 +218,18 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Suggest:** `/fastapi`
 **Auto-context:** `.github/instructions/fastapi.instructions.md` (when editing fastapi .py files)
 **Skill:** `.github/copilot-skills/backend/fastapi/`
+
+#### Storybook
+**Keywords:** storybook, component development, component library, stories, UI testing, documentation, visual testing
+**Suggest:** `/storybook`
+**Auto-context:** `.github/instructions/storybook.instructions.md` (when editing stories files, .stories.*)
+**Skill:** `.github/copilot-skills/storybook/`
+
+#### Vercel
+**Keywords:** vercel, deployment, serverless, edge functions, preview, production, hosting, next.js deployment
+**Suggest:** `/vercel`
+**Auto-context:** `.github/instructions/vercel.instructions.md` (when editing vercel.json, .env.local, deployment configs)
+**Skill:** `.github/copilot-skills/vercel/`
 
 ### Escalation Hierarchy
 

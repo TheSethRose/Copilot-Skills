@@ -12,7 +12,7 @@ Tailwind CSS - https://tailwindcss.com/docs ⚠️ (manual URL list approach nee
 
 # Design / Storybook / UX
 Figma API - https://www.figma.com/developers/api
-Storybook - https://storybook.js.org/docs
+Storybook - https://storybook.js.org/docs ✅ (skill generated, ~20 pages)
 Framer - https://www.framer.com/docs/
 Lucidchart API - https://lucid.app/documents/api
 Canva API - https://www.canva.dev/docs/
@@ -84,7 +84,7 @@ Serverless Framework - https://www.serverless.com/framework/docs/
 GitHub Actions - https://docs.github.com/en/actions
 Docker - https://docs.docker.com
 Kubernetes - https://kubernetes.io/docs/
-Vercel - https://vercel.com/docs
+Vercel - https://vercel.com/docs ✅ (skill generated, ~20 pages)
 Netlify - https://docs.netlify.com
 Cloudflare - https://developers.cloudflare.com/
 AWS - https://docs.aws.amazon.com/
