@@ -1,0 +1,37 @@
+{
+  "name": "better-auth",
+  "description": "Open source authentication framework for the modern web",
+  "base_url": "https://www.better-auth.com/docs",
+  "max_pages": 200,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "**/auth.config.*"
+  ],
+  "selectors": {
+    "main_content": "main, article, .content, [role='main']",
+    "title": "h1, h2, title",
+    "code_blocks": "pre code, pre"
+  },
+  "url_patterns": {
+    "include": ["^https://www\\.better-auth\\.com/docs/.*"],
+    "exclude": ["/blog/.*", "#.*", "\\?.*"]
+  },
+  "categories": {
+    "introduction": ["introduction", "overview", "getting-started"],
+    "installation": ["installation", "setup", "requirements"],
+    "configuration": ["configuration", "config", "options"],
+    "guides": ["guides", "tutorial", "how-to"],
+    "authentication": ["authentication", "auth", "signin", "signup"],
+    "integrations": ["integrations", "plugins", "adapters"],
+    "reference": ["reference", "api", "types"],
+    "examples": ["example", "demo"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 50
+  }
+}

@@ -96,6 +96,7 @@ This document tracks the status of documentation skills in development.
 ## API Gateways / Auth
 
 - [Auth0](https://auth0.com/docs)
+- [Auth.js (NextAuth.js)](https://authjs.dev/getting-started)
 - [Clerk](https://clerk.com/docs)
 - [Supabase Auth](https://supabase.com/docs/guides/auth)
 - [Firebase Auth](https://firebase.google.com/docs/auth)
@@ -284,8 +285,8 @@ This document tracks the status of documentation skills in development.
 ## Summary
 
 - **Total Generated**: 24 skills ✅
-- **AWS Outage (Retry Later)**: 5 configs with ~20 pages each (Django, Kubernetes, Python, Docker, Chakra UI)
-- **Total Configs Tested**: 52
+- **AWS Outage (Retry Later)**: 6 configs with ~20 pages each (Django, Kubernetes, Python, Docker, Chakra UI, Auth.js)
+- **Total Configs Tested**: 53
 - **Blocked/Low Pages**: 23+ sites (anti-scraping or insufficient content)
 
 ### Breakdown by Status

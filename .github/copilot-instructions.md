@@ -207,6 +207,12 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Auto-context:** `.github/instructions/supabase.instructions.md` (when editing .ts, .js files with supabase)
 **Skill:** `.github/copilot-skills/backend/supabase/`
 
+#### Better-Auth
+**Keywords:** better-auth, authentication framework, auth setup, oauth, passkey, email-otp, session management, auth plugins
+**Suggest:** `/better-auth`
+**Auto-context:** `.github/instructions/better-auth.instructions.md` (when editing .ts, .tsx, .js, .jsx, auth.config.*)
+**Skill:** `.github/prompts/better-auth.skill.prompt.md`
+
 #### LangChain
 **Keywords:** langchain, llm chain, agents, vector store, embeddings, retrieval, rag, prompt templates
 **Suggest:** `/langchain`
