@@ -29,9 +29,9 @@ This document tracks the status of documentation skills in development.
 - [React](https://react.dev) ✅ skill generated, 150+ pages
 - [Next.js](https://nextjs.org/docs) ✅ skill generated, 150+ pages
 - [Vue.js](https://vuejs.org/guide/introduction.html) ✅ skill generated, 150+ pages
-- [Nuxt](https://nuxt.com/docs) 📋 config ready
-- [Svelte](https://svelte.dev/docs) 📋 config ready
-- [Angular](https://angular.dev) 📋 config ready
+- [Nuxt](https://nuxt.com/docs) ⚠️ blocked, 1 page
+- [Svelte](https://svelte.dev/docs) ✅ skill generated, ~20 pages
+- [Angular](https://angular.dev) ⚠️ blocked, 1 page
 
 ## Backend / Fullstack
 
@@ -69,8 +69,8 @@ This document tracks the status of documentation skills in development.
 
 ## Summary
 
-- **Total Generated**: 18 skills
-- **Ready for Generation**: 6 configs (Django, Kubernetes, Python, Nuxt, Svelte, Angular)
+- **Total Generated**: 19 skills
+- **Ready for Generation**: 4 configs (Django, Kubernetes, Python, and 1 more)
 - **Total Configs**: 40+
 - **Blocked**: 12+ sites
 
