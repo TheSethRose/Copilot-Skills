@@ -7,7 +7,7 @@ Ant Design - https://ant.design/docs/react/introduce ✅ (skill generated)
 Mantine - https://mantine.dev/docs/ ✅ (skill generated, 148 pages)
 DaisyUI - https://daisyui.com/docs/ ⚠️ (anti-scraping detected)
 Headless UI - https://headlessui.com/react ✅ (skill generated, 27 pages)
-Bootstrap - https://getbootstrap.com/docs/
+Bootstrap - https://getbootstrap.com/docs/ ⚠️ (anti-scraping detected - only 1 page)
 Tailwind CSS - https://tailwindcss.com/docs ⚠️ (manual URL list approach needed)
 
 # Design / Storybook / UX
@@ -55,8 +55,8 @@ Vanilla Extract - https://vanilla-extract.style/documentation
 Prisma - https://www.prisma.io/docs ✅ (skill generated, 150+ pages)
 Sequelize - https://sequelize.org/docs/
 TypeORM - https://typeorm.io/
-Drizzle ORM - https://orm.drizzle.team/docs/overview
-Mongoose - https://mongoosejs.com/docs/
+Drizzle ORM - https://orm.drizzle.team/docs/overview ⚠️ (404 error - URL redirect issue)
+Mongoose - https://mongoosejs.com/docs/ ⚠️ (anti-scraping detected - only 1 page)
 Supabase - https://supabase.com/docs ✅ (skill generated, 150+ pages)
 Firebase - https://firebase.google.com/docs
 PlanetScale - https://planetscale.com/docs
@@ -82,7 +82,7 @@ Serverless Framework - https://www.serverless.com/framework/docs/
 
 # Dev Tools / Platforms
 GitHub Actions - https://docs.github.com/en/actions
-Docker - https://docs.docker.com
+Docker - https://docs.docker.com ⚠️ (scrape timeout - ~20 pages available)
 Kubernetes - https://kubernetes.io/docs/
 Vercel - https://vercel.com/docs ✅ (skill generated, ~20 pages)
 Netlify - https://docs.netlify.com
@@ -110,7 +110,7 @@ Insomnia - https://docs.insomnia.rest/
 # Languages
 Python - https://docs.python.org/3/
 JavaScript (MDN) - https://developer.mozilla.org/en-US/docs/Web/JavaScript
-TypeScript - https://www.typescriptlang.org/docs/
+TypeScript - https://www.typescriptlang.org/docs/ ✅ (skill generated, ~20 pages)
 Go - https://go.dev/doc/
 Rust - https://doc.rust-lang.org/
 Java - https://docs.oracle.com/en/java/
@@ -267,9 +267,9 @@ FastAPI - https://fastapi.tiangolo.com/
 Streamlit - https://docs.streamlit.io/
 
 # Testing
-Jest - https://jestjs.io/docs/getting-started
-Vitest - https://vitest.dev/guide/
-Playwright - https://playwright.dev/docs/intro
+Jest - https://jestjs.io/docs/getting-started ⚠️ (anti-scraping detected - only 1 page)
+Vitest - https://vitest.dev/guide/ ⚠️ (insufficient pages - only 2 pages)
+Playwright - https://playwright.dev/docs/intro ⚠️ (anti-scraping detected - only 1 page)
 Cypress - https://docs.cypress.io/
 Testing Library - https://testing-library.com/docs/
 Pytest - https://docs.pytest.org/en/stable/
