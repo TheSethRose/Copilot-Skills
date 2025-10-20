@@ -1,0 +1,26 @@
+{
+  "name": "swiftui",
+  "description": "SwiftUI - Apple's modern UI framework",
+  "base_url": "https://developer.apple.com/documentation/swiftui/",
+  "max_pages": 300,
+  "rate_limit": 0.5,
+  "file_patterns": ["**/*.swift", "**/*.swiftui"],
+  "selectors": {
+    "main_content": "main, article, .content, [role='main']",
+    "title": "h1, h2",
+    "code_blocks": "pre code, pre"
+  },
+  "url_patterns": {
+    "include": ["^https://developer\\.apple\\.com/documentation/swiftui/.*"],
+    "exclude": ["/videos/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "introduction"],
+    "views": ["views", "containers", "controls"],
+    "layout": ["layout", "stacks", "grids"],
+    "modifiers": ["modifiers", "styles"],
+    "state": ["state", "binding", "environmentobject"],
+    "reference": ["reference"]
+  },
+  "checkpoint": {"enabled": true, "interval": 50}
+}
