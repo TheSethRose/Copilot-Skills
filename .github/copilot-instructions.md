@@ -141,6 +141,12 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Auto-context:** `.github/instructions/opencode.instructions.md` (when editing Python/TypeScript/JavaScript files, agent configs, workflow files)
 **Skill:** `.github/copilot-skills/opencode/`
 
+#### Radix UI Primitives
+**Keywords:** radix-ui, @radix-ui/react-, primitives, unstyled components, accessible components, Dialog, Select, Dropdown, Menu, Checkbox, Radio, Toggle, Slider, Combobox, Tooltip, Popover, accessible UI, composable components, WAI-ARIA, a11y
+**Suggest:** `/radix-ui`
+**Auto-context:** `.github/instructions/radix-ui.instructions.md` (when editing .tsx, .jsx, .ts files with @radix-ui/ imports)
+**Skill:** `.github/copilot-skills/radix-ui/`
+
 ### Escalation Hierarchy
 
 When responding to user queries, follow this decision tree:
