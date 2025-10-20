@@ -63,7 +63,15 @@ EOL
 generate_config() {
     local name="$1"
     local purpose="$2"
-    local prompt_path="$(pwd)/.github/copilot-skills/frameworks/opencode/subagents/${name}.txt"
+    
+    # Get the absolute path to the subagents directory
+    # This script is at: .github/copilot-skills/frameworks/opencode/scripts/generate-agent.sh
+    # We need to store subagents at: .github/copilot-skills/frameworks/opencode/subagents/
+    local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    local opencode_dir="$(dirname "$script_dir")"
+    local subagents_dir="$opencode_dir/subagents"
+    local prompt_path="$subagents_dir/${name}.txt"
+    
     local purpose_lower=$(echo "$purpose" | tr '[:upper:]' '[:lower:]')
     
     # Auto-detect settings based on purpose
@@ -207,12 +215,17 @@ cmd_create() {
     echo -e "${BLUE}Creating agent: ${CYAN}$name${NC}"
     echo ""
     
-    # Create subagents directory in opencode skill
-    mkdir -p .github/copilot-skills/frameworks/opencode/subagents
+    # Get absolute path to subagents directory
+    local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    local opencode_dir="$(dirname "$script_dir")"
+    local subagents_dir="$opencode_dir/subagents"
+    
+    # Create subagents directory
+    mkdir -p "$subagents_dir"
     
     # Generate prompt file in opencode/subagents
-    generate_prompt "$name" "$purpose" > ".github/copilot-skills/frameworks/opencode/subagents/${name}.txt"
-    echo -e "${GREEN}✓${NC} Created .github/copilot-skills/frameworks/opencode/subagents/${name}.txt"
+    generate_prompt "$name" "$purpose" > "$subagents_dir/${name}.txt"
+    echo -e "${GREEN}✓${NC} Created $subagents_dir/${name}.txt"
     
     # Add to config
     add_to_config "$name" "$purpose"
@@ -271,10 +284,15 @@ cmd_remove() {
     # Remove from config
     remove_from_config "$name"
     
-    # Optionally remove prompt file
-    if [ -f ".github/copilot-skills/frameworks/opencode/subagents/${name}.txt" ]; then
-        rm ".github/copilot-skills/frameworks/opencode/subagents/${name}.txt"
-        echo -e "${GREEN}✓${NC} Removed .github/copilot-skills/frameworks/opencode/subagents/${name}.txt"
+    # Get absolute path to subagents directory
+    local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    local opencode_dir="$(dirname "$script_dir")"
+    local subagents_dir="$opencode_dir/subagents"
+    
+    # Remove prompt file
+    if [ -f "$subagents_dir/${name}.txt" ]; then
+        rm "$subagents_dir/${name}.txt"
+        echo -e "${GREEN}✓${NC} Removed $subagents_dir/${name}.txt"
     fi
     
     echo -e "${GREEN}✓${NC} Agent deleted"
@@ -344,7 +362,13 @@ case "$ACTION" in
             echo -e "${RED}✗${NC} Agent name required"
             exit 1
         fi
-        ${EDITOR:-nano} ".github/copilot-skills/frameworks/opencode/subagents/${AGENT_NAME}.txt"
+        
+        # Get absolute path to subagents directory
+        local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+        local opencode_dir="$(dirname "$script_dir")"
+        local subagents_dir="$opencode_dir/subagents"
+        
+        ${EDITOR:-nano} "$subagents_dir/${AGENT_NAME}.txt"
         ;;
     *)
         if [ -n "$ACTION" ]; then
