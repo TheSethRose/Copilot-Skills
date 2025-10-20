@@ -80,3 +80,6 @@ output.md
 .git/
 tweets.md
 output/
+# Generated Outputs
+/output/
+*.md.bak

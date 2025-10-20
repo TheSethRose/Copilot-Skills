@@ -73,20 +73,51 @@ Use this skill when:
 
 ### 🎯 Creating Custom Agents
 
-**Generate agent template:**
+**Generate and auto-setup agent (fully automated):**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh code-reviewer subagent
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh create hello-world "Prints Hello World and agent name"
+```
+
+This automatically:
+1. Creates the agent prompt file (`prompts/hello-world.txt`)
+2. Adds agent to `~/.config/opencode/opencode.json`
+3. Auto-detects settings (temperature, tool permissions)
+4. Uses correct model: `github-copilot/claude-haiku-4.5`
+
+**Test the agent:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh test hello-world "Say hello and tell me your name"
+```
+
+**Remove agent when done:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh remove hello-world
+```
+
+**List all agents:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh list
+```
+
+**Show agent configuration:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh show hello-world
+```
+
+**Edit agent prompt:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh edit hello-world
 ```
 
 **Agent configuration structure:**
 ```json
 {
   "agent": {
-    "code-reviewer": {
+    "hello-world": {
       "mode": "subagent",
-      "model": "anthropic/claude-sonnet-4-20250514",
-      "temperature": 0.1,
-      "prompt": "{file:./prompts/code-reviewer.txt}",
+      "model": "github-copilot/claude-haiku-4.5",
+      "temperature": 0.7,
+      "prompt": "{file:./prompts/hello-world.txt}",
       "tools": {
         "write": false,
         "edit": false,
@@ -214,6 +245,28 @@ This skill includes comprehensive OpenCode documentation in `.github/copilot-ski
 
 ## How to Use
 
+### For Creating & Managing Custom Agents
+
+**Create a new agent:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh create my-agent "Agent purpose here"
+```
+
+**Test an agent:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh test my-agent "Test message"
+```
+
+**Remove an agent:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh remove my-agent
+```
+
+**List all agents:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh list
+```
+
 ### For Multi-Agent Orchestration
 
 **1. Start with planning:**
@@ -230,24 +283,6 @@ This skill includes comprehensive OpenCode documentation in `.github/copilot-ski
 **3. Execute with @build:**
 ```bash
 @build implement the changes
-```
-
-### For Creating Custom Agents
-
-**1. Generate template:**
-```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh my-agent subagent
-```
-
-**2. Customize the prompt**
-Create `prompts/my-agent.txt` with specialized instructions
-
-**3. Add to config**
-Update `opencode.config.json` with agent configuration
-
-**4. Test the agent:**
-```bash
-@my-agent [your request]
 ```
 
 ### For Workflow Patterns
@@ -300,22 +335,54 @@ bash .github/copilot-skills/opencode/scripts/agent-reference.sh compare
 
 ## Bundled Scripts
 
-This skill includes three powerful scripts for agent orchestration:
+### generate-agent.sh - Complete Agent Lifecycle Manager
 
-### 1. generate-agent.sh
-Creates new custom agent templates
+Manage all aspects of custom agents: create, test, list, remove, edit, and show.
+
+**Create agent:**
 ```bash
-bash .github/copilot-skills/opencode/scripts/generate-agent.sh [name] [mode]
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh create code-reviewer "Reviews code for quality and security"
+```
+- Auto-generates prompt file
+- Adds to `~/.config/opencode/opencode.json`
+- Detects settings (temperature, tools) based on purpose
+- Ready to test immediately
+
+**Test agent:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh test code-reviewer "Review this function"
 ```
 
-### 2. orchestrate-agents.sh
+**List all agents:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh list
+```
+
+**Remove agent (cleanup when done):**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh remove code-reviewer
+```
+
+**Edit agent prompt:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh edit code-reviewer
+```
+
+**Show agent configuration:**
+```bash
+bash .github/copilot-skills/opencode/scripts/generate-agent.sh show code-reviewer
+```
+
+### orchestrate-agents.sh
 Shows multi-agent workflow patterns
+
 ```bash
 bash .github/copilot-skills/opencode/scripts/orchestrate-agents.sh [pattern]
 ```
 
-### 3. agent-reference.sh
+### agent-reference.sh
 Quick reference for agent capabilities
+
 ```bash
 bash .github/copilot-skills/opencode/scripts/agent-reference.sh [agent]
 ```
