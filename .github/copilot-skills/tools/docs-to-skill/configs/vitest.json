@@ -1,0 +1,31 @@
+{
+  "name": "vitest",
+  "description": "Next generation unit test framework powered by Vite",
+  "base_url": "https://vitest.dev/guide/",
+  "max_pages": 80,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.test.ts",
+    "**/*.test.js",
+    "**/vitest.config.ts"
+  ],
+  "selectors": {
+    "main_content": "main, article, .content",
+    "title": "h1",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://vitest\\.dev/.*"],
+    "exclude": ["/why", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["getting-started"],
+    "features": ["features"],
+    "guide": ["why", "setup"],
+    "api": ["api", "globals"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 25
+  }
+}

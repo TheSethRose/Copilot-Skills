@@ -1,0 +1,34 @@
+{
+  "name": "typescript",
+  "description": "Typed superset of JavaScript that compiles to clean, readable JavaScript code",
+  "base_url": "https://www.typescriptlang.org/docs/",
+  "max_pages": 150,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/tsconfig.json"
+  ],
+  "selectors": {
+    "main_content": "main, article, .content",
+    "title": "h1",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://www\\.typescriptlang\\.org/docs/.*"],
+    "exclude": ["/play", "/handbook-v2/", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["get-started", "handbook", "basics"],
+    "everyday_types": ["everyday-types", "types", "primitives"],
+    "narrowing": ["narrowing", "type-guards"],
+    "functions": ["functions", "parameters", "return-types"],
+    "object_types": ["object-types", "interfaces", "types"],
+    "classes": ["classes", "members", "inheritance"],
+    "modules": ["modules", "types"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 50
+  }
+}

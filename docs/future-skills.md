@@ -32,10 +32,10 @@ Astro - https://docs.astro.build
 
 # Backend / Fullstack
 Node.js - https://nodejs.org/en/docs
-Express - https://expressjs.com/en/starter/installing.html
-NestJS - https://docs.nestjs.com
+Express - https://expressjs.com/en/starter/installing.html ⚠️ (config created, 1 page - blocked)
+NestJS - https://docs.nestjs.com ⚠️ (config created, 1 page - blocked)
 Fastify - https://fastify.dev/docs/latest/
-Django - https://docs.djangoproject.com/en/stable/
+Django - https://docs.djangoproject.com/en/stable/ ⏳ (config ready, ~20 pages - generation pending)
 Flask - https://flask.palletsprojects.com/en/latest/
 FastAPI - https://fastapi.tiangolo.com/ ✅ (skill generated, 150+ pages)
 Laravel - https://laravel.com/docs
@@ -53,7 +53,7 @@ Vanilla Extract - https://vanilla-extract.style/documentation
 
 # Databases / ORMs
 Prisma - https://www.prisma.io/docs ✅ (skill generated, 150+ pages)
-Sequelize - https://sequelize.org/docs/
+Sequelize - https://sequelize.org/docs/ ⚠️ (config created, 1 page - blocked)
 TypeORM - https://typeorm.io/
 Drizzle ORM - https://orm.drizzle.team/docs/overview ⚠️ (404 error - URL redirect issue)
 Mongoose - https://mongoosejs.com/docs/ ⚠️ (anti-scraping detected - only 1 page)
@@ -73,7 +73,7 @@ Kong - https://docs.konghq.com/
 Tyk - https://tyk.io/docs/
 
 # Infrastructure / IaC
-Terraform - https://developer.hashicorp.com/terraform/docs
+Terraform - https://developer.hashicorp.com/terraform/docs ⚠️ (config created, 1 page - blocked)
 Pulumi - https://www.pulumi.com/docs/
 Ansible - https://docs.ansible.com/
 Chef - https://docs.chef.io/

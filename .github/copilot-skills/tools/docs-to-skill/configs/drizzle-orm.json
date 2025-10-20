@@ -1,0 +1,33 @@
+{
+  "name": "drizzle-orm",
+  "description": "TypeScript ORM that feels like writing SQL",
+  "base_url": "https://orm.drizzle.team/docs/",
+  "max_pages": 100,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.ts",
+    "**/schema.*",
+    "**/drizzle/*"
+  ],
+  "selectors": {
+    "main_content": "main, article, .content",
+    "title": "h1",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://orm\\.drizzle\\.team/docs/.*"],
+    "exclude": ["/learn/", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["get-started", "installation"],
+    "schemas": ["schemas", "columns", "tables"],
+    "queries": ["queries", "select", "insert", "update", "delete"],
+    "relations": ["relations", "joins"],
+    "migrations": ["migrations", "drizzle-kit"],
+    "api": ["api", "reference"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}

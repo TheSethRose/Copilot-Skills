@@ -1,0 +1,33 @@
+{
+  "name": "playwright",
+  "description": "Playwright enables reliable end-to-end testing for modern web apps",
+  "base_url": "https://playwright.dev/docs/",
+  "max_pages": 120,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.spec.ts",
+    "**/*.spec.js",
+    "**/playwright.config.ts"
+  ],
+  "selectors": {
+    "main_content": "main, article, .markdown",
+    "title": "h1",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://playwright\\.dev/docs/.*"],
+    "exclude": ["/community/", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["intro", "installation"],
+    "writing_tests": ["writing-tests", "locators"],
+    "actions": ["input", "navigation"],
+    "assertions": ["test-assertions"],
+    "debugging": ["debug"],
+    "ci": ["ci"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 40
+  }
+}

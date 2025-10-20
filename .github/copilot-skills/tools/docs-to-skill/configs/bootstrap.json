@@ -1,0 +1,33 @@
+{
+  "name": "bootstrap",
+  "description": "Popular responsive CSS framework with pre-built components",
+  "base_url": "https://getbootstrap.com/docs/",
+  "max_pages": 150,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.html",
+    "**/*.jsx",
+    "**/*.tsx",
+    "**/bootstrap.config.*"
+  ],
+  "selectors": {
+    "main_content": "main, .main-content, article",
+    "title": "h1, .page-title",
+    "code_blocks": "pre code, .highlight"
+  },
+  "url_patterns": {
+    "include": ["^https://getbootstrap\\.com/docs/.*"],
+    "exclude": ["/examples/", "#.*", "/versions/"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "introduction", "installation"],
+    "layout": ["layout", "grid", "containers", "breakpoints"],
+    "content": ["content", "typography", "tables", "images"],
+    "components": ["components", "alerts", "buttons", "cards", "forms"],
+    "utilities": ["utilities", "spacing", "display", "sizing"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 50
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "storybook",
+  "description": "Component development environment and testing tool for UI components",
+  "base_url": "https://storybook.js.org/docs/",
+  "max_pages": 120,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.stories.jsx",
+    "**/*.stories.tsx",
+    "**/.storybook/*"
+  ],
+  "selectors": {
+    "main_content": "main, article, .docs-content",
+    "title": "h1, .page-title",
+    "code_blocks": "pre code, .highlight"
+  },
+  "url_patterns": {
+    "include": ["^https://storybook\\.js\\.org/docs/.*"],
+    "exclude": ["/examples/", "/tutorials/", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "install", "setup"],
+    "writing_stories": ["writing-stories", "stories", "formats"],
+    "documentation": ["documentation", "mdx", "autodocs"],
+    "testing": ["testing", "snapshot", "interactions"],
+    "api": ["api", "configuration"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 40
+  }
+}

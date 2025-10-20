@@ -1,0 +1,34 @@
+{
+  "name": "docker",
+  "description": "Containerization platform for building, shipping, and running applications",
+  "base_url": "https://docs.docker.com/",
+  "max_pages": 200,
+  "rate_limit": 1.5,
+  "file_patterns": [
+    "**/Dockerfile",
+    "**/*.dockerfile",
+    "**/docker-compose.yml"
+  ],
+  "selectors": {
+    "main_content": "main, article, .content",
+    "title": "h1",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://docs\\.docker\\.com/.*"],
+    "exclude": ["/desktop/", "/engine/reference/builder/", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["get-started", "guides"],
+    "engine": ["engine", "containers"],
+    "images": ["images", "dockerfile"],
+    "compose": ["compose"],
+    "networking": ["network"],
+    "storage": ["storage", "volumes"],
+    "build": ["build"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 60
+  }
+}

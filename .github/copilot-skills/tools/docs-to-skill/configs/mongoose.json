@@ -1,0 +1,34 @@
+{
+  "name": "mongoose",
+  "description": "MongoDB object modeling tool for Node.js",
+  "base_url": "https://mongoosejs.com/docs/",
+  "max_pages": 150,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/*.js",
+    "**/*.ts",
+    "**/models/*"
+  ],
+  "selectors": {
+    "main_content": "main, article, .content",
+    "title": "h1",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://mongoosejs\\.com/docs/.*"],
+    "exclude": ["/examples/", "#.*", "/api/"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "connections"],
+    "schemas": ["schemas", "schematypes"],
+    "models": ["models", "documents"],
+    "queries": ["queries", "api"],
+    "subdocuments": ["subdocuments"],
+    "validation": ["validation"],
+    "middleware": ["middleware"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 50
+  }
+}

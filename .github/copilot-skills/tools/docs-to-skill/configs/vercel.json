@@ -1,0 +1,33 @@
+{
+  "name": "vercel",
+  "description": "Platform for frontend developers with tools for deployment and preview",
+  "base_url": "https://vercel.com/docs",
+  "max_pages": 100,
+  "rate_limit": 1.0,
+  "file_patterns": [
+    "**/.vercelignore",
+    "**/vercel.json"
+  ],
+  "selectors": {
+    "main_content": "main, article, [role='main']",
+    "title": "h1",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://vercel\\.com/docs/.*"],
+    "exclude": ["/changelog/", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["getting-started"],
+    "concepts": ["concepts"],
+    "frameworks": ["frameworks"],
+    "deployments": ["deployments"],
+    "functions": ["functions"],
+    "storage": ["storage"],
+    "observability": ["observability"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}
