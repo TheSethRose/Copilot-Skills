@@ -83,11 +83,11 @@ Serverless Framework - https://www.serverless.com/framework/docs/
 # Dev Tools / Platforms
 GitHub Actions - https://docs.github.com/en/actions
 Docker - https://docs.docker.com ⚠️ (scrape timeout - ~20 pages available)
-Kubernetes - https://kubernetes.io/docs/
+Kubernetes - https://kubernetes.io/docs/ ⏳ (config ready, ~20 pages - generation pending)
 Vercel - https://vercel.com/docs ✅ (skill generated, ~20 pages)
 Netlify - https://docs.netlify.com
 Cloudflare - https://developers.cloudflare.com/
-AWS - https://docs.aws.amazon.com/
+AWS - https://docs.aws.amazon.com/ ⚠️ (config created, 1 page - too large/complex)
 Google Cloud - https://cloud.google.com/docs
 Azure - https://learn.microsoft.com/en-us/azure/?product=popular
 
@@ -108,7 +108,7 @@ Postman API - https://learning.postman.com/docs/
 Insomnia - https://docs.insomnia.rest/
 
 # Languages
-Python - https://docs.python.org/3/
+Python - https://docs.python.org/3/ ⏳ (config ready, ~20 pages - generation pending)
 JavaScript (MDN) - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 TypeScript - https://www.typescriptlang.org/docs/ ✅ (skill generated, ~20 pages)
 Go - https://go.dev/doc/
