@@ -70,7 +70,7 @@ This document tracks the status of documentation skills in development.
 ## Summary
 
 - **Total Generated**: 19 skills
-- **Ready for Generation**: 4 configs (Django, Kubernetes, Python, and 1 more)
+- **Ready for Generation**: 3 configs (Django, Kubernetes, Python)
 - **Total Configs**: 40+
 - **Blocked**: 12+ sites
 
