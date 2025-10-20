@@ -52,7 +52,7 @@ This document tracks the status of documentation skills in development.
 - [Express](https://expressjs.com/en/starter/installing.html) ⚠️ config created, blocked
 - [NestJS](https://docs.nestjs.com) ⚠️ config created, blocked
 - [Fastify](https://fastify.dev/docs/latest/)
-- [Django](https://docs.djangoproject.com/en/stable/) ⏳ config ready, ~20 pages
+- [Django](https://docs.djangoproject.com/en/stable/) ⚠️ AWS outage - timeout
 - [Flask](https://flask.palletsprojects.com/en/latest/) ⚠️ blocked, 1 page
 - [FastAPI](https://fastapi.tiangolo.com/) ✅ skill generated, 150+ pages
 - [Laravel](https://laravel.com/docs)
@@ -116,8 +116,8 @@ This document tracks the status of documentation skills in development.
 ## Infrastructure / DevOps
 
 - [GitHub Actions](https://docs.github.com/en/actions)
-- [Docker](https://docs.docker.com) ⏳ config ready, ~20 pages
-- [Kubernetes](https://kubernetes.io/docs/) ⏳ config ready, ~20 pages
+- [Docker](https://docs.docker.com) ⚠️ AWS outage - timeout
+- [Kubernetes](https://kubernetes.io/docs/) ⚠️ AWS outage - timeout
 - [Vercel](https://vercel.com/docs) ✅ skill generated, ~20 pages
 - [Netlify](https://docs.netlify.com)
 - [Cloudflare](https://developers.cloudflare.com/)
@@ -145,7 +145,7 @@ This document tracks the status of documentation skills in development.
 
 ## Languages
 
-- [Python](https://docs.python.org/3/) ⏳ config ready, ~20 pages
+- [Python](https://docs.python.org/3/) ⚠️ AWS outage - timeout
 - [JavaScript (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [TypeScript](https://www.typescriptlang.org/docs/) ✅ skill generated, ~20 pages
 - [Go](https://go.dev/doc/) ✅ skill generated, ~20 pages
@@ -251,9 +251,9 @@ This document tracks the status of documentation skills in development.
 - [Jest](https://jestjs.io/docs/getting-started)
 - [Vitest](https://vitest.dev/guide/)
 - [Playwright](https://playwright.dev/docs/intro)
-- [Cypress](https://docs.cypress.io/)
+- [Cypress](https://docs.cypress.io/) ⚠️ blocked, 1 page
 - [Testing Library](https://testing-library.com/docs/)
-- [Pytest](https://docs.pytest.org/en/stable/)
+- [Pytest](https://docs.pytest.org/en/stable/) ⚠️ only 4 pages
 - [Mocha](https://mochajs.org/)
 - [Jasmine](https://jasmine.github.io/pages/docs_home.html)
 
@@ -262,11 +262,11 @@ This document tracks the status of documentation skills in development.
 - [npm](https://docs.npmjs.com/)
 - [pnpm](https://pnpm.io/motivation)
 - [Yarn](https://yarnpkg.com/getting-started)
-- [Vite](https://vitejs.dev/guide/)
+- [Vite](https://vitejs.dev/guide/) ✅ skill generated, 15 pages
 - [Webpack](https://webpack.js.org/concepts/)
 - [Rollup](https://rollupjs.org/)
 - [esbuild](https://esbuild.github.io/)
-- [Bun](https://bun.sh/docs)
+- [Bun](https://bun.sh/docs) ✅ skill generated, 11 pages
 
 ## Misc / Utilities
 
@@ -283,10 +283,10 @@ This document tracks the status of documentation skills in development.
 
 ## Summary
 
-- **Total Generated**: 22 skills
-- **Ready for Generation**: 3 configs (Django, Kubernetes, Python, Docker)
-- **Total Configs**: 47+
-- **Blocked**: 16+ sites
+- **Total Generated**: 24 skills
+- **AWS Outage Affected**: 3 configs (Django, Kubernetes, Python, Docker) - retry later
+- **Total Configs**: 51+
+- **Blocked**: 18+ sites
 
 ## Generate a Skill
 

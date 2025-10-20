@@ -1,0 +1,12 @@
+{
+  "name": "bun",
+  "description": "Fast all-in-one JavaScript runtime",
+  "base_url": "https://bun.sh/docs/",
+  "max_pages": 100,
+  "rate_limit": 0.5,
+  "file_patterns": ["**/*.ts", "**/*.js"],
+  "selectors": {"main_content": "main, article", "title": "h1", "code_blocks": "pre code"},
+  "url_patterns": {"include": ["^https://bun\\.sh/docs/.*"], "exclude": ["#.*"]},
+  "categories": {"runtime": ["runtime"], "cli": ["cli"], "api": ["api"]},
+  "checkpoint": {"enabled": true, "interval": 20}
+}

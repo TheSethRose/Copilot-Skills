@@ -1,0 +1,12 @@
+{
+  "name": "pytest",
+  "description": "Python testing framework",
+  "base_url": "https://docs.pytest.org/en/stable/",
+  "max_pages": 100,
+  "rate_limit": 0.5,
+  "file_patterns": ["**/test_*.py", "**/*_test.py"],
+  "selectors": {"main_content": "main, article, .body", "title": "h1", "code_blocks": "pre code"},
+  "url_patterns": {"include": ["^https://docs\\.pytest\\.org/.*"], "exclude": ["#.*"]},
+  "categories": {"getting": ["getting-started"], "how": ["how-to"], "reference": ["reference"]},
+  "checkpoint": {"enabled": true, "interval": 20}
+}

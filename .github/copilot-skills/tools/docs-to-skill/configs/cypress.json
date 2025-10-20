@@ -1,0 +1,12 @@
+{
+  "name": "cypress",
+  "description": "JavaScript end to end testing framework",
+  "base_url": "https://docs.cypress.io/",
+  "max_pages": 100,
+  "rate_limit": 0.5,
+  "file_patterns": ["**/*.spec.js", "**/*.cy.js"],
+  "selectors": {"main_content": "main, article", "title": "h1", "code_blocks": "pre code"},
+  "url_patterns": {"include": ["^https://docs\\.cypress\\.io/.*"], "exclude": ["#.*"]},
+  "categories": {"guides": ["guides"], "api": ["api"]},
+  "checkpoint": {"enabled": true, "interval": 20}
+}

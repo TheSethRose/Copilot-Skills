@@ -1,0 +1,12 @@
+{
+  "name": "vite",
+  "description": "Next generation frontend tooling",
+  "base_url": "https://vitejs.dev/guide/",
+  "max_pages": 100,
+  "rate_limit": 0.5,
+  "file_patterns": ["**/vite.config.*", "**/*.ts", "**/*.js"],
+  "selectors": {"main_content": "main, article", "title": "h1", "code_blocks": "pre code"},
+  "url_patterns": {"include": ["^https://vitejs\\.dev/.*"], "exclude": ["#.*"]},
+  "categories": {"guide": ["guide"], "config": ["config"], "api": ["api"]},
+  "checkpoint": {"enabled": true, "interval": 20}
+}
