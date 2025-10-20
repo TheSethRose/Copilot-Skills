@@ -1,0 +1,30 @@
+{
+  "name": "flask",
+  "description": "The Python micro framework for building web applications",
+  "base_url": "https://flask.palletsprojects.com/en/latest/",
+  "max_pages": 150,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.py",
+    "**/flask*"
+  ],
+  "selectors": {
+    "main_content": "main, .content, article",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://flask\\.palletsprojects\\.com/.*"],
+    "exclude": ["/changes/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["installation", "quickstart"],
+    "building": ["tutorial", "templating"],
+    "routing": ["routing", "views"],
+    "api": ["api", "patterns"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}

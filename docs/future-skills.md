@@ -53,7 +53,7 @@ This document tracks the status of documentation skills in development.
 - [NestJS](https://docs.nestjs.com) ⚠️ config created, blocked
 - [Fastify](https://fastify.dev/docs/latest/)
 - [Django](https://docs.djangoproject.com/en/stable/) ⏳ config ready, ~20 pages
-- [Flask](https://flask.palletsprojects.com/en/latest/)
+- [Flask](https://flask.palletsprojects.com/en/latest/) ⚠️ blocked, 1 page
 - [FastAPI](https://fastapi.tiangolo.com/) ✅ skill generated, 150+ pages
 - [Laravel](https://laravel.com/docs)
 - [Ruby on Rails](https://guides.rubyonrails.org)
@@ -283,10 +283,10 @@ This document tracks the status of documentation skills in development.
 
 ## Summary
 
-- **Total Generated**: 19 skills
-- **Ready for Generation**: 4 configs (Django, Kubernetes, Python, and 1 more)
+- **Total Generated**: 20 skills
+- **Ready for Generation**: 3 configs (Django, Kubernetes, Python)
 - **Total Configs**: 40+
-- **Blocked**: 12+ sites
+- **Blocked**: 13+ sites
 
 ## Generate a Skill
 

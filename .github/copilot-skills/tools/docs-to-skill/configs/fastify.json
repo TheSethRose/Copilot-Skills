@@ -1,0 +1,31 @@
+{
+  "name": "fastify",
+  "description": "Fast and low overhead web framework for Node.js",
+  "base_url": "https://fastify.dev/docs/latest/",
+  "max_pages": 150,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.js",
+    "**/*.ts",
+    "**/fastify*"
+  ],
+  "selectors": {
+    "main_content": "main, .content, article",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://fastify\\.dev/docs/.*"],
+    "exclude": ["/ecosystem/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "installation"],
+    "guides": ["guides", "routing"],
+    "plugins": ["plugins", "middleware"],
+    "api": ["api"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}
