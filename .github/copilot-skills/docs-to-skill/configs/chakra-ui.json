@@ -1,0 +1,32 @@
+{
+  "name": "chakra-ui",
+  "base_url": "https://chakra-ui.com/",
+  "start_urls": [
+    "https://chakra-ui.com/docs"
+  ],
+  "max_pages": 250,
+  "rate_limit": 0.5,
+  "url_patterns": [
+    "^https://chakra-ui\\.com/docs.*"
+  ],
+  "exclude_patterns": [
+    ".*\\.pdf$",
+    ".*\\.zip$",
+    ".*\\.tar\\.gz$",
+    ".*/api/.*",
+    ".*/search.*"
+  ],
+  "allowed_domains": [
+    "chakra-ui.com"
+  ],
+  "checkpoint": {
+    "enabled": true,
+    "interval": 50
+  },
+  "selectors": {
+    "title": "h1, title",
+    "content": "main, article, [role='main'], .chakra-box",
+    "code": "pre, code, .code-block",
+    "links": "a[href]"
+  }
+}

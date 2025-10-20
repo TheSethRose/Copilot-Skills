@@ -147,6 +147,12 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Auto-context:** `.github/instructions/radix-ui.instructions.md` (when editing .tsx, .jsx, .ts files with @radix-ui/ imports)
 **Skill:** `.github/copilot-skills/ui/radix-ui/`
 
+#### Chakra UI Components
+**Keywords:** chakra-ui, @chakra-ui/react, chakra, ui components, component library, themed components, accessible components, box, button, card, form, input, modal, responsive design, styling system, color mode
+**Suggest:** `/chakra-ui`
+**Auto-context:** `.github/instructions/chakra-ui.instructions.md` (when editing .tsx, .jsx, files with @chakra-ui/ imports, chakra.config.*)
+**Skill:** `.github/copilot-skills/chakra-ui/`
+
 ### Escalation Hierarchy
 
 When responding to user queries, follow this decision tree:
