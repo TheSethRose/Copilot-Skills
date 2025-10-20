@@ -1,0 +1,23 @@
+{
+  "name": "astro",
+  "description": "Build faster websites with less client-side JavaScript",
+  "base_url": "https://docs.astro.build/",
+  "max_pages": 200,
+  "rate_limit": 0.5,
+  "file_patterns": ["**/*.astro", "**/*.ts", "**/*.jsx"],
+  "selectors": {
+    "main_content": "main, article, .content",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://docs\\.astro\\.build/.*"],
+    "exclude": ["/recipes/.*", "#.*"]
+  },
+  "categories": {
+    "start": ["getting-started", "install"],
+    "guides": ["guides"],
+    "reference": ["reference"]
+  },
+  "checkpoint": {"enabled": true, "interval": 40}
+}

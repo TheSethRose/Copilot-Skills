@@ -1,0 +1,22 @@
+{
+  "name": "solid",
+  "description": "Solid is a declarative JavaScript library for building user interfaces",
+  "base_url": "https://docs.solidjs.com/",
+  "max_pages": 100,
+  "rate_limit": 0.5,
+  "file_patterns": ["**/*.jsx", "**/*.tsx", "**/*.ts"],
+  "selectors": {
+    "main_content": "main, .content, article",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://docs\\.solidjs\\.com/.*"],
+    "exclude": ["#.*"]
+  },
+  "categories": {
+    "guides": ["guides", "tutorials"],
+    "reference": ["reference"]
+  },
+  "checkpoint": {"enabled": true, "interval": 20}
+}

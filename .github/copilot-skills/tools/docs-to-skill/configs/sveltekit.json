@@ -1,0 +1,23 @@
+{
+  "name": "sveltekit",
+  "description": "The fastest way to build Svelte apps",
+  "base_url": "https://kit.svelte.dev/docs/",
+  "max_pages": 150,
+  "rate_limit": 0.5,
+  "file_patterns": ["**/*.svelte", "**/*.ts", "**/*.js"],
+  "selectors": {
+    "main_content": "main, article, .content",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://kit\\.svelte\\.dev/docs/.*"],
+    "exclude": ["/faq/.*", "#.*"]
+  },
+  "categories": {
+    "introduction": ["introduction"],
+    "building": ["building", "routing", "load"],
+    "advanced": ["advanced"]
+  },
+  "checkpoint": {"enabled": true, "interval": 30}
+}

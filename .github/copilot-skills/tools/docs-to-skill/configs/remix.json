@@ -1,0 +1,23 @@
+{
+  "name": "remix",
+  "description": "A full stack web framework with server and client capabilities",
+  "base_url": "https://remix.run/docs/",
+  "max_pages": 150,
+  "rate_limit": 0.5,
+  "file_patterns": ["**/*.jsx", "**/*.tsx", "**/remix*"],
+  "selectors": {
+    "main_content": "main, .content, article",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://remix\\.run/docs/.*"],
+    "exclude": ["/blog/.*", "#.*"]
+  },
+  "categories": {
+    "start": ["start", "getting-started"],
+    "guides": ["guides", "routing"],
+    "api": ["api", "reference"]
+  },
+  "checkpoint": {"enabled": true, "interval": 30}
+}

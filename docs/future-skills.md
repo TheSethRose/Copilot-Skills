@@ -40,11 +40,11 @@ This document tracks the status of documentation skills in development.
 - [Nuxt](https://nuxt.com/docs) ⚠️ blocked, 1 page
 - [Svelte](https://svelte.dev/docs) ✅ skill generated, ~20 pages
 - [Angular](https://angular.dev) ⚠️ blocked, 1 page
-- [SvelteKit](https://kit.svelte.dev/docs)
-- [Remix](https://remix.run/docs)
-- [SolidJS](https://www.solidjs.com/docs)
+- [SvelteKit](https://kit.svelte.dev/docs) ✅ skill generated, ~20 pages
+- [Remix](https://remix.run/docs) ⚠️ blocked, 1 page
+- [SolidJS](https://www.solidjs.com/docs) ⚠️ blocked, 1 page
 - [Qwik](https://qwik.builder.io/docs/)
-- [Astro](https://docs.astro.build)
+- [Astro](https://docs.astro.build) ⚠️ blocked, 1 page
 
 ## Backend / Fullstack
 
@@ -116,7 +116,7 @@ This document tracks the status of documentation skills in development.
 ## Infrastructure / DevOps
 
 - [GitHub Actions](https://docs.github.com/en/actions)
-- [Docker](https://docs.docker.com)
+- [Docker](https://docs.docker.com) ⏳ config ready, ~20 pages
 - [Kubernetes](https://kubernetes.io/docs/) ⏳ config ready, ~20 pages
 - [Vercel](https://vercel.com/docs) ✅ skill generated, ~20 pages
 - [Netlify](https://docs.netlify.com)
@@ -283,10 +283,10 @@ This document tracks the status of documentation skills in development.
 
 ## Summary
 
-- **Total Generated**: 20 skills
-- **Ready for Generation**: 3 configs (Django, Kubernetes, Python)
-- **Total Configs**: 40+
-- **Blocked**: 13+ sites
+- **Total Generated**: 21 skills
+- **Ready for Generation**: 2 configs (Django, Kubernetes, Python, Docker)
+- **Total Configs**: 46+
+- **Blocked**: 16+ sites
 
 ## Generate a Skill
 
