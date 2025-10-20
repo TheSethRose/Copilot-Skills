@@ -1,0 +1,34 @@
+{
+  "name": "authjs",
+  "description": "Authentication for the Web - NextAuth.js",
+  "base_url": "https://authjs.dev/getting-started",
+  "max_pages": 150,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/auth.ts",
+    "**/auth.js",
+    "**/[...nextauth].ts",
+    "**/[...nextauth].js",
+    "**/*.tsx",
+    "**/*.jsx"
+  ],
+  "selectors": {
+    "main_content": "main, article, .content",
+    "title": "h1, h2",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["^https://authjs\\.dev/.*"],
+    "exclude": ["/blog/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "installation"],
+    "guides": ["guides", "tutorials"],
+    "providers": ["providers", "oauth"],
+    "reference": ["reference", "api"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}
