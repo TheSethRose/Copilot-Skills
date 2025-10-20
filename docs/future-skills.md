@@ -15,14 +15,14 @@ This document tracks the status of documentation skills in development.
 
 - [shadcn/ui](https://ui.shadcn.com/docs) ✅ skill generated
 - [Radix UI](https://www.radix-ui.com/docs) ✅ skill generated
-- [Chakra UI](https://chakra-ui.com/docs) ⚠️ anti-scraping detected
+- [Chakra UI](https://chakra-ui.com/docs) ⚠️ AWS outage - timeout (~20 pages available)
 - [Material UI](https://mui.com/material-ui/getting-started/overview/) ✅ skill generated
 - [Ant Design](https://ant.design/docs/react/introduce) ✅ skill generated
 - [Mantine](https://mantine.dev/docs/) ✅ skill generated, 148 pages
-- [DaisyUI](https://daisyui.com/docs/) ⚠️ anti-scraping detected
+- [DaisyUI](https://daisyui.com/docs/) ⚠️ blocked, 1 page
 - [Headless UI](https://headlessui.com/react) ✅ skill generated, 27 pages
-- [Bootstrap](https://getbootstrap.com/docs/) ⚠️ anti-scraping, 1 page
-- [Tailwind CSS](https://tailwindcss.com/docs) ⚠️ manual approach needed
+- [Bootstrap](https://getbootstrap.com/docs/) ⚠️ blocked, 1 page
+- [Tailwind CSS](https://tailwindcss.com/docs) ⚠️ blocked, 1 page
 
 ## Design / Storybook / UX
 
@@ -84,10 +84,10 @@ This document tracks the status of documentation skills in development.
 ## Databases / ORMs
 
 - [Prisma](https://www.prisma.io/docs) ✅ skill generated, 150+ pages
-- [Sequelize](https://sequelize.org/docs/) ⚠️ config created, blocked
+- [Sequelize](https://sequelize.org/docs/) ⚠️ blocked, 1 page
 - [TypeORM](https://typeorm.io/)
-- [Drizzle ORM](https://orm.drizzle.team/docs/overview)
-- [Mongoose](https://mongoosejs.com/docs/)
+- [Drizzle ORM](https://orm.drizzle.team/docs/overview) ⚠️ 404 error (~20 pages detected)
+- [Mongoose](https://mongoosejs.com/docs/) ⚠️ blocked, 1 page
 - [Supabase](https://supabase.com/docs) ✅ skill generated, 150+ pages
 - [Firebase](https://firebase.google.com/docs)
 - [PlanetScale](https://planetscale.com/docs)
@@ -248,9 +248,9 @@ This document tracks the status of documentation skills in development.
 
 ## Testing
 
-- [Jest](https://jestjs.io/docs/getting-started)
-- [Vitest](https://vitest.dev/guide/)
-- [Playwright](https://playwright.dev/docs/intro)
+- [Jest](https://jestjs.io/docs/getting-started) ⚠️ blocked, 1 page
+- [Vitest](https://vitest.dev/guide/) ⚠️ only 2 pages
+- [Playwright](https://playwright.dev/docs/intro) ⚠️ blocked, 1 page
 - [Cypress](https://docs.cypress.io/) ⚠️ blocked, 1 page
 - [Testing Library](https://testing-library.com/docs/)
 - [Pytest](https://docs.pytest.org/en/stable/) ⚠️ only 4 pages
@@ -263,7 +263,7 @@ This document tracks the status of documentation skills in development.
 - [pnpm](https://pnpm.io/motivation)
 - [Yarn](https://yarnpkg.com/getting-started)
 - [Vite](https://vitejs.dev/guide/) ✅ skill generated, 15 pages
-- [Webpack](https://webpack.js.org/concepts/)
+- [Webpack](https://webpack.js.org/concepts/) ⚠️ blocked, 1 page
 - [Rollup](https://rollupjs.org/)
 - [esbuild](https://esbuild.github.io/)
 - [Bun](https://bun.sh/docs) ✅ skill generated, 11 pages
@@ -283,10 +283,24 @@ This document tracks the status of documentation skills in development.
 
 ## Summary
 
-- **Total Generated**: 24 skills
-- **AWS Outage Affected**: 3 configs (Django, Kubernetes, Python, Docker) - retry later
-- **Total Configs**: 51+
-- **Blocked**: 18+ sites
+- **Total Generated**: 24 skills ✅
+- **AWS Outage (Retry Later)**: 5 configs with ~20 pages each (Django, Kubernetes, Python, Docker, Chakra UI)
+- **Total Configs Tested**: 52
+- **Blocked/Low Pages**: 23+ sites (anti-scraping or insufficient content)
+
+### Breakdown by Status
+- ✅ **Successfully Generated**: 24 skills
+- ⚠️ **AWS Affected**: 5 viable configs (retry when AWS recovers)
+- ⚠️ **Blocked**: 18 sites (anti-scraping, 1 page)
+- ⚠️ **Low Content**: 5 sites (2-4 pages only)
+
+### AWS-Affected Sites (Retry Later)
+These sites have ~20 pages each but timed out due to AWS outage:
+- Django - https://docs.djangoproject.com/en/stable/
+- Kubernetes - https://kubernetes.io/docs/
+- Python - https://docs.python.org/3/
+- Docker - https://docs.docker.com
+- Chakra UI - https://chakra-ui.com/docs
 
 ## Generate a Skill
 
