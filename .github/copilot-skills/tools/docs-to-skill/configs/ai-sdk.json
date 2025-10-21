@@ -1,0 +1,33 @@
+{
+  "name": "ai-sdk",
+  "description": "AI SDK - The TypeScript toolkit for building AI applications",
+  "base_url": "https://ai-sdk.dev/docs/",
+  "max_pages": 150,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx"
+  ],
+  "selectors": {
+    "main_content": "main, article, .content, [role='main']",
+    "title": "h1, h2",
+    "code_blocks": "pre code, pre"
+  },
+  "url_patterns": {
+    "include": ["^https://ai-sdk\\.dev/docs/.*"],
+    "exclude": ["/blog/.*", "#.*"]
+  },
+  "categories": {
+    "getting_started": ["introduction", "installation", "quickstart"],
+    "core": ["core", "generate", "stream"],
+    "providers": ["providers", "openai", "anthropic", "google"],
+    "integrations": ["react", "vue", "svelte", "solid"],
+    "reference": ["reference", "api"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}
