@@ -1,0 +1,33 @@
+{
+  "name": "hetzner",
+  "description": "Hetzner Cloud - Infrastructure as a Service platform",
+  "base_url": "https://docs.hetzner.com/",
+  "max_pages": 300,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.tf",
+    "**/*.yaml",
+    "**/*.yml",
+    "**/*.sh"
+  ],
+  "selectors": {
+    "main_content": "main, article, .content, [role='main']",
+    "title": "h1, h2",
+    "code_blocks": "pre code, pre"
+  },
+  "url_patterns": {
+    "include": ["^https://docs\\.hetzner\\.com/.*"],
+    "exclude": ["/blog/.*", "#.*"]
+  },
+  "categories": {
+    "cloud": ["cloud", "compute", "servers"],
+    "networking": ["networking", "network", "firewall"],
+    "storage": ["storage", "volumes", "backup"],
+    "api": ["api", "reference"],
+    "getting_started": ["getting-started", "quickstart", "setup"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 50
+  }
+}
