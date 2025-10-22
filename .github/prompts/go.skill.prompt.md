@@ -53,7 +53,7 @@ inuse_objects
 
 ## Reference Documentation
 
-This skill includes comprehensive documentation in `.github/copilot-skills/go/references/`:
+This skill includes comprehensive documentation in `.github/copilot-skills/languages/go/references/`:
 
 - **getting.md** - Getting documentation
 - **language.md** - Language documentation

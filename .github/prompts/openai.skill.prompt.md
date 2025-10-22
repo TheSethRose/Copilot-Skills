@@ -139,7 +139,7 @@ response = client.chat.completions.create(
 
 ## Reference Documentation
 
-Complete docs in `.github/copilot-skills/openai/references/`:
+Complete docs in `.github/copilot-skills/ai/openai/references/`:
 - `getting-started.md` - Setup and authentication
 - `chat-completions.md` - Chat API guide
 - `assistants.md` - Assistants API

@@ -127,7 +127,13 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Keywords:** context7, up-to-date docs, latest documentation, library documentation, current docs, resolve library, get docs, fresh documentation, 48k libraries
 **Suggest:** `/context7`
 **Auto-context:** `.github/instructions/context7.instructions.md` (when editing **/*{context7,Context7,library-docs,up-to-date-docs}*)
-**Skill:** `.github/copilot-skills/context7/README.md`
+**Skill:** `.github/copilot-skills/documentation/context7/README.md`
+
+#### Claude AI Documentation
+**Keywords:** claude, claude ai, anthropic, claude api, claude models, claude code, agent sdk, claude 4, claude sonnet, claude opus, claude haiku, messages api, prompt engineering, tool use, vision, extended thinking, batch processing, streaming, embeddings, agent skills, mcp, model context protocol
+**Suggest:** `/claude`
+**Auto-context:** `.github/instructions/claude.instructions.md` (when editing **/*.py, **/*.js, **/*.ts, **/*.tsx, **/*.jsx, **/claude*, **/anthropic*)
+**Skill:** `.github/copilot-skills/ai/claude/`
 
 #### MCP Server Development
 **Keywords:** mcp, model context protocol, mcp server, agent tools, llm integration, api integration, fastmcp, tool design
@@ -217,7 +223,7 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Keywords:** better-auth, authentication framework, auth setup, oauth, passkey, email-otp, session management, auth plugins
 **Suggest:** `/better-auth`
 **Auto-context:** `.github/instructions/better-auth.instructions.md` (when editing .ts, .tsx, .js, .jsx, auth.config.*)
-**Skill:** `.github/prompts/better-auth.skill.prompt.md`
+**Skill:** `.github/copilot-skills/auth/better-auth/`
 
 #### LangChain
 **Keywords:** langchain, llm chain, agents, vector store, embeddings, retrieval, rag, prompt templates
@@ -241,31 +247,31 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Keywords:** servicenow, documentation, docs, incident, change, service catalog, workflow, flow designer, api, itsm, hrsd, platform, application, integration, rest api, servicenow lookup
 **Suggest:** `/servicenow-docs`
 **Auto-context:** `.github/instructions/servicenow-docs.instructions.md` (when editing **/*{servicenow,ServiceNow,SERVICENOW,documentation,docs}*)
-**Skill:** `.github/copilot-skills/servicenow-docs/README.md`
+**Skill:** `.github/copilot-skills/documentation/servicenow-docs/README.md`
 
 #### Cloudflare
 **Keywords:** cloudflare, workers, pages, wrangler, edge computing, r2, d1, durable objects, zero trust, api, deployment
 **Suggest:** `/cloudflare`
 **Auto-context:** `.github/instructions/cloudflare.instructions.md` (when editing **/*.js, **/*.ts, **/*.tsx, **/*.jsx, **/*.toml, **/wrangler.toml)
-**Skill:** `.github/copilot-skills/cloudflare/`
+**Skill:** `.github/copilot-skills/deployment/cloudflare/`
 
 #### OpenAI
 **Keywords:** openai, gpt, gpt-4, gpt-3.5, embeddings, assistants, api, ai, llm, chat completion, function calling, vision, dall-e, whisper, fine-tuning
 **Suggest:** `/openai`
 **Auto-context:** `.github/instructions/openai.instructions.md` (when editing **/*.js, **/*.ts, **/*.tsx, **/*.jsx, **/*.py, **/openai*)
-**Skill:** `.github/copilot-skills/openai/`
+**Skill:** `.github/copilot-skills/ai/openai/`
 
 #### Storybook
 **Keywords:** storybook, component development, component library, stories, UI testing, documentation, visual testing
 **Suggest:** `/storybook`
 **Auto-context:** `.github/instructions/storybook.instructions.md` (when editing stories files, .stories.*)
-**Skill:** `.github/copilot-skills/storybook/`
+**Skill:** `.github/copilot-skills/testing/storybook/`
 
 #### Vercel
 **Keywords:** vercel, deployment, serverless, edge functions, preview, production, hosting, next.js deployment
 **Suggest:** `/vercel`
 **Auto-context:** `.github/instructions/vercel.instructions.md` (when editing vercel.json, .env.local, deployment configs)
-**Skill:** `.github/copilot-skills/vercel/`
+**Skill:** `.github/copilot-skills/deployment/vercel/`
 
 ### Escalation Hierarchy
 

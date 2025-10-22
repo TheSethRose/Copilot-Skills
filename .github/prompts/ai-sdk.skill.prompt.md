@@ -62,7 +62,7 @@ if (EmptyResponseBodyError.isInstance(error)) {  // Handle the error}
 
 ## Reference Documentation
 
-This skill includes comprehensive documentation in `.github/copilot-skills/ai-sdk/references/`:
+This skill includes comprehensive documentation in `.github/copilot-skills/integrations/ai-sdk/references/`:
 
 - **core.md** - Core documentation
 - **getting_started.md** - Getting Started documentation

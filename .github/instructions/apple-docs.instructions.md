@@ -18,7 +18,7 @@ When you see unfamiliar Swift code:
 let task = Task { ... }
 ```
 
-Use: `bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swift/task`
+Use: `bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swift/task`
 
 ### Finding SwiftUI Components
 
@@ -27,13 +27,13 @@ When building UI:
 Button("Press Me") { ... }
 ```
 
-Use: `bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swiftui/button`
+Use: `bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swiftui/button`
 
 ### Exploring Frameworks
 
 When starting a new feature, explore available APIs:
 ```bash
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swiftui "navigation"
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh swiftui "navigation"
 ```
 
 ## Quality Guidelines
@@ -86,25 +86,25 @@ bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swiftui "navi
 ### Case 1: Implementing New Feature
 ```bash
 # Find relevant SwiftUI components
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swiftui "picker"
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh swiftui "picker"
 
 # Get detailed docs
-bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swiftui/picker
+bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swiftui/picker
 ```
 
 ### Case 2: Debugging Swift Code
 ```bash
 # Look up Swift collection methods
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swift "array"
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh swift "array"
 
 # Check specific method
-bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swift/array/map
+bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swift/array/map
 ```
 
 ### Case 3: Platform-Specific Code
 ```bash
 # Search for availability info
-bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swiftui/button --json | jq '.metadata.platforms'
+bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swiftui/button --json | jq '.metadata.platforms'
 ```
 
 ## Error Messages
@@ -145,7 +145,7 @@ This skill provides **official API documentation**. For richer learning:
 ### Combined Workflow
 ```bash
 # Step 1: Get official docs
-bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swiftui/button
+bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swiftui/button
 
 # Step 2: If you need more context, search the web for:
 #   - "SwiftUI Button tutorial"

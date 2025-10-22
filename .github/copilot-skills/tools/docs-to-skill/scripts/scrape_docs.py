@@ -22,6 +22,14 @@ from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 from collections import deque, defaultdict
 
+# Try to import sitemap loader
+try:
+    from sitemap_loader import SitemapLoader
+    SITEMAP_AVAILABLE = True
+except ImportError:
+    SITEMAP_AVAILABLE = False
+    print("ℹ️  sitemap_loader not available (sitemap support disabled)")
+
 
 class DocsToCopilotSkill:
     """Convert documentation websites into Copilot Skills Architecture format"""
@@ -44,10 +52,15 @@ class DocsToCopilotSkill:
         
         # State
         self.visited_urls = set()
-        start_urls = config.get('start_urls', [self.base_url])
-        self.pending_urls = deque(start_urls)
         self.pages = []
         self.pages_scraped = 0
+        
+        # Initialize URLs (sitemap or manual)
+        if config.get('use_sitemap', False) and SITEMAP_AVAILABLE:
+            self.pending_urls = deque(self._load_urls_from_sitemap())
+        else:
+            start_urls = config.get('start_urls', [self.base_url])
+            self.pending_urls = deque(start_urls)
         
         # Create data directory for caching
         if not dry_run:
@@ -73,6 +86,37 @@ class DocsToCopilotSkill:
             return False
         
         return True
+    
+    def _load_urls_from_sitemap(self):
+        """Load URLs from sitemap if available"""
+        if not SITEMAP_AVAILABLE:
+            print("  ⚠️  Sitemap loader not available, falling back to crawler")
+            return [self.base_url]
+        
+        print(f"\n🗺️  Loading URLs from sitemap...")
+        
+        # Extract base domain for sitemap discovery
+        parsed = urlparse(self.base_url)
+        sitemap_base = f"{parsed.scheme}://{parsed.netloc}"
+        
+        loader = SitemapLoader(sitemap_base)
+        
+        # Get URL patterns from config
+        includes = self.config.get('url_patterns', {}).get('include', [])
+        excludes = self.config.get('url_patterns', {}).get('exclude', [])
+        max_pages = self.config.get('max_pages', None)
+        
+        urls = loader.get_urls(
+            include_patterns=includes,
+            exclude_patterns=excludes,
+            max_urls=max_pages
+        )
+        
+        if not urls:
+            print("  ⚠️  No URLs found in sitemap, falling back to crawler")
+            return [self.base_url]
+        
+        return urls
     
     def save_checkpoint(self):
         """Save progress checkpoint"""

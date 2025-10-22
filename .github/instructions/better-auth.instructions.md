@@ -43,5 +43,5 @@ Common issues and solutions documented in `references/` files.
 ## Resources
 
 - Skill prompt: `.github/prompts/better-auth.skill.prompt.md`
-- References: `.github/copilot-skills/better-auth/references/`
+- References: `.github/copilot-skills/auth/better-auth/references/`
 - Official docs: https://www.better-auth.com/docs

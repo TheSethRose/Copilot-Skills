@@ -43,5 +43,5 @@ Common issues and solutions documented in `references/` files.
 ## Resources
 
 - Skill prompt: `.github/prompts/ai-sdk.skill.prompt.md`
-- References: `.github/copilot-skills/ai-sdk/references/`
+- References: `.github/copilot-skills/integrations/ai-sdk/references/`
 - Official docs: https://ai-sdk.dev/docs/

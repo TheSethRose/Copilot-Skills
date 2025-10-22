@@ -43,5 +43,5 @@ Common issues and solutions documented in `references/` files.
 ## Resources
 
 - Skill prompt: `.github/prompts/authjs.skill.prompt.md`
-- References: `.github/copilot-skills/authjs/references/`
+- References: `.github/copilot-skills/auth/authjs/references/`
 - Official docs: https://authjs.dev/getting-started

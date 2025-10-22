@@ -289,7 +289,7 @@ Example: /websites/platform_openai
 
 ## Reference Documentation
 
-See `.github/copilot-skills/context7/`:
+See `.github/copilot-skills/documentation/context7/`:
 - `patterns.md` - Common usage patterns
 - `reference.md` - Complete API reference
 - `examples/` - Real-world integration examples

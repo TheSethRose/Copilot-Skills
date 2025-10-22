@@ -80,7 +80,7 @@ xattr -dr com.apple.quarantine /Applications/VSCodeFastify/Visual\ Studio\ Code.
 
 ## Reference Documentation
 
-This skill includes comprehensive documentation in `.github/copilot-skills/fastify/references/`:
+This skill includes comprehensive documentation in `.github/copilot-skills/backend/fastify/references/`:
 
 - **getting_started.md** - Getting Started documentation
 - **guides.md** - Guides documentation

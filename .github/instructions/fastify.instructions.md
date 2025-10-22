@@ -43,5 +43,5 @@ Common issues and solutions documented in `references/` files.
 ## Resources
 
 - Skill prompt: `.github/prompts/fastify.skill.prompt.md`
-- References: `.github/copilot-skills/fastify/references/`
+- References: `.github/copilot-skills/backend/fastify/references/`
 - Official docs: https://fastify.dev/docs/latest/

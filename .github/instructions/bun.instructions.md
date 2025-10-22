@@ -43,5 +43,5 @@ Common issues and solutions documented in `references/` files.
 ## Resources
 
 - Skill prompt: `.github/prompts/bun.skill.prompt.md`
-- References: `.github/copilot-skills/bun/references/`
+- References: `.github/copilot-skills/runtimes/bun/references/`
 - Official docs: https://bun.sh/docs/

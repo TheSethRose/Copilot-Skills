@@ -35,7 +35,7 @@ useSession
 
 ## Reference Documentation
 
-This skill includes comprehensive documentation in `.github/copilot-skills/authjs/references/`:
+This skill includes comprehensive documentation in `.github/copilot-skills/auth/authjs/references/`:
 
 - **getting_started.md** - Getting Started documentation
 

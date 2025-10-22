@@ -6,7 +6,7 @@ applyTo: "**/*{context7,Context7,library-docs,up-to-date-docs}*"
 # Context7 - Automatic Context Instructions
 
 **Related Prompt:** `/context7`  
-**Related Skill:** `.github/copilot-skills/context7/`
+**Related Skill:** `.github/copilot-skills/documentation/context7/`
 
 **Triggers:** context7, up-to-date docs, latest documentation, library documentation, resolve library, get docs
 
@@ -313,21 +313,21 @@ Context7 skill provides helper scripts:
 
 ```bash
 # Check if library exists in Context7
-.github/copilot-skills/context7/scripts/check-library.sh "next.js"
+.github/copilot-skills/documentation/context7/scripts/check-library.sh "next.js"
 
 # Compare trust scores of multiple libraries
-.github/copilot-skills/context7/scripts/compare-libraries.sh "react" "vue" "svelte"
+.github/copilot-skills/documentation/context7/scripts/compare-libraries.sh "react" "vue" "svelte"
 
 # Bulk update skills with Context7
-.github/copilot-skills/context7/scripts/update-skills.sh
+.github/copilot-skills/documentation/context7/scripts/update-skills.sh
 ```
 
 ## Next Steps
 
 When working with Context7:
 1. Use `/context7` prompt for guided workflows
-2. Check `.github/copilot-skills/context7/patterns.md` for common patterns
-3. Reference `.github/copilot-skills/context7/reference.md` for API details
+2. Check `.github/copilot-skills/documentation/context7/patterns.md` for common patterns
+3. Reference `.github/copilot-skills/documentation/context7/reference.md` for API details
 4. Run bundled scripts for automation
 
 ## Related Skills

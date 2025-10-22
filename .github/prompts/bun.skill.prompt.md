@@ -115,7 +115,7 @@ query.get(); // => { message: "Hello world" }
 
 ## Reference Documentation
 
-This skill includes comprehensive documentation in `.github/copilot-skills/bun/references/`:
+This skill includes comprehensive documentation in `.github/copilot-skills/runtimes/bun/references/`:
 
 - **api.md** - Api documentation
 - **cli.md** - Cli documentation

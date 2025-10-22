@@ -26,27 +26,27 @@ Use this skill when:
 ### 1. List Available Frameworks
 
 ```bash
-bash .github/copilot-skills/apple-docs/scripts/list-frameworks.sh
+bash .github/copilot-skills/documentation/apple-docs/scripts/list-frameworks.sh
 ```
 
 ### 2. Search Within a Framework
 
 ```bash
 # Search Swift documentation
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swift "async await"
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh swift "async await"
 
 # Search SwiftUI documentation
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swiftui "button"
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh swiftui "button"
 ```
 
 ### 3. Get Symbol Documentation
 
 ```bash
 # Get specific symbol docs
-bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swift/array
+bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swift/array
 
 # Get SwiftUI component docs
-bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swiftui/button
+bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swiftui/button
 ```
 
 ## Available Scripts
@@ -56,7 +56,7 @@ Lists all available Apple frameworks from the technologies catalog.
 
 **Usage:**
 ```bash
-bash .github/copilot-skills/apple-docs/scripts/list-frameworks.sh [options]
+bash .github/copilot-skills/documentation/apple-docs/scripts/list-frameworks.sh [options]
 ```
 
 **Options:**
@@ -72,7 +72,7 @@ Search for symbols within a specific framework.
 
 **Usage:**
 ```bash
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh <framework> <query> [options]
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh <framework> <query> [options]
 ```
 
 **Arguments:**
@@ -93,7 +93,7 @@ Get detailed documentation for a specific symbol.
 
 **Usage:**
 ```bash
-bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh <path> [options]
+bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh <path> [options]
 ```
 
 **Arguments:**
@@ -111,30 +111,30 @@ bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh <path> [options]
 
 ```bash
 # List all SwiftUI views
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swiftui "view"
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh swiftui "view"
 
 # Find layout containers
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swiftui "stack"
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh swiftui "stack"
 ```
 
 ### Research Swift Language Features
 
 ```bash
 # Find async/await documentation
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swift "async"
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh swift "async"
 
 # Look up collections
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swift "array"
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh swift "array"
 ```
 
 ### Get Detailed Symbol Docs
 
 ```bash
 # Get Button component documentation
-bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swiftui/button
+bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swiftui/button
 
 # Get Array documentation
-bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swift/array
+bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swift/array
 ```
 
 ## API Endpoints
@@ -172,7 +172,7 @@ If you need additional information beyond what's in the API:
 
 **Step 1: Check Official Docs (This Skill)**
 ```bash
-bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swiftui/button
+bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swiftui/button
 ```
 
 **Step 2: Search the Web (If Needed)**
@@ -241,21 +241,21 @@ Scripts handle common errors:
 ### Example 1: Find All Button Types in SwiftUI
 
 ```bash
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swiftui "button" --limit 20
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh swiftui "button" --limit 20
 ```
 
 ### Example 2: Get Swift Concurrency Documentation
 
 ```bash
-bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swift/task
-bash .github/copilot-skills/apple-docs/scripts/get-symbol.sh swift/actor
+bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swift/task
+bash .github/copilot-skills/documentation/apple-docs/scripts/get-symbol.sh swift/actor
 ```
 
 ### Example 3: Explore Layout Options
 
 ```bash
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swiftui "layout"
-bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swiftui "geometry"
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh swiftui "layout"
+bash .github/copilot-skills/documentation/apple-docs/scripts/search-framework.sh swiftui "geometry"
 ```
 
 ## Troubleshooting
@@ -266,7 +266,7 @@ bash .github/copilot-skills/apple-docs/scripts/search-framework.sh swiftui "geom
 curl -I https://developer.apple.com/tutorials/data/documentation/technologies.json
 
 # Retry with delay
-sleep 2 && bash .github/copilot-skills/apple-docs/scripts/list-frameworks.sh
+sleep 2 && bash .github/copilot-skills/documentation/apple-docs/scripts/list-frameworks.sh
 ```
 
 ### No Results Found
@@ -287,6 +287,6 @@ sleep 2 && bash .github/copilot-skills/apple-docs/scripts/list-frameworks.sh
 
 ## More Information
 
-- **Scripts**: `.github/copilot-skills/apple-docs/scripts/`
+- **Scripts**: `.github/copilot-skills/documentation/apple-docs/scripts/`
 - **Apple Developer**: https://developer.apple.com/documentation/
 - **API Source**: Reverse-engineered from apple-doc-mcp project

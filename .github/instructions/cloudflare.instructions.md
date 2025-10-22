@@ -226,7 +226,7 @@ wrangler rollback
 ## Reference Documentation
 
 Complete documentation available in:
-- `.github/copilot-skills/cloudflare/references/` - Organized by topic
+- `.github/copilot-skills/deployment/cloudflare/references/` - Organized by topic
 - https://developers.cloudflare.com/ - Official docs
 - https://developers.cloudflare.com/workers/ - Workers guide
 

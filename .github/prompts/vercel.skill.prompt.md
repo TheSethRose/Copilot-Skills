@@ -136,7 +136,7 @@ export async function GET() {
 
 ## Reference Documentation
 
-This skill includes comprehensive documentation in `.github/copilot-skills/vercel/references/`:
+This skill includes comprehensive documentation in `.github/copilot-skills/deployment/vercel/references/`:
 
 - **deployments.md** - Deployments documentation
 - **frameworks.md** - Frameworks documentation

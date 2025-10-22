@@ -23,7 +23,7 @@ Use this skill when:
 
 ## Reference Documentation
 
-This skill includes comprehensive documentation in `.github/copilot-skills/hetzner/references/`:
+This skill includes comprehensive documentation in `.github/copilot-skills/deployment/hetzner/references/`:
 
 - **cloud.md** - Cloud documentation
 - **networking.md** - Networking documentation

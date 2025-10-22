@@ -92,7 +92,7 @@ export default {
 
 ## Reference Documentation
 
-Complete docs in `.github/copilot-skills/cloudflare/references/`:
+Complete docs in `.github/copilot-skills/deployment/cloudflare/references/`:
 - `getting-started.md` - Setup and quickstart
 - `workers.md` - Workers development
 - `pages.md` - Static site deployment

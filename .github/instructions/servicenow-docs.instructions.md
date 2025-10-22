@@ -6,7 +6,7 @@ applyTo: "**/*{servicenow,ServiceNow,SERVICENOW,documentation,docs}*"
 # ServiceNow Documentation - Automatic Context Instructions
 
 **Related Prompt:** `/servicenow-docs`  
-**Related Skill:** `.github/copilot-skills/servicenow-docs/README.md`
+**Related Skill:** `.github/copilot-skills/documentation/servicenow-docs/README.md`
 
 **Triggers:** servicenow, documentation lookup, docs search, servicenow api, incident management, change management, itsm, hrsd, workflow, flow designer, service catalog, rest api
 
@@ -256,10 +256,10 @@ Use list_bundles() to verify available bundles:
 ## Reference Documentation
 
 For detailed tool documentation, see:
-- **Tool Reference**: `.github/copilot-skills/servicenow-docs/tools.md`
-- **Workflows**: `.github/copilot-skills/servicenow-docs/workflows.md`
-- **API Guide**: `.github/copilot-skills/servicenow-docs/api-reference.md`
-- **Best Practices**: `.github/copilot-skills/servicenow-docs/best-practices.md`
+- **Tool Reference**: `.github/copilot-skills/documentation/servicenow-docs/tools.md`
+- **Workflows**: `.github/copilot-skills/documentation/servicenow-docs/workflows.md`
+- **API Guide**: `.github/copilot-skills/documentation/servicenow-docs/api-reference.md`
+- **Best Practices**: `.github/copilot-skills/documentation/servicenow-docs/best-practices.md`
 
 ## Next Steps
 

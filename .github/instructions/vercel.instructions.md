@@ -43,5 +43,5 @@ Common issues and solutions documented in `references/` files.
 ## Resources
 
 - Skill prompt: `.github/prompts/vercel.skill.prompt.md`
-- References: `.github/copilot-skills/vercel/references/`
+- References: `.github/copilot-skills/deployment/vercel/references/`
 - Official docs: https://vercel.com/docs

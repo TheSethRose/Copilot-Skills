@@ -43,5 +43,5 @@ Common issues and solutions documented in `references/` files.
 ## Resources
 
 - Skill prompt: `.github/prompts/go.skill.prompt.md`
-- References: `.github/copilot-skills/go/references/`
+- References: `.github/copilot-skills/languages/go/references/`
 - Official docs: https://go.dev/doc/

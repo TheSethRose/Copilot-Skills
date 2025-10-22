@@ -43,5 +43,5 @@ Common issues and solutions documented in `references/` files.
 ## Resources
 
 - Skill prompt: `.github/prompts/hetzner.skill.prompt.md`
-- References: `.github/copilot-skills/hetzner/references/`
+- References: `.github/copilot-skills/deployment/hetzner/references/`
 - Official docs: https://docs.hetzner.com/

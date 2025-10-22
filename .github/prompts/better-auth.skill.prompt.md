@@ -159,7 +159,7 @@ export const auth = betterAuth({
 
 ## Reference Documentation
 
-This skill includes comprehensive documentation in `.github/copilot-skills/better-auth/references/`:
+This skill includes comprehensive documentation in `.github/copilot-skills/auth/better-auth/references/`:
 
 - **authentication.md** - Authentication documentation
 - **configuration.md** - Configuration documentation
