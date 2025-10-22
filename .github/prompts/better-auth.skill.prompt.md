@@ -181,9 +181,44 @@ Reference specific documentation files:
 ### For Code Examples
 Use the Quick Reference patterns above or ask for specific examples.
 
+## When to Use Better-Auth vs AuthJS
+
+| Aspect | Better-Auth | AuthJS |
+|--------|-------------|--------|
+| **Best For** | Modern full-stack apps | Existing Next-auth ecosystem |
+| **Learning Curve** | Lower | Moderate |
+| **Setup Time** | Fast (minimal boilerplate) | Medium (mature ecosystem) |
+| **Auth Methods** | Passkeys, OAuth, Email-OTP, Sessions | OAuth, JWT, Sessions |
+| **Database** | Flexible (Drizzle, TypeORM, etc.) | Prisma preferred |
+| **Type Safety** | Excellent (built for TS) | Good with TypeScript |
+| **Maintenance** | Actively developed | Active |
+| **Community** | Growing, modern-focused | Large, well-established |
+| **Best With** | SvelteKit, Next.js, Remix | Next.js 12+ (established) |
+| **Mobile** | Built for full-stack | Limited |
+
+### Choose Better-Auth if:
+- You're starting a new project
+- You want passkey/biometric support
+- You need less boilerplate
+- You prefer modern, simple configuration
+- You're using SvelteKit or Remix
+
+### Choose AuthJS if:
+- You're already using Next-auth
+- You need proven, mature solution
+- Your project is established on AuthJS
+- You prefer session-based auth primarily
+
+See also: `/authjs` for the alternative
+
 ## Related Skills
 
-- None (standalone skill)
+- `/nextjs` – Full-stack Next.js integration
+- `/sveltekit` – SvelteKit authentication
+- `/fastapi` – Python backend with Better-Auth
+- `/remix` – Remix framework integration
+- `/prisma` – Database layer for Better-Auth
+- `/authjs` – Alternative authentication solution
 
 ## More Information
 

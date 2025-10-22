@@ -43,5 +43,12 @@ Common issues and solutions documented in `references/` files.
 ## Resources
 
 - Skill prompt: `.github/prompts/cypress.skill.prompt.md`
-- References: `.github/copilot-skills/cypress/references/`
+- References: `.github/copilot-skills/testing/cypress/references/`
 - Official docs: https://docs.cypress.io/
+
+## Related Skills
+
+- `/react` – Component and application testing
+- `/vue` – Vue.js application testing
+- `/svelte` – Svelte application testing
+- `/nextjs` – Next.js E2E testing

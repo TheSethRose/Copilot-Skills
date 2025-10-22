@@ -182,6 +182,14 @@ fastmcp dev my_server.py
 - **Testing**: Test utilities and frameworks
 - **Monitoring**: Health checks and metrics
 
+## Related Skills
+
+- `/claude` – LLM platform that uses MCP servers
+- `/openai` – Alternative LLM integration via MCP
+- `/langchain` – Framework for composing AI chains
+- `/fastapi` – Alternative backend framework
+- `/mcp-builder` – Building custom MCP servers
+
 ## Related Resources
 
 - Official docs: https://gofastmcp.com/

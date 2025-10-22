@@ -44,9 +44,59 @@ Reference specific documentation files:
 ### For Code Examples
 Use the Quick Reference patterns above or ask for specific examples.
 
+## Common Tech Stacks
+
+### Vue 3 + Vite + TypeScript (Recommended)
+- **Build Tool**: Vite for fast development
+- **Styling**: Tailwind CSS or Sass
+- **UI Components**: Headless UI or custom components
+- **State Management**: Pinia
+- **Router**: Vue Router v4
+- **HTTP Client**: Axios or Fetch
+- **Testing**: Vitest + Vue Test Utils
+
+See also: `/vite`, `/tailwind`, `/typescript`
+
+### Vue + Nuxt Full Stack
+- **Framework**: Nuxt (Vue meta-framework)
+- **Styling**: Tailwind CSS
+- **UI Components**: Headless UI or Material Design
+- **Database**: Prisma + PostgreSQL
+- **Authentication**: Better-Auth or Nuxt Auth
+- **API**: Nitro server engine
+- **Deployment**: Vercel or Netlify
+
+See also: `/sveltekit`, `/tailwind`, `/prisma`
+
+### Vue + Composition API + FastAPI Backend
+- **Frontend**: Vue 3 + Composition API + Vite
+- **Backend**: FastAPI + Python
+- **Database**: Supabase or PostgreSQL
+- **State Management**: Pinia
+- **API Communication**: Axios with interceptors
+- **Styling**: Tailwind CSS
+
+See also: `/vite`, `/fastapi`, `/supabase`, `/tailwind`, `/typescript`
+
+### Vue + Material-UI
+- **UI Library**: Vuetify or Material Design for Vue
+- **State Management**: Pinia
+- **Router**: Vue Router
+- **HTTP Client**: Axios
+- **Styling**: Material Design tokens
+- **Component Framework**: Enterprise-ready components
+
+See also: `/material-ui`, `/typescript`
+
 ## Related Skills
 
-- None (standalone skill)
+- `/vite` – Build tool and dev server
+- `/tailwind` – Utility CSS framework
+- `/typescript` – Type safety
+- `/sveltekit` – Alternative Vue-like framework
+- `/fastapi` – Backend framework
+- `/supabase` – Cloud database
+- `/material-ui` – Alternative UI library
 
 ## More Information
 

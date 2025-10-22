@@ -250,3 +250,82 @@ Complete documentation available in:
 - Add proper type hints to all parameters
 - Use Pydantic models for complex types
 - Check return type annotations
+
+## AI Integration Patterns
+
+### With Claude API
+
+```python
+import anthropic
+from fastmcp import FastMCP
+
+mcp = FastMCP("Claude Tools Server")
+client = anthropic.Anthropic()
+
+@mcp.tool
+def analyze_with_claude(text: str) -> str:
+    """Analyze text using Claude"""
+    response = client.messages.create(
+        model="claude-3-sonnet-20250219",
+        max_tokens=1024,
+        messages=[{"role": "user", "content": f"Analyze: {text}"}]
+    )
+    return response.content[0].text
+
+@mcp.resource("ai://model-info")
+def get_model_info() -> str:
+    """Get available Claude model information"""
+    return "Claude 3 Sonnet, Claude 3 Opus, Claude 3 Haiku"
+```
+
+### With OpenAI API
+
+```python
+from openai import OpenAI
+from fastmcp import FastMCP
+
+mcp = FastMCP("OpenAI Tools Server")
+client = OpenAI()
+
+@mcp.tool
+async def call_gpt(prompt: str) -> str:
+    """Call GPT with a prompt"""
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
+
+@mcp.tool
+def generate_embedding(text: str) -> list[float]:
+    """Generate embeddings for text"""
+    response = client.embeddings.create(
+        model="text-embedding-3-small",
+        input=text
+    )
+    return response.data[0].embedding
+```
+
+### LLM Tool Discovery Pattern
+
+```python
+@mcp.prompt
+def describe_available_tools() -> str:
+    """Describe all available MCP tools for LLMs"""
+    tools_description = """
+    Available tools:
+    1. analyze_with_claude - Use Claude for analysis tasks
+    2. call_gpt - Use GPT for complex reasoning
+    3. search_database - Query application database
+    4. fetch_api - Call external APIs
+    """
+    return tools_description
+```
+
+## Related Skills
+
+- `/claude` – LLM integration with MCP servers
+- `/openai` – OpenAI integration patterns
+- `/langchain` – Chain composition with MCP
+- `/mcp-builder` – Advanced MCP server patterns
+- `/fastapi` – Alternative Python backend

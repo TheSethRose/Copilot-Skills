@@ -308,3 +308,11 @@ with patch("openai.ChatCompletion.create") as mock:
 - **Models**: https://platform.openai.com/docs/models
 - **GitHub**: https://github.com/openai/openai-python
 - **Cookbook**: https://cookbook.openai.com/
+
+## Related Skills
+
+- `/claude` – Alternative LLM platform
+- `/langchain` – Framework for LLM chains
+- `/ai-sdk` – TypeScript AI toolkit
+- `/fastapi` – Python backend for API endpoints
+- `/fastmcp` – MCP server integration

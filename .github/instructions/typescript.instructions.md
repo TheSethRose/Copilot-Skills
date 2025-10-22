@@ -43,5 +43,5 @@ Common issues and solutions documented in `references/` files.
 ## Resources
 
 - Skill prompt: `.github/prompts/typescript.skill.prompt.md`
-- References: `.github/copilot-skills/ui/typescript/references/`
+- References: `.github/copilot-skills/languages/typescript/references/`
 - Official docs: https://www.typescriptlang.org/docs/

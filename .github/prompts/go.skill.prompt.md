@@ -75,7 +75,11 @@ Use the Quick Reference patterns above or ask for specific examples.
 
 ## Related Skills
 
-- None (standalone skill)
+- `/docker` – Container deployment for Go services
+- `/kubernetes` – Orchestration for Go microservices
+- `/deployment` ecosystem – Cloud deployment options
+- `/git-ops` – Version control integration
+- `/fastapi` – Python alternative for APIs
 
 ## More Information
 

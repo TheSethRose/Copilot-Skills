@@ -44,4 +44,10 @@ Common issues and solutions documented in `references/` files.
 
 - Skill prompt: `.github/prompts/hetzner.skill.prompt.md`
 - References: `.github/copilot-skills/deployment/hetzner/references/`
-- Official docs: https://docs.hetzner.com/
+- Official docs: https://www.hetzner.com/
+
+## Related Skills
+
+- `/cloudflare` – CDN and edge computing alternative
+- `/vercel` – Managed deployment alternative
+- `/deployment` – Other deployment options

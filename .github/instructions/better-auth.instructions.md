@@ -44,4 +44,12 @@ Common issues and solutions documented in `references/` files.
 
 - Skill prompt: `.github/prompts/better-auth.skill.prompt.md`
 - References: `.github/copilot-skills/auth/better-auth/references/`
-- Official docs: https://www.better-auth.com/docs
+- Official docs: https://better-auth.com/
+
+## Related Skills
+
+- `/nextjs` – Next.js authentication setup
+- `/sveltekit` – SvelteKit integration
+- `/fastapi` – Python backend integration
+- `/prisma` – Database schema setup
+- `/authjs` – Alternative auth solution

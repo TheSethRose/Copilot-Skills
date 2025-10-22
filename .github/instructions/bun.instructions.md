@@ -42,6 +42,15 @@ Common issues and solutions documented in `references/` files.
 
 ## Resources
 
+## Resources
+
 - Skill prompt: `.github/prompts/bun.skill.prompt.md`
 - References: `.github/copilot-skills/runtimes/bun/references/`
-- Official docs: https://bun.sh/docs/
+- Official docs: https://bun.sh/
+
+## Related Skills
+
+- `/typescript` – Bun's primary language
+- `/nextjs` – Next.js with Bun runtime
+- `/react` – React development with Bun
+- `/vite` – Build tool alternative

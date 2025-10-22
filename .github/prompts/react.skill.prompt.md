@@ -100,9 +100,58 @@ Reference specific documentation files:
 ### For Code Examples
 Use the Quick Reference patterns above or ask for specific examples.
 
+## Common Tech Stacks
+
+### React + Vite + TypeScript (Recommended)
+- **Build Tool**: Vite for fast development
+- **Styling**: Tailwind CSS
+- **UI Components**: ShadCN/UI or Radix UI
+- **State Management**: TanStack Query + Zustand
+- **API Client**: Fetch API or Axios
+- **Testing**: Vitest + React Testing Library
+
+See also: `/vite`, `/tailwind`, `/shadcn`, `/radix-ui`, `/typescript`
+
+### React + Next.js Full Stack
+- **Framework**: Next.js with App Router
+- **Styling**: Tailwind CSS
+- **UI Components**: ShadCN/UI
+- **Database**: Prisma + PostgreSQL
+- **Auth**: Better-Auth or AuthJS
+- **API Routes**: Next.js API routes
+- **Deployment**: Vercel
+
+See also: `/nextjs`, `/tailwind`, `/shadcn`, `/prisma`, `/better-auth`, `/vercel`
+
+### React + Material-UI + Redux
+- **UI Library**: Material-UI
+- **State Management**: Redux Toolkit
+- **API Client**: React Query + Axios
+- **Styling**: Material-UI theming
+- **Form Handling**: React Hook Form
+- **Testing**: Jest + React Testing Library
+
+See also: `/material-ui`, `/typescript`
+
+### React + Vite + FastAPI Backend
+- **Frontend**: React + Vite + TypeScript
+- **Backend**: FastAPI + Python
+- **Database**: Supabase or PostgreSQL
+- **API Communication**: Axios with interceptors
+- **Authentication**: Better-Auth
+- **Styling**: Tailwind CSS
+
+See also: `/vite`, `/fastapi`, `/supabase`, `/tailwind`
+
 ## Related Skills
 
-- None (standalone skill)
+- `/vite` – Build tool and dev server
+- `/nextjs` – Full-stack framework
+- `/tailwind` – Utility CSS framework
+- `/shadcn` – Component library
+- `/radix-ui` – Headless UI primitives
+- `/typescript` – Type safety
+- `/fastapi` – Backend framework
 
 ## More Information
 

@@ -119,7 +119,11 @@ Use the Quick Reference patterns above or ask for specific examples.
 
 ## Related Skills
 
-- None (standalone skill)
+- `/react` – Primary framework for Vite
+- `/vue` – Vue support in Vite
+- `/svelte` – Svelte support in Vite
+- `/typescript` – TypeScript integration
+- `/tailwind` – CSS framework integration
 
 ## More Information
 

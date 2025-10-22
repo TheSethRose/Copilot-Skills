@@ -43,7 +43,11 @@ Use the Quick Reference patterns above or ask for specific examples.
 
 ## Related Skills
 
-- None (standalone skill)
+- `/react` – Frontend framework for component testing
+- `/vue` – Vue.js framework testing
+- `/svelte` – Svelte framework testing
+- `/nextjs` – Next.js app E2E testing
+- `/vite` – Build tool integration
 
 ## More Information
 

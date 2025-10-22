@@ -46,7 +46,11 @@ Use the Quick Reference patterns above or ask for specific examples.
 
 ## Related Skills
 
-- None (standalone skill)
+- `/deployment` ecosystem – Cloudflare, Vercel alternatives
+- `/docker` – Containerization for Hetzner deployment
+- `/kubernetes` – Container orchestration
+- `/git-ops` – Version control integration
+- `/mcp-builder` – API/tool integration
 
 ## More Information
 

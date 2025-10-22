@@ -200,6 +200,14 @@ const client = new OpenAI({
 - ✅ Use streaming for long responses
 - ✅ Monitor token usage
 
+## Related Skills
+
+- `/claude` – Alternative LLM with different capabilities
+- `/langchain` – Framework for building with LLMs
+- `/ai-sdk` – TypeScript toolkit for AI applications
+- `/fastapi` – Backend framework for API endpoints
+- `/fastmcp` – MCP server for tool integration
+
 ## Related Resources
 
 - Official Site: https://openai.com

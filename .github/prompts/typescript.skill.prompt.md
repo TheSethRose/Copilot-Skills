@@ -75,7 +75,7 @@ interface Box {  height: number;  width: number;}interface Box {  scale: number;
 
 ## Reference Documentation
 
-This skill includes comprehensive documentation in `.github/copilot-skills/ui/typescript/references/`:
+This skill includes comprehensive documentation in `.github/copilot-skills/languages/typescript/references/`:
 
 - **everyday_types.md** - Everyday Types documentation
 - **getting_started.md** - Getting Started documentation

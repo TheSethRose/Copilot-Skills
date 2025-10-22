@@ -97,7 +97,60 @@ Use the Quick Reference patterns above or ask for specific examples.
 
 ## Related Skills
 
-- None (standalone skill)
+## Common Tech Stacks
+
+### Next.js Full Stack (Recommended)
+- **Framework**: Next.js with App Router + Server Components
+- **Styling**: Tailwind CSS v4
+- **UI Components**: ShadCN/UI
+- **Database**: Prisma + PostgreSQL
+- **Authentication**: Better-Auth or AuthJS
+- **API**: Route handlers + API routes
+- **Deployment**: Vercel
+- **Forms**: React Hook Form + Zod
+
+See also: `/react`, `/tailwind`, `/shadcn`, `/prisma`, `/better-auth`, `/vercel`
+
+### Next.js + Headless CMS
+- **Framework**: Next.js
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI
+- **CMS**: Contentful, Strapi, or Sanity
+- **API**: Next.js API routes
+- **Static Generation**: getStaticProps, generateStaticParams
+- **Revalidation**: Incremental Static Regeneration (ISR)
+
+See also: `/react`, `/tailwind`, `/radix-ui`
+
+### Next.js with LLM Integration
+- **Framework**: Next.js App Router
+- **AI**: Claude API or OpenAI API
+- **Styling**: Tailwind CSS
+- **Database**: Supabase for vector embeddings
+- **Components**: ShadCN/UI
+- **Streaming**: AI response streaming
+
+See also: `/claude`, `/openai`, `/supabase`, `/shadcn`
+
+### Next.js + GraphQL Backend
+- **Frontend**: Next.js
+- **API**: GraphQL (Apollo or GraphQL Yoga)
+- **Database**: Prisma
+- **Authentication**: Better-Auth
+- **Styling**: Tailwind CSS
+- **Type Generation**: GraphQL Code Generator
+
+See also: `/typescript`, `/prisma`, `/tailwind`
+
+## Related Skills
+
+- `/react` – React fundamentals
+- `/tailwind` – Styling
+- `/shadcn` – Component library
+- `/prisma` – ORM database
+- `/better-auth` – Authentication
+- `/vercel` – Deployment platform
+- `/supabase` – Cloud database
 
 ## More Information
 

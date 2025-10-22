@@ -42,6 +42,14 @@ Common issues and solutions documented in `references/` files.
 
 ## Resources
 
+## Resources
+
 - Skill prompt: `.github/prompts/go.skill.prompt.md`
 - References: `.github/copilot-skills/languages/go/references/`
-- Official docs: https://go.dev/doc/
+- Official docs: https://golang.org/
+
+## Related Skills
+
+- `/docker` – Container deployment for Go
+- `/kubernetes` – Go microservice orchestration
+- `/deployment` – Cloud deployment options

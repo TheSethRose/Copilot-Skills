@@ -137,7 +137,11 @@ Use the Quick Reference patterns above or ask for specific examples.
 
 ## Related Skills
 
-- None (standalone skill)
+- `/typescript` – Primary language for Bun
+- `/nextjs` – Framework that works with Bun
+- `/react` – Framework development with Bun
+- `/vite` – Build tool alternative
+- `/fastify` – Web framework for Bun
 
 ## More Information
 

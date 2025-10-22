@@ -43,5 +43,13 @@ Common issues and solutions documented in `references/` files.
 ## Resources
 
 - Skill prompt: `.github/prompts/vite.skill.prompt.md`
-- References: `.github/copilot-skills/vite/references/`
-- Official docs: https://vitejs.dev/guide/
+- References: `.github/copilot-skills/tooling/vite/references/`
+- Official docs: https://vitejs.dev/
+
+## Related Skills
+
+- `/react` – Vite with React
+- `/vue` – Vite with Vue
+- `/svelte` – Vite with Svelte
+- `/typescript` – TypeScript configuration
+- `/tailwind` – Tailwind CSS integrationguide/
