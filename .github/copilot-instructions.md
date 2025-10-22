@@ -123,6 +123,12 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Auto-context:** `.github/instructions/docs-to-skill.instructions.md` (when working with documentation sites or skill generation)
 **Skill:** `.github/copilot-skills/skills/docs-to-skill/README.md`
 
+#### Context7 - Up-to-Date Library Documentation
+**Keywords:** context7, up-to-date docs, latest documentation, library documentation, current docs, resolve library, get docs, fresh documentation, 48k libraries
+**Suggest:** `/context7`
+**Auto-context:** `.github/instructions/context7.instructions.md` (when editing **/*{context7,Context7,library-docs,up-to-date-docs}*)
+**Skill:** `.github/copilot-skills/context7/README.md`
+
 #### MCP Server Development
 **Keywords:** mcp, model context protocol, mcp server, agent tools, llm integration, api integration, fastmcp, tool design
 **Suggest:** `/mcp-builder`
@@ -224,6 +230,30 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Suggest:** `/fastapi`
 **Auto-context:** `.github/instructions/fastapi.instructions.md` (when editing fastapi .py files)
 **Skill:** `.github/copilot-skills/backend/fastapi/`
+
+#### FastMCP
+**Keywords:** fastmcp, mcp, model context protocol, mcp server, mcp client, python mcp, llm tools, llm integration, mcp.tool, mcp.resource, mcp.prompt, fastmcp server, fastmcp client
+**Suggest:** `/fastmcp`
+**Auto-context:** `.github/instructions/fastmcp.instructions.md` (when editing **/*.py, **/mcp_*.py, **/*_server.py, **/fastmcp_*.py)
+**Skill:** `.github/copilot-skills/backend/fastmcp/`
+
+#### ServiceNow Documentation Lookup
+**Keywords:** servicenow, documentation, docs, incident, change, service catalog, workflow, flow designer, api, itsm, hrsd, platform, application, integration, rest api, servicenow lookup
+**Suggest:** `/servicenow-docs`
+**Auto-context:** `.github/instructions/servicenow-docs.instructions.md` (when editing **/*{servicenow,ServiceNow,SERVICENOW,documentation,docs}*)
+**Skill:** `.github/copilot-skills/servicenow-docs/README.md`
+
+#### Cloudflare
+**Keywords:** cloudflare, workers, pages, wrangler, edge computing, r2, d1, durable objects, zero trust, api, deployment
+**Suggest:** `/cloudflare`
+**Auto-context:** `.github/instructions/cloudflare.instructions.md` (when editing **/*.js, **/*.ts, **/*.tsx, **/*.jsx, **/*.toml, **/wrangler.toml)
+**Skill:** `.github/copilot-skills/cloudflare/`
+
+#### OpenAI
+**Keywords:** openai, gpt, gpt-4, gpt-3.5, embeddings, assistants, api, ai, llm, chat completion, function calling, vision, dall-e, whisper, fine-tuning
+**Suggest:** `/openai`
+**Auto-context:** `.github/instructions/openai.instructions.md` (when editing **/*.js, **/*.ts, **/*.tsx, **/*.jsx, **/*.py, **/openai*)
+**Skill:** `.github/copilot-skills/openai/`
 
 #### Storybook
 **Keywords:** storybook, component development, component library, stories, UI testing, documentation, visual testing

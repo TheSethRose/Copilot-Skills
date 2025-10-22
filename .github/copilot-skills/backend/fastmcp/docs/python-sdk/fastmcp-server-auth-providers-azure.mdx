@@ -1,0 +1,66 @@
+---
+title: azure
+sidebarTitle: azure
+---
+
+# `fastmcp.server.auth.providers.azure`
+
+
+Azure (Microsoft Entra) OAuth provider for FastMCP.
+
+This provider implements Azure/Microsoft Entra ID OAuth authentication
+using the OAuth Proxy pattern for non-DCR OAuth flows.
+
+
+## Classes
+
+### `AzureProviderSettings` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/azure.py#L29" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+
+Settings for Azure OAuth provider.
+
+
+### `AzureProvider` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/azure.py#L60" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+
+Azure (Microsoft Entra) OAuth provider for FastMCP.
+
+This provider implements Azure/Microsoft Entra ID authentication using the
+OAuth Proxy pattern. It supports both organizational accounts and personal
+Microsoft accounts depending on the tenant configuration.
+
+Features:
+- OAuth proxy to Azure/Microsoft identity platform
+- JWT validation using tenant issuer and JWKS
+- Supports tenant configurations: specific tenant ID, "organizations", or "consumers"
+
+Setup:
+1. Create an App registration in Azure Portal
+2. Configure Web platform redirect URI: http://localhost:8000/auth/callback (or your custom path)
+3. Add an Application ID URI. Either use the default (api://{client_id}) or set a custom one.
+4. Add a custom scope.
+5. Create a client secret.
+6. Get Application (client) ID, Directory (tenant) ID, and client secret
+
+
+**Methods:**
+
+#### `authorize` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/azure.py#L234" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+authorize(self, client: OAuthClientInformationFull, params: AuthorizationParams) -> str
+```
+
+Start OAuth transaction and redirect to Azure AD.
+
+Override parent's authorize method to filter out the 'resource' parameter
+which is not supported by Azure AD v2.0 endpoints. The v2.0 endpoints use
+scopes to determine the resource/audience instead of a separate parameter.
+
+**Args:**
+- `client`: OAuth client information
+- `params`: Authorization parameters from the client
+
+**Returns:**
+- Authorization URL to redirect the user to Azure AD
+

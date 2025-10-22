@@ -1,0 +1,38 @@
+{
+  "name": "cloudflare",
+  "description": "Cloudflare developer platform documentation - APIs, Workers, Pages, and infrastructure services",
+  "base_url": "https://developers.cloudflare.com/",
+  "max_pages": 500,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.js",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.jsx",
+    "**/*.toml",
+    "**/wrangler.toml"
+  ],
+  "selectors": {
+    "main_content": "main, article, [role='main']",
+    "title": "h1, h2",
+    "code_blocks": "pre code, [class*='code']"
+  },
+  "url_patterns": {
+    "include": ["^https://developers\\.cloudflare\\.com/.*"],
+    "exclude": ["/search.*", "#.*", "\\?.*"]
+  },
+  "categories": {
+    "getting_started": ["getting started", "quickstart", "introduction", "setup", "install"],
+    "workers": ["workers", "serverless", "edge computing", "compute"],
+    "pages": ["pages", "static site", "deployment"],
+    "dns": ["dns", "domain", "nameserver"],
+    "security": ["security", "waf", "ddos", "firewall"],
+    "performance": ["performance", "cache", "cdn", "speed"],
+    "analytics": ["analytics", "logs", "monitoring", "metrics"],
+    "api": ["api", "reference", "endpoint"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 50
+  }
+}

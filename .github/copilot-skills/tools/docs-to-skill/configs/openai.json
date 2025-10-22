@@ -1,0 +1,35 @@
+{
+  "name": "openai",
+  "description": "OpenAI API documentation - GPT models, embeddings, vision, and assistant tools",
+  "base_url": "https://platform.openai.com/docs/",
+  "max_pages": 300,
+  "rate_limit": 0.5,
+  "file_patterns": [
+    "**/*.js",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.jsx",
+    "**/*.py",
+    "**/openai*"
+  ],
+  "selectors": {
+    "main_content": "main, article, [role='main'], .doc-content",
+    "title": "h1, h2",
+    "code_blocks": "pre code, [class*='code']"
+  },
+  "url_patterns": {
+    "include": ["^https://platform\\.openai\\.com/docs/.*"],
+    "exclude": ["/search.*", "#.*", "\\?.*"]
+  },
+  "categories": {
+    "getting_started": ["getting started", "quickstart", "introduction", "setup", "install", "api keys"],
+    "models": ["models", "gpt", "embeddings", "vision", "whisper", "text-to-speech"],
+    "api_reference": ["api", "reference", "endpoint", "request", "response"],
+    "guides": ["guide", "tutorial", "how-to", "example"],
+    "safety": ["safety", "moderation", "guidelines", "best practices"]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 50
+  }
+}
