@@ -1,0 +1,82 @@
+{
+  "name": "bun",
+  "description": "Bun is a fast JavaScript runtime, bundler, transpiler, and package manager built in Zig",
+  "base_url": "https://bun.sh/docs/",
+  "start_url": "https://bun.sh/docs",
+  "max_pages": 150,
+  "rate_limit": 0.8,
+  "file_patterns": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "**/bunfig.toml",
+    "**/package.json"
+  ],
+  "selectors": {
+    "main_content": "main, article, div[role='main'], .content",
+    "title": "h1, .title",
+    "code_blocks": "pre code, .highlight"
+  },
+  "url_patterns": {
+    "include": [
+      "^https://bun\\.sh/docs/.*",
+      "^https://bun\\.sh/blog/.*"
+    ],
+    "exclude": [
+      "#.*",
+      ".*\\?.*",
+      ".*/api/.*$"
+    ]
+  },
+  "categories": {
+    "getting_started": [
+      "installation",
+      "quick-start",
+      "getting-started",
+      "introduction",
+      "overview"
+    ],
+    "runtime": [
+      "runtime",
+      "api",
+      "globals",
+      "web-apis",
+      "node-apis"
+    ],
+    "bundler": [
+      "bundler",
+      "bundle",
+      "build",
+      "entrypoint",
+      "loader",
+      "plugin"
+    ],
+    "package_manager": [
+      "package-manager",
+      "pm",
+      "install",
+      "dependency",
+      "lockfile"
+    ],
+    "tooling": [
+      "cli",
+      "command",
+      "test",
+      "debug",
+      "transpiler",
+      "repl"
+    ],
+    "guides": [
+      "guide",
+      "tutorial",
+      "example",
+      "pattern",
+      "best-practices"
+    ]
+  },
+  "checkpoint": {
+    "enabled": true,
+    "interval": 30
+  }
+}
