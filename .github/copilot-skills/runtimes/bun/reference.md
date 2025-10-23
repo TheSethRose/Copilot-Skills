@@ -1,63 +1,16 @@
-# Bun - Reference Documentation
+# Bun - Reference
 
-Comprehensive bun documentation extracted from official sources.
+Bun is a fast JavaScript runtime, bundler, transpiler, and package manager built in Zig
 
-## Overview
+## Documentation Categories
 
-This reference includes documentation organized into the following categories:
+- **Bundler**: 18 pages
+- **Getting Started**: 1 pages
+- **Guides**: 26 pages
+- **Package Manager**: 22 pages
+- **Reference**: 9 pages
+- **Runtime**: 63 pages
+- **Tooling**: 11 pages
 
-### Api
-
-**File**: `references/api.md`  
-**Pages**: 4
-
-**Topics**:
-- File I/O
-- HTTP server
-- SQLite
-- WebSockets
-
-### Cli
-
-**File**: `references/cli.md`  
-**Pages**: 3
-
-**Topics**:
-- Testing
-- bun create
-- bun install
-
-### Other
-
-**File**: `references/other.md`  
-**Pages**: 4
-
-**Topics**:
-- Bun.build
-- Installation
-- Quickstart
-- What is Bun?
-
-
-## How to Use
-
-### Navigation
-Each category file in `references/` contains:
-- Page titles and URLs
-- Table of contents from headings
-- Content summaries
-- Code examples with language tags
-
-### Finding Information
-1. Check category that matches your topic
-2. Scan table of contents
-3. Read relevant sections
-4. Copy code examples as needed
-
-### Common Patterns
-See `patterns.md` for frequently used code patterns.
-
-## Source
-
-- **Base URL**: https://bun.sh/docs/
-- **Generated**: 2025-10-20
+**Total Pages**: 150
+**Generated**: 2025-10-23T08:11:59.904104
