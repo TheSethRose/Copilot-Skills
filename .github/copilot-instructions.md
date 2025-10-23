@@ -123,6 +123,14 @@ When user queries contain these keywords, **suggest the corresponding skill**:
 **Auto-context:** `.github/instructions/docs-to-skill.instructions.md` (when working with documentation sites or skill generation)
 **Skill:** `.github/copilot-skills/skills/docs-to-skill/README.md`
 
+#### Web Research
+**Keywords:** research, web, search, documentation, scrape, crawler, learning, knowledge-base, investigation, discovery, multi-source, research query
+**Suggest:** `/web-research`
+**Auto-context:** `.github/instructions/web-research.instructions.md` (when editing **/*.py, **/*.js, **/*.ts, **/*.md, **/research*, **/web*, **/scrape*, **/crawler*, **/knowledge*)
+**Skill:** `.github/copilot-skills/generators/web-research/`
+**Dependencies:** `/context7` (recommended for library research)
+**Integrations:** `/servicenow-docs`, `/langchain`, `/claude`
+
 #### Context7 - Up-to-Date Library Documentation
 **Keywords:** context7, up-to-date docs, latest documentation, library documentation, current docs, resolve library, get docs, fresh documentation, 48k libraries
 **Suggest:** `/context7`
