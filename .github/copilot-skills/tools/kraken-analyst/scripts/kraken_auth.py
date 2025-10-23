@@ -32,6 +32,24 @@ import urllib.parse
 import urllib.request
 import json
 from typing import Dict, Optional, Any
+from pathlib import Path
+
+# Load .env file manually if it exists (without requiring python-dotenv)
+def load_env_file():
+    """Load environment variables from .env file"""
+    env_path = Path(__file__).parent.parent / '.env'
+    if env_path.exists():
+        with open(env_path, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#') and '=' in line:
+                    key, value = line.split('=', 1)
+                    # Remove quotes if present
+                    value = value.strip('"').strip("'")
+                    os.environ[key.strip()] = value
+
+# Load .env on module import
+load_env_file()
 
 
 class KrakenAuth:

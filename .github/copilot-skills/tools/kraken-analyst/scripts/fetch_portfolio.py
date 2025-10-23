@@ -143,6 +143,24 @@ class PortfolioFetcher:
         
         return None
     
+    def get_earn_allocations(self) -> Optional[Dict]:
+        """
+        Get Kraken Earn staking allocations
+        
+        Returns:
+            Dictionary with staking information
+        """
+        result = self.auth.query_private("Earn/Allocations")
+        
+        if result:
+            return {
+                "timestamp": self.auth.last_request_time,
+                "items": result.get("items", []),
+                "total_count": len(result.get("items", []))
+            }
+        
+        return None
+    
     def get_portfolio_summary(self) -> Optional[Dict]:
         """
         Get complete portfolio summary with balances and current prices
@@ -159,6 +177,20 @@ class PortfolioFetcher:
         portfolio = []
         total_value_usd = 0.0
         
+        # Asset to trading pair mapping
+        asset_pair_map = {
+            "XXBT": "XXBTZUSD",
+            "XETH": "XETHZUSD",
+            "SOL": "SOLUSD",
+            "DOT": "DOTUSD",
+            "XXRP": "XXRPZUSD",
+            "ADA": "ADAUSD",
+            "AVAX": "AVAXUSD",
+            "MATIC": "MATICUSD",
+            "LINK": "LINKUSD",
+            "ATOM": "ATOMUSD",
+        }
+        
         # Get current prices for each asset
         for asset, amount in balances.items():
             # Skip if stablecoin
@@ -173,12 +205,52 @@ class PortfolioFetcher:
                 total_value_usd += amount
                 continue
             
-            # Construct trading pair for price lookup
-            # Kraken format: XXBTZUSD, XETHZUSD, etc.
-            if asset.startswith("X") or asset.startswith("Z"):
-                pair = f"{asset}USD"
-            else:
-                pair = f"{asset}USD"
+            # Handle futures and spread contracts by mapping to spot equivalent prices
+            if asset.endswith(".F") or asset.endswith(".S"):
+                # Map futures/spread to underlying asset (remove .F/.S and any numeric date codes)
+                import re
+                base_asset = re.sub(r'\d+\.?[FS]$', '', asset).rstrip('.')
+                
+                # Map common futures to spot pairs
+                futures_map = {
+                    "XBT": "XXBTZUSD",
+                    "ETH": "XETHZUSD",
+                    "SOL": "SOLUSD",
+                    "DOT": "DOTUSD",
+                }
+                
+                spot_pair = futures_map.get(base_asset)
+                if spot_pair:
+                    ticker_result = self.auth.query_public("Ticker", {"pair": spot_pair})
+                    if ticker_result and spot_pair in ticker_result:
+                        ticker = ticker_result[spot_pair]
+                        price_usd = float(ticker["c"][0])
+                        value_usd = amount * price_usd
+                        
+                        portfolio.append({
+                            "asset": asset,
+                            "amount": amount,
+                            "price_usd": price_usd,
+                            "value_usd": value_usd,
+                            "weight": 0.0,
+                            "note": f"Futures/spread (valued at {base_asset} spot price)"
+                        })
+                        total_value_usd += value_usd
+                        continue
+                
+                # If we can't value it, skip
+                portfolio.append({
+                    "asset": asset,
+                    "amount": amount,
+                    "price_usd": None,
+                    "value_usd": 0.0,
+                    "weight": 0.0,
+                    "note": "Futures/spread contract (no spot price mapping)"
+                })
+                continue
+            
+            # Get trading pair
+            pair = asset_pair_map.get(asset, f"{asset}USD")
             
             # Try to get ticker
             ticker_result = self.auth.query_public("Ticker", {"pair": pair})
@@ -212,14 +284,86 @@ class PortfolioFetcher:
             if total_value_usd > 0:
                 item["weight"] = (item["value_usd"] / total_value_usd) * 100
         
+        # Get Earn (staking) allocations
+        earn_data = self.get_earn_allocations()
+        earn_items = []
+        earn_total_usd = 0.0
+        
+        # Asset mapping for Earn native_asset codes to trading pairs
+        earn_asset_map = {
+            "BTC": "XXBTZUSD",
+            "ETH": "XETHZUSD",
+            "SOL": "SOLUSD",
+            "DOT": "DOTUSD",
+            "ADA": "ADAUSD",
+            "ATOM": "ATOMUSD",
+            "XTZ": "XTZUSD",
+            "KAVA": "KAVAUSD",
+            "KSM": "KSMUSD",
+            "FLOW": "FLOWUSD",
+            "GRT": "GRTUSD",
+            "MINA": "MINAUSD",
+            "SCRT": "SCRTUSD",
+            "TRX": "TRXUSD",
+            "DYM": "DYMUSD",
+            "SEI": "SEIUSD"
+        }
+        
+        if earn_data and earn_data.get("items"):
+            for allocation in earn_data["items"]:
+                asset = allocation.get("native_asset", "")
+                amount = float(allocation.get("amount_allocated", {}).get("total", {}).get("native", 0))
+                
+                # Skip zero allocations
+                if amount == 0:
+                    continue
+                
+                # Get price for staked asset
+                if asset in ["USD", "USDC", "USDT"]:
+                    price_usd = 1.0
+                else:
+                    pair = earn_asset_map.get(asset, asset_pair_map.get(asset, f"{asset}USD"))
+                    ticker_result = self.auth.query_public("Ticker", {"pair": pair})
+                    if ticker_result and pair in ticker_result:
+                        price_usd = float(ticker_result[pair]["c"][0])
+                    else:
+                        price_usd = None
+                
+                if price_usd:
+                    value_usd = amount * price_usd
+                    earn_items.append({
+                        "asset": asset,
+                        "amount": amount,
+                        "price_usd": price_usd,
+                        "value_usd": value_usd,
+                        "strategy": allocation.get("strategy_id", ""),
+                        "apr": allocation.get("apr_estimate", {}).get("low", 0)
+                    })
+                    earn_total_usd += value_usd
+        
+        # Separate spot from futures/dust
+        spot_portfolio = [p for p in portfolio if not p["asset"].endswith((".F", ".S"))]
+        futures_portfolio = [p for p in portfolio if p["asset"].endswith((".F", ".S"))]
+        
+        spot_total = sum(p["value_usd"] for p in spot_portfolio)
+        
+        # Calculate weights for spot only
+        for item in spot_portfolio:
+            if spot_total > 0:
+                item["weight"] = (item["value_usd"] / spot_total) * 100
+        
         # Sort by value
-        portfolio.sort(key=lambda x: x["value_usd"], reverse=True)
+        spot_portfolio.sort(key=lambda x: x["value_usd"], reverse=True)
+        earn_items.sort(key=lambda x: x["value_usd"], reverse=True)
         
         return {
             "timestamp": self.auth.last_request_time,
-            "total_value_usd": total_value_usd,
-            "asset_count": len(portfolio),
-            "portfolio": portfolio
+            "total_value_usd": spot_total + earn_total_usd,
+            "spot_value_usd": spot_total,
+            "earn_value_usd": earn_total_usd,
+            "spot_portfolio": spot_portfolio,
+            "earn_allocations": earn_items,
+            "futures_dust": futures_portfolio  # Usually worth ~$0
         }
 
 
