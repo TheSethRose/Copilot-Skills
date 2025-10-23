@@ -1,25 +1,27 @@
 ---
 name: kraken-analyst
-description: Fetches live Kraken crypto data and applies quantitative rule-sets for strategy insights.
-version: "1.0.0"
-tags: ["crypto", "market", "kraken", "strategy", "analysis"]
+description: Professional-grade crypto analysis with advanced technical indicators, portfolio optimization, and risk metrics.
+version: "2.0.0"
+tags: ["crypto", "market", "kraken", "strategy", "analysis", "technical-indicators", "portfolio-optimization"]
 dependencies: ["python3"]
 license: MIT
 ---
 
 # Kraken Analyst Copilot Skill
 
-A quantitative analysis skill for fetching live cryptocurrency market data from Kraken and applying rule-based strategy signals. Built using official Kraken API documentation.
+A professional quantitative analysis skill for cryptocurrency markets featuring advanced technical indicators, Modern Portfolio Theory optimization, and comprehensive risk metrics. Built using official Kraken API documentation with patterns extracted from MaverickMCP.
 
 ## Overview
 
 The Kraken Analyst skill provides:
 
 - **Live Data Fetching** - Real-time OHLC data from Kraken REST API v0
-- **Quantitative Analysis** - Momentum, volatility, and trend calculations
-- **Rule-Based Signals** - BUY, SELL, HOLD recommendations based on configurable thresholds
+- **Advanced Technical Analysis** - 20+ indicators including Ichimoku, ATR, Stochastic RSI, support/resistance detection
+- **Portfolio Optimization** - Modern Portfolio Theory with correlation matrix, Sharpe ratio, diversification metrics
+- **Quantitative Signals** - BUY, SELL, HOLD recommendations with confidence scoring
+- **Risk Management** - Maximum drawdown, VaR, Sortino ratio, volatility analysis
 - **Structured Output** - JSON + Markdown formatted reports
-- **Portfolio Management** - Account balance tracking, allocation analysis, and rebalancing recommendations (requires API keys)
+- **Portfolio Management** - Account balance tracking, allocation analysis, and rebalancing (requires API keys)
 
 ## Quick Start
 
@@ -194,16 +196,25 @@ python format_output.py --format text < analysis.json
 
 ### Authentication Setup
 
-To use portfolio management features, you need Kraken API credentials:
+To use portfolio management features, you need Kraken API credentials with appropriate permissions.
+
+**📋 DETAILED PERMISSIONS GUIDE**: See [`PERMISSIONS.md`](./PERMISSIONS.md) for complete guidance on:
+- Which permissions each feature needs
+- Security recommendations (IP restriction, key expiration)
+- Step-by-step API key creation instructions
+- Troubleshooting permission errors
+
+**Quick Setup for Portfolio View (Minimum)**:
 
 1. **Login to Kraken**: https://www.kraken.com
 2. **Go to Settings → API**
-3. **Create New API Key** with permissions:
-   - ✅ Query Funds (required for balances)
-   - ✅ Query Open Orders & Trades (required for order history)
-   - ✅ Query Closed Orders & Trades (optional)
-4. **Copy API Key and Private Key**
-5. **Configure Environment**:
+3. **Create New API Key** with ONLY these permissions:
+   - ✅ **Funds → Query** (for viewing balances)
+   - ❌ Leave all others unchecked
+4. **Enable Security Settings**:
+   - ✅ IP Address Restriction: Add your IP
+   - ✅ Key Expiration: Set to 90 days
+5. **Copy credentials**:
    ```bash
    cp .github/copilot-skills/tools/kraken-analyst/.env.example \
       .github/copilot-skills/tools/kraken-analyst/.env
@@ -212,12 +223,20 @@ To use portfolio management features, you need Kraken API credentials:
    # KRAKEN_API_KEY=your-api-key-here
    # KRAKEN_PRIVATE_KEY=your-private-key-here
    ```
+6. **Test**:
+   ```bash
+   python fetch_portfolio.py --balances
+   ```
+
+**For Full Analysis** (with trade history), see [`PERMISSIONS.md`](./PERMISSIONS.md) for additional permissions needed.
 
 **Security Best Practices:**
-- ✅ Never commit `.env` file to git
-- ✅ Use API key restrictions (IP whitelist, expiration dates)
-- ✅ Grant minimum required permissions
+- ✅ Never commit `.env` file to git (already in `.gitignore`)
+- ✅ Grant **only minimum required permissions** for your use case
+- ✅ Always enable **IP whitelisting**
+- ✅ Set **key expiration** (30-90 days)
 - ✅ Rotate keys regularly
+- ✅ Never grant: Create/Cancel Orders, Withdraw, Deposit
 - ✅ Monitor API key usage in Kraken dashboard
 
 ### kraken_auth.py
@@ -244,20 +263,28 @@ Testing connection...
 
 ### fetch_portfolio.py
 
-Fetches account portfolio data from private API endpoints.
+Fetches account portfolio data from private API endpoints including **Kraken Earn (staking)** allocations.
 
-**Requires**: API credentials in `.env` file
+**Requires**: API credentials in `.env` file (auto-loaded, no manual sourcing needed!)
+
+**Features**:
+- ✅ Fetches spot balances
+- ✅ Fetches Kraken Earn (staking) allocations with APR
+- ✅ Combines spot + earn for total portfolio value
+- ✅ Maps futures/spread contracts to spot prices
+- ✅ Calculates allocation percentages
+- ✅ Real-time USD values from Kraken Ticker API
 
 **Usage:**
 ```bash
-# Get account balances
-python fetch_portfolio.py --balances
+# Get account balances (spot + futures/spreads)
+python3 fetch_portfolio.py --balances
 
-# Get complete portfolio summary with USD values
-python fetch_portfolio.py --portfolio-summary
+# Get complete portfolio summary (spot + Kraken Earn staking)
+python3 fetch_portfolio.py --portfolio-summary --format pretty
 
 # Get open orders
-python fetch_portfolio.py --open-orders
+python3 fetch_portfolio.py --open-orders
 
 # Get recent trade history
 python fetch_portfolio.py --trade-history --count 20
@@ -278,16 +305,42 @@ python fetch_portfolio.py --trade-volume
 **Output (Portfolio Summary):**
 ```json
 {
-  "timestamp": 1697834523.456,
-  "total_value_usd": 377.69,
-  "asset_count": 4,
-  "portfolio": [
+  "timestamp": 1761191977.861,
+  "total_value_usd": 373.87,
+  "spot_value_usd": 0.02,
+  "earn_value_usd": 373.85,
+  "spot_portfolio": [
     {
-      "asset": "XXBT",
-      "amount": 0.00241234,
-      "price_usd": 108725.90,
-      "value_usd": 262.39,
-      "weight": 69.46
+      "asset": "ZUSD",
+      "amount": 0.0098,
+      "price_usd": 1.0,
+      "value_usd": 0.0098,
+      "weight": 53.95
+    },
+    {
+      "asset": "BABY",
+      "amount": 0.27133,
+      "price_usd": 0.03083,
+      "value_usd": 0.0084,
+      "weight": 46.05
+    }
+  ],
+  "earn_allocations": [
+    {
+      "asset": "BTC",
+      "amount": 0.00240970,
+      "price_usd": 108400.0,
+      "value_usd": 261.19,
+      "strategy": "ESPR2DI-WN476-TBRFLO",
+      "apr": 0.5
+    },
+    {
+      "asset": "SOL",
+      "amount": 0.25000000,
+      "price_usd": 182.82,
+      "value_usd": 45.71,
+      "strategy": "ES4TNKS-MWG4P-Y3GIRT",
+      "apr": 3.2
     },
     {
       "asset": "SOL",
@@ -410,6 +463,447 @@ python fetch_portfolio.py --portfolio-summary | \
 python analyze_portfolio.py > portfolio_analysis.json
 ```
 
+## Portfolio Tracking & Historical Analysis (NEW)
+
+Track your portfolio performance over time, log recommendations, and measure actual results against recommendations.
+
+### Database Setup
+
+The skill includes a SQLite database for tracking:
+- Historical portfolio snapshots (balances over time)
+- Technical analysis signals (logged automatically)
+- Recommendations with confidence scores
+- Recommendation outcomes (actual vs target)
+- Performance metrics (returns, accuracy, ROI)
+
+**Initialize Database** (one-time setup):
+```bash
+cd .github/copilot-skills/tools/kraken-analyst/scripts
+python3 db_init.py
+```
+
+**Output:**
+```
+✅ Database initialization complete!
+✓ All verification checks passed!
+```
+
+### track_portfolio.py
+
+Save portfolio snapshots to track allocation and value changes over time.
+
+**Usage:**
+```bash
+# Save current portfolio snapshot
+python3 track_portfolio.py
+
+# View portfolio history (last 30 days)
+python3 track_portfolio.py --history 30
+
+# Compare to previous snapshot
+python3 track_portfolio.py --compare
+
+# Export to CSV
+python3 track_portfolio.py --csv
+```
+
+**Output Example:**
+```
+✓ Portfolio snapshot saved
+  Timestamp: 2025-10-23T04:28:16.792700
+  Total Value: $374.80
+  Holdings: 2 spot + 6 earn
+
+Portfolio History (Last 30 days)
+========================================
+Timestamp              Total Value    Spot       Earn
+2025-10-23 04:28      $374.80       $0.02      $374.78
+```
+
+**Features:**
+- ✅ Automatic timestamp recording
+- ✅ Tracks spot + earn balances
+- ✅ Historical comparisons
+- ✅ CSV export for analysis
+- ✅ Per-asset value tracking
+
+### log_recommendations.py
+
+Log investment recommendations with confidence scores and track how they perform.
+
+**Usage:**
+```bash
+# Log a recommendation
+python3 log_recommendations.py --log DOT SELL 2.92 3.15 0.65 "Exit 50% on bounce"
+
+# Review recent recommendations
+python3 log_recommendations.py --review
+
+# Review specific asset recommendations
+python3 log_recommendations.py --review --asset BTC --days 30
+
+# Calculate recommendation accuracy
+python3 log_recommendations.py --accuracy
+
+# Mark recommendation as executed
+python3 log_recommendations.py --executed 1 3.20
+```
+
+**Command Format:**
+```bash
+python3 log_recommendations.py --log ASSET ACTION CURRENT TARGET [CONFIDENCE] [REASON]
+```
+
+**Parameters:**
+- `ASSET` - Cryptocurrency symbol (BTC, ETH, SOL, DOT)
+- `ACTION` - BUY, SELL, HOLD, or REDUCE
+- `CURRENT` - Current price in USD
+- `TARGET` - Target price for this recommendation
+- `CONFIDENCE` - Confidence score 0.0-1.0 (optional, default: 0.5)
+- `REASON` - Why this recommendation (optional)
+
+**Example Workflow:**
+```bash
+# Log your recommendations from analysis
+python3 log_recommendations.py --log DOT SELL 2.92 3.15 0.65 "Exit 50% on bounce"
+python3 log_recommendations.py --log BTC SELL 108440 112000 0.75 "Trim 20% on rally"
+python3 log_recommendations.py --log SOL BUY 182.92 170 0.80 "Add on dips"
+python3 log_recommendations.py --log ETH BUY 3824.07 3500 0.70 "Increase position"
+
+# Check your recommendations
+python3 log_recommendations.py --review
+
+# When trade is executed, mark it
+python3 log_recommendations.py --executed 1 3.18
+python3 log_recommendations.py --executed 2 111500
+
+# Check accuracy
+python3 log_recommendations.py --accuracy
+```
+
+**Output:**
+```
+📋 Recommendations (Last 30 days)
+========================================
+ID   Date         Asset  Action  Current     Target      Conf
+1    2025-10-23   DOT    SELL    $2.92       $3.15       0.65
+     └─ Exit 50% on bounce to reduce concentration risk
+2    2025-10-23   BTC    SELL    $108440     $112000     0.75
+     └─ Trim 20% on rally to lock in gains
+3    2025-10-23   SOL    BUY     $182.92     $170.00     0.80
+     └─ Add 20-30% on dips to improve allocation
+4    2025-10-23   ETH    BUY     $3824.07    $3500.00    0.70
+     └─ Increase from 2.7% to 5% allocation on dips
+```
+
+### analyze_performance.py
+
+Analyze how your portfolio is performing vs recommendations and market conditions.
+
+**Usage:**
+```bash
+# Full performance report
+python3 analyze_performance.py --report
+
+# Analyze per-asset performance
+python3 analyze_performance.py --assets
+
+# Compare recommendations to actual results
+python3 analyze_performance.py --comparison
+
+# Show portfolio trends
+python3 analyze_performance.py --trends
+```
+
+**Output Example:**
+```
+================================================================================
+                    PORTFOLIO PERFORMANCE ANALYSIS
+================================================================================
+
+📈 90-Day Returns
+----------------------------------------
+Start Value:  $374.80
+End Value:    $380.25
+Total Return: $5.45
+% Return:     1.45%
+
+🪙 Per-Asset Performance
+------------------------------------------------------------
+Asset    Start Value     End Value      Return %
+------------------------------------------------------------
+BTC      $261.69        $265.42        +1.43%
+SOL      $83.15         $87.30         +5.00%
+DOT      $19.53         $18.50         -5.27%
+ETH      $10.03         $10.60         +5.68%
+
+🎯 Recommendation Accuracy
+----------------------------------------
+Total Recommendations: 4
+Executed:              2
+Met Target:            1
+Accuracy Rate:         50.0%
+
+By Asset:
+  DOT      1 recs,    0.0% accuracy
+  BTC      1 recs,  100.0% accuracy
+  SOL      1 recs,    0.0% accuracy
+  ETH      1 recs,    0.0% accuracy
+```
+
+**Metrics Tracked:**
+- ✅ Total portfolio value
+- ✅ Per-asset returns
+- ✅ Recommendation accuracy
+- ✅ Target hit rate
+- ✅ Best/worst performing recommendations
+- ✅ Confidence vs actual accuracy
+
+### Complete Tracking Workflow
+
+```bash
+#!/bin/bash
+# Daily portfolio tracking workflow
+
+cd .github/copilot-skills/tools/kraken-analyst/scripts
+
+# 1. Save current portfolio state
+echo "📊 Saving portfolio snapshot..."
+python3 track_portfolio.py
+
+# 2. Review existing recommendations
+echo "📋 Reviewing recommendations..."
+python3 log_recommendations.py --review
+
+# 3. Check performance
+echo "📈 Analyzing performance..."
+python3 analyze_performance.py --report
+
+# 4. Export data
+echo "📁 Exporting history..."
+python3 track_portfolio.py --csv
+
+echo "✅ Daily tracking complete!"
+```
+
+**Set Up Cron Job** (Automatic daily tracking):
+```bash
+# Edit crontab
+crontab -e
+
+# Add this line to run daily at 9 AM:
+0 9 * * * cd /Users/sethrose/Developer/Tests/copilot-skills/.github/copilot-skills/tools/kraken-analyst/scripts && python3 track_portfolio.py
+
+# Verify cron is setup
+crontab -l
+```
+
+### Database Schema
+
+The portfolio tracker uses 8 tables:
+
+| Table | Purpose |
+|-------|---------|
+| `portfolio_snapshots` | Daily portfolio value snapshots |
+| `asset_holdings` | Per-asset holdings at each snapshot |
+| `recommendations` | All logged recommendations |
+| `recommendation_outcomes` | Execution results for recommendations |
+| `technical_analysis` | Technical indicators history |
+| `price_history` | Historical price data |
+| `performance_metrics` | Quarterly/monthly performance reports |
+| `analysis_sessions` | Analysis run history |
+
+**Accessing the Database** (Direct SQL):
+```bash
+# Open SQLite shell
+sqlite3 portfolio_tracker.db
+
+# List all snapshots
+SELECT * FROM portfolio_snapshots;
+
+# View recent recommendations
+SELECT * FROM recommendations ORDER BY timestamp DESC LIMIT 10;
+
+# Get portfolio growth over time
+SELECT timestamp, total_value_usd FROM portfolio_snapshots ORDER BY timestamp;
+```
+
+### Database Location
+
+Database file: `.github/copilot-skills/tools/kraken-analyst/portfolio_tracker.db`
+
+**Important**: 
+- ✅ Already added to `.gitignore` (won't be committed)
+- ✅ Stored locally (your private data)
+- ✅ Never uploaded to repositories
+- ⚠️  Keep backups if data is important
+
+---
+
+## Advanced Technical Analysis (NEW)
+
+
+Advanced technical indicators extracted from MaverickMCP patterns. Works with existing Kraken data without requiring additional API keys.
+
+**Features:**
+- 📊 Support & Resistance level detection
+- 📈 ATR (Average True Range) for volatility measurement
+- 🎯 Stochastic RSI for refined momentum signals
+- 📉 EMA & WMA moving averages
+- ☁️  Ichimoku Cloud for all-in-one trend analysis
+- ⚠️  Divergence detection (price vs indicators)
+
+**Usage:**
+```bash
+# Advanced analysis on BTC
+python fetch_data.py --pair BTC/USD --interval 60 --count 100 | \
+python advanced_analysis.py --format text
+
+# JSON output for programmatic use
+python fetch_data.py --pair ETH/USD | python advanced_analysis.py
+
+# Combined with basic analysis
+python fetch_data.py --pair SOL/USD | \
+python apply_rules.py | \
+python advanced_analysis.py
+```
+
+**Output Example:**
+```
+============================================================
+ADVANCED TECHNICAL ANALYSIS: BTC/USD
+============================================================
+
+Current Price: $108,725.90
+Timestamp: 1729582800
+
+📊 Support & Resistance:
+  Nearest Support: $106,500.00 (2.05% away)
+  Nearest Resistance: $110,200.00 (1.36% away)
+
+📈 ATR (Volatility): $2,450.00 (2.25%)
+
+🎯 Stochastic RSI:
+  %K: 65.42
+  %D: 62.18
+  Signal: NEUTRAL
+
+☁️  Ichimoku Cloud:
+  Tenkan-sen: $108,450.00
+  Kijun-sen: $107,800.00
+  Cloud: BULLISH
+  Price vs Cloud: ABOVE
+  Signal: STRONG_BULLISH
+
+🚨 Advanced Signals:
+  • Near Resistance Rejection Risk
+  • Low Volatility Consolidation
+  • Ichimoku Strong Bullish
+
+⚠️  Divergences Detected:
+  • Bullish Rsi Divergence
+```
+
+**Indicators Included:**
+
+| Indicator | Purpose | Typical Use |
+|-----------|---------|-------------|
+| **Support/Resistance** | Key price levels | Entry/exit points |
+| **ATR** | Volatility measurement | Position sizing |
+| **Stochastic RSI** | Momentum oscillator | Overbought/oversold |
+| **EMA** | Exponential moving avg | Trend confirmation |
+| **WMA** | Weighted moving avg | Recent price emphasis |
+| **Ichimoku Cloud** | All-in-one indicator | Trend + support/resistance |
+| **Divergences** | Price vs indicator | Potential reversals |
+
+### portfolio_optimizer.py
+
+Modern Portfolio Theory analysis for crypto portfolios. Provides correlation analysis, Sharpe ratio optimization, and risk metrics.
+
+**Features:**
+- 🔗 Correlation matrix between holdings
+- 📊 Sharpe ratio (risk-adjusted returns)
+- 📉 Maximum drawdown analysis
+- 🎯 Diversification metrics
+- 💰 Value at Risk (VaR) calculation
+- 💡 Smart rebalancing recommendations
+
+**Usage:**
+```bash
+# Analyze portfolio with optimization metrics
+python fetch_portfolio.py --portfolio-summary | \
+python portfolio_optimizer.py --format text
+
+# JSON output
+python fetch_portfolio.py --portfolio-summary | \
+python portfolio_optimizer.py
+
+# Custom risk-free rate
+python fetch_portfolio.py --portfolio-summary | \
+python portfolio_optimizer.py --risk-free-rate 0.03
+```
+
+**Output Example:**
+```
+============================================================
+PORTFOLIO OPTIMIZATION ANALYSIS
+============================================================
+
+Total Portfolio Value: $10,250.50
+
+📊 Current Allocation:
+  BTC: 50.00% ($5,125.25)
+  ETH: 30.00% ($3,075.15)
+  SOL: 20.00% ($2,050.10)
+
+🔗 Correlation Matrix:
+         BTC     ETH     SOL
+ BTC    1.00    0.65    0.42
+ ETH    0.65    1.00    0.58
+ SOL    0.42    0.58    1.00
+
+📈 Risk-Adjusted Performance:
+  Sharpe Ratio: 1.450 (Good)
+  Sortino Ratio: 1.820
+  Max Drawdown: -35.2%
+  VaR (95%): 4.25%
+  VaR (99%): 6.80%
+
+🎯 Diversification Ratio: 1.87 (Well-diversified)
+
+💡 Rebalancing Recommendations:
+  BTC (50.0%): Consider reducing allocation
+    Reason: Concentration risk (>50%)
+```
+
+**Risk Metrics Explained:**
+
+| Metric | Good Range | Interpretation |
+|--------|------------|----------------|
+| **Sharpe Ratio** | >1.0 | Risk-adjusted return quality |
+| **Sortino Ratio** | >1.0 | Downside risk-adjusted return |
+| **Max Drawdown** | <40% | Worst historical decline |
+| **VaR 95%** | <5% | 95% confidence loss limit |
+| **Diversification** | >1.5 | Portfolio diversification quality |
+
+### Combined Advanced Workflow
+
+```bash
+# Complete advanced analysis pipeline
+python fetch_data.py --pair BTC/USD --count 200 | \
+python apply_rules.py | \
+python advanced_analysis.py --format text | \
+tee advanced_report.txt
+
+# Portfolio optimization with advanced metrics
+python fetch_portfolio.py --portfolio-summary | \
+python portfolio_optimizer.py --format text | \
+tee portfolio_optimization.txt
+
+# Multi-asset screening (future enhancement)
+# Coming soon: Screen multiple pairs for opportunities
+```
+
 ## Configuration Thresholds
 
 Default analysis thresholds (tunable):
@@ -421,6 +915,9 @@ Default analysis thresholds (tunable):
 | RSI | 30/70 | 20-80 | Overbought/oversold bounds |
 | MA Fast | 12 | 5-20 | Short-term trend |
 | MA Slow | 26 | 20-50 | Long-term trend |
+| **ATR Period** | 14 | 7-28 | Volatility lookback |
+| **Stoch RSI** | 14/3/3 | - | RSI/K/D periods |
+| **S/R Threshold** | 2% | 1-5% | Level clustering |
 
 See `.github/copilot-skills/tools/kraken-analyst/reference.md` for detailed threshold guidelines.
 

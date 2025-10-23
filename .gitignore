@@ -48,7 +48,6 @@ package-lock.json
 
 # Environment
 .env
-.env.*
 *.log
 
 # IDEs
@@ -72,6 +71,9 @@ tests/copilot-skills/fixtures/temp/
 drafts/
 *.bak
 *.tmp
+*.db
+*.sqlite
+*.sqlite3
 
 # Custom
 examples/

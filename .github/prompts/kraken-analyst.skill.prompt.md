@@ -19,6 +19,40 @@ Use this skill when:
 
 **Keywords**: crypto, cryptocurrency, kraken, market data, trading, signals, strategy, bitcoin, ethereum, technical analysis, momentum, RSI, moving average, portfolio, balances, allocation
 
+## User Intent Decision Tree
+
+**Before starting any analysis**, determine what the user wants:
+
+### 1️⃣ Quick Question (Informational)
+**User asks**: "What's BTC's current price?" or "Is ETH oversold?"
+**Action**: Use `fetch_data.py` → `apply_rules.py` → provide quick answer
+**No**: Full pipeline, portfolio analysis, or reports
+
+### 2️⃣ Market Analysis (Public API - No Keys Needed)
+**User asks**: "Analyze BTC" or "Should I buy ETH?" or "SOL technical analysis"
+**Action**: Run full market analysis pipeline with technical indicators
+**Scripts**: `fetch_data.py` → `apply_rules.py` → `advanced_analysis.py` → `format_output.py`
+**Requirements**: None (public API)
+
+### 3️⃣ Portfolio Review (Private API - Requires Keys)
+**User asks**: "Review my portfolio" or "What do I own?" or "Portfolio analysis"
+**Action**: 
+  1. Check if `.env` configured (auto-loaded by `kraken_auth.py`)
+  2. Fetch portfolio with `fetch_portfolio.py --portfolio-summary`
+  3. Get market analysis for each holding
+  4. Provide comprehensive breakdown with recommendations
+**Requirements**: KRAKEN_API_KEY and KRAKEN_PRIVATE_KEY in `.env`
+
+### 4️⃣ Partial Portfolio Query (Private API)
+**User asks**: "How much BTC do I have?" or "My SOL balance"
+**Action**: Use `fetch_portfolio.py --balances` for quick answer
+**Requirements**: API keys in `.env`
+
+### 5️⃣ Trading History (Private API)
+**User asks**: "My recent trades" or "Trading history"
+**Action**: Use `fetch_portfolio.py --trade-history --count N`
+**Requirements**: API keys + "Query Closed Orders & Trades" permission
+
 ## Quick Reference
 
 ### Common Workflow
@@ -54,6 +88,20 @@ for pair in BTC/USD ETH/USD SOL/USD; do
   python .github/copilot-skills/kraken-analyst/scripts/apply_rules.py | \
   python .github/copilot-skills/kraken-analyst/scripts/format_output.py --format text
 done
+```
+
+**Example 4: Portfolio Analysis (Requires API Keys)**
+```bash
+# Complete portfolio review with market analysis
+python .github/copilot-skills/kraken-analyst/scripts/fetch_portfolio.py --portfolio-summary
+
+# The script auto-loads .env file - no manual env loading needed!
+```
+
+**Example 5: Quick Balance Check**
+```bash
+# Just see what you own
+python .github/copilot-skills/kraken-analyst/scripts/fetch_portfolio.py --balances
 ```
 
 ## Supported Pairs
@@ -200,6 +248,67 @@ python apply_rules.py \
   --volatility-threshold 5.0 \
   --rsi-period 7 | \
 python format_output.py
+```
+
+### Workflow 5: Complete Portfolio Review
+
+**Goal:** Comprehensive portfolio analysis with market insights
+
+**Prerequisites**: 
+1. Create `.env` file in `kraken-analyst/` directory
+2. Add your API credentials:
+   ```
+   KRAKEN_API_KEY=your-api-key-here
+   KRAKEN_PRIVATE_KEY=your-private-key-base64-here
+   ```
+3. Scripts automatically load `.env` - no manual sourcing needed!
+
+**Steps:**
+```bash
+cd .github/copilot-skills/kraken-analyst/scripts
+
+# 1. Get portfolio summary (includes spot + Kraken Earn)
+python3 fetch_portfolio.py --portfolio-summary --format pretty
+
+# 2. For each major holding, get technical analysis
+# BTC analysis
+python3 fetch_data.py --pair BTC/USD --interval 1440 --count 90 | \
+  python3 apply_rules.py | python3 format_output.py --format text
+
+# ETH analysis  
+python3 fetch_data.py --pair ETH/USD --interval 1440 --count 90 | \
+  python3 apply_rules.py | python3 format_output.py --format text
+
+# 3. Get advanced indicators
+python3 fetch_data.py --pair BTC/USD --interval 1440 --count 90 | \
+  python3 advanced_analysis.py --format text
+```
+
+**Output includes**:
+- Total portfolio value (spot + Kraken Earn staking)
+- Asset allocation percentages
+- Current USD values per holding
+- Market analysis for each asset
+- Support/Resistance levels
+- Technical indicators (RSI, Momentum, Ichimoku, etc.)
+- BUY/SELL/HOLD signals with confidence scores
+
+### Workflow 6: Quick Balance Check
+
+**Goal:** See what you own without full analysis
+
+```bash
+cd .github/copilot-skills/kraken-analyst/scripts
+python3 fetch_portfolio.py --balances
+```
+
+### Workflow 7: Trading History Analysis
+
+**Goal:** Review recent trading activity
+
+```bash
+cd .github/copilot-skills/kraken-analyst/scripts
+python3 fetch_portfolio.py --trade-history --count 30
 ```
 
 ## Reference Documentation
