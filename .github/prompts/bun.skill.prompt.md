@@ -5,14 +5,16 @@
 ## When to Use This Skill
 
 Use this skill when working with bun:
+- bundler
+- getting started
+- guides
+- package manager
+- reference
+- runtime
+- tooling
 
-## Quick Reference
+## Reference
 
-### Categories
+Full documentation: `.github/copilot-skills/bun/`
 
-
-## Reference Documentation
-
-Complete documentation available in `.github/copilot-skills/bun/references/`
-
-Total pages: 0
+Categories: bundler, getting_started, guides, package_manager, reference, runtime, tooling

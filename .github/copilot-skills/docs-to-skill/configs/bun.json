@@ -20,7 +20,7 @@
   },
   "url_patterns": {
     "include": [
-      "^https://bun\\.sh/docs/.*",
+      "^https://bun\\.sh/docs/?.*",
       "^https://bun\\.sh/blog/.*"
     ],
     "exclude": [

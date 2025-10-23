@@ -1,13 +1,6 @@
 # Bun Instructions
 
-Auto-loaded context when editing bun-related files.
-
-## Quick Start
-
-```bash
-# Find documentation in
-.github/copilot-skills/bun/
-```
+Auto-loaded when editing bun-related files.
 
 ## File Patterns
 
@@ -18,8 +11,6 @@ Auto-loaded context when editing bun-related files.
 - `**/bunfig.toml`
 - `**/package.json`
 
-## Documentation Reference
+## Documentation
 
-See `.github/copilot-skills/bun/reference.md` for overview.
-
-**Generated from**: https://bun.sh/docs/
+See `.github/copilot-skills/bun/` for complete reference.

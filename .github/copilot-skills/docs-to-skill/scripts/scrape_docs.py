@@ -2,16 +2,7 @@
 """
 scrape_docs.py - Scrape documentation websites and generate Copilot Skills
 
-Converts documentation into the Copilot Skills Architecture format:
-- Skill prompt (.github/prompts/{name}.skill.prompt.md)
-- Instructions (.github/instructions/{name}.instructions.md)
-- Reference docs (.github/copilot-skills/{name}/references/)
-
-Usage:
-    python3 scrape_docs.py --config configs/bun.json --dry-run
-    python3 scrape_docs.py --config configs/bun.json
-    python3 scrape_docs.py --config configs/bun.json --resume
-    python3 scrape_docs.py --config configs/bun.json --build-only
+Simplified version that actually works for static HTML documentation.
 """
 
 import json
@@ -19,7 +10,7 @@ import sys
 import time
 import re
 from pathlib import Path
-from typing import Dict, List, Set, Optional
+from typing import Dict, List, Set, Tuple, Optional
 from urllib.parse import urljoin, urlparse
 from datetime import datetime
 
@@ -47,9 +38,8 @@ class DocsToSkillScraper:
         self.workspace_root = Path(__file__).parent.parent.parent.parent.parent
         self.skill_dir = self.workspace_root / '.github' / 'copilot-skills' / self.name
         self.output_dir = self.skill_dir / 'references'
-        self.cache_file = self.skill_dir / '.scrape_cache.json'
         
-        self.pages_scraped: Dict[str, str] = {}
+        self.pages_scraped: Dict[str, Dict] = {}
         self.urls_visited: Set[str] = set()
         self.errors: List[str] = []
         
@@ -124,8 +114,8 @@ class DocsToSkillScraper:
             'timestamp': datetime.now().isoformat()
         }
     
-    def scrape_page(self, url: str) -> Optional[Dict]:
-        """Scrape a single page"""
+    def scrape_page(self, url: str) -> Optional[Tuple[Dict, List[str]]]:
+        """Scrape a single page and return (page_data, links) or None"""
         if url in self.urls_visited:
             return None
         
@@ -137,9 +127,9 @@ class DocsToSkillScraper:
         try:
             print(f"  📄 Scraping: {url}")
             headers = {
-                'User-Agent': 'Mozilla/5.0 (Documentation Scraper for Copilot Skills)'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
             }
-            response = requests.get(url, headers=headers, timeout=10)
+            response = requests.get(url, headers=headers, timeout=15)
             response.raise_for_status()
             
             page_data = self.extract_content(response.text, url)
@@ -154,11 +144,13 @@ class DocsToSkillScraper:
                 # Remove fragments
                 full_url = full_url.split('#')[0]
                 
-                if full_url.startswith(self.base_url.split('/docs')[0]):
-                    links.append(full_url)
+                # Check if URL is within scope
+                if full_url.startswith(self.base_url.rstrip('/').split('/docs')[0]):
+                    if self.should_include_url(full_url):
+                        links.append(full_url)
             
             time.sleep(self.rate_limit)
-            return page_data, links
+            return (page_data, links)
             
         except Exception as e:
             error_msg = f"Error scraping {url}: {str(e)}"
@@ -185,13 +177,14 @@ class DocsToSkillScraper:
         print("=" * 60)
         
         try:
-            response = requests.get(self.config.get('start_url', self.base_url), timeout=10)
+            start_url = self.config.get('start_url', self.base_url)
+            response = requests.get(start_url, timeout=15)
             soup = BeautifulSoup(response.text, 'html.parser')
             
             links = set()
             for link in soup.find_all('a', href=True):
                 href = link['href']
-                full_url = urljoin(self.base_url, href)
+                full_url = urljoin(start_url, href)
                 full_url = full_url.split('#')[0]
                 
                 if self.should_include_url(full_url):
@@ -212,42 +205,48 @@ class DocsToSkillScraper:
         except Exception as e:
             print(f"❌ Dry run error: {e}")
     
-    def run(self, resume: bool = False, build_only: bool = False):
+    def run(self):
         """Execute scraper"""
-        if not build_only:
-            print(f"\n🕷️  Starting scrape of {self.name} documentation")
-            print("=" * 60)
+        print(f"\n🕷️  Starting scrape of {self.name} documentation")
+        print("=" * 60)
+        
+        # Setup output directories
+        self.skill_dir.mkdir(parents=True, exist_ok=True)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Scrape pages
+        to_visit = [self.config.get('start_url', self.base_url)]
+        checkpoint_count = 0
+        
+        while to_visit and len(self.pages_scraped) < self.max_pages:
+            url = to_visit.pop(0)
             
-            # Setup output directories
-            self.skill_dir.mkdir(parents=True, exist_ok=True)
-            self.output_dir.mkdir(parents=True, exist_ok=True)
-            
-            # Scrape pages
-            to_visit = [self.config.get('start_url', self.base_url)]
-            checkpoint_count = 0
-            
-            while to_visit and len(self.pages_scraped) < self.max_pages:
-                url = to_visit.pop(0)
+            result = self.scrape_page(url)
+            if result:
+                page_data, links = result
+                self.pages_scraped[url] = page_data
                 
-                result = self.scrape_page(url)
-                if result:
-                    page_data, links = result
-                    self.pages_scraped[url] = page_data
-                    to_visit.extend([link for link in links if link not in self.urls_visited])
-                    
-                    checkpoint_count += 1
-                    if self.config.get('checkpoint', {}).get('enabled') and \
-                       checkpoint_count >= self.config['checkpoint'].get('interval', 50):
-                        print(f"\n💾 Checkpoint: Scraped {len(self.pages_scraped)} pages")
-                        checkpoint_count = 0
-            
-            print(f"\n✅ Scraped {len(self.pages_scraped)} pages")
+                # Add new links to visit
+                for link in links:
+                    if link not in self.urls_visited:
+                        to_visit.append(link)
+                
+                checkpoint_count += 1
+                if self.config.get('checkpoint', {}).get('enabled') and \
+                   checkpoint_count >= self.config['checkpoint'].get('interval', 50):
+                    print(f"\n💾 Checkpoint: Scraped {len(self.pages_scraped)} pages")
+                    checkpoint_count = 0
+        
+        print(f"\n✅ Scraped {len(self.pages_scraped)} pages")
         
         # Generate skill files
-        print(f"\n📝 Generating skill files...")
-        self.generate_skill_files()
+        if self.pages_scraped:
+            print(f"\n📝 Generating skill files...")
+            self.generate_skill_files()
+        else:
+            print(f"⚠️  No pages scraped. Check URL patterns and site accessibility.")
         
-        print(f"\n✅ Skill generation complete!")
+        print(f"\n✅ Complete!")
         print(f"Location: {self.skill_dir}")
     
     def generate_skill_files(self):
@@ -265,7 +264,7 @@ class DocsToSkillScraper:
             categories[category].append((url, page_data))
         
         # Generate reference files for each category
-        for category, pages in categories.items():
+        for category, pages in sorted(categories.items()):
             self.generate_reference_file(category, pages)
         
         # Generate index
@@ -286,25 +285,19 @@ class DocsToSkillScraper:
             
             for url, page_data in pages:
                 f.write(f"## {page_data['title']}\n\n")
-                f.write(f"**URL**: {url}\n\n")
+                f.write(f"**Source**: [{url}]({url})\n\n")
                 
                 if page_data.get('headings'):
                     f.write("**Topics**:\n")
                     for heading in page_data['headings'][:5]:
-                        indent = "  " * (heading['level'] - 1)
+                        indent = "  " * max(0, heading['level'] - 2)
                         f.write(f"{indent}• {heading['text']}\n")
                     f.write("\n")
                 
-                if page_data.get('code_blocks'):
-                    f.write("**Code Examples**:\n```\n")
-                    for code in page_data['code_blocks'][:2]:
-                        f.write(code[:200] + "\n...\n")
-                    f.write("```\n\n")
-                
-                # First 500 chars of content
                 if page_data.get('content'):
                     f.write("**Summary**:\n")
-                    f.write(page_data['content'][:500] + "...\n\n")
+                    summary = page_data['content'][:300].strip()
+                    f.write(f"{summary}...\n\n")
                 
                 f.write("---\n\n")
     
@@ -321,8 +314,8 @@ class DocsToSkillScraper:
                 count = len(categories[category])
                 f.write(f"- **{category.replace('_', ' ').title()}**: {count} pages\n")
             
-            f.write(f"\nTotal Pages: {len(self.pages_scraped)}\n")
-            f.write(f"Generated: {datetime.now().isoformat()}\n")
+            f.write(f"\n**Total Pages**: {len(self.pages_scraped)}\n")
+            f.write(f"**Generated**: {datetime.now().isoformat()}\n")
     
     def generate_skill_prompt(self, categories: Dict):
         """Generate skill prompt file"""
@@ -338,15 +331,9 @@ class DocsToSkillScraper:
             for category in sorted(categories.keys()):
                 f.write(f"- {category.replace('_', ' ')}\n")
             
-            f.write("\n## Quick Reference\n\n")
-            f.write("### Categories\n\n")
-            for category in sorted(categories.keys()):
-                count = len(categories[category])
-                f.write(f"- **{category}**: {count} documentation pages\n")
-            
-            f.write("\n## Reference Documentation\n\n")
-            f.write(f"Complete documentation available in `.github/copilot-skills/{self.name}/references/`\n")
-            f.write(f"\nTotal pages: {len(self.pages_scraped)}\n")
+            f.write("\n## Reference\n\n")
+            f.write(f"Full documentation: `.github/copilot-skills/{self.name}/`\n")
+            f.write(f"\nCategories: {', '.join(sorted(categories.keys()))}\n")
     
     def generate_instructions(self):
         """Generate instructions file"""
@@ -355,21 +342,14 @@ class DocsToSkillScraper:
         
         with open(filepath, 'w') as f:
             f.write(f"# {self.name.title()} Instructions\n\n")
-            f.write(f"Auto-loaded context when editing {self.name}-related files.\n\n")
-            
-            f.write("## Quick Start\n\n")
-            f.write("```bash\n")
-            f.write(f"# Find documentation in\n")
-            f.write(f".github/copilot-skills/{self.name}/\n")
-            f.write("```\n\n")
+            f.write(f"Auto-loaded when editing {self.name}-related files.\n\n")
             
             f.write("## File Patterns\n\n")
             for pattern in self.config.get('file_patterns', []):
                 f.write(f"- `{pattern}`\n")
             
-            f.write("\n## Documentation Reference\n\n")
-            f.write(f"See `.github/copilot-skills/{self.name}/reference.md` for overview.\n")
-            f.write(f"\n**Generated from**: {self.config['base_url']}\n")
+            f.write(f"\n## Documentation\n\n")
+            f.write(f"See `.github/copilot-skills/{self.name}/` for complete reference.\n")
 
 
 def main():
@@ -380,10 +360,11 @@ def main():
     config_path = None
     if '--config' in sys.argv:
         idx = sys.argv.index('--config')
-        config_path = sys.argv[idx + 1]
-    else:
+        if idx + 1 < len(sys.argv):
+            config_path = sys.argv[idx + 1]
+    
+    if not config_path:
         print("❌ --config parameter required")
-        print(__doc__)
         return 1
     
     scraper = DocsToSkillScraper(config_path)
@@ -392,10 +373,7 @@ def main():
         scraper.dry_run()
         return 0
     
-    build_only = '--build-only' in sys.argv
-    resume = '--resume' in sys.argv
-    
-    scraper.run(resume=resume, build_only=build_only)
+    scraper.run()
     return 0
 
 
