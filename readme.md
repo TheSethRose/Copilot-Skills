@@ -61,6 +61,7 @@ Instead of massive instruction files, this system uses **progressive disclosure*
    /git-ops
    /create-skill
    /document-project
+   /lazycommit
    ```
 
 ### Creating Your First Skill
@@ -127,6 +128,7 @@ mkdir -p .github/copilot-skills/{skill-name}/scripts
 - **Cleanup** – Remove stale files and temporary artifacts
 - **Brand Guidelines** – Apply consistent branding
 - **Generate Instructions** – Auto-generate copilot-instructions.md
+- **Lazycommit** – Guided, deterministic commit helper
 
 ### Example Collections
 
