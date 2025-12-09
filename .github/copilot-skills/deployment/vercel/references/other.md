@@ -758,7 +758,7 @@ When you initiate a build, Vercel creates a secure, isolated virtual environment
 
 This infrastructure handles millions of builds daily, supporting everything from individual developers to large enterprises, while maintaining strict security and performance standards.
 
-Most frontend frameworks—like Next.js, SvelteKit, and Nuxt—are auto-detected, with defaults applied for Build Command, Output Directory, and other settings. To see if your framework is included, visit the Supported Frameworks page.
+Most frontend frameworks-like Next.js, SvelteKit, and Nuxt-are auto-detected, with defaults applied for Build Command, Output Directory, and other settings. To see if your framework is included, visit the Supported Frameworks page.
 
 Builds can be initiated in the following ways:
 
@@ -778,7 +778,7 @@ Install Command: Control how dependencies are installed (e.g., pnpm install, yar
 
 To learn more, see Configuring a Build.
 
-For static websites—HTML, CSS, and client-side JavaScript only—no build step is required. In those cases:
+For static websites-HTML, CSS, and client-side JavaScript only-no build step is required. In those cases:
 
 
 
@@ -1777,7 +1777,7 @@ OPTIO
 
 Model Context Protocol (MCP) is a standard interface that lets large language models (LLMs) communicate with external tools and data sources. It allows developers and tool providers to integrate once and interoperate with any MCP-compatible system.
 
-LLMs don't have access to real-time or external data by default. To provide relevant context—such as current financial data, pricing, or user-specific data—developers must connect LLMs to external systems.
+LLMs don't have access to real-time or external data by default. To provide relevant context-such as current financial data, pricing, or user-specific data-developers must connect LLMs to external systems.
 
 Each tool or service has its own API, schema, and authentication. Managing these differences becomes difficult and error-prone as the number of integrations grows.
 
@@ -3042,7 +3042,7 @@ OPENAI_API_KEY='sk-...3Yu5'
   - Add the provider to your project
     - Using the dashboard
 
-Perplexity API specializes in providing accurate, real-time answers to user questions by combining AI-powered search with large language models, delivering concise, well-sourced, and conversational responses. Integrating Perplexity via its Sonar API with Vercel allows your applications to deliver real-time, web-wide research and question-answering capabilities—complete with accurate citations, customizable sources, and advanced reasoning—enabling users to access up-to-date, trustworthy information directly within your product experience.
+Perplexity API specializes in providing accurate, real-time answers to user questions by combining AI-powered search with large language models, delivering concise, well-sourced, and conversational responses. Integrating Perplexity via its Sonar API with Vercel allows your applications to deliver real-time, web-wide research and question-answering capabilities-complete with accurate citations, customizable sources, and advanced reasoning-enabling users to access up-to-date, trustworthy information directly within your product experience.
 
 You can use the Vercel and Perplexity integration to power a variety of AI applications, including:
 

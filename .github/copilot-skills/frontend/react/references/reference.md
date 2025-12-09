@@ -710,7 +710,7 @@ The React Compiler is a build-time optimization tool that automatically memoizes
 
 The ESLint plugin for React Hooks helps enforce the Rules of React:
 
-React has idioms — or rules — for how to express patterns in a way that is easy to understand and yields high-quality applications:
+React has idioms - or rules - for how to express patterns in a way that is easy to understand and yields high-quality applications:
 
 ---
 
@@ -827,7 +827,7 @@ function FriendList() {  const [onlineStatus, setOnlineStatus] = useOnlineStatus
 - React calls Components and Hooks
 - Rules of Hooks
 
-Just as different programming languages have their own ways of expressing concepts, React has its own idioms — or rules — for how to express patterns in a way that is easy to understand and yields high-quality applications.
+Just as different programming languages have their own ways of expressing concepts, React has its own idioms - or rules - for how to express patterns in a way that is easy to understand and yields high-quality applications.
 
 To learn more about expressing UIs with React, we recommend reading Thinking in React.
 
@@ -1062,7 +1062,7 @@ You can wrap any part of your application with a Suspense boundary:
 
 React will display your loading fallback until all the code and data needed by the children has been loaded.
 
-In the example below, the Albums component suspends while fetching the list of albums. Until it’s ready to render, React switches the closest Suspense boundary above to show the fallback—your Loading component. Then, when the data loads, React hides the Loading fallback and renders the Albums component with data.
+In the example below, the Albums component suspends while fetching the list of albums. Until it’s ready to render, React switches the closest Suspense boundary above to show the fallback-your Loading component. Then, when the data loads, React hides the Loading fallback and renders the Albums component with data.
 
 Only Suspense-enabled data sources will activate the Suspense component. They include:
 
@@ -3902,7 +3902,7 @@ HTML accessibility attributes like aria-describedby let you specify that two tag
 
 In regular HTML, you would write it like this:
 
-However, hardcoding IDs like this is not a good practice in React. A component may be rendered more than once on the page—but IDs have to be unique! Instead of hardcoding an ID, generate a unique ID with useId:
+However, hardcoding IDs like this is not a good practice in React. A component may be rendered more than once on the page-but IDs have to be unique! Instead of hardcoding an ID, generate a unique ID with useId:
 
 Now, even if PasswordField appears multiple times on the screen, the generated IDs won’t clash.
 

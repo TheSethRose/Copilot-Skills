@@ -972,7 +972,7 @@ When a user visits a route:
 
 To understand Partial Prerendering, it helps to be familiar with the rendering strategies available in Next.js.
 
-With Static Rendering, HTML is generated ahead of time—either at build time or through revalidation. The result is cached and shared across users and requests.
+With Static Rendering, HTML is generated ahead of time-either at build time or through revalidation. The result is cached and shared across users and requests.
 
 In Partial Prerendering, Next.js prerenders a static shell for a route. This can include the layout and any other components that don't depend on request-time data.
 

@@ -1341,7 +1341,7 @@ export OTEL_EXPORTER_OTLP_HEADERS="Aut
 - ​Change your output style
 - ​Create a custom output style
 - ​Comparisons to related features
-  - ​Output Styles vs. CLAUDE.md vs. —append-system-prompt
+  - ​Output Styles vs. CLAUDE.md vs. -append-system-prompt
   - ​Output Styles vs. Agents
   - ​Output Styles vs. Custom Slash Commands
 

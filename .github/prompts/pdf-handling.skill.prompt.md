@@ -230,4 +230,4 @@ This skill may reference:
 
 ## Examples
 
-Show examples from SKILL.md based on task type. Don't reinvent patterns—reference the skill files.
+Show examples from SKILL.md based on task type. Don't reinvent patterns-reference the skill files.

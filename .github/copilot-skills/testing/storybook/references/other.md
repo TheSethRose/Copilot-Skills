@@ -304,7 +304,7 @@ const meta = {
 - CLI basics
 - Manual setup
 
-Storybook, at its core, is powered by builders such as Webpack and Vite. These builders spin up a development environment, compile your code—Javascript, CSS, and MDX—into an executable bundle and update the browser in real-time.
+Storybook, at its core, is powered by builders such as Webpack and Vite. These builders spin up a development environment, compile your code-Javascript, CSS, and MDX-into an executable bundle and update the browser in real-time.
 
 Before diving into setting up Storybook's builders, let's look at how the CLI configures them. When you initialize Storybook (via npx storybook@latest init), the CLI automatically detects which builder to use based on your application. For example, if you're working with Vite, it will install the Vite builder. If you're working with Webpack, it installs the Webpack 5 builder by default.
 
@@ -354,7 +354,7 @@ When prompted, answer the questions as accurately as possible to allow Storybook
 
 The yarn task command takes a few development shortcuts that can catch you off guard when switching branches and may require you to re-run both the install and compile tasks. You can speed up the process by running the command with the start-from=install flag.
 
-After successfully running your first sandbox, you should have a fully functional Storybook version built on your local machine. Before jumping onto any code changes, verifying everything is working is essential—specifically, the test suite.
+After successfully running your first sandbox, you should have a fully functional Storybook version built on your local machine. Before jumping onto any code changes, verifying everything is working is essential-specifically, the test suite.
 
 Run the following command to execute the tests:
 
@@ -542,7 +542,7 @@ For your reference, you can view all of the official Storybook frameworks, inclu
 
 The name should start with storybook-framework- and then correspond to what your framework supports. For example, a framework targeting SvelteKit would be storybook-framework-svelte-kit and a framework targeting Stencil with Vite would be storybook-framework-stencil-vite. When not targeting a metaframework, the naming convention is storybook-framework-<renderer>-<builder>.
 
-The goal is to make Storybook behave—out-of-the-box—as similarly as possible to the metaframework or builder-renderer combination you’re targeting.
+The goal is to make Storybook behave-out-of-the-box-as similarly as possible to the metaframework or builder-renderer combination you’re targeting.
 
 For metaframeworks, this means attempting to recreate any builder or babel configuration provided by the metaframework. You should try to do so in a way that respects the user's existing project configuration as much as possible.
 
@@ -3445,7 +3445,7 @@ You can also run tests in watch mode, which will automatically re-run tests when
 
 Before installing, make sure your project meets the following requirements:
 
-Using with Next.js — The Vitest addon is supported in Next.js ≥ 14.1 projects, but you must be using the @storybook/nextjs-vite framework. When you run the setup command below, you will be prompted to install and use the framework if you haven't already.
+Using with Next.js - The Vitest addon is supported in Next.js ≥ 14.1 projects, but you must be using the @storybook/nextjs-vite framework. When you run the setup command below, you will be prompted to install and use the framework if you haven't already.
 
 Run the following command to install and configure the addon, which contains the plugin to run your stories as tests using Vitest:
 

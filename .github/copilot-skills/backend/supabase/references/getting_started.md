@@ -311,7 +311,7 @@ Our goal at Supabase is to make all of Postgres easy to use. That doesn’t mean
 
 Each Supabase project consists of several tools:
 
-Postgres is the core of Supabase. We do not abstract the Postgres database—you can access it and use it with full privileges. We provide tools which make Postgres as easy to use as Firebase.
+Postgres is the core of Supabase. We do not abstract the Postgres database-you can access it and use it with full privileges. We provide tools which make Postgres as easy to use as Firebase.
 
 An open source Dashboard for managing your database and services.
 
@@ -2106,7 +2106,7 @@ The DIRECT_URL should use the Session mode connection string you copied in Step 
 ```
 
 ```text
-12345# Transaction mode connection string used for migrationsDATABASE_URL="postgres://postgres.[project-ref]:[db-password]@xxx.pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1"# Session mode connection string — used by Prisma ClientDIRECT_URL="postgres://postgres.[project-ref]:[db-password]@xxx.pooler.supabase.com:5432/postgres"
+12345# Transaction mode connection string used for migrationsDATABASE_URL="postgres://postgres.[project-ref]:[db-password]@xxx.pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1"# Session mode connection string - used by Prisma ClientDIRECT_URL="postgres://postgres.[project-ref]:[db-password]@xxx.pooler.supabase.com:5432/postgres"
 ```
 
 ---

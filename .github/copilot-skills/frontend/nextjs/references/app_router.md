@@ -961,7 +961,7 @@ For example, app/shop/[[...slug]]/page.js will also match /shop, in addition to 
 
 The difference between catch-all and optional catch-all segments is that with optional, the route without the parameter is also matched (/shop in the example above).
 
-When using TypeScript, you can add types for params depending on your configured route segment — use PageProps<'/route'>, LayoutProps<'/route'>, or RouteContext<'/route'> to type params in page, layout, and route respectively.
+When using TypeScript, you can add types for params depending on your configured route segment - use PageProps<'/route'>, LayoutProps<'/route'>, or RouteContext<'/route'> to type params in page, layout, and route respectively.
 
 Route params values are typed as string, string[], or undefined (for optional catch-all segments), because their values aren't known until runtime. Users can enter any URL into the address bar, and these broad types help ensure that your application code handles all these possible cases.
 
@@ -4980,7 +4980,7 @@ export const SignupFormSchema = z.object({
 
 Features available in /app
 
-Next.js supports the "Backend for Frontend" pattern. This lets you create public endpoints to handle HTTP requests and return any content type—not just HTML. You can also access data sources and perform side effects like updating remote data.
+Next.js supports the "Backend for Frontend" pattern. This lets you create public endpoints to handle HTTP requests and return any content type-not just HTML. You can also access data sources and perform side effects like updating remote data.
 
 If you are starting a new project, using create-next-app with the --api flag automatically includes an example route.ts in your new project’s app/ folder, demonstrating how to create an API endpoint.
 
@@ -5306,7 +5306,7 @@ By using CSP, developers can specify which origins are permissible for content s
 
 A nonce is a unique, random string of characters created for a one-time use. It is used in conjunction with CSP to selectively allow certain inline scripts or styles to execute, bypassing strict CSP directives.
 
-CSP can block both inline and external scripts to prevent attacks. A nonce lets you safely allow specific scripts to run—only if they include the matching nonce value.
+CSP can block both inline and external scripts to prevent attacks. A nonce lets you safely allow specific scripts to run-only if they include the matching nonce value.
 
 If an attacker wanted to load a script into your page, they'd need to guess the nonce value. That's why the nonce must be unpredictable and unique for every request.
 
@@ -5318,7 +5318,7 @@ By default, Middleware runs on all requests. You can filter Middleware to run on
 
 We recommend ignoring matching prefetches (from next/link) and static assets that don't need the CSP header.
 
-To use a nonce, your page must be dynamically rendered. This is because Next.js applies nonces during server-side rendering, based on the CSP header present in the request. Static pages are generated at build time, when no request or response headers exist—so no nonce can be injected.
+To use a nonce, your page must be dynamically rendered. This is because Next.js applies nonces during server-side rendering, based on the CSP header present in the request. Static pages are generated at build time, when no request or response headers exist-so no nonce can be injected.
 
 Here’s how nonce support works in a dynamically rendered page:
 
@@ -7135,7 +7135,7 @@ Let's explore common patterns used to build SPAs and how Next.js solves them.
 
 We recommend fetching data in a parent component (or layout), returning the Promise, and then unwrapping the value in a Client Component with React’s use hook.
 
-Next.js can start data fetching early on the server. In this example, that’s the root layout — the entry point to your application. The server can immediately begin streaming a response to the client.
+Next.js can start data fetching early on the server. In this example, that’s the root layout - the entry point to your application. The server can immediately begin streaming a response to the client.
 
 By “hoisting” your data fetching to the root layout, Next.js starts the specified requests on the server early before any o
 
@@ -10326,7 +10326,7 @@ Next.js includes support for the React Compiler, a tool designed to improve perf
 
 Next.js includes a custom performance optimization written in SWC that makes the React Compiler more efficient. Instead of running the compiler on every file, Next.js analyzes your project and only applies the React Compiler to relevant files. This avoids unnecessary work and leads to faster builds compared to using the Babel plugin on its own.
 
-The React Compiler runs through a Babel plugin. To keep builds fast, Next.js uses a custom SWC optimization that only applies the React Compiler to relevant files—like those with JSX or React Hooks.
+The React Compiler runs through a Babel plugin. To keep builds fast, Next.js uses a custom SWC optimization that only applies the React Compiler to relevant files-like those with JSX or React Hooks.
 
 This avoids compiling everything and keeps the performance cost minimal. You may still see slightly slower builds compared to the default Rust-based compiler, but the impact is small and localized.
 

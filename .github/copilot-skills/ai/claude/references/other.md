@@ -738,7 +738,7 @@ STATIC_GREETINGS_AND_GENERAL = """
 Acme Auto Insurance: Your Trusted Companion on the Road
 
 About:
-At Acme Insurance, we understand that your vehicle is more than just a mode of transportation—it's your ticket to life's adventures. 
+At Acme Insurance, we understand that your vehicle is more than just a mode of transportation-it's your ticket to life's adventures. 
 Since 1985, we've been crafting auto insurance policies that give drivers the confidence to explore, commute, and travel with peace of mind.
 Whether you're navigating city streets or embarking on cross-country road trips, Acme is there to protect you
 ...

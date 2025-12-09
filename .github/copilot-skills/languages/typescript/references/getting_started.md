@@ -46,7 +46,7 @@ Replace the contents of the tsconfig.json file with:
 
 Note: "ESNext" targets latest supported
 
-noImplicitAny is good idea whenever you’re writing new code — you can make sure that you don’t write any untyped code by mistake. "compileOnSave" makes it easy to update your code in a running web app.
+noImplicitAny is good idea whenever you’re writing new code - you can make sure that you don’t write any untyped code by mistake. "compileOnSave" makes it easy to update your code in a running web app.
 
 We need to setup NPM so that JavaScript packages can be downloaded. Right click on the project and select New Item. Then choose NPM Configuration File and use the default name of package.json.
 
@@ -730,7 +730,7 @@ Again, being explicit, the following things create values:
 
 Types can exist in namespaces. For example, if we have the declaration let x: A.B.C, we say that the type C comes from the A.B namespace.
 
-This distinction is subtle and important — here, A.B is not necessarily a type or a value.
+This distinction is subtle and important - here, A.B is not necessarily a type or a value.
 
 Given a name A, we might find up to three different meanings for A: a type, a value or a namespace. How the name is interpreted depends on the context in which it is used. For example, in the declaration let m: A.A = A;, A is used first as a namespace, then as a type name, then as a value. These meanings might end up referring to entirely different declarations!
 
@@ -792,7 +792,7 @@ In cases where you don’t know what type you want to accept, or when you want t
 
 ❌ Don’t use optional parameters in callbacks unless you really mean it:
 
-This has a very specific meaning: the done callback might be invoked with 1 argument or might be invoked with 2 arguments. The author probably intended to say that the callback might not care about the elapsedTime parameter, but there’s no need to make the parameter optional to accomplish this — it’s always legal to provide a callback that accepts fewer arguments.
+This has a very specific meaning: the done callback might be invoked with 1 argument or might be invoked with 2 arguments. The author probably intended to say that the callback might not care about the elapsedTime parameter, but there’s no need to make the parameter optional to accomplish this - it’s always legal to provide a callback that accepts fewer arguments.
 
 ✅ Do write callback parameters as non-optional:
 
@@ -1496,7 +1496,7 @@ You can reference types with the “@type” tag. The type can be:
 
 You can use most JSDoc type syntax and any TypeScript syntax, from the most basic like string to the most advanced, like conditional types.
 
-@type can specify a union type — for example, something can be either a string or a boolean.
+@type can specify a union type - for example, something can be either a string or a boolean.
 
 You can specify array types using a variety of syntaxes:
 
@@ -1671,7 +1671,7 @@ The keyof operator takes an object type and produces a string or numeric literal
 
 If the type has a string or number index signature, keyof will return those types instead:
 
-Note that in this example, M is string | number — this is because JavaScript object keys are always coerced to a string, so obj[0] is always the same as obj["0"].
+Note that in this example, M is string | number - this is because JavaScript object keys are always coerced to a string, so obj[0] is always the same as obj["0"].
 
 keyof types become especially useful when combined with mapped types, which we’ll learn more about later.
 
@@ -2245,7 +2245,7 @@ Was this page helpful?
 
 In the early days of JavaScript, when the language only ran in browsers, there were no modules, but it was still possible to split the JavaScript for a web page into multiple files by using multiple script tags in HTML:
 
-This approach had some downsides, especially as web pages grew larger and more complex. In particular, all scripts loaded onto the same page share the same scope—appropriately called the “global scope”—meaning the scripts had to be very careful not to overwrite each others’ variables and functions.
+This approach had some downsides, especially as web pages grew larger and more complex. In particular, all scripts loaded onto the same page share the same scope-appropriately called the “global scope”-meaning the scripts had to be very careful not to overwrite each others’ variables and functions.
 
 Any system that solves this problem by giving files their own scope while still providing a way to make bits of code available to other files can be called a “module system.” (It may sound obvious to say that each file in a module system is called a “module,” but the term is often used to contrast with script files, which run outside a module system, in a global scope.)
 
@@ -2257,7 +2257,7 @@ CommonJS (CJS) is the module system that originally shipped in Node.js, before E
 
 Accordingly, when TypeScript detects that a file is a CommonJS or ECMAScript module, it starts by assuming that file will have its own scope. Beyond that, though, the compiler’s job gets a little more complicated.
 
-The TypeScript compiler’s chief goal is to prevent certain kinds of runtime errors by catching them at compile time. With or without modules involved, the compiler needs to know about the code’s intended runtime environment—what globals are available, for
+The TypeScript compiler’s chief goal is to prevent certain kinds of runtime errors by catching them at compile time. With or without modules involved, the compiler needs to know about the code’s intended runtime environment-what globals are available, for
 
 *[Content truncated - see full docs]*
 
@@ -3237,7 +3237,7 @@ Was this page helpful?
 
 Union types are a powerful way to express a value that can be one of several types. For example, you might have an API for running a program that takes a commandline as either a string, a string[] or a function that returns a string. You can now write:
 
-Assignment to union types works very intuitively — anything you could assign to one of the union type’s members is assignable to the union:
+Assignment to union types works very intuitively - anything you could assign to one of the union type’s members is assignable to the union:
 
 When reading from a union type, you can see any properties that are shared by them:
 
@@ -5313,7 +5313,7 @@ This is fine, but what happens if we need to perform an early exit?
 
 We’re starting to see some duplication of clean-up which can be easy to forget. We’re also not guaranteed to close and delete the file if an error gets thrown. This could be solved by wrapping this all in a try/finally block.
 
-While this is more robust, it’s added quite a bit of “noise” to our code. There are also other foot-guns we can run into if we start adding more clean-up logic to our finally block — for example, exceptions preventing other resources from being disposed. This is what the explicit resource management proposal aims to solve. The key idea of the proposal is to support resource disposal — this clean-up work we’re trying to deal with — as a first class idea in JavaScript.
+While this is more robust, it’s added quite a bit of “noise” to our code. There are also other foot-guns we can run into if we start adding more clean-up logic to our finally block - for example, exceptions preventing other resources from being disposed. This is what the explicit resource management proposal aims to solve. The key idea of the proposal is to support resource disposal - this clean-up work we’re trying to deal with - as a first class idea in JavaScript.
 
 This starts by adding a new built-in symbol called Symbol.dispose, and we can create objects with methods named by Symbol.dispose. For convenience, TypeScript defines a new global type called Disposable which describes these.
 
@@ -5954,17 +5954,17 @@ interface User {  name: string;  id: number;}
 
 Was this page helpful?
 
-Congratulations on choosing TypeScript as one of your first languages — you’re already making good decisions!
+Congratulations on choosing TypeScript as one of your first languages - you’re already making good decisions!
 
 You’ve probably already heard that TypeScript is a “flavor” or “variant” of JavaScript. The relationship between TypeScript (TS) and JavaScript (JS) is rather unique among modern programming languages, so learning more about this relationship will help you understand how TypeScript adds to JavaScript.
 
-JavaScript (also known as ECMAScript) started its life as a simple scripting language for browsers. At the time it was invented, it was expected to be used for short snippets of code embedded in a web page — writing more than a few dozen lines of code would have been somewhat unusual. Due to this, early web browsers executed such code pretty slowly. Over time, though, JS became more and more popular, and web developers started using it to create interactive experiences.
+JavaScript (also known as ECMAScript) started its life as a simple scripting language for browsers. At the time it was invented, it was expected to be used for short snippets of code embedded in a web page - writing more than a few dozen lines of code would have been somewhat unusual. Due to this, early web browsers executed such code pretty slowly. Over time, though, JS became more and more popular, and web developers started using it to create interactive experiences.
 
 Web browser developers responded to this increased JS usage by optimizing their execution engines (dynamic compilation) and extending what could be done with it (adding APIs), which in turn made web developers use it even more. On modern websites, your browser is frequently running applications that span hundreds of thousands of lines of code. This is the long and gradual growth of “the web”, starting as a simple network of static pages, and evolving into a platform for rich applications of all kinds.
 
 More than this, JS has become popular enough to be used outside the context of browsers, such as implementing JS servers using node.js. The “run anywhere” nature of JS makes it an attractive choice for cross-platform development. There are many developers these days that use only JavaScript to program their entire stack!
 
-To summarize, we have a language that was designed for quick uses, and then grew to a full-fledged tool to write applications with millions of lines. Every language has its own quirks — oddities and surprises, and JavaScript’s humble beginning makes it 
+To summarize, we have a language that was designed for quick uses, and then grew to a full-fledged tool to write applications with millions of lines. Every language has its own quirks - oddities and surprises, and JavaScript’s humble beginning makes it 
 
 *[Content truncated - see full docs]*
 

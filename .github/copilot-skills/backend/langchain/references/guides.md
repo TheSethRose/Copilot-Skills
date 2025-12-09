@@ -18,7 +18,7 @@ This guide provides explanations of the key concepts behind the LangChain framew
 
 We recommend that you go through at least one of the Tutorials before diving into the conceptual guide. This will provide practical context that will make it easier to understand the concepts discussed here.
 
-The conceptual guide does not cover step-by-step instructions or specific implementation examples — those are found in the How-to guides and Tutorials. For detailed reference material, please see the API reference.
+The conceptual guide does not cover step-by-step instructions or specific implementation examples - those are found in the How-to guides and Tutorials. For detailed reference material, please see the API reference.
 
 ---
 

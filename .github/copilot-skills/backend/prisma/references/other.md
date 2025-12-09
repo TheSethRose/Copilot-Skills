@@ -253,7 +253,7 @@ A _prisma_migrations table in the database, which is used to check:
 
 If you change or delete a migration (not recommended), the next steps depend on whether you are in a development environment (and therefore using migrate dev) or a production / testing environment (and therefore using migrate deploy).
 
-In general, you should not edit or delete a migration that has already been applied. Doing so can lead to inconsistencies between development and production environment migration histories, which may have unforeseen consequences — even if the change does not appear to break anything at first.
+In general, you should not edit or delete a migration that has already been applied. Doing so can lead to inconsistencies between development and production environment migration histories, which may have unforeseen consequences - even if the change does not appear to break anything at first.
 
 The following scenario simulates a change that creates a seemingly harmless inconsistency:
 
@@ -290,7 +290,7 @@ migrations/  └─ 20210313140442_init/    └─ migration.sql  └─ 2021031
 
 Prisma Accelerate provides global caching for read queries using TTL, Stale-While-Revalidate (SWR), or a combination of both. It's included as part of Prisma Postgres, but can also be used with your own database by enabling Accelerate in the and configuring it with your database.
 
-This content has moved — learn more on the updated Caching in Accelerate page.
+This content has moved - learn more on the updated Caching in Accelerate page.
 
 ---
 
@@ -611,7 +611,7 @@ Explore how Prisma Accelerate compares to other global cache and connection pool
 
 Prisma Accelerate is chosen and loved by many for a number of key reasons which make Accelerate unique:
 
-Prisma Accelerate offers a powerful global cache, so you can serve data to your users at the edge — the closest point to where the users are located — no matter where your database is hosted. This not only speeds up the experience for users, but also reduces read load on your database as well by avoiding roundtrips.
+Prisma Accelerate offers a powerful global cache, so you can serve data to your users at the edge - the closest point to where the users are located - no matter where your database is hosted. This not only speeds up the experience for users, but also reduces read load on your database as well by avoiding roundtrips.
 
 Why are these important?
 
@@ -1924,7 +1924,7 @@ The performance measurements were conducted using a deliberately complex Prisma 
 
 This schema creates complex type dependencies that stress-test TypeScript compilation, simulating real-world enterprise applications with extensive table relationships.
 
-In enterprise applications with extensive database schemas—think e-commerce platforms with hundreds of product variants, financial systems with complex transaction hierarchies, or content management systems with intricate relationship webs—Prisma's generated types can become enormous.
+In enterprise applications with extensive database schemas-think e-commerce platforms with hundreds of product variants, financial systems with complex transaction hierarchies, or content management systems with intricate relationship webs-Prisma's generated types can become enormous.
 
 A schema with 50+ tables and deep relationships can lead to:
 
@@ -1932,7 +1932,7 @@ The solution involves using TypeScript's typeof operator instead of direct type 
 
 The typeof operator creates a more efficient type resolution path by changing how TypeScript resolves types:
 
-When working with large Prisma schemas, the choice between direct type references and type queries becomes crucial for maintaining development velocity. The typeof approach isn't just an optimization—it's an essential technique for scaling TypeScript compilation performance as your database schema grows in complexity.
+When working with large Prisma schemas, the choice between direct type references and type queries becomes crucial for maintaining development velocity. The typeof approach isn't just an optimization-it's an essential technique for scaling TypeScript compilation performance as your database schema grows in complexity.
 
 The 78% compilation time reduction demonstrated here scales exponentially with schema complexity, making this optimization foundational for maintaining an efficient development workflow in enterprise-scale applications.
 
@@ -2406,7 +2406,7 @@ Working with Prisma gives you a best-in-class TypeScript ORM, a declarative data
 
 Try out what Prisma has to offer with one command:
 
-Get started with your favorite framework and Prisma Postgres. With Prisma Postgres you get an instant, fully hosted high-performance database that includes built-in caching, scales to zero, and integrates deeply with Prisma ORM and Prisma Studio—all backed by a generous free tier.
+Get started with your favorite framework and Prisma Postgres. With Prisma Postgres you get an instant, fully hosted high-performance database that includes built-in caching, scales to zero, and integrates deeply with Prisma ORM and Prisma Studio-all backed by a generous free tier.
 
 Already have a database? With Prisma ORM and Prisma Data Platform, you can supercharge your existing stack. Add connection pooling and caching with generous free tiers.
 
@@ -2452,7 +2452,7 @@ Working with Prisma gives you a best-in-class TypeScript ORM, a declarative data
 
 Try out what Prisma has to offer with one command:
 
-Get started with your favorite framework and Prisma Postgres. With Prisma Postgres you get an instant, fully hosted high-performance database that includes built-in caching, scales to zero, and integrates deeply with Prisma ORM and Prisma Studio—all backed by a generous free tier.
+Get started with your favorite framework and Prisma Postgres. With Prisma Postgres you get an instant, fully hosted high-performance database that includes built-in caching, scales to zero, and integrates deeply with Prisma ORM and Prisma Studio-all backed by a generous free tier.
 
 Already have a database? With Prisma ORM and Prisma Data Platform, you can supercharge your existing stack. Add connection pooling and caching with generous free tiers.
 

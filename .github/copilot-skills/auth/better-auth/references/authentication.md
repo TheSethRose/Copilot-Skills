@@ -1310,7 +1310,7 @@ import { auth } from "./auth";
 const app = new Elysia()
   .use(
     cors({
-      origin: "http://localhost:3001",
+      origin: "http://localhost:3010",
       methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
       credentials: true,
       allowedHeaders: ["Content-Type", "Authorization"],
@@ -1965,7 +1965,7 @@ const app = new Hono();
 app.use(
 	"/api/auth/*", // or replace with "*" to enable cors for all routes
 	cors({
-		origin: "http://localhost:3001", // replace with your origin
+		origin: "http://localhost:3010", // replace with your origin
 		allowHeaders: ["Content-Type", "Authorization"],
 		allowMethods: ["POST", "GET", "OPTIONS"],
 		exposeHeaders: ["Content-Length"],
@@ -3367,7 +3367,7 @@ See the Schema section to add the fields manually.
 
 To add or register a passkey make sure a user is authenticated and then call the passkey.addPasskey function provided by the client.
 
-Setting throw: true in the fetch options has no effect for the register and sign-in passkey responses — they will always return a data object containing the error object.
+Setting throw: true in the fetch options has no effect for the register and sign-in passkey responses - they will always return a data object containing the error object.
 
 To sign in with a passkey you can use the signIn.passkey method. This will prompt the user to sign in with their passkey.
 

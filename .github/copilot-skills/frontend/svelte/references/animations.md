@@ -36,7 +36,7 @@ The function is called repeatedly before the animation begins, with different t 
 
 A custom animation function can also return a tick function, which is called during the animation with the same t and u arguments.
 
-If it’s possible to use css instead of tick, do so — web animations can run off the main thread, preventing jank on slower devices.
+If it’s possible to use css instead of tick, do so - web animations can run off the main thread, preventing jank on slower devices.
 
 Edit this page on GitHub llms.txt
 

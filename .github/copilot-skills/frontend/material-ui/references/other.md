@@ -18,7 +18,7 @@
   - Want to hear more from us?
 - Material UI v7 is here 🚀
 
-Find out how our globally-distributed team connects beyond GitHub and Slack—and how you can join us next time.
+Find out how our globally-distributed team connects beyond GitHub and Slack-and how you can join us next time.
 
 Read all about the new release of the advanced components and other important steps forward with this new major.
 

@@ -269,7 +269,7 @@ Mantis has been tested thoroughly:
 
 The Mantis Figma Design file is available with the Standard Plus and Extended License. All components and pages are properly arranged. Settings like Colors, Typography, Shadow, and Components are master components, so you can easily change the entire file with one single click.
 
-Documentation—This helps you quickly start using Mantis from the Installation to build steps; you will find everything there.
+Documentation-This helps you quickly start using Mantis from the Installation to build steps; you will find everything there.
 
 Once you purchase the Mantis, you will get technical support from our side*. It includes:
 

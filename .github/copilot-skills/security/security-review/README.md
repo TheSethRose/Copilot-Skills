@@ -627,7 +627,7 @@ categories:
 2. **Fix by severity** - Critical → High → Medium → Low
 3. **Review all findings** - Some may be false positives
 4. **Add to CI/CD** - Automated checks on every push
-5. **Regular scans** - Weekly/monthly full scans
+5. **Completed Scans** - Weekly/monthly full scans
 
 ### For Teams
 

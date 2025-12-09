@@ -555,7 +555,7 @@ Saber is a framework f
 
 The following full-stack frameworks are supported with zero-configuration.
 
-Next.js makes you productive with React instantly — whether you want to build static or dynamic sites.
+Next.js makes you productive with React instantly - whether you want to build static or dynamic sites.
 
 Nuxt is the open source framework that makes full-stack development with Vue.js intuitive.
 
@@ -1176,7 +1176,7 @@ Ecommerce Template with Crystallize and Remix
 
 A fully-featured eCommerce boilerplate built using Remix and Crystallize with performance in mind.
 
-A new Remix app — the result of running `npx create-remix`.
+A new Remix app - the result of running `npx create-remix`.
 
 Product Roadmap Voting App
 

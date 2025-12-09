@@ -1,6 +1,6 @@
 # Tailwind CSS v4 Skill
 
-A comprehensive Copilot skill for Tailwind CSS v4 — the utility-first CSS framework for rapidly building modern designs with zero runtime.
+A comprehensive Copilot skill for Tailwind CSS v4 - the utility-first CSS framework for rapidly building modern designs with zero runtime.
 
 ## What's Included
 

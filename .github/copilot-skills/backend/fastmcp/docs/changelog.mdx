@@ -155,7 +155,7 @@ This is a hotfix for a bug where the `streamable-http` transport was not recogni
 
 **[v2.12.1: OAuth to Joy](https://github.com/jlowin/fastmcp/releases/tag/v2.12.1)**
 
-FastMCP 2.12.1 strengthens the OAuth proxy implementation based on extensive community testing and feedback. This release improves client storage reliability, adds PKCE forwarding for enhanced security, introduces configurable token endpoint authentication methods, and expands scope handling—all addressing real-world integration challenges discovered since 2.12.0. The enhanced test suite with mock providers ensures these improvements are robust and maintainable.
+FastMCP 2.12.1 strengthens the OAuth proxy implementation based on extensive community testing and feedback. This release improves client storage reliability, adds PKCE forwarding for enhanced security, introduces configurable token endpoint authentication methods, and expands scope handling-all addressing real-world integration challenges discovered since 2.12.0. The enhanced test suite with mock providers ensures these improvements are robust and maintainable.
 
 ## Breaking Changes
 - **OAuth Proxy**: Users of built-in IDP integrations should note that `resource_server_url` has been renamed to `base_url` for clarity and consistency
@@ -200,7 +200,7 @@ FastMCP 2.12 represents one of our most significant releases to date, both in sc
 
 📋 **Declarative JSON Configuration** introduces a standardized, portable way to describe and deploy MCP servers. The `fastmcp.json` configuration file becomes the single source of truth for dependencies, transport settings, entrypoints, and server metadata. This foundation sets the stage for future capabilities like transformations and remote sources, moving toward a world where MCP servers are as portable and shareable as container images.
 
-🧠 **Sampling API Fallback** tackles the chicken-and-egg problem limiting adoption of advanced MCP features. Sampling—where servers request LLM completions from clients—is powerful but underutilized due to limited client support. FastMCP now lets server authors define fallback handlers that generate sampling completions server-side when clients don't support the feature, encouraging adoption while maintaining compatibility.
+🧠 **Sampling API Fallback** tackles the chicken-and-egg problem limiting adoption of advanced MCP features. Sampling-where servers request LLM completions from clients-is powerful but underutilized due to limited client support. FastMCP now lets server authors define fallback handlers that generate sampling completions server-side when clients don't support the feature, encouraging adoption while maintaining compatibility.
 
 This release took longer than usual to ship, and for good reason: the community's aggressive testing and feedback on the authentication system helped us reach a level of stability we're confident in. There's certainly more work ahead, but these foundations position FastMCP to handle increasingly complex use cases while remaining approachable for developers.
 
@@ -909,7 +909,7 @@ FastMCP 2.8.0 introduces powerful new ways to customize and control your MCP ser
 
 ### Tool Transformation
 
-The highlight of this release is first-class [**Tool Transformation**](/patterns/tool-transformation), a new feature that lets you create enhanced variations of existing tools. You can now easily rename arguments, hide parameters, modify descriptions, and even wrap tools with custom validation or post-processing logic—all without rewriting the original code. This makes it easier than ever to adapt generic tools for specific LLM use cases or to simplify complex APIs. Huge thanks to [@strawgate](https://github.com/strawgate) for partnering on this, starting with [#591](https://github.com/jlowin/fastmcp/discussions/591) and [#599](https://github.com/jlowin/fastmcp/pull/599) and continuing offline.
+The highlight of this release is first-class [**Tool Transformation**](/patterns/tool-transformation), a new feature that lets you create enhanced variations of existing tools. You can now easily rename arguments, hide parameters, modify descriptions, and even wrap tools with custom validation or post-processing logic-all without rewriting the original code. This makes it easier than ever to adapt generic tools for specific LLM use cases or to simplify complex APIs. Huge thanks to [@strawgate](https://github.com/strawgate) for partnering on this, starting with [#591](https://github.com/jlowin/fastmcp/discussions/591) and [#599](https://github.com/jlowin/fastmcp/pull/599) and continuing offline.
 
 ### Component Control
 This release also gives you more granular control over which components are exposed to clients. With new [**tag-based filtering**](/servers/server#tag-based-filtering), you can selectively enable or disable tools, resources, and prompts based on tags, perfect for managing different environments or user permissions. Complementing this, every component now supports being [programmatically enabled or disabled](/servers/tools#disabling-tools), offering dynamic control over your server's capabilities.

@@ -456,7 +456,7 @@ Based on the article by Eran Hammer,the issue is created by a web security bug. 
 
 But first, if we use a JavaScript framework to process incoming JSON data, take a moment to read up on Prototype Poisoning in general, and the specific technical details of this issue. This could be a critical issue so, we might need to verify your own code first. It focuses on specific framework however, any solution that uses JSON.parse() to process external data is potentially at risk.
 
-The engineering team at Lob (long time generous supporters of my work!) reported a critical security vulnerability they identified in our data validation module — joi. They provided some technical details and a proposed solution.
+The engineering team at Lob (long time generous supporters of my work!) reported a critical security vulnerability they identified in our data validation module - joi. They provided some technical details and a proposed solution.
 
 The main purpose of a data validation library is to ensure the output fully complies with the rules defined. If it doesn't, validation fails. If it passes, we can blindly trust that the data you are working with is safe. In fact, most developers treat validated input as completely safe from a system integrity perspective which is crucial!
 

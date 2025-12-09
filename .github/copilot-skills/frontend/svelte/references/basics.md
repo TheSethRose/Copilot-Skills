@@ -44,7 +44,7 @@ As with elements, name={name} can be replaced with the {name} shorthand.
 
 Spread attributes allow many attributes or properties to be passed to an element or component at once.
 
-An element or component can have multiple spread attributes, interspersed with regular ones. Order matters — if things.a exists it will take precedence over a="b", while c="d" would take precedence over things.c:
+An element or component can have multiple spread attributes, interspersed with regular ones. Order matters - if things.a exists it will take precedence over a="b", while c="d" would take precedence over things.c:
 
 Listening to DOM events is possible by adding attributes to the element that start with on. For example, to listen to the click event, add the onclick attribute to a button:
 

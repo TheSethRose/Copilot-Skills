@@ -1745,7 +1745,7 @@ For completeness, those are:
 
 Then, navigate to the project directory:
 
-In this section, you will create two separate Prisma Postgres instances—one for user data and one for post data. You will also configure the Prisma schema and environment variables for each.
+In this section, you will create two separate Prisma Postgres instances-one for user data and one for post data. You will also configure the Prisma schema and environment variables for each.
 
 First, install Prisma as a development dependency:
 

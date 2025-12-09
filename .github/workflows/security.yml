@@ -1,0 +1,91 @@
+name: Security Gate
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for TruffleHog
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Run Pre-commit Security Scanner
+        run: |
+          echo "🔍 Scanning source files for security issues..."
+          find src server -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.js" \) | \
+            grep -v node_modules | \
+            xargs bun scripts/pre-commit-security.js
+          echo "✅ Security scan completed"
+
+      - name: TruffleHog Secret Scan
+        uses: trufflesecurity/trufflehog@main
+        with:
+          extra_args: --only-verified --fail
+
+      - name: Dependency Audit
+        run: |
+          echo "📦 Checking for known vulnerabilities in dependencies..."
+          bun audit 2>/dev/null || echo "⚠️ Some vulnerabilities found (check logs)"
+
+  lint-typecheck:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: ESLint
+        run: bun run lint
+
+      - name: TypeScript Check
+        run: bun run type-check
+
+  build-test:
+    name: Build Test
+    runs-on: ubuntu-latest
+    needs: [security-scan, lint-typecheck]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Generate Prisma Client
+        run: bunx prisma generate
+        env:
+          DATABASE_URL: postgresql://test:test@localhost:5432/test
+
+      - name: Build Application
+        run: bun run build
+        env:
+          VITE_API_URL: http://localhost:3010
+          VITE_GOOGLE_MAPS_API_KEY: test-key

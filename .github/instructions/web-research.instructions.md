@@ -9,7 +9,7 @@
 When conducting research on web topics:
 
 1. **Search First**: Always start with authoritative sources (official docs, MDN, GitHub)
-2. **Multi-Source**: Never rely on single source—verify patterns across sources
+2. **Multi-Source**: Never rely on single source-verify patterns across sources
 3. **Incremental Scraping**: Use checkpoint system for long-running crawls
 4. **Pattern Extraction**: Look for repeated patterns across all sources
 5. **Code Examples**: Always extract and categorize code samples with language detection

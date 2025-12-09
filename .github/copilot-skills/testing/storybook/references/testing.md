@@ -364,7 +364,7 @@ Test:
 - PR checks
 - Configure
 
-Visual tests are the most efficient way to test your components. With the click of a button you can take snapshots of every story in your Storybook and compare those snapshots to baselines — last known “good” snapshots. Not only does this allow you to check the appearance of your components, but they are also able to check a large subset of component functionality without having to write or maintain any test code!
+Visual tests are the most efficient way to test your components. With the click of a button you can take snapshots of every story in your Storybook and compare those snapshots to baselines - last known “good” snapshots. Not only does this allow you to check the appearance of your components, but they are also able to check a large subset of component functionality without having to write or maintain any test code!
 
 Storybook supports cross-browser visual testing natively using Chromatic, a cloud service made by the Storybook team. When you enable visual testing, every story is automatically turned into a test. This gives you instant feedback on UI bugs directly in Storybook.
 

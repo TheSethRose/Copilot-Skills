@@ -1,457 +1,585 @@
 # Copilot Instructions
 
-This repository demonstrates a **Copilot Skills Architecture system** — a framework for organizing domain knowledge into discoverable, composable skills that keep AI agents focused and context-efficient.
+⚡ **CRITICAL: For ANY file operation (C.R.U.D., search, grep, etc.), ALWAYS use Kit first:**
 
-This is NOT a traditional application to build/run. It's a **meta-system** for creating and managing reusable skills.
-
-## What This Repository Is
-
-A complete implementation of the Copilot Skills Architecture featuring:
-
-- **Skill Files** - Self-contained documentation + bundled scripts (`.github/copilot-skills/`)
-- **Skill Prompts** - AI-executable workflows (`.github/prompts/`)
-- **Constitutional Framework** - 5 architectural principles all skills follow
-- **Reference Implementations** - Example skills from Anthropic, Obra, and the community
-- **Automation Tools** - Scripts for creating, validating, and managing skills
-
-## Core Architecture
-
-### Three-Part System
-
-1. **Skill Prompts** (`.github/prompts/{skill-name}.skill.prompt.md`)
-   - Defines WHEN a skill is relevant (use cases)
-   - Defines HOW to use it step-by-step (workflow)
-   - Enables `/skill-{name}` slash commands in Copilot
-
-2. **Instructions Files** (`.github/instructions/{skill-name}.instructions.md`)
-   - Auto-loaded context for file patterns or keywords
-   - Default behaviors and quality guidelines
-   - Common workflows and examples
-
-3. **Skill Directories** (`.github/copilot-skills/{skill-name}/`)
-   - Optional: Detail files (`patterns.md`, `reference.md`) for progressive disclosure
-   - Optional: `scripts/` - Bundled tools for deterministic operations
-   - `README.md` for reference implementations
-
-4. **Management System** (`.github/copilot-skills/`)
-   - `README.md` - System architecture overview
-   - `scripts/` - Tools for creating, validating, analyzing skills
-   - `templates/` - Scaffolding for new skills
-
-## Five Constitutional Principles
-
-**All skills must follow these principles** (see `.specify/memory/constitution.md`):
-
-1. **Progressive Disclosure** - Metadata → core → details. Each layer independent, scannable in <3 min
-2. **File-Based Organization** - Skills are prompt + instructions + bundled scripts
-3. **Dynamic Discovery** - Keyword routing map enables AI to find skills automatically
-4. **Deterministic Execution** - Scripts in `scripts/` produce consistent terminal output (no file generation)
-5. **Composability** - Skills reference each other with explicit dependencies, clear boundaries
-
-## Available Skills
-
-Check the **Keyword Routing Map** below for the complete registry of available skills.
-
-## 🧠 Context-Aware Routing System
-
-This repository implements a **Claude-style skills framework** with automatic context loading and skill suggestion.
-
-### Architecture Layers
-
-| Layer | Purpose | Load Behavior | Analogy |
-|-------|---------|---------------|---------|
-| **`.github/instructions/`** | Auto-triggered context rules | Automatic when file patterns or keywords match | Claude's "background skills" |
-| **`.github/prompts/`** | Callable skill modules | Manual via `/skill-name` or contextual suggestion | Claude's "explicit skills" |
-| **`.github/chatmodes/`** | Persona definitions | Manual via `/switch mode` | Tone/role switching |
-| **`copilot-instructions.md`** | Global routing + repo policy | Always active | Top-level agent brain |
-| **`.github/copilot-skills/`** | Internal tooling layer | Reference for maintainers | Developer toolkit |
-
-### Keyword Routing Map
-
-When user queries contain these keywords, **suggest the corresponding skill**:
-
-#### PDF & Document Operations
-**Keywords:** PDF, pdf, report, export, document, form, fillable, extract text, merge pdf, split pdf, watermark, table extraction
-**Suggest:** `/pdf-handling`
-**Auto-context:** `.github/instructions/pdf-handling.instructions.md` (when editing PDF-related files)
-**Skill:** `.github/copilot-skills/operations/pdf-handling/SKILL.md`
-
-#### Git & Version Control
-**Keywords:** git, commit, merge, rebase, push, pull, branch, checkout, stash, conflict, github, pull request, PR, force push, worktree
-**Suggest:** `/git-ops`
-**Auto-context:** `.github/instructions/git-ops.instructions.md` (when editing .git/, .gitignore, .github/)
-**Skill:** `.github/copilot-skills/operations/git-ops/README.md`
-
-#### New Project Creation & Scaffolding
-**Keywords:** new project, create project, initialize, setup, scaffold, boilerplate, template, starter, project setup
-**Suggest:** `/new-project`
-**Auto-context:** `.github/instructions/new-project.instructions.md` (when editing package.json, requirements.txt, etc.)
-**Skill:** `.github/copilot-skills/skills/skill-template/README.md`
-
-#### Cleanup & Maintenance
-**Keywords:** cleanup, remove, delete, unused, stale, orphan, tidy
-**Suggest:** `/cleanup`
-**Skill:** `.github/prompts/cleanup.skill.prompt.md`
-
-#### Generate Instructions
-**Keywords:** generate instructions, copilot-instructions, discover patterns, create instructions, AI instructions, codebase analysis
-**Suggest:** `/generate-instructions`
-**Skill:** `.github/copilot-skills/generators/copilot-instructions-generator/SKILL.md`
-
-#### Brand Guidelines & Visual Identity
-**Keywords:** branding, brand colors, typography, visual identity, styling, brand guidelines, corporate design, Anthropic brand
-**Suggest:** `/brand-guidelines`
-**Auto-context:** `.github/instructions/brand-guidelines.instructions.md` (when editing brand/style/design files)
-**Skill:** `.github/copilot-skills/builders/brand-guidelines/README.md`
-
-#### Create Skill
-**Keywords:** create skill, new skill, skill creation, build skill, skill architecture, meta skill, design skill
-**Suggest:** `/create-skill`
-**Chatmode:** `/switch Skill Creator`
-**Auto-context:** `.github/instructions/create-skill.instructions.md` (when editing skill-related files)
-**Skill:** `.github/copilot-skills/skills/create-skill/README.md`
-
-#### Document Project
-**Keywords:** document project, generate docs, documentation, setup docs, create documentation, project documentation
-**Suggest:** `/document-project`
-**Auto-context:** `.github/instructions/document-project.instructions.md` (when editing docs-related files)
-**Skill:** `.github/copilot-skills/generators/document-project/README.md`
-
-#### Docs to Skill
-**Keywords:** docs to skill, documentation scraper, doc to skill, convert documentation, scrape docs, generate skill, claude skill, skill generator, documentation converter, skill seeker
-**Suggest:** `/docs-to-skill`
-**Auto-context:** `.github/instructions/docs-to-skill.instructions.md` (when working with documentation sites or skill generation)
-**Skill:** `.github/copilot-skills/skills/docs-to-skill/README.md`
-
-#### Web Research
-**Keywords:** research, web, search, documentation, scrape, crawler, learning, knowledge-base, investigation, discovery, multi-source, research query
-**Suggest:** `/web-research`
-**Auto-context:** `.github/instructions/web-research.instructions.md` (when editing **/*.py, **/*.js, **/*.ts, **/*.md, **/research*, **/web*, **/scrape*, **/crawler*, **/knowledge*)
-**Skill:** `.github/copilot-skills/generators/web-research/`
-**Dependencies:** `/context7` (recommended for library research)
-**Integrations:** `/servicenow-docs`, `/langchain`, `/claude`
-
-#### Context7 - Up-to-Date Library Documentation
-**Keywords:** context7, up-to-date docs, latest documentation, library documentation, current docs, resolve library, get docs, fresh documentation, 48k libraries
-**Suggest:** `/context7`
-**Auto-context:** `.github/instructions/context7.instructions.md` (when editing **/*{context7,Context7,library-docs,up-to-date-docs}*)
-**Skill:** `.github/copilot-skills/documentation/context7/README.md`
-
-#### Claude AI Documentation
-**Keywords:** claude, claude ai, anthropic, claude api, claude models, claude code, agent sdk, claude 4, claude sonnet, claude opus, claude haiku, messages api, prompt engineering, tool use, vision, extended thinking, batch processing, streaming, embeddings, agent skills, mcp, model context protocol
-**Suggest:** `/claude`
-**Auto-context:** `.github/instructions/claude.instructions.md` (when editing **/*.py, **/*.js, **/*.ts, **/*.tsx, **/*.jsx, **/claude*, **/anthropic*)
-**Skill:** `.github/copilot-skills/ai/claude/`
-
-#### MCP Server Development
-**Keywords:** mcp, model context protocol, mcp server, agent tools, llm integration, api integration, fastmcp, tool design
-**Suggest:** `/mcp-builder`
-**Auto-context:** `.github/instructions/mcp-builder.instructions.md` (when editing MCP-related files)
-**Skill:** `.github/copilot-skills/builders/mcp-builder/README.md`
-
-#### Tailwind CSS v4
-**Keywords:** tailwind, tailwind css, utility classes, responsive design, dark mode, styling, css framework, breakpoint, hover state, @import tailwindcss, flex, grid, padding, margin, gap
-**Suggest:** `/tailwind`
-**Auto-context:** `.github/instructions/tailwind.instructions.md` (when editing **/*.{css,jsx,tsx,html}, **/tailwind.config.*)
-**Skill:** `.github/copilot-skills/frontend/tailwind-v4/`
-
-#### ShadCN UI Components
-**Keywords:** shadcn, shadcn/ui, radix ui, ui components, component library, tailwind components, accessible components, button, card, dialog, form, input, select, sheet, table, tabs, toast, tooltip
-**Suggest:** `/shadcn`
-**Auto-context:** `.github/instructions/shadcn.instructions.md` (when editing .tsx, .jsx, components.json, tailwind.config.*)
-**Skill:** `.github/copilot-skills/ui/shadcn/`
-
-#### Radix UI Primitives
-**Keywords:** radix-ui, @radix-ui/react-, primitives, unstyled components, accessible components, Dialog, Select, Dropdown, Menu, Checkbox, Radio, Toggle, Slider, Combobox, Tooltip, Popover, accessible UI, composable components, WAI-ARIA, a11y
-**Suggest:** `/radix-ui`
-**Auto-context:** `.github/instructions/radix-ui.instructions.md` (when editing .tsx, .jsx, .ts files with @radix-ui/ imports)
-**Skill:** `.github/copilot-skills/ui/radix-ui/`
-
-#### Chakra UI Components
-**Keywords:** chakra-ui, @chakra-ui/react, chakra, ui components, component library, themed components, accessible components, box, button, card, form, input, modal, responsive design, styling system, color mode
-**Suggest:** `/chakra-ui`
-**Auto-context:** `.github/instructions/chakra-ui.instructions.md` (when editing .tsx, .jsx, files with @chakra-ui/ imports, chakra.config.*)
-**Skill:** `.github/copilot-skills/chakra-ui/`
-
-#### Kraken Analyst (Crypto Market Analysis)
-**Keywords:** crypto, cryptocurrency, kraken, market data, trading, signals, strategy, bitcoin, ethereum, btc, eth, technical analysis, momentum, RSI, moving average, OHLC, candlestick, volatility, buy signal, sell signal
-**Suggest:** `/kraken-analyst`
-**Auto-context:** `.github/instructions/kraken-analyst.instructions.md` (when editing files matching: **/*.py, **/*.js, **/*.ts, **/crypto*, **/trading*, **/market*, **/kraken*)
-**Skill:** `.github/copilot-skills/kraken-analyst/README.md`
-
-#### React
-**Keywords:** react, reactjs, jsx, hooks, usestate, useeffect, components, functional components, component lifecycle
-**Suggest:** `/react`
-**Auto-context:** `.github/instructions/react.instructions.md` (when editing .tsx, .jsx, .js files)
-**Skill:** `.github/copilot-skills/frontend/react/`
-
-#### Next.js
-**Keywords:** nextjs, next.js, next js, vercel, app router, pages router, ssr, ssg, static generation, server components, api routes
-**Suggest:** `/nextjs`
-**Auto-context:** `.github/instructions/nextjs.instructions.md` (when editing next.config.js, app/*, pages/*, .tsx, .jsx)
-**Skill:** `.github/copilot-skills/frontend/nextjs/`
-
-#### Vue
-**Keywords:** vue, vuejs, vue.js, vue 3, script setup, composition api, single file components, .vue files, pinia
-**Suggest:** `/vue`
-**Auto-context:** `.github/instructions/vue.instructions.md` (when editing .vue files)
-**Skill:** `.github/copilot-skills/frontend/vue/`
-
-#### Mantine
-**Keywords:** mantine, mantine hooks, mantine components, react component library, accessible components
-**Suggest:** `/mantine`
-**Auto-context:** `.github/instructions/mantine.instructions.md` (when editing .tsx, .jsx files with mantine imports)
-**Skill:** `.github/copilot-skills/frontend/mantine/`
-
-#### Headless UI
-**Keywords:** headless ui, headless-ui, @headlessui, unstyled components, accessible, dialog, menu, listbox, combobox
-**Suggest:** `/headless-ui`
-**Auto-context:** `.github/instructions/headless-ui.instructions.md` (when editing .tsx, .jsx, .vue files)
-**Skill:** `.github/copilot-skills/frontend/headless-ui/`
-
-#### Ant Design
-**Keywords:** ant design, antd, @ant-design, enterprise ui, design system, react components
-**Suggest:** `/ant-design`
-**Auto-context:** `.github/instructions/ant-design.instructions.md` (when editing .tsx, .jsx with antd imports)
-**Skill:** `.github/copilot-skills/frontend/ant-design/`
-
-#### Prisma ORM
-**Keywords:** prisma, prisma orm, @prisma/client, prisma schema, database orm, typescript orm, database migrations
-**Suggest:** `/prisma`
-**Auto-context:** `.github/instructions/prisma.instructions.md` (when editing prisma/schema.prisma, .ts files with Prisma)
-**Skill:** `.github/copilot-skills/backend/prisma/`
-
-#### Supabase
-**Keywords:** supabase, supabase database, postgres, realtime, supabase auth, edge functions, vector database, pgvector
-**Suggest:** `/supabase`
-**Auto-context:** `.github/instructions/supabase.instructions.md` (when editing .ts, .js files with supabase)
-**Skill:** `.github/copilot-skills/backend/supabase/`
-
-#### Better-Auth
-**Keywords:** better-auth, authentication framework, auth setup, oauth, passkey, email-otp, session management, auth plugins
-**Suggest:** `/better-auth`
-**Auto-context:** `.github/instructions/better-auth.instructions.md` (when editing .ts, .tsx, .js, .jsx, auth.config.*)
-**Skill:** `.github/copilot-skills/auth/better-auth/`
-
-#### LangChain
-**Keywords:** langchain, llm chain, agents, vector store, embeddings, retrieval, rag, prompt templates
-**Suggest:** `/langchain`
-**Auto-context:** `.github/instructions/langchain.instructions.md` (when editing .py files with langchain)
-**Skill:** `.github/copilot-skills/backend/langchain/`
-
-#### FastAPI
-**Keywords:** fastapi, fast api, @app.get, @app.post, pydantic, async api, python web framework, uvicorn
-**Suggest:** `/fastapi`
-**Auto-context:** `.github/instructions/fastapi.instructions.md` (when editing fastapi .py files)
-**Skill:** `.github/copilot-skills/backend/fastapi/`
-
-#### FastMCP
-**Keywords:** fastmcp, mcp, model context protocol, mcp server, mcp client, python mcp, llm tools, llm integration, mcp.tool, mcp.resource, mcp.prompt, fastmcp server, fastmcp client
-**Suggest:** `/fastmcp`
-**Auto-context:** `.github/instructions/fastmcp.instructions.md` (when editing **/*.py, **/mcp_*.py, **/*_server.py, **/fastmcp_*.py)
-**Skill:** `.github/copilot-skills/backend/fastmcp/`
-
-#### ServiceNow Documentation Lookup
-**Keywords:** servicenow, documentation, docs, incident, change, service catalog, workflow, flow designer, api, itsm, hrsd, platform, application, integration, rest api, servicenow lookup
-**Suggest:** `/servicenow-docs`
-**Auto-context:** `.github/instructions/servicenow-docs.instructions.md` (when editing **/*{servicenow,ServiceNow,SERVICENOW,documentation,docs}*)
-**Skill:** `.github/copilot-skills/documentation/servicenow-docs/README.md`
-
-#### Cloudflare
-**Keywords:** cloudflare, workers, pages, wrangler, edge computing, r2, d1, durable objects, zero trust, api, deployment
-**Suggest:** `/cloudflare`
-**Auto-context:** `.github/instructions/cloudflare.instructions.md` (when editing **/*.js, **/*.ts, **/*.tsx, **/*.jsx, **/*.toml, **/wrangler.toml)
-**Skill:** `.github/copilot-skills/deployment/cloudflare/`
-
-#### OpenAI
-**Keywords:** openai, gpt, gpt-4, gpt-3.5, embeddings, assistants, api, ai, llm, chat completion, function calling, vision, dall-e, whisper, fine-tuning
-**Suggest:** `/openai`
-**Auto-context:** `.github/instructions/openai.instructions.md` (when editing **/*.js, **/*.ts, **/*.tsx, **/*.jsx, **/*.py, **/openai*)
-**Skill:** `.github/copilot-skills/ai/openai/`
-
-#### Storybook
-**Keywords:** storybook, component development, component library, stories, UI testing, documentation, visual testing
-**Suggest:** `/storybook`
-**Auto-context:** `.github/instructions/storybook.instructions.md` (when editing stories files, .stories.*)
-**Skill:** `.github/copilot-skills/testing/storybook/`
-
-#### Vercel
-**Keywords:** vercel, deployment, serverless, edge functions, preview, production, hosting, next.js deployment
-**Suggest:** `/vercel`
-**Auto-context:** `.github/instructions/vercel.instructions.md` (when editing vercel.json, .env.local, deployment configs)
-**Skill:** `.github/copilot-skills/deployment/vercel/`
-
-### Escalation Hierarchy
-
-When responding to user queries, follow this decision tree:
-
-1. **Check for matching keywords** → Suggest relevant skill prompt
-2. **Check file context** → Load corresponding `.instructions.md` if available
-3. **Prefer specialized prompts** before generic code generation
-4. **If ambiguous** → Ask user to clarify or list matching skills
-5. **If no skill matches** → Use general coding knowledge with repo conventions
-
-### Response Priority
-
-```
-1. Skill prompt (explicit, callable) > Generic response
-2. Instruction context (auto-loaded) > No context
-3. Specialized domain knowledge > General knowledge
-4. Bundled scripts > Ad-hoc code generation
-```
-
-### Chat Mode Support
-
-Users can switch personas for different interaction styles:
-
-- **`/switch dev`** → Dev Mode: terse, code-first responses (`.github/chatmodes/dev.chatmode.md`)
-- **`/switch doc`** → Doc Mode: detailed, educational responses (`.github/chatmodes/doc.chatmode.md`)
-- **`/switch default`** → Default Mode: balanced explanations
-
-## Working with Skills
-
-### Discover Skills
-```
-1. Check keyword routing map in this file
-2. Use `/skill-{name}` command to load skill
-3. Read skill prompt for workflow
-4. Load detail files (patterns.md, reference.md) as needed
-5. Use bundled scripts or examples
-```
-
-### Run Bundled Scripts
-
-Each skill has a `scripts/` directory with bundled tools:
-
+**Before reading, searching, or modifying ANY file:**
 ```bash
-# Example: Run a skill's bundled script
-bash .github/copilot-skills/{skill-name}/scripts/{script}.sh [options]
+# Find what you're looking for
+kit symbols . --format json | jq '.[] | select(.name == "FUNCTION_NAME")'  # Find function
+kit grep . "SEARCH_TERM" --directory "src"                                # Search in directory
+kit usages . "SYMBOL_NAME"                                               # Find usages
 
-# Scripts output to terminal only (no files generated)
-# Output can be parsed by AI agents as a data source
+# Get file context before editing
+kit context . src/file.ts 42                                             # Get code around line
+kit chunk-symbols . src/file.ts                                          # Split file by functions
+
+# Understand related code
+kit file-tree . --path src/pages                                         # View structure
+cat .kit-analysis/summary.md                                             # See most complex files
 ```
 
-Check the keyword routing map above or skill prompt files to find which scripts each skill provides.
+**Why:** Kit is 25-36x faster than grep, excludes node_modules automatically, and gives structured output.
 
-### Create New Skill
-```bash
-# 1. Create directory
-mkdir -p .github/copilot-skills/{skill-name}/scripts
+**This is MANDATORY for every task.** Do not skip Kit.
 
-# 2. Copy skill prompt template
-cp .github/copilot-skills/templates/skill-prompt.template.md \
-   .github/prompts/{skill-name}.skill.prompt.md
+---
 
-# 3. Copy instructions template
-cp .github/copilot-skills/templates/instructions.template.md \
-   .github/instructions/{skill-name}.instructions.md
+## Orchestration Default
 
-# 4. Add bundled scripts (terminal output only)
+- Treat every user query as an orchestration task: decide which specialist agents in `/.github/agents/` to involve before replying.
+- Prefer breaking work into targeted subagents when tasks can be split; call them via the `runSubagent` tool and merge their outputs into one concise answer.
+- If no suitable agent exists or delegation adds no value, proceed directly but mention that delegation was considered.
+- Keep added narration minimal and honor all existing workflows (Kit-first, patching rules, testing, quirks).
 
-# 5. Register in keyword routing map
-# Add entry to keyword routing map in this file
+## Project Overview
 
-# 6. Validate compliance
-# Ensure follows 5 constitutional principles
-```
+**DiscoverAnnaTX** is a production-ready local business directory with AI-powered business review generation. It's a full-stack TypeScript application combining React frontend with Node.js/Express backend, featuring Redis-backed async job processing for website scraping and AI analysis.
+
+**Current Phase:** AI review system operational with BullMQ job queue, Puppeteer web scraping, OpenRouter Claude/Gemini AI integration, and Stripe monetization (3 revenue streams: Category Sponsorship $299.99/mo, 50 Lead Credits $99.99, 10 Lead Credits $49.99)
+
+## Technology Stack
+
+**Frontend:** React 18.3, TypeScript 5.6, Vite 6, Tailwind CSS v4, Radix UI (23+ components)
+**Backend:** Node.js (Bun), Express, Better Auth, Prisma 6.19.0, PostgreSQL 16
+**AI Processing:** OpenRouter API (Gemini 2.5 Flash, Sherlock), OpenAI SDK v6.8.1, Puppeteer 24.29.1, JSDOM
+**Job Queue:** BullMQ 5.63.2 (Redis-backed async), ioredis 5.8.2, Redis persistence (AOF)
+**Payments:** Stripe (checkout sessions, webhooks, subscriptions)
+**Utilities:** React Hook Form, Zod validation, React Router v6, Lucide icons, Turndown (HTML→Markdown)
 
 ## Project Structure
 
 ```
-.github/
-├── copilot-instructions.md              # This file
-├── copilot-skills/                      # Skills system
-│   ├── README.md                        # Architecture overview
-│   ├── templates/                       # Scaffolding
-│   ├── scripts/                         # Automation tools
-│   ├── copilot-instructions-generator/  # Skill: generate instructions
-│   ├── git-ops/                         # Skill: git operations
-│   ├── pdf-handling/                    # Skill: PDF manipulation
-│   └── skill-template/                  # Template for new skills
-├── prompts/                             # Skill execution workflows
-│   ├── generate-copilot-instructions.skill.prompt.md
-│   ├── git-ops.skill.prompt.md
-│   ├── pdf-handling.skill.prompt.md
-│   └── [other skill prompts]
-├── instructions/                        # Auto-loaded context rules
-│   ├── generate-copilot-instructions.instructions.md
-│   ├── git-ops.instructions.md
-│   ├── pdf-handling.instructions.md
-│   └── [other instruction files]
-└── .specify/
-    └── memory/
-        └── constitution.md              # Canonical principles
+src/                          # Frontend (React)
+├── components/               # Reusable UI (Button, Card, etc)
+├── pages/                    # Route components
+├── config/                   # anna.config.ts - directory branding
+├── contexts/                 # AuthContext for global state
+├── hooks/                    # useIsMobile, custom hooks
+├── lib/                      # database-client.ts (API), utils.ts
 
-.gitignore                               # Respects .gitignore patterns
-examples/                                # Third-party skill collections
-readme.md                                # Project overview
+server/                       # Backend (Express + BullMQ)
+├── index.ts                  # Express app, routes
+├── auth.ts                   # Better Auth config
+├── prisma.ts                 # Prisma client
+├── services/
+│   ├── review-worker.ts      # BullMQ Worker (async review processing)
+│   ├── website-scraper.ts    # Puppeteer + AI extraction
+│   └── listing-reviewer.ts   # Nightly cron job
+├── review/
+│   ├── buildReview.ts        # Change detection + review building
+│   ├── normalizeScrapedData.ts # Data validation & formatting
+│   └── sourceTrackingUtils.ts  # Cross-page data tracking
+├── lib/
+│   ├── apply-feedback-transform.ts # Claude field transformation
+│   ├── stripe-helpers.ts     # Stripe integration
+├── jobs/
+│   ├── queue-config.ts       # Redis connection config
+│   ├── review-queue.ts       # BullMQ Queue
+│   └── verification-job.ts   # Expiry cleanup
+└── review-worker-entrypoint.ts
+
+prisma/
+├── schema.prisma             # Database schema
+├── migrations/               # Migration files
+└── seed.ts                   # Development seeding
 ```
-
-## Key Files to Understand
-
-- **.github/copilot-instructions.md** - This file - Main guidance for AI agents
-- **.github/copilot-skills/README.md** - Complete architecture explanation
-- **.specify/memory/constitution.md** - Canonical 5 principles
-- **readme.md** - High-level project overview
 
 ## Development Workflows
 
-### Respecting .gitignore
+**Core Commands:**
+- `bun run dev` - Start Vite frontend (localhost:5173) with HMR
+- `bun run dev:server` - Start Express backend (localhost:3010)
+- `bun run dev:all` - Run frontend + backend concurrently
+- `bun run server/review-worker-entrypoint.ts` - Start Review Worker (for AI processing)
+- `bun run build` - TypeScript check + production build
+- `bun run lint` - Run ESLint
+- `bun run build` - TypeScript check + production build
+- `bun clean` - Remove node_modules and cache
 
-Scripts automatically exclude per `.gitignore`:
-- `.env`, `.env.*`, `*.log` (environment/secrets)
-- `node_modules/`, `__pycache__/`, `.venv/` (dependencies)
-- `.vscode/`, `.idea/` (IDE files)
-- Build artifacts, example directories, temporary files
+**CRUD & Feature Implementation Tools (Use These Commands):**
 
-This prevents analyzing third-party code or sensitive files.
-
-### Bundled Scripts
-
-- Output to **terminal only** (no file generation)
-- Self-contained and deterministic
-- Respect `.gitignore` patterns
-- Documented in SKILL.md with usage examples
-
-## Code Patterns
-
-### Skill YAML Metadata
-```yaml
----
-name: "Skill Name"
-description: "One-sentence purpose"
-version: "1.0.0"
-tags: ["keyword1", "keyword2"]
-dependencies: ["tool1", "tool2"]
----
+**Phase 1: Research (Before Coding)**
+```bash
+kit symbols . --format json | jq '.[] | select(.name == "buildReview")'  # Find symbol
+kit usages . "buildReview"                                              # See usage impact
+kit grep . "review" --directory "server"                               # Find similar code
+cat .kit-analysis/summary.md                                           # Identify risk areas
 ```
 
-### Progressive Disclosure
+**Phase 2: Understand (Get Context)**
+```bash
+kit context . src/file.ts 42                                           # Code around line
+kit chunk-symbols . server/services/website-scraper.ts                 # Split into functions
+kit file-tree . --path src/pages                                       # View structure
 ```
-Keyword routing map (suggest skill)
-→ .skill.prompt.md (workflow)
-→ detail files (patterns.md, reference.md)
-→ scripts/ (tools)
+
+**Phase 3: Implement (Check Patterns)**
+```bash
+kit symbols . --format json | jq '.[] | select(.kind == "function")'   # Get function patterns
+kit grep . "async function" --pattern "*.ts" --directory "server"      # Find similar style
 ```
 
-## This Is NOT
+**Phase 4: Verify (After Editing)**
+```bash
+kit grep . "YOUR_NEW_FUNCTION"                                         # Confirm it exists
+kit grep . "TODO|FIXME" --directory "src"                             # Check for stubs
+```
 
-- ❌ A software application to build or run
-- ❌ A typical repository with source code
-- ❌ A framework or library to depend on
-- ❌ A CI/CD system or deployment pipeline
+**Refresh Index:**
+```bash
+uv run --with cased-kit python .github/scripts/kit/bootstrap.py        # After major changes
+```
 
-## This IS
+**Database Commands:**
+- `bun run prisma:migrate` - Create/run migrations
+- `bun run prisma:seed` - Seed with development data
+- `bun run prisma:studio` - Prisma Studio GUI (localhost:5555)
+- `bun run prisma:reset` - Drop + recreate database
 
-- ✅ A meta-system for creating reusable skills
-- ✅ A framework for organizing domain knowledge
-- ✅ A demonstration of progressive disclosure
-- ✅ Portable skills for multiple AI agents
+**Docker & Services:**
+- `docker-compose up -d` - Start Redis + PostgreSQL
+- `docker-compose logs -f redis` - Monitor Redis
+- `docker exec -it discover-redis redis-cli` - Redis CLI
 
-## Resources
+**Copy & Content Generation:**
+- `bun scripts/utils/copywriter.ts --query "your request"` - Generate optimized UI copy
+- See `docs/copywriter-cli.md` for detailed usage and examples
+- Use this for: CTAs, buttons, headers, error messages, empty states, and any UI copy
+- The tool is tuned specifically for local business directories with UX best practices built-in
 
-- **Overview**: `readme.md`
-- **Architecture**: `.github/copilot-skills/README.md`
-- **Principles**: `.specify/memory/constitution.md`
-- **Examples**: `examples/` directory
+**AI Review Processing:**
+- Queue single review: `curl -X POST http://localhost:3010/api/reviews/scan/{businessId}`
+- Bulk queue: `curl -X POST http://localhost:3010/api/reviews/queue-all`
+- Monitor in admin dashboard "AI Reviews" tab
 
+**Stripe Setup (Local):**
+- Set test keys in `.env`: `STRIPE_SECRET_KEY`, `STRIPE_PRICE_*` IDs
+- Use Stripe test card: `4242 4242 4242 4242` (any future expiry, any CVC)
+- Optional: `stripe listen --forward-to localhost:3010/api/stripe` for webhooks
+
+**AI Configuration:**
+- `OPENROUTER_API_KEY=sk-or-v1-...` - OpenRouter API key
+- `OPENROUTER_MODEL=google/gemini-2.5-flash` - Primary AI model
+- Fallback: `google/gemini-2.5-flash`
+
+## Code Patterns & Conventions
+
+**Naming:**
+- Files: kebab-case (e.g., `ListingViewPage.tsx`, `listing-location-map.tsx`)
+- Components/Classes: PascalCase exports
+- Functions/variables: camelCase
+- Database fields: snake_case
+
+**Component Pattern:**
+```typescript
+interface ComponentProps {
+  prop1: string;
+  prop2?: number;
+}
+
+export const Component: React.FC<ComponentProps> = ({ prop1, prop2 }) => {
+  return <div>{/* content */}</div>;
+};
+```
+
+**API Calls:**
+- Frontend uses `db.getBusinesses()`, `db.loginUser()` from `src/lib/database-client.ts`
+- These call backend REST endpoints in `server/index.ts`
+- TypeScript interfaces in `database-client.ts` define all data shapes
+
+**Form Validation:**
+- React Hook Form for state management
+- Zod schemas for validation (`zod` already imported in contexts)
+
+// ...existing code...
+// ...existing code...
+**Styling:**
+- Tailwind CSS v4 utility classes only
+- Design tokens in `src/index.css` (colors, fonts, animations)
+- Fonts: Poppins (headings), Inter (body)
+- Colors: Primary purple, Secondary amber, Accent teal
+
+## Frontend Design & Best Practices
+
+We follow a Component-Driven Development (CDD) approach using the **Shadcn/ui** philosophy (Radix UI Primitives + Tailwind CSS).
+
+**Key Principles:**
+- **Component Ownership:** We own our component code (copied into `src/components/ui`), allowing full control and customization.
+- **Mobile-First:** Design and develop for mobile screens first, then scale up.
+- **Accessibility (A11y):** All components must be accessible (keyboard nav, ARIA roles, contrast). We use Radix primitives to ensure this.
+- **Styling:** Use Tailwind utility classes. Avoid "class hell" by using `cn()` utility for conditional classes and component composition.
+
+For a comprehensive guide on our frontend architecture, styling, UX principles, and accessibility standards, please refer to:
+**[Frontend Design Overview](../docs/developer/frontend-design-overview.md)**
+
+## Codebase Quirks & Important Notes
+// ...existing code...
+
+Before making changes to any file, check for "Note:" comments in the code. These document critical implementation details and quirks that affect how the code should be modified. Key quirks include:
+
+### Frontend Quirks
+
+1. **Verification Status (infoVerified) is Admin-Only**
+   - Files: `src/pages/ListingViewPage.tsx`, `src/pages/EditListingPage.tsx`, `src/pages/DashboardPage.tsx`, `src/components/ListingForm.tsx`
+   - Quirk: Business verification status (`infoVerified` field) is managed exclusively through admin endpoints, not through the listing form or user-facing toggles.
+   - Impact: Never add verification toggle to the business listing form or allow users to change this field directly.
+   - Implementation: Always use dedicated admin endpoints to set/unset verification status.
+
+2. **City API Accepts State Code, Not UUID**
+   - File: `src/components/admin/modals/AddCityModal.tsx`
+   - Quirk: The API is designed to accept stateId (UUID format), but currently uses state code as a workaround.
+   - Impact: When integrating with real backend, update this to send proper UUID for state.
+
+### Backend Quirks
+
+3. **Route Registration Order Matters**
+   - File: `server/index.ts`
+   - Quirk: Any special/named routes under `/api/businesses` (like `/api/businesses/search`) must be registered BEFORE the `/api/businesses/:id` dynamic route.
+   - Impact: If not ordered correctly, special routes get captured by the `:id` route handler.
+   - Implementation: Always register specific routes first, dynamic routes last.
+
+4. **Scraped Data is Already Flattened**
+   - File: `server/review/buildReview.ts`
+   - Quirk: Scraped data from the website scraper is already a flat `ScrapedData` object, not source-tracked in the flat structure.
+   - Impact: When processing scraper results, don't expect nested source tracking. Cross-page source metadata is handled separately in `sourceTrackedField`.
+   - Implementation: Work directly with the flat structure. Access source tracking via `sourceTrackedField` interface separately.
+
+### AI & Async Processing Quirks
+
+5. **OpenRouter API Used, Not Direct Anthropic Claude**
+   - File: `server/lib/apply-feedback-transform.ts`
+   - Quirk: The system uses OpenRouter API (third-party proxy) instead of Anthropic SDK directly.
+   - AI Providers: Primary = `google/gemini-2.5-flash-lite`, Fallback = `openrouter/sherlock-think-alpha`.
+   - Impact: Must set `OPENROUTER_API_KEY` (not Anthropic key), use OpenRouter-compatible OpenAI SDK.
+   - Implementation: Environment variable is `OPENROUTER_API_KEY`. SDK: OpenAI v6.8.1 with `baseURL=https://openrouter.ai/api/v1`.
+
+6. **BullMQ Worker Concurrency Limit**
+   - File: `server/services/review-worker.ts`
+   - Quirk: Worker processes max 3 reviews simultaneously per instance.
+   - Impact: If you need higher throughput, run multiple worker instances (via Docker Compose scaling).
+   - Implementation: Concurrency set to 3. Each job locks for 2 minutes max. Failed jobs retry 3x with 5s delay.
+
+7. **Review Reroll Has Two Mechanisms**
+   - Files: `server/index.ts` - `/api/reviews/:id/reroll-field` vs `/api/reviews/:id/reroll-change`
+   - Quirk: `reroll-field` transforms field value directly; `reroll-change` requeues full scrape with feedback metadata.
+   - Impact: Use `reroll-field` for quick UI feedback transformations, `reroll-change` for website re-scraping.
+   - Implementation: `reroll-field` is synchronous (immediate), `reroll-change` is async (full queue job).
+
+8. **Feedback Metadata Stored in rawJson**
+   - File: `server/services/review-worker.ts`
+   - Quirk: User feedback for reroll operations stored in `listing_review.rawJson.rerollMetadata`.
+   - Impact: When rebuilding review, worker checks for rerollMetadata and applies feedback to target field.
+   - Implementation: Field: 'fieldName', userFeedback: 'instruction', requestedBy: 'userId', requestedAt: timestamp.
+
+### Database Quirks
+
+9. **Seed Script Silently Handles Duplicate Users**
+   - Files: `prisma/seed.ts`, `scraper-worker/prisma/seed.ts`
+   - Quirk: The seed script may encounter existing users and silently skips them instead of failing.
+   - Impact: Running seed multiple times is safe. Duplicates are handled gracefully.
+   - Implementation: Don't add error handling for "user already exists" when running seed.
+
+### Build & Configuration Quirks
+
+10. **Bun 1.3.x Uses Text Format Lock File**
+    - Files: `bunfig.toml`, `Dockerfile`
+    - Quirk: Bun version 1.3.x defaults to text-based bun.lock format (not binary).
+    - Impact: The lock file is human-readable in version control.
+    - Implementation: No special handling needed. Document for team members used to binary lock files.
+
+11. **Redis Connection Must Match Environment**
+    - File: `server/jobs/queue-config.ts`
+    - Quirk: Redis connection reads from environment: REDIS_HOST, REDIS_PORT, REDIS_PASSWORD, REDIS_DB.
+    - Impact: Local dev uses `localhost`, Docker uses `redis` (service name).
+    - Implementation: Ensure REDIS_HOST is set correctly before starting worker. Default fallback: redis:6379
+
+## Directory Configuration
+
+Located in `src/config/anna.config.ts`:
+- Brand name, logo, accent color
+- Categories taxonomy (15+ default)
+- Custom fields schema (text, select, number, URL, phone, email, textarea)
+- Site branding and metadata
+
+To create a new directory: `pnpm run new:directory`
+
+## Routing & Pages
+
+- `/` → **HomePage** (business search & featured)
+- `/login` → **LoginPage**
+- `/register` → **RegisterPage**
+- `/submit-business` → **SubmitBusinessPage**
+- `/admin` → **AdminDashboard** (submissions, business management)
+- `/about` → **AboutPage**
+- `/contact` → **ContactPage**
+
+## Component Responsibilities
+
+**Pages:**
+- **HomePage:** Search, featured businesses, category/city filters, pagination
+- **LoginPage/RegisterPage:** Email/password authentication
+- **SubmitBusinessPage:** Business submission form with Zod validation
+- **AdminDashboard:** Manage submissions (approve/reject), toggle business featured/verified status
+- **AboutPage/ContactPage:** Static informational pages
+
+**Components:**
+- **Navbar:** Navigation with auth state display
+- **FilterSidebar:** Category and state/city filter UI
+- **BusinessCard:** Display individual business (rating, verified badge, map link)
+- **FeaturedBanner:** Rotating featured business banner
+- **Button/Input:** Styled form elements
+
+**Contexts:**
+- **AuthContext:** Global user state (user, login(), logout(), register())
+
+## Database Schema (Key Tables)
+
+**Business** - Listings (name, phone, email, address, category, featured, verified, etc)
+- `verifiedUntil` - Verified Badge subscription expiry
+- `featuredUntil` - Boosted Placement expiry (30 days)
+- `sponsor` - Boolean for Sponsor Slot status
+
+**User** - Admin/regular users (email, password, role)
+
+**Review** - User reviews for businesses
+**ListingReview** - Staging area for scraped data requiring approval
+**BusinessSubmission** - User-submitted business listings pending approval
+**City/State/Category** - Taxonomy and location data
+
+**StripeSubscription** - Active subscriptions (kind, status, listingId)
+
+**StripeEvent** - Webhook events for idempotent processing
+
+See `prisma/schema.prisma` for full schema.
+
+## AI Review System
+
+**Non-Blocking Async Architecture:**
+- Admin queues reviews via `/api/reviews/scan/:businessId` or `/api/reviews/queue-all`
+- API creates database row + enqueues BullMQ job, returns immediately
+- Worker processes in background (concurrency: 3 per instance)
+- Results appear in admin dashboard when ready (status='ready')
+
+**Review Processing Pipeline:**
+1. **Website Scraping** - Puppeteer visits main + identified pages
+2. **AI Extraction** - Vision + text extraction (email, phone, name, description, category)
+3. **Data Normalization** - Format validation, field cleaning
+4. **Change Detection** - Unified builder compares current vs scraped, generates change IDs
+5. **Confidence Scoring** - Per-field confidence (0-100) based on data quality
+6. **Feedback Filtering** - Removes user-rejected suggestions from rejectedChange table
+7. **Database Update** - Stores review with status='ready', changes, rawJson, normalizedJson
+
+**Key Files:**
+- `server/services/review-worker.ts` - BullMQ worker + async processing
+- `server/services/website-scraper.ts` - Puppeteer + 3 AI extraction methods
+- `server/review/buildReview.ts` - Unified change detection & review building
+- `server/lib/apply-feedback-transform.ts` - Claude field transformation (reroll-field)
+
+**Feedback Mechanisms:**
+- `reroll-field` (POST) - Transform ONE field value with user feedback (synchronous)
+- `reroll-change` (POST) - Requeue for full scrape with feedback metadata (async)
+
+## API Endpoints (Backend)
+
+**Listings:**
+- `GET /api/businesses` - Search/filter with pagination
+- `GET /api/businesses/:id` - Get single listing
+- `POST /api/businesses` - Create listing
+- `PATCH /api/businesses/:id` - Update listing
+- `DELETE /api/businesses/:id` - Delete listing
+
+**AI Reviews:**
+- `POST /api/reviews/scan/:businessId` - Queue single review scan
+- `POST /api/reviews/queue-all` - Bulk queue (30+ days old)
+- `GET /api/reviews/admin/all` - Get all reviews with filters
+- `GET /api/reviews/admin/stats` - Review statistics
+- `POST /api/reviews/:id/approve` - Approve all changes
+- `POST /api/reviews/:id/reject` - Reject all changes
+- `POST /api/reviews/:id/approve-change` - Approve single field
+- `POST /api/reviews/:id/reject-change` - Reject single field
+- `POST /api/reviews/:id/reroll-field` - Transform field with feedback
+- `POST /api/reviews/:id/reroll-change` - Requeue with feedback metadata
+- `GET /api/reviews/:businessId/latest` - Get latest review for business
+
+**Billing/Stripe:**
+- `POST /api/billing/checkout` - Create Stripe checkout session
+- `GET /api/billing/success` - Sync subscription after checkout
+- `GET /api/billing/subscriptions` - List user's active subscriptions
+- `POST /api/billing/customer-portal` - Stripe customer portal link
+- `POST /api/stripe` - Webhook handler (requires signature)
+- `POST /api/billing/cron` - Daily cron job for expiration
+
+**Analytics:**
+- `POST /api/views/pv` - Track listing views
+
+## Stripe Integration
+
+**Revenue Streams:**
+1. **Verified Badge** ($99/year) - Sets `verifiedUntil` timestamp, enables boosted/sponsor tiers
+2. **Boosted Placement** ($79/month) - Sets `featuredUntil` for 30-day active period, max 3 per (city, category)
+3. **Sponsor Slot** ($300/month) - Sets `sponsor` flag, exclusive 1 per (city, category)
+
+**Webhook Events Handled:**
+- `checkout.session.completed` - Creates subscription in database
+- `customer.subscription.updated` - Updates expiry dates
+- `customer.subscription.deleted` - Clears subscription flags
+
+**Key Functions** (`server/lib/stripe-helpers.ts`):
+- `applyEffect(kind, listingId)` - Set Business flags when subscription starts
+- `clearEffect(kind, listingId)` - Remove flags when subscription ends
+- `expireFeaturedListings()` - Cron job to clear expired featured flags
+
+## Multi-City Architecture
+
+Subdomains route to different cities: `{city}-{state}.localhost:5173`
+- Parse via `parseSubdomain()` in `src/lib/utils.ts`
+- All listings filtered by active city context
+- Same codebase runs all cities
+
+## Authentication
+
+**Better Auth Configuration:**
+- Session-based authentication via `better-auth`
+- Default demo: `admin@sethrose.dev` / `admin123`
+- Role-based access: 'admin' vs 'user'
+- Global auth state in AuthContext
+
+## Type Safety
+
+- TypeScript strict mode enabled
+- Interfaces defined in `src/lib/database-client.ts`
+- All API responses typed
+- Zod for runtime validation on forms
+- No `any` types without justification
+
+## Quality Standards
+
+- **Linting:** ESLint must pass (`pnpm run lint`)
+- **Type Checking:** TypeScript check before build (`pnpm run build`)
+- **Code Style:** Prettier config in `eslint.config.js`
+- **Accessibility:** Radix UI for semantic HTML + ARIA
+- **Performance:** Lazy routes, optimized images, Vite HMR
+
+## Common Tasks
+
+**Add New Listing Field:**
+1. Add to schema in `prisma/schema.prisma`
+2. Run `pnpm run prisma:migrate`
+3. Update Business interface in `src/lib/database-client.ts`
+4. Update form in submission/edit pages
+
+**Add New Business Category:**
+1. Update `src/config/anna.config.ts` categories array
+2. Seed database: `pnpm run prisma:seed`
+
+**Debug Database:**
+1. `pnpm run prisma:studio` opens GUI at localhost:5555
+2. View/edit data directly
+
+**Deploy:**
+1. Build: `pnpm run build:prod`
+2. Start server: `pnpm run start:server`
+3. Frontend: Vite static output in `dist/`
+
+## Key Utilities
+
+**src/lib/utils.ts:**
+- `cn()` - Tailwind class merger
+- `parseSubdomain()` - Extract city/state
+- `getCurrentCity()` - Get active city context
+- `formatPhoneNumber()`, `truncateText()` - Text formatting
+- `isValidEmail()`, `isValidPhone()` - Validation
+- `debounce()` - Search input debouncing
+
+## External Services
+
+- **Google Maps** - API via `@googlemaps/js-api-loader` (embedded in Location card)
+- **Stripe** - Payments via `stripe` SDK
+- **Better Auth** - Authentication library
+
+## Environment Variables (.env)
+
+```bash
+# Database
+DATABASE_URL=postgresql://...
+
+# Redis & BullMQ Job Queue
+REDIS_HOST=redis                # Docker: "redis", Local: "localhost"
+REDIS_PORT=6379
+REDIS_PASSWORD=                 # Optional
+REDIS_DB=0
+
+# AI Configuration (OpenRouter)
+OPENROUTER_API_KEY=sk-or-v1-...
+OPENROUTER_MODEL=google/gemini-2.5-flash
+
+# Stripe (test mode during dev)
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+STRIPE_PRICE_VERIFIED=price_...
+STRIPE_PRICE_BOOST=price_...
+STRIPE_PRICE_SPONSOR=price_...
+
+# Google Maps
+VITE_GOOGLE_MAPS_API_KEY=...
+
+# App URLs
+VITE_API_URL=http://localhost:3010
+APP_URL=http://localhost:5173
+```
+
+## Debugging Tips
+
+**HMR Issues:**
+- Restart dev server: `bun run dev`
+
+**TypeScript Errors:**
+- Run `bun run build` to check compilation
+- ESLint catches type issues: `bun run lint`
+
+**Cache/Build Issues:**
+```bash
+bun clean
+bun install
+bun run build
+```
+
+## Next Steps
+
+1. **Setup:** `bun install` to install dependencies
+2. **Database:** `docker-compose up -d` for PostgreSQL + Redis
+3. **Migrations:** `bun run prisma:migrate` to run migrations
+4. **Seeding:** `bun run prisma:seed` for development data
+5. **Development:** `bun run dev:all` (both frontend + backend)
+6. **Environment:** Set `.env` with:
+   - `OPENROUTER_API_KEY=sk-or-v1-...` for AI features
+   - `REDIS_HOST=redis` for Docker (or `localhost` for local Redis)
+   - Stripe test keys if testing payments
+7. **Kit Analysis:** `uv run --with cased-kit python .github/scripts/kit/bootstrap.py` (auto-loads codebase index for LLM context)
+8. **Redis:** Verify `docker-compose` includes Redis service for BullMQ
+9. **Stripe:** Create test products in Stripe Dashboard for 3 revenue streams
+
+## Kit Integration for LLM Context
+
+Kit provides intelligent code analysis infrastructure for Claude and other LLMs:
+
+**How It Works:**
+1. `.kit-analysis/` directory contains pre-computed symbol index, file tree, and summary
+2. `.github/instructions/kit-analysis.instructions.md` auto-loads this data for LLMs
+3. When you ask Claude questions about the codebase, it reads the cached data first for instant symbol lookups
+4. Result: **25-36x faster code understanding** with accurate file locations and relationships
+
+**Key Files for LLM Usage:**
+- `.kit-analysis/symbols.json` - When asking "Where is function X?", LLM checks this first
+- `.kit-analysis/file_tree.json` - For project structure questions
+- `.kit-analysis/summary.md` - Statistics on complex/frequently-used files
+
+**Refresh Analysis When:**
+- Adding many new functions/classes (>50 symbols)
+- Major refactoring or restructuring
+- Weekly maintenance
+- After merging large PRs
+
+```bash
+uv run --with cased-kit python .github/scripts/kit/bootstrap.py
+```

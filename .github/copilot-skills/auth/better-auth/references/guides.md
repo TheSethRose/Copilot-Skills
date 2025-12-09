@@ -209,7 +209,7 @@ get started, concepts, and plugins
 
 Search documentation...
 
-In this guide, we'll walk through the steps to migrate a project from Auth0 to Better Auth — including email/password with proper hashing, social/external accounts, two-factor authentication, and more.
+In this guide, we'll walk through the steps to migrate a project from Auth0 to Better Auth - including email/password with proper hashing, social/external accounts, two-factor authentication, and more.
 
 This migration will invalidate all active sessions. This guide doesn't currently show you how to migrate Organizations but it should be possible with additional steps and the Organization Plugin.
 
@@ -285,7 +285,7 @@ get started, concepts, and plugins
 
 Search documentation...
 
-In this guide, we'll walk through the steps to migrate a project from Clerk to Better Auth — including email/password with proper hashing, social/external accounts, phone number, two-factor data, and more.
+In this guide, we'll walk through the steps to migrate a project from Clerk to Better Auth - including email/password with proper hashing, social/external accounts, phone number, two-factor data, and more.
 
 This migration will invalidate all active sessions. This guide doesn't currently show you how to migrate Organization but it should be possible with additional steps and the Organization Plugin.
 
@@ -397,7 +397,7 @@ To protect routes with middleware, refer to the Next.js middleware guide.
 
 Congratulations! You’ve successfully migrated from NextAuth.js to Better Auth. For a complete implementation with multiple authentication methods, check out the demo repository.
 
-Better Auth offers greater flexibility and more features—be sure to explore the documentation to unlock its full potential.
+Better Auth offers greater flexibility and more features-be sure to explore the documentation to unlock its full potential.
 
 Supabase Migration Guide
 

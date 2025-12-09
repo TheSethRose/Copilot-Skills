@@ -7,7 +7,7 @@ version: "1.0.0"
 tags: ["skill-creation", "meta", "architecture", "scaffolding", "validation"]
 ---
 
-This directory contains the **Create Skill** meta-skill—a comprehensive system for building new Copilot Skills through a structured 5-phase workflow.
+This directory contains the **Create Skill** meta-skill-a comprehensive system for building new Copilot Skills through a structured 5-phase workflow.
 
 ## Quick Links
 

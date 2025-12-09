@@ -243,7 +243,7 @@ Material UI and MUI Base feature many of the same UI components, but MUI Base co
 
 Material UI is comprehensive in that it comes packaged with default styles, and is optimized to work with Emotion (or styled-components).
 
-MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI—in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
+MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI-in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
 
 Get started with Material UI today through some of these useful resources:
 
@@ -289,7 +289,7 @@ Material UI and MUI Base feature many of the same UI components, but MUI Base co
 
 Material UI is comprehensive in that it comes packaged with default styles, and is optimized to work with Emotion (or styled-components).
 
-MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI—in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
+MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI-in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
 
 Get started with Material UI today through some of these useful resources:
 
@@ -335,7 +335,7 @@ Material UI and MUI Base feature many of the same UI components, but MUI Base co
 
 Material UI is comprehensive in that it comes packaged with default styles, and is optimized to work with Emotion (or styled-components).
 
-MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI—in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
+MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI-in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
 
 Get started with Material UI today through some of these useful resources:
 
@@ -381,7 +381,7 @@ Material UI and MUI Base feature many of the same UI components, but MUI Base co
 
 Material UI is comprehensive in that it comes packaged with default styles, and is optimized to work with Emotion (or styled-components).
 
-MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI—in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
+MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI-in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
 
 Get started with Material UI today through some of these useful resources:
 
@@ -427,7 +427,7 @@ Material UI and MUI Base feature many of the same UI components, but MUI Base co
 
 Material UI is comprehensive in that it comes packaged with default styles, and is optimized to work with Emotion (or styled-components).
 
-MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI—in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
+MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI-in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
 
 Get started with Material UI today through some of these useful resources:
 
@@ -473,7 +473,7 @@ Material UI and MUI Base feature many of the same UI components, but MUI Base co
 
 Material UI is comprehensive in that it comes packaged with default styles, and is optimized to work with Emotion (or styled-components).
 
-MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI—in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
+MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI-in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
 
 Get started with Material UI today through some of these useful resources:
 
@@ -519,7 +519,7 @@ Material UI and MUI Base feature many of the same UI components, but MUI Base co
 
 Material UI is comprehensive in that it comes packaged with default styles, and is optimized to work with Emotion (or styled-components).
 
-MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI—in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
+MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI-in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
 
 Get started with Material UI today through some of these useful resources:
 
@@ -565,7 +565,7 @@ Material UI and MUI Base feature many of the same UI components, but MUI Base co
 
 Material UI is comprehensive in that it comes packaged with default styles, and is optimized to work with Emotion (or styled-components).
 
-MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI—in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
+MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI-in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
 
 Get started with Material UI today through some of these useful resources:
 
@@ -611,7 +611,7 @@ Material UI and MUI Base feature many of the same UI components, but MUI Base co
 
 Material UI is comprehensive in that it comes packaged with default styles, and is optimized to work with Emotion (or styled-components).
 
-MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI—in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
+MUI Base, by contrast, could be considered the "skeletal" or "headless" counterpart to Material UI-in fact, future versions of Material UI will use MUI Base components and hooks for its foundational structure.
 
 Get started with Material UI today through some of these useful resources:
 
@@ -693,13 +693,13 @@ After installation, you can import any Material UI component and start playing a
 
 Since Material UI components are built to function in isolation, they don't require any kind of globally scoped styles. For a better user experience and developer experience, we recommend adding the following globals to your app.
 
-Material UI is a mobile-first component library—we write code for mobile devices first, and then scale up the components as necessary using CSS media queries.
+Material UI is a mobile-first component library-we write code for mobile devices first, and then scale up the components as necessary using CSS media queries.
 
 To ensure proper rendering and touch zooming for all devices, add the responsive viewport meta tag to your <head> element:
 
 Material UI provides an optional CssBaseline component. It fixes some inconsistencies across browsers and devices while providing resets that are better tailored to fit Material UI than alternative global style sheets like normalize.css.
 
-Material UI uses the Roboto font by default. See Installation—Roboto font for complete details.
+Material UI uses the Roboto font by default. See Installation-Roboto font for complete details.
 
 Was this page helpful?
 

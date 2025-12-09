@@ -9,7 +9,7 @@ tag: NEW
 import { VersionBadge } from "/snippets/version-badge.mdx";
 
 <Tip>
-STDIO transport is perfect for local development and desktop applications. But to unlock the full potential of MCP—centralized services, multi-client access, and network availability—you need remote HTTP deployment.
+STDIO transport is perfect for local development and desktop applications. But to unlock the full potential of MCP-centralized services, multi-client access, and network availability-you need remote HTTP deployment.
 </Tip>
 
 This guide walks you through deploying your FastMCP server as a remote MCP service that's accessible via a URL. Once deployed, your MCP server will be available over the network, allowing multiple clients to connect simultaneously and enabling integration with cloud-based LLM applications. This guide focuses specifically on remote MCP deployment, not local STDIO servers.
@@ -151,7 +151,7 @@ http_app = mcp.http_app(middleware=middleware)
 Most MCP clients, including those that you access through a browser like ChatGPT or Claude, don't need CORS configuration. Only enable CORS if you're working with an MCP client that connects directly from a browser, such as debugging tools or inspectors.
 </Tip>
 
-CORS (Cross-Origin Resource Sharing) is needed when JavaScript running in a web browser connects directly to your MCP server. This is different from using an LLM through a browser—in that case, the browser connects to the LLM service, and the LLM service connects to your MCP server (no CORS needed).
+CORS (Cross-Origin Resource Sharing) is needed when JavaScript running in a web browser connects directly to your MCP server. This is different from using an LLM through a browser-in that case, the browser connects to the LLM service, and the LLM service connects to your MCP server (no CORS needed).
 
 Browser-based MCP clients that need CORS include:
 
@@ -549,7 +549,7 @@ If you're using the [OAuth Proxy](/servers/auth/oauth-proxy), FastMCP issues its
 
 **Development vs Production:**
 
-By default, token cryptographic keys are ephemeral—generated from a random salt at startup and not persisted anywhere. This means keys change on every restart, invalidating all tokens and triggering client re-authentication. This works fine for development and testing where re-auth after restart is acceptable.
+By default, token cryptographic keys are ephemeral-generated from a random salt at startup and not persisted anywhere. This means keys change on every restart, invalidating all tokens and triggering client re-authentication. This works fine for development and testing where re-auth after restart is acceptable.
 
 For production, tokens should survive restarts to avoid disrupting clients. This requires four things working together:
 

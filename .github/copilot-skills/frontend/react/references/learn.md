@@ -30,13 +30,13 @@ This ensures the React part of your app can benefit from the best practices bake
 
 Many React-based frameworks are full-stack and let your React app take advantage of the server. However, you can use the same approach even if you can’t or don’t want to run JavaScript on the server. In that case, serve the HTML/CSS/JS export (next export output for Next.js, default for Gatsby) at /some-app/ instead.
 
-Let’s say you have an existing page built with another technology (either a server one like Rails, or a client one like Backbone), and you want to render interactive React components somewhere on that page. That’s a common way to integrate React—in fact, it’s how most React usage looked at Meta for many years!
+Let’s say you have an existing page built with another technology (either a server one like Rails, or a client one like Backbone), and you want to render interactive React components somewhere on that page. That’s a common way to integrate React-in fact, it’s how most React usage looked at Meta for many years!
 
 You can do this in two steps:
 
 The exact approach depends on your existing page setup, so let’s walk through some details.
 
-A modular JavaScript environment lets you write your React components in individual files, as opposed to writing all of your code in a single file. It also lets you use all the wonderful packages published by other developers on the npm registry—including React itself! How you do this depends on your existing setup:
+A modular JavaScript environment lets you write your React components in individual files, as opposed to writing all of your code in a single file. It also lets you use all the wonderful packages published by other developers on the npm registry-including React itself! How you do this depends on your existing setup:
 
 If your app is already split into files that use import statements, try to use the setup you already have. Check whether writing <div /> in your JS code causes a syntax error. If it causes 
 
@@ -158,7 +158,7 @@ Structuring state well can make a difference between a component that is pleasan
 
 When you write a component that holds some state, you’ll have to make choices about how many state variables to use and what the shape of their data should be. While it’s possible to write correct programs even with a suboptimal state structure, there are a few principles that can guide you to make better choices:
 
-The goal behind these principles is to make state easy to update without introducing mistakes. Removing redundant and duplicate data from state helps ensure that all its pieces stay in sync. This is similar to how a database engineer might want to “normalize” the database structure to reduce the chance of bugs. To paraphrase Albert Einstein, “Make your state as simple as it can be—but no simpler.”
+The goal behind these principles is to make state easy to update without introducing mistakes. Removing redundant and duplicate data from state helps ensure that all its pieces stay in sync. This is similar to how a database engineer might want to “normalize” the database structure to reduce the chance of bugs. To paraphrase Albert Einstein, “Make your state as simple as it can be-but no simpler.”
 
 Now let’s see how these principles apply in action.
 
@@ -472,7 +472,7 @@ A ref is like a secret pocket of your component that React doesn’t track. For 
 
 Read Referencing Values with Refs to learn how to use refs to remember information.
 
-React automatically updates the DOM to match your render output, so your components won’t often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React—for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a ref to the DOM node. For example, clicking the button will focus the input using a ref:
+React automatically updates the DOM to match your render output, so your components won’t often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React-for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a ref to the DOM node. For example, clicking the button will focus the input using a ref:
 
 Read Manipulating the DOM with Refs to learn how to access DOM elements managed by React.
 
@@ -664,7 +664,7 @@ But what if you want to dynamically specify the src or alt text? You could use a
 
 Notice the difference between className="avatar", which specifies an "avatar" CSS class name that makes the image round, and src={avatar} that reads the value of the JavaScript variable called avatar. That’s because curly braces let you work with JavaScript right there in your markup!
 
-JSX is a special way of writing JavaScript. That means it’s possible to use JavaScript inside it—with curly braces { }. The example below first declares a name for the scientist, name, then embeds it with curly braces inside the <h1>:
+JSX is a special way of writing JavaScript. That means it’s possible to use JavaScript inside it-with curly braces { }. The example below first declares a name for the scientist, name, then embeds it with curly braces inside the <h1>:
 
 Try changing the name’s value from 'Gregorio Y. Zara' to 'Hedy Lamarr'. See how the list title changes?
 
@@ -742,7 +742,7 @@ You could think of your components as recipes: if you follow them and don’t in
 
 Illustrated by Rachel Lee Nabors
 
-React’s rendering process must always be pure. Components should only return their JSX, and not change any objects or variables that existed before rendering—that would make them impure!
+React’s rendering process must always be pure. Components should only return their JSX, and not change any objects or variables that existed before rendering-that would make them impure!
 
 Here is a component that breaks this rule:
 
@@ -788,7 +788,7 @@ Intuitively, you might think that React would start synchronizing when your comp
 
 Let’s look at why this is necessary, when it happens, and how you can control this behavior.
 
-Some Effects don’t return a cleanup function at all. More often than not, you’ll want to return one—but if you don’t, React will behave as if you returned an empty cleanup function.
+Some Effects don’t return a cleanup function at all. More often than not, you’ll want to return one-but if you don’t, React will behave as if you returned an empty cleanup function.
 
 Imagine this ChatRoom component receives a roomId prop that the user picks in a dropdown. Let’s say that initially the user picks the "general" room as the roomId. Your app displays the "general" chat room:
 
@@ -866,7 +866,7 @@ Sometimes, you want the state of two components to always change together. To do
     - How to manage a list of refs using a ref callback
   - Note
 
-React automatically updates the DOM to match your render output, so your components won’t often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React—for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a ref to the DOM node.
+React automatically updates the DOM to match your render output, so your components won’t often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React-for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a ref to the DOM node.
 
 To access a DOM node managed by React, first, import the useRef Hook:
 
@@ -920,7 +920,7 @@ const myRef = useRef(null);
   - Step 3: Provide the context
 - Using and providing context from the same component
 
-Usually, you will pass information from a parent component to a child component via props. But passing props can become verbose and inconvenient if you have to pass them through many components in the middle, or if many components in your app need the same information. Context lets the parent component make some information available to any component in the tree below it—no matter how deep—without passing it explicitly through props.
+Usually, you will pass information from a parent component to a child component via props. But passing props can become verbose and inconvenient if you have to pass them through many components in the middle, or if many components in your app need the same information. Context lets the parent component make some information available to any component in the tree below it-no matter how deep-without passing it explicitly through props.
 
 Passing props is a great way to explicitly pipe data through your UI tree to the components that use it.
 
@@ -940,7 +940,7 @@ But how can the <Heading> component know the level of its closest <Section>? Tha
 
 You can’t do it with props alone. This is where context comes into play. You will do it in three steps:
 
-Context lets a parent—even a distant one!—provide some data to the entire tree inside of it.
+Context lets a parent-even a distant one!-provide some data to the entire tree inside of it.
 
 Using context in close children
 
@@ -1002,7 +1002,7 @@ Now you can configure Avatar to render in many different ways with different pro
 
 Props let you think about parent and child components independently. For example, you can change the person or the size props inside Profile without having to think about how Avatar uses them. Similarly, you can change how the Avatar uses these props, without looking at the Profile.
 
-You can think of props like “knobs” that you can adjust. They serve the same role as arguments serve for functions—in fact, props are the only argument to your component! React component functions accept a single argument, a props object
+You can think of props like “knobs” that you can adjust. They serve the same role as arguments serve for functions-in fact, props are the only argument to your component! React component functions accept a single argument, a props object
 
 *[Content truncated - see full docs]*
 
@@ -1102,9 +1102,9 @@ This might remind you of a waiter taking an order at the restaurant. A waiter do
 
 Illustrated by Rachel Lee Nabors
 
-This lets you update multiple state variables—even from multiple components—without triggering too many re-renders. But this also means that the UI won’t be updated until after your event handler, and any code in it, completes. This behavior, also known as batching, makes your React app run much faster. It also avoids dealing with confusing “half-finished” renders where only some of the variables have been updated.
+This lets you update multiple state variables-even from multiple components-without triggering too many re-renders. But this also means that the UI won’t be updated until after your event handler, and any code in it, completes. This behavior, also known as batching, makes your React app run much faster. It also avoids dealing with confusing “half-finished” renders where only some of the variables have been updated.
 
-React does not batch across multiple intentional events like clicks—each click is handled separately. Rest assured that React only does batching when it’s generally safe to do. This ensures that, for example, if the first button click disables a form, the second click would not submit it again.
+React does not batch across multiple intentional events like clicks-each click is handled separately. Rest assured that React only does batching when it’s generally safe to do. This ensures that, for example, if the first button click disables a form, the second click would not submit it again.
 
 It is an uncommon use case, but if you would like to update the same state variable multiple times before the next render, instead of passing the next state value like setNumber(number + 
 
@@ -1292,7 +1292,7 @@ Manipulating the UI imperatively works well enough for isolated examples, but it
 
 React was built to solve this problem.
 
-In React, you don’t directly manipulate the UI—meaning you don’t enable, disable, show, or hide components directly. Instead, you declare what you want to show, and React figures out how to update the UI. Think of getting into a taxi and telling the driver where you want to go instead of telling them exactly where to turn. It’s the driver’s job to get you there, a
+In React, you don’t directly manipulate the UI-meaning you don’t enable, disable, show, or hide components directly. Instead, you declare what you want to show, and React figures out how to update the UI. Think of getting into a taxi and telling the driver where you want to go instead of telling them exactly where to turn. It’s the driver’s job to get you there, a
 
 *[Content truncated - see full docs]*
 
@@ -1336,7 +1336,7 @@ useRef returns an object like this:
 
 Illustrated by Rachel Lee Nabors
 
-You can access the current value of that ref through the ref.current property. This value is intentionally mutable, meaning you can both read and write to it. It’s like a secret pocket of your component that React doesn’t track. (This is what makes it an “escape hatch” from React’s one-way data flow—more on that below!)
+You can access the current value of that ref through the ref.current property. This value is intentionally mutable, meaning you can both read and write to it. It’s like a secret pocket of your component that React doesn’t track. (This is what makes it an “escape hatch” from React’s one-way data flow-more on that below!)
 
 Here, a button will increment ref.current on every click:
 
@@ -1564,7 +1564,7 @@ In the second example, the () at the end of handleClick() fires the function imm
 
 When you write code inline, the same pitfall presents itself in a different way:
 
-Passing inline code like this won’t fire on click—it fires every time the component renders:
+Passing inline code like this won’t fire on click-it fires every time the component renders:
 
 If you want to define your event handler inline, wrap it in an anonymous function like so:
 
@@ -1810,7 +1810,7 @@ Each Panel component has a boolean isActive state that determines whether its co
 
 Press the Show button for both panels:
 
-Notice how pressing one panel’s button does not affect the other panel—they are independent.
+Notice how pressing one panel’s button does not affect the other panel-they are independent.
 
 Initially, each Panel’s isActive state is false, so they both appear collapsed
 
@@ -1826,7 +1826,7 @@ You will give control of the Panel’s isActive to its parent component. This me
 
 And instead, add isActive to the Panel’s list of props:
 
-Now the Panel’s parent component can control isActive by passing it down as a prop. Conversely, the Panel component now has no control over the value of isActive—it’s now up to the parent component!
+Now the Panel’s parent component can control isActive by passing it down as a prop. Conversely, the Panel component now has no control over the value of isActive-it’s now up to the parent component!
 
 To lift state up, you must locate the closest common parent component of both of the child components that you want to coordinate:
 
@@ -1892,7 +1892,7 @@ Hooks are special functions that are only available while React is rendering (wh
 
 State is just one of those features, but you will meet the other Hooks later.
 
-Hooks—functions starting with use—can only be called at the top level of your components or your own Hooks. You can’t call Hooks inside conditions, loops, or other nested functions. Hooks are functions, but it’s helpful to think of them as unconditional declarations about your component’s needs. You “use” React features at the top o
+Hooks-functions starting with use-can only be called at the top level of your components or your own Hooks. You can’t call Hooks inside conditions, loops, or other nested functions. Hooks are functions, but it’s helpful to think of them as unconditional declarations about your component’s needs. You “use” React features at the top o
 
 *[Content truncated - see full docs]*
 
@@ -1944,7 +1944,7 @@ When React re-renders a component:
 
 Illustrated by Rachel Lee Nabors
 
-As a component’s memory, state is not like a regular variable that disappears after your function returns. State actually “lives” in React itself—as if on a shelf!—outside of your function. When React calls your component, it gives you a snapshot of the state for that particular render. Your component returns a snapshot of the UI with a fresh set of props and event handlers in its JSX, all calculated using the state values from that render!
+As a component’s memory, state is not like a regular variable that disappears after your function returns. State actually “lives” in React itself-as if on a shelf!-outside of your function. When React calls your component, it gives you a snapshot of the state for that particular render. Your component returns a snapshot of the UI with a fresh set of props and event handlers in its JSX, all calculated using the state values from that render!
 
 Illustrated by Rachel Lee Nabors
 
@@ -2040,7 +2040,7 @@ Start by drawing boxes around every component and subcomponent in the mockup and
 
 Depending on your background, you can think about splitting up a design into components in different ways:
 
-If your JSON is well-structured, you’ll often find that it naturally maps to the component structure of your UI. That’s because UI and data models often have the same information architecture—that is, the same shape. Separate your UI into components, where each component matches one piece of your data model.
+If your JSON is well-structured, you’ll often find that it naturally maps to the component structure of your UI. That’s because UI and data models often have the same information architecture-that is, the same shape. Separate your UI into components, where each component matches one piece of your data model.
 
 There are five components on this screen:
 
@@ -2254,7 +2254,7 @@ Now consider an object in state:
 
 Technically, it is possible to change the contents of the object itself. This is called a mutation:
 
-However, although objects in React state are technically mutable, you should treat them as if they were immutable—like numbers, booleans, and strings. Instead of mutating them, you should always replace them.
+However, although objects in React state are technically mutable, you should treat them as if they were immutable-like numbers, booleans, and strings. Instead of mutating them, you should always replace them.
 
 In other words, you should treat any JavaScript object that you put into state as read-only.
 
@@ -2302,9 +2302,9 @@ position.x = 5;
 
 JSX is a syntax extension for JavaScript that lets you write HTML-like markup inside a JavaScript file. Although there are other ways to write components, most React developers prefer the conciseness of JSX, and most codebases use it.
 
-The Web has been built on HTML, CSS, and JavaScript. For many years, web developers kept content in HTML, design in CSS, and logic in JavaScript—often in separate files! Content was marked up inside HTML while the page’s logic lived separately in JavaScript:
+The Web has been built on HTML, CSS, and JavaScript. For many years, web developers kept content in HTML, design in CSS, and logic in JavaScript-often in separate files! Content was marked up inside HTML while the page’s logic lived separately in JavaScript:
 
-But as the Web became more interactive, logic increasingly determined content. JavaScript was in charge of the HTML! This is why in React, rendering logic and markup live together in the same place—components.
+But as the Web became more interactive, logic increasingly determined content. JavaScript was in charge of the HTML! This is why in React, rendering logic and markup live together in the same place-components.
 
 Sidebar.js React component
 
@@ -2408,7 +2408,7 @@ Components are one of the core concepts of React. They are the foundation upon w
 
 On the Web, HTML lets us create rich structured documents with its built-in set of tags like <h1> and <li>:
 
-This markup represents this article <article>, its heading <h1>, and an (abbreviated) table of contents as an ordered list <ol>. Markup like this, combined with CSS for style, and JavaScript for interactivity, lies behind every sidebar, avatar, modal, dropdown—every piece of UI you see on the Web.
+This markup represents this article <article>, its heading <h1>, and an (abbreviated) table of contents as an ordered list <ol>. Markup like this, combined with CSS for style, and JavaScript for interactivity, lies behind every sidebar, avatar, modal, dropdown-every piece of UI you see on the Web.
 
 React lets you combine your markup, CSS, and JavaScript into custom “components”, reusable UI elements for your app. The table of contents code you saw above could be turned into a <TableOfContents /> component you could render on every page. Under the hood, it still uses the same HTML tags like <article>, <h1>, etc.
 

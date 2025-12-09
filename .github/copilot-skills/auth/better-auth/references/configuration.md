@@ -603,7 +603,7 @@ To perform a hard redirect to a different page after login, use the callbackURL 
 
 If the user dismisses or skips the prompt, the plugin will retry showing the One Tap prompt using exponential backoff based on your configured promptOptions.
 
-If the maximum number of attempts is reached without a successful sign-in, you can use the onPromptNotification callback to be notified—allowing you to render an alternative UI (e.g., a traditional Google Sign-In button) so users can restart the process manually:
+If the maximum number of attempts is reached without a successful sign-in, you can use the onPromptNotification callback to be notified-allowing you to render an alternative UI (e.g., a traditional Google Sign-In button) so users can restart the process manually:
 
 Sign In With Ethereum
 

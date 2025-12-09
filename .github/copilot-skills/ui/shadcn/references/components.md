@@ -1069,7 +1069,7 @@ Here you can find all the components available in the library. We are working on
 - Installation
 - Usage
 
-Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+Displays a menu to the user - such as a set of actions or functions - triggered by a button.
 
 **Examples**:
 
@@ -1362,7 +1362,7 @@ import {
   - Radio Group
   - Dialog
 
-Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+Displays a menu to the user - such as a set of actions or functions - triggered by a button.
 
 This example shows how to open a dialog from a dropdown menu.
 
@@ -2735,7 +2735,7 @@ import { Progress } from "@/components/ui/progress"
 - Installation
 - Usage
 
-A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
+A set of checkable buttons-known as radio buttons-where no more than one of the buttons can be checked at a time.
 
 **Examples**:
 
@@ -3003,7 +3003,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 - Examples
   - Scrollable
 
-Displays a list of options for the user to pick from—triggered by a button.
+Displays a list of options for the user to pick from-triggered by a button.
 
 **Examples**:
 
@@ -3600,7 +3600,7 @@ import {
 - Installation
 - Usage
 
-A set of layered sections of content—known as tab panels—that are displayed one at a time.
+A set of layered sections of content-known as tab panels-that are displayed one at a time.
 
 **Examples**:
 

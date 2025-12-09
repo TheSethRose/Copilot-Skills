@@ -9,7 +9,7 @@ import { VersionBadge } from "/snippets/version-badge.mdx"
 
 <VersionBadge version="2.0.0" />
 
-The FastMCP `Client` communicates with MCP servers through transport objects that handle the underlying connection mechanics. While the client can automatically select a transport based on what you pass to it, instantiating transports explicitly gives you full control over configuration—environment variables, authentication, session management, and more.
+The FastMCP `Client` communicates with MCP servers through transport objects that handle the underlying connection mechanics. While the client can automatically select a transport based on what you pass to it, instantiating transports explicitly gives you full control over configuration-environment variables, authentication, session management, and more.
 
 Think of transports as configurable adapters between your client code and MCP servers. Each transport type handles a different communication pattern: subprocesses with pipes, HTTP connections, or direct in-memory calls.
 
@@ -188,7 +188,7 @@ For most use cases, instantiate `StdioTransport` directly with your desired comm
 
 ## Remote Transports
 
-Remote transports connect to MCP servers running as web services. This is a fundamentally different model from STDIO transports—instead of your client launching and managing a server process, you connect to an already-running service that manages its own environment and lifecycle.
+Remote transports connect to MCP servers running as web services. This is a fundamentally different model from STDIO transports-instead of your client launching and managing a server process, you connect to an already-running service that manages its own environment and lifecycle.
 
 ### Streamable HTTP Transport
 
@@ -258,7 +258,7 @@ In-memory transport connects directly to a FastMCP server instance within the sa
 - **Class:** `FastMCPTransport`
 
 <Note>
-Unlike STDIO transports, in-memory servers have full access to your Python process's environment. They share the same memory space and environment variables as your client code—no isolation or explicit environment passing required.
+Unlike STDIO transports, in-memory servers have full access to your Python process's environment. They share the same memory space and environment variables as your client code-no isolation or explicit environment passing required.
 </Note>
 
 ```python

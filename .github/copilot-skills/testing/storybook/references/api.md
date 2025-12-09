@@ -1078,7 +1078,7 @@ Default: parameters.docs.source.dark
 
 Determines if the snippet is rendered in dark mode.
 
-Light mode is only supported when the Source block is rendered independently. When rendered as part of a Canvas block—like it is in autodocs—it will always use dark mode.
+Light mode is only supported when the Source block is rendered independently. When rendered as part of a Canvas block-like it is in autodocs-it will always use dark mode.
 
 Default: parameters.docs.source.excludeDecorators
 
@@ -1650,7 +1650,7 @@ Type: (config: Babel.Config, options: Options) => Babel.Config | Promise<Babel.C
 
 babelDefault allows customization of Storybook's Babel setup. It is applied to the preview config before any user presets have been applied, which makes it useful and recommended for addon authors so that the end user's babel setup can override it.
 
-To adjust your Storybook's Babel setup directly—not via an addon—use babel instead.
+To adjust your Storybook's Babel setup directly-not via an addon-use babel instead.
 
 The options provided by Babel are only applicable if you've enabled the @storybook/addon-webpack5-compiler-babel addon.
 
@@ -1870,7 +1870,7 @@ export default config;
 
 The default blocks supplied by Storybook do not fit all use cases, so you might want to write your own blocks.
 
-If your own doc blocks need to interface with annotations from Storybook—that is stories, meta or components—you can use the useOf hook. Pass in a module export of a story, meta, or component and it will return its annotated form (with applied parameters, args, loaders, decorators, play function) that you can then use for anything you like. In fact, most of the existing blocks like Description and Canvas use useOf under the hood.
+If your own doc blocks need to interface with annotations from Storybook-that is stories, meta or components-you can use the useOf hook. Pass in a module export of a story, meta, or component and it will return its annotated form (with applied parameters, args, loaders, decorators, play function) that you can then use for anything you like. In fact, most of the existing blocks like Description and Canvas use useOf under the hood.
 
 Here’s an example of how theuseOf hook could be used to create a custom block that displays the name of the story:
 

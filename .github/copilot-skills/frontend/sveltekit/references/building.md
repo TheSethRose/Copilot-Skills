@@ -18,7 +18,7 @@
   - Reference
 - Advanced routing
 
-If the number of route segments is unknown, you can use rest syntax — for example you might implement GitHub’s file viewer like so...
+If the number of route segments is unknown, you can use rest syntax - for example you might implement GitHub’s file viewer like so...
 
 ...in which case a request for /sveltejs/kit/tree/main/documentation/docs/04-advanced-routing.md would result in the following parameters being available to the page:
 
@@ -181,7 +181,7 @@ function load({ params }: {
   - Reference
 - Routing
 
-At the heart of SvelteKit is a filesystem-based router. The routes of your app — i.e. the URL paths that users can access — are defined by the directories in your codebase:
+At the heart of SvelteKit is a filesystem-based router. The routes of your app - i.e. the URL paths that users can access - are defined by the directories in your codebase:
 
 You can change src/routes to a different directory by editing the project config.
 

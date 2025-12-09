@@ -655,7 +655,7 @@ Example with a partially-filled response from Claude:
 
 Each input message content may be either a single string or an array of content blocks, where each block has a specific type. Using a string for content is shorthand for an array of one content block of type "text". The following input messages are equivalent:
 
-Note that if you want to include a system prompt, you can use the top-level system parameter — there is no "system" role for input messages in the Messages API.
+Note that if you want to include a system prompt, you can use the top-level system parameter - there is no "system" role for input messages in the Messages API.
 
 There is a limit of 100,000 messages in a single request.
 
@@ -2909,7 +2909,7 @@ Example with a partially-filled response from Claude:
 
 Each input message content may be either a single string or an array of content blocks, where each block has a specific type. Using a string for content is shorthand for an array of one content block of type "text". The following input messages are equivalent:
 
-Note that if you want to include a system prompt, you can use the top-level system parameter — there is no "system" role for input messages in the Messages API.
+Note that if you want to include a system prompt, you can use the top-level system parameter - there is no "system" role for input messages in the Messages API.
 
 There is a limit of 100,000 messages in a single request.
 

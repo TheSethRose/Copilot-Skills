@@ -77,7 +77,7 @@ function afterNavigate(callback: (navigation: import("@sveltejs/kit").AfterNavig
 
 Before you can deploy your SvelteKit app, you need to adapt it for your deployment target. Adapters are small plugins that take the built app as input and generate output for deployment.
 
-Official adapters exist for a variety of platforms — these are documented on the following pages:
+Official adapters exist for a variety of platforms - these are documented on the following pages:
 
 Additional community-provided adapters exist for other platforms.
 
@@ -85,7 +85,7 @@ Your adapter is specified in svelte.config.js:
 
 Your adapter is run when executing vite build. It determines how the output is converted for different platforms.
 
-Some adapters may have access to additional information about the request. For example, Cloudflare Workers can access an env object containing KV namespaces etc. This can be passed to the RequestEvent used in hooks and server routes as the platform property — consult each adapter’s documentation to learn more.
+Some adapters may have access to additional information about the request. For example, Cloudflare Workers can access an env object containing KV namespaces etc. This can be passed to the RequestEvent used in hooks and server routes as the platform property - consult each adapter’s documentation to learn more.
 
 Edit this page on GitHub llms.txt
 
@@ -155,7 +155,7 @@ Edit this page on GitHub llms.txt
   - Reference
 - Advanced routing
 
-If the number of route segments is unknown, you can use rest syntax — for example you might implement GitHub’s file viewer like so...
+If the number of route segments is unknown, you can use rest syntax - for example you might implement GitHub’s file viewer like so...
 
 ...in which case a request for /sveltejs/kit/tree/main/documentation/docs/04-advanced-routing.md would result in the following parameters being available to the page:
 
@@ -306,7 +306,7 @@ Building a SvelteKit app happens in two stages, which both happen when you run v
 
 Firstly, Vite creates an optimized production build of your server code, your browser code, and your service worker (if you have one). Prerendering is executed at this stage, if appropriate.
 
-Secondly, an adapter takes this production build and tunes it for your target environment — more on this on the following pages.
+Secondly, an adapter takes this production build and tunes it for your target environment - more on this on the following pages.
 
 SvelteKit will load your +page/layout(.server).js files (and all files they import) for analysis during the build. Any code that should not be executed at this stage must check that building from $app/environment is false:
 
@@ -314,7 +314,7 @@ SvelteKit analyses your app during the build step by running it. During this pro
 
 SvelteKit analyses your app during the build step by running it. During this process, building is true. This also applies during prerendering.
 
-After building, you can view your production build locally with vite preview (via npm run preview). Note that this will run the app in Node, and so is not a perfect reproduction of your deployed app — adapter-specific adjustments like the platform object do not apply to previews.
+After building, you can view your production build locally with vite preview (via npm run preview). Note that this will run the app in Node, and so is not a perfect reproduction of your deployed app - adapter-specific adjustments like the platform object do not apply to previews.
 
 Edit this page on GitHub llms.txt
 
@@ -653,7 +653,7 @@ In addition to setContext and getContext, Svelte exposes hasContext and getAllCo
 
 You can store reactive state in context (demo)...
 
-...though note that if you reassign counter instead of updating it, you will ‘break the link’ — in other words instead of this...
+...though note that if you reassign counter instead of updating it, you will ‘break the link’ - in other words instead of this...
 
 Svelte will warn you if you get it wrong.
 
@@ -832,7 +832,7 @@ const MyElement: LegacyComponentType
   - Misc
   - Reference
 
-You can pass CSS custom properties — both static and dynamic — to components:
+You can pass CSS custom properties - both static and dynamic - to components:
 
 The above code essentially desugars to this:
 
@@ -1005,7 +1005,7 @@ When using <form>, client-side JavaScript is optional, but you can easily progre
 
 In the simplest case, a page declares a default action:
 
-To invoke this action from the /login page, just add a <form> — no JavaScript needed:
+To invoke this action from the /login page, just add a <form> - no JavaScript needed:
 
 If someone were to click the button, the browser would send the form data via POST request to the server, running the default action.
 
@@ -1094,7 +1094,7 @@ While SvelteKit does not have any specific integration with view transitions, yo
 
 A lifecycle function that runs the supplied callback immediately before we navigate to a new URL except during full-page navigations.
 
-If you return a Promise, SvelteKit will wait for it to resolve before completing the navigation. This allows you to — for example — use document.startViewTransition. Avoid promises that are slow to resolve, since navigation will appear stalled to the user.
+If you return a Promise, SvelteKit will wait for it to resolve before completing the navigation. This allows you to - for example - use document.startViewTransition. Avoid promises that are slow to resolve, since navigation will appear stalled to the user.
 
 If a function (or a Promise that resolves to a function) is returned from the 
 
@@ -1108,7 +1108,7 @@ import import pkgpkg from './package.json' with { type: 'json' };
 
 ```python
 import { function onNavigate(callback: (navigation: import("@sveltejs/kit").OnNavigate) => MaybePromise<void | (() => void)>): voidA lifecycle function that runs the supplied callback immediately before we navigate to a new URL except during full-page navigations.
-If you return a Promise, SvelteKit will wait for it to resolve before completing the navigation. This allows you to — for example — use document.startViewTransition. Avoid promises that are slow to resolve, since navigation will appear
+If you return a Promise, SvelteKit will wait for it to resolve before completing the navigation. This allows you to - for example - use document.startViewTransition. Avoid promises that are slow to resolve, since navigation will appear
 ...
 ```
 
@@ -1342,7 +1342,7 @@ In SvelteKit, pages will be hydrated by default, but you can turn off JavaScript
 
 Incremental static regeneration (ISR) allows you to generate static pages on your site as visitors request those pages without redeploying. This may reduces build times compared to SSG sites with a large number of pages. You can do ISR with adapter-vercel.
 
-Traditional applications that render each page view on the server — such as those written in languages other than JavaScript — are often referred to as mult
+Traditional applications that render each page view on the server - such as those written in languages other than JavaScript - are often referred to as mult
 
 *[Content truncated - see full docs]*
 
@@ -1372,7 +1372,7 @@ You can configure the location of these files with config.kit.files.hooks.
 
 The following hooks can be added to src/hooks.server.js:
 
-This function runs every time the SvelteKit server receives a request — whether that happens while the app is running, or during prerendering — and determines the response. It receives an event object representing the request and a function called resolve, which renders the route and generates a Response. This allows you to modify response headers or bodies, or bypass SvelteKit entirely (for implementing routes programmatically, for example).
+This function runs every time the SvelteKit server receives a request - whether that happens while the app is running, or during prerendering - and determines the response. It receives an event object representing the request and a function called resolve, which renders the route and generates a Response. This allows you to modify response headers or bodies, or bypass SvelteKit entirely (for implementing routes programmatically, for example).
 
 This Fetch API interface represents the response to a request.
 
@@ -1532,7 +1532,7 @@ defin
 
 In Svelte 3 and 4, the API for interacting with a component is different than in Svelte 5. Note that this page does not apply to legacy mode components in a Svelte 5 application.
 
-A client-side component — that is, a component compiled with generate: 'dom' (or the generate option left unspecified) is a JavaScript class.
+A client-side component - that is, a component compiled with generate: 'dom' (or the generate option left unspecified) is a JavaScript class.
 
 Specifies the beginning and end of the document body.
 
@@ -1544,7 +1544,7 @@ The hydrate option instructs Svelte to upgrade existing DOM (usually from server
 
 Whereas children of target are normally left alone, hydrate: true will cause any children to be removed. For that reason, the anchor option cannot be used alongside hydrate: true.
 
-The existing DOM doesn’t need to match the component — Svelte will ‘repair’ the DOM as it goes.
+The existing DOM doesn’t need to match the component - Svelte will ‘repair’ the DOM as it goes.
 
 Returns the first element that is a descendant of node that matches selectors.
 
@@ -1552,7 +1552,7 @@ In Svelte 5+, use mount instead
 
 Programmatically sets props on an instance. component.$set({ x: 1 }) is equivalent to x = 1 inside the component’s <script> block.
 
-Calling this method schedules an update for the next microtask — the DOM is not updated synchronously.
+Calling this method schedules an update for the next microtask - the DOM is not updated synchronously.
 
 In Svelte 5+, use $state instead to create a component props and update that
 
@@ -1732,7 +1732,7 @@ const config: {
   - Misc
   - Reference
 
-In Svelte 5, the component lifecycle consists of only two parts: Its creation and its destruction. Everything in-between — when certain state is updated — is not related to the component as a whole; only the parts that need to react to the state change are notified. This is because under the hood the smallest unit of change is actually not a component, it’s the (render) effects that the component sets up upon component initialization. Consequently, there’s no such thing as a “before update”/"after update” hook.
+In Svelte 5, the component lifecycle consists of only two parts: Its creation and its destruction. Everything in-between - when certain state is updated - is not related to the component as a whole; only the parts that need to react to the state change are notified. This is because under the hood the smallest unit of change is actually not a component, it’s the (render) effects that the component sets up upon component initialization. Consequently, there’s no such thing as a “before update”/"after update” hook.
 
 The onMount function schedules a callback to run as soon as the component has been mounted to the DOM. It must be called during the component’s initialisation (but doesn’t need to live inside the component; it can be called from an external module).
 
@@ -1816,7 +1816,7 @@ These options also apply to <form> elements with method="GET".
 
 Before the browser registers that the user has clicked on a link, we can detect that they’ve hovered the mouse over it (on desktop) or that a touchstart or mousedown event was triggered. In both cases, we can make an educated guess that a click event is coming.
 
-SvelteKit can use this information to get a head start on importing the code and fetching the page’s data, which can give us an extra couple of hundred milliseconds — the difference between a user interface that feels laggy and one that feels snappy.
+SvelteKit can use this information to get a head start on importing the code and fetching the page’s data, which can give us an extra couple of hundred milliseconds - the difference between a user interface that feels laggy and one that feels snappy.
 
 We can control this behaviour with the data-sveltekit-preload-data attribute, which can have one of two values:
 
@@ -2037,7 +2037,7 @@ Upgrading from SvelteKit version 1 to version 2 should be mostly seamless. There
 
 We highly recommend upgrading to the most recent 1.x version before upgrading to 2.0, so that you can take advantage of targeted deprecation warnings. We also recommend updating to Svelte 4 first: Later versions of SvelteKit 1.x support it, and SvelteKit 2.0 requires it.
 
-Previously, you had to throw the values returned from error(...) and redirect(...) yourself. In SvelteKit 2 this is no longer the case — calling the functions is sufficient.
+Previously, you had to throw the values returned from error(...) and redirect(...) yourself. In SvelteKit 2 this is no longer the case - calling the functions is sufficient.
 
 Throws an error with a HTTP status code and an optional message. When called during request handling, this will cause SvelteKit to return an error response without invoking handleError. Make sure you’re not catching the thrown error, which would prevent SvelteKit from handling it.
 
@@ -2283,11 +2283,11 @@ const config: {
 
 Sometimes, you may need to observe how your application is behaving in order to improve performance or find the root cause of a pesky bug. To help with this, SvelteKit can emit server-side OpenTelemetry spans for the following:
 
-Just telling SvelteKit to emit spans won’t get you far, though — you need to actually collect them somewhere to be able to view them. SvelteKit provides src/instrumentation.server.ts as a place to write your tracing setup and instrumentation code. It’s guaranteed to be run prior to your application code being imported, providing your deployment platform supports it and your adapter is aware of it.
+Just telling SvelteKit to emit spans won’t get you far, though - you need to actually collect them somewhere to be able to view them. SvelteKit provides src/instrumentation.server.ts as a place to write your tracing setup and instrumentation code. It’s guaranteed to be run prior to your application code being imported, providing your deployment platform supports it and your adapter is aware of it.
 
 Both of these features are currently experimental, meaning they are likely to contain bugs and are subject to change without notice. You must opt in by adding the kit.experimental.tracing.server and kit.experimental.instrumentation.server option in your svelte.config.js:
 
-Tracing — and more significantly, observability instrumentation — can have a nontrivial overhead. Before you go all-in on tracing, consider whether or not you really need it, or if it might be more appropriate to turn it on in development and preview environments only.
+Tracing - and more significantly, observability instrumentation - can have a nontrivial overhead. Before you go all-in on tracing, consider whether or not you really need it, or if it might be more appropriate to turn it on in development and preview environments only.
 
 SvelteKit provides access to the root span and the current span on the request event. The root span is the one associated with your root handle function, and the current span could be associated with handle, load, a form action, or a remote function, depending on the context. You can annotate these spans with any attributes you wish to record:
 
@@ -2594,7 +2594,7 @@ This tells npm which files it will pack up and upload to npm. It should contain 
 
 By default, SvelteKit will render (or prerender) any component first on the server and send it to the client as HTML. It will then render the component again in the browser to make it interactive in a process called hydration. For this reason, you need to ensure that components can run in both places. SvelteKit will then initialize a router that takes over subsequent navigations.
 
-You can control each of these on a page-by-page basis by exporting options from +page.js or +page.server.js, or for groups of pages using a shared +layout.js or +layout.server.js. To define an option for the whole app, export it from the root layout. Child layouts and pages override values set in parent layouts, so — for example — you can enable prerendering for your entire app then disable it for pages that need to be dynamically rendered.
+You can control each of these on a page-by-page basis by exporting options from +page.js or +page.server.js, or for groups of pages using a shared +layout.js or +layout.server.js. To define an option for the whole app, export it from the root layout. Child layouts and pages override values set in parent layouts, so - for example - you can enable prerendering for your entire app then disable it for pages that need to be dynamically rendered.
 
 You can mix and match these options in different areas of your app. For example, you could prerender your marketing page for maximum speed, server-render your dynamic pages for SEO and accessibility and turn your admin section into an SPA by rendering it on the client only. This makes SvelteKit very versatile.
 
@@ -2602,7 +2602,7 @@ It’s likely that at least some routes of your app can be represented as a simp
 
 Alternatively, you can set export const prerender = true in your root +layout.js or +layout.server.js and prerender everything except pages that are explicitly marked as not prerenderable:
 
-Routes with prerender = true will be excluded from manifests used for dynamic SSR, making your server (or serverless/edge functions) smaller. In some cases you might want to prerender a route but also include it in the manifest (for example, with a route like /blog/[slug] where you want to prerender your most recent/popular content but server-render the long tail) — for these cases, there’s a third option, ‘auto’:
+Routes with prerender = true will be excluded from manifests used for dynamic SSR, making your server (or serverless/edge functions) smaller. In some cases you might want to prerender a route but also include it in the manifest (for example, with a route like /blog/[slug] where you want to prerender your most recent/popular content but server-render the long tail) - for these cases, there’s a third option, ‘auto’:
 
 If your entire app is suitable for prerendering, you can use adapter-static, which will output fil
 
@@ -2842,7 +2842,7 @@ Multiple statements can be combined by putting them in a block:
 
 The left-hand side of a reactive assignments can be an identifier, or it can be a destructuring assignment:
 
-The dependencies of a $: statement are determined at compile time — they are whichever variables are referenced (but not assigned to) inside the statement.
+The dependencies of a $: statement are determined at compile time - they are whichever variables are referenced (but not assigned to) inside the statement.
 
 In other words, a statement like this will not re-run when count changes, because the compiler cannot ‘see’ the dependency:
 
@@ -2865,7 +2865,7 @@ Edit this page on GitHub llms.txt
 	// when `a`, `b` or `sum` change
 	$: console.log(`${a} + ${b} = ${sum}`);
 
-	// this is a 'reactive assignment' — `sum` will be
+	// this is a 'reactive assignment' - `sum` will be
 	// recalculated when `a` or `b` change. It is
 	// not necessary to declare `sum` separately
 	$: sum = a + b;
@@ -2921,13 +2921,13 @@ Creates a remote query. When called from the browser, the function will be invok
 
 See Remote functions for full documentation.
 
-Throughout this page, you’ll see imports from fictional modules like $lib/server/database and $lib/server/auth. These are purely for illustrative purposes — you can use whatever database client and auth setup you like.
+Throughout this page, you’ll see imports from fictional modules like $lib/server/database and $lib/server/auth. These are purely for illustrative purposes - you can use whatever database client and auth setup you like.
 
 The db.sql function above is a tagged template function that escapes any interpolated values.
 
 The query returned from getPosts works as a Promise that resolves to posts:
 
-Until the promise resolves — and if it errors — the nearest <svelte:boundary> will be invoked.
+Until the promise resolves - and if it errors - the nearest <svelte:boundary> will be invoked.
 
 While using await is recomme
 
@@ -3011,7 +3011,7 @@ const config: {
   - Reference
 - Routing
 
-At the heart of SvelteKit is a filesystem-based router. The routes of your app — i.e. the URL paths that users can access — are defined by the directories in your codebase:
+At the heart of SvelteKit is a filesystem-based router. The routes of your app - i.e. the URL paths that users can access - are defined by the directories in your codebase:
 
 You can change src/routes to a different directory by editing the project config.
 
@@ -3078,7 +3078,7 @@ Throws an error with a HTTP status code and an optional message. When called dur
   - Misc
   - Reference
 
-In Svelte there are two types of reaction — $derived and $effect. Deriveds can be created anywhere, because they run lazily and can be garbage collected if nothing references them. Effects, by contrast, keep running eagerly whenever their dependencies change, until they are destroyed.
+In Svelte there are two types of reaction - $derived and $effect. Deriveds can be created anywhere, because they run lazily and can be garbage collected if nothing references them. Effects, by contrast, keep running eagerly whenever their dependencies change, until they are destroyed.
 
 Because of this, effects can only be created inside other effects (or effect roots, such as the one that is created when you first mount a component) so that Svelte knows when to destroy them.
 
@@ -3156,7 +3156,7 @@ Appends new elements to the end of an array, and returns the new length of the a
 
 Gets or sets the length of the array. This is a number one higher than the highest index in the array.
 
-Svelte’s signal-based reactivity works by tracking which bits of state are read when a template or $derived(...) expression executes. If an expression contains an await, Svelte transforms it such that any state after the await is also tracked — in other words, in a case like this...
+Svelte’s signal-based reactivity works by tracking which bits of state are read when a template or $derived(...) expression executes. If an expression contains an await, Svelte transforms it such that any state after the await is also tracked - in other words, in a case like this...
 
 Declares derived state, i.e. one that depends on other state variables. The expression inside $derived(...) should be free of side-effects.
 
@@ -3360,7 +3360,7 @@ Any time you have public-facing code that imports server-only code (whether dire
 
 ...SvelteKit will error:
 
-Even though the public-facing code — src/routes/+page.svelte — only uses the add export and not the secret atlantisCoordinates export, the secret code could end up in JavaScript that the browser downloads, and so the import chain is considered unsafe.
+Even though the public-facing code - src/routes/+page.svelte - only uses the add export and not the secret atlantisCoordinates export, the secret code could end up in JavaScript that the browser downloads, and so the import chain is considered unsafe.
 
 This feature also works with dynamic imports, even interpolated ones like await import(`./${foo}.js`).
 
@@ -3621,7 +3621,7 @@ export default const config: {
   - Reference
 - Snapshots
 
-Ephemeral DOM state — like scroll positions on sidebars, the content of <input> elements and so on — is discarded when you navigate from one page to another.
+Ephemeral DOM state - like scroll positions on sidebars, the content of <input> elements and so on - is discarded when you navigate from one page to another.
 
 For example, if the user fills out a form but navigates away and then back before submitting, or if the user refreshes the page, the values they filled in will be lost. In cases where it’s valuable to preserve that input, you can take a snapshot of DOM state, which can then be restored if the user navigates back.
 
@@ -3631,7 +3631,7 @@ When you navigate away from this page, the capture function is called immediatel
 
 The data must be serializable as JSON so that it can be persisted to sessionStorage. This allows the state to be restored when the page is reloaded, or when the user navigates back from a different site.
 
-Avoid returning very large objects from capture — once captured, objects will be retained in memory for the duration of the session, and in extreme cases may be too large to persist to sessionStorage.
+Avoid returning very large objects from capture - once captured, objects will be retained in memory for the duration of the session, and in extreme cases may be too large to persist to sessionStorage.
 
 Edit this page on GitHub llms.txt
 
@@ -3692,7 +3692,7 @@ Edit this page on GitHub llms.txt
 
 If you’re used to building client-only apps, state management in an app that spans server and client might seem intimidating. This section provides tips for avoiding some common gotchas.
 
-Browsers are stateful — state is stored in memory as the user interacts with the application. Servers, on the other hand, are stateless — the content of the response is determined entirely by the content of the request.
+Browsers are stateful - state is stored in memory as the user interacts with the application. Servers, on the other hand, are stateless - the content of the response is determined entirely by the content of the request.
 
 Conceptually, that is. In reality, servers are often long-lived and shared by multiple users. For that reason it’s important not to store data in shared variables. For example, consider this code:
 
@@ -3704,7 +3704,7 @@ The user variable is shared by everyone who connects to this server. If Alice su
 
 Instead, you should authenticate the user using cookies and persist the data to a database.
 
-For the same reason, your load functions should be pure — no side-effects (except maybe the occasional console.log(...)). For example, you might be tempted to write to a store or global state inside a load function so that you can use the value in your components:
+For the same reason, your load functions should be pure - no side-effects (except maybe the occasional console.log(...)). For example, you might be tempted to write to a store or global state inside a load function so that you can use the value in your components:
 
 fetch is equivalent to the native fetch web API, with a few additional features:
 
@@ -3820,7 +3820,7 @@ const const config: {
 }kit: {
 		adapter: anyadapter: import adapteradapter({
 			// default options are shown. On some platforms
-			// these options are set automatically — see below
+			// these options are set automatically - see below
 			pages: stringpages: 'build',
 			assets: stringassets: 'build',
 			fallback: undefinedfallba
@@ -3974,7 +3974,7 @@ In Svelte 4, a $: statement at the top level of a component could be used to dec
   - Misc
   - Reference
 
-Testing helps you write and maintain your code and guard against regressions. Testing frameworks help you with that, allowing you to describe assertions or expectations about how your code should behave. Svelte is unopinionated about which testing framework you use — you can write unit tests, integration tests, and end-to-end tests using solutions like Vitest, Jasmine, Cypress and Playwright.
+Testing helps you write and maintain your code and guard against regressions. Testing frameworks help you with that, allowing you to describe assertions or expectations about how your code should behave. Svelte is unopinionated about which testing framework you use - you can write unit tests, integration tests, and end-to-end tests using solutions like Vitest, Jasmine, Cypress and Playwright.
 
 Unit tests allow you to test small isolated parts of your code. Integration tests allow you to test parts of your application to see if they work together. If you’re using Vite (including via SvelteKit), we recommend using Vitest. You can use the Svelte CLI to setup Vitest either during project creation or later on.
 
@@ -4200,7 +4200,7 @@ const config: {
 
 Throughout this documentation, you’ll see references to the standard Web APIs that SvelteKit builds on top of. Rather than reinventing the wheel, we use the platform, which means your existing web development skills are applicable to SvelteKit. Conversely, time spent learning SvelteKit will help you be a better web developer elsewhere.
 
-These APIs are available in all modern browsers and in many non-browser environments like Cloudflare Workers, Deno, and Vercel Functions. During development, and in adapters for Node-based environments (including AWS Lambda), they’re made available via polyfills where necessary (for now, that is — Node is rapidly adding support for more web standards).
+These APIs are available in all modern browsers and in many non-browser environments like Cloudflare Workers, Deno, and Vercel Functions. During development, and in adapters for Node-based environments (including AWS Lambda), they’re made available via polyfills where necessary (for now, that is - Node is rapidly adding support for more web standards).
 
 In particular, you’ll get comfortable with the following:
 
@@ -4257,7 +4257,7 @@ Content-Type: application/json
 
 A letter or mark used as a mystical or magic symbol.
 
-Runes are symbols that you use in .svelte and .svelte.js / .svelte.ts files to control the Svelte compiler. If you think of Svelte as a language, runes are part of the syntax — they are keywords.
+Runes are symbols that you use in .svelte and .svelte.js / .svelte.ts files to control the Svelte compiler. If you think of Svelte as a language, runes are part of the syntax - they are keywords.
 
 Runes have a $ prefix and look like functions:
 
@@ -4369,7 +4369,7 @@ When you create a new SvelteKit project with npx sv create, it installs adapter-
 
 It’s recommended to install the appropriate adapter to your devDependencies once you’ve settled on a target environment, since this will add the adapter to your lockfile and slightly improve install times on CI.
 
-To add configuration options, such as { edge: true } in adapter-vercel and adapter-netlify, you must install the underlying adapter — adapter-auto does not take any options.
+To add configuration options, such as { edge: true } in adapter-vercel and adapter-netlify, you must install the underlying adapter - adapter-auto does not take any options.
 
 You can add zero-config support for additional adapters by editing adapters.js and opening a pull request.
 
@@ -4520,11 +4520,11 @@ afterNavigate must be called during a component initialization. It remains activ
 
 A navigation interceptor that triggers before we navigate to a URL, whether by clicking a link, calling goto(...), or using the browser back/forward controls.
 
-Calling cancel() will prevent the navigation from completing. If navigation.type === 'leave' — meaning the user is navigating away from the app (or closing the tab) — calling cancel will trigger the native browser unload confirmation dialog. In this case, the navigation may or may not be cancelled depending on the user’s response.
+Calling cancel() will prevent the navigation from completing. If navigation.type === 'leave' - meaning the user is navigating away from the app (or closing the tab) - calling cancel will trigger the native browser unload confirmation dialog. In this case, the navigation may or may not be cancelled depending on the user’s response.
 
 When a navigation isn’t to a SvelteKit-owned route (and therefore controlled by SvelteKit’s client-side router), navigation.to.route.id will be null.
 
-If the navigation will (if not cancelled) cause the document to unload — in other words 'leave' navigations and 'link' navigations where navigation.to.route === null — navigation.willUnload is true.
+If the navigation will (if not cancelled) cause the document to unload - in other words 'leave' navigations and 'link' navigations where navigation.to.route === null - navigation.willUnload is true.
 
 beforeNavigate must be called during a component initialization. It remains active as long as the component is mounted.
 
@@ -4743,7 +4743,7 @@ function form<Output>(fn: () => MaybePromise<Output>): RemoteForm<void, Output> 
   - Reference
 - $app/state
 
-SvelteKit makes three read-only state objects available via the $app/state module — page, navigating and updated.
+SvelteKit makes three read-only state objects available via the $app/state module - page, navigating and updated.
 
 This module was added in 2.12. If you’re using an earlier version of SvelteKit, use $app/stores instead.
 
@@ -4988,7 +4988,7 @@ To add attachmen
   - Misc
   - Reference
 
-Await blocks allow you to branch on the three possible states of a Promise — pending, fulfilled or rejected.
+Await blocks allow you to branch on the three possible states of a Promise - pending, fulfilled or rejected.
 
 During server-side rendering, only the pending branch will be rendered.
 
@@ -5042,17 +5042,17 @@ The experimental flag will be removed in Svelte 6.
 
 When an await expression depends on a particular piece of state, changes to that state will not be reflected in the UI until the asynchronous work has completed, so that the UI is not left in an inconsistent state. In other words, in an example like this...
 
-...if you increment a, the contents of the <p> will not immediately update to read this —
+...if you increment a, the contents of the <p> will not immediately update to read this -
 
-— instead, the text will update to 2 + 2 = 4 when add(a, b) resolves.
+- instead, the text will update to 2 + 2 = 4 when add(a, b) resolves.
 
-Updates can overlap — a fast update will be reflected in the UI while an earlier slow update is still ongoing.
+Updates can overlap - a fast update will be reflected in the UI while an earlier slow update is still ongoing.
 
 Svelte will do as much asynchronous work as it can in parallel. For example if you have two await expressions in your markup...
 
 ...both functions will run at the same time, as they are independent expressions, even though they are visually sequential.
 
-This does not apply to sequential await expressions inside your <script> or inside async functions — these run like any other asynchronous JavaScript. An exception is that independent $derived expressions will update independently, even though they will run sequentially when they are first created:
+This does not apply to sequential await expressions inside your <script> or inside async functions - these run like any other asynchronous JavaScript. An exception is that independent $derived expressions will update independently, even though they will run sequentially when they are first created:
 
 Declares derived state, i.e. one that depends on other state variables. The expression inside $derived(...) should be free of side-effects.
 
@@ -5120,7 +5120,7 @@ compilerOptions: {
 
 Data ordinarily flows down, from parent to child. The bind: directive allows data to flow the other way, from child to parent.
 
-The general syntax is bind:property={expression}, where expression is an lvalue (i.e. a variable or an object property). When the expression is an identifier with the same name as the property, we can omit the expression — in other words these are equivalent:
+The general syntax is bind:property={expression}, where expression is an lvalue (i.e. a variable or an object property). When the expression is an identifier with the same name as the property, we can omit the expression - in other words these are equivalent:
 
 Svelte creates an event listener that updates the bound value. If an element already has a listener for the same event, that listener will be fired before the bound value is updated.
 
@@ -5191,13 +5191,13 @@ In Svelte, component props can be bound, which means that data can also flow up 
 
 It also means that a state proxy can be mutated in the child.
 
-Mutation is also possible with normal props, but is strongly discouraged — Svelte will warn you if it detects that a component is mutating state it does not ‘own’.
+Mutation is also possible with normal props, but is strongly discouraged - Svelte will warn you if it detects that a component is mutating state it does not ‘own’.
 
 To mark a prop as bindable, we use the $bindable rune:
 
 Now, a component that uses <FancyInput> can add the bind: directive (demo):
 
-The parent component doesn’t have to use bind: — it can just pass a normal prop. Some parents don’t want to listen to what their children have to say.
+The parent component doesn’t have to use bind: - it can just pass a normal prop. Some parents don’t want to listen to what their children have to say.
 
 In this case, you can specify a fallback value for when no prop is passed at all:
 
@@ -5338,7 +5338,7 @@ Edit this page on GitHub llms.txt
 
 The {@const ...} tag defines a local constant.
 
-{@const} is only allowed as an immediate child of a block — {#if ...}, {#each ...}, {#snippet ...} and so on — a <Component /> or a <svelte:boundary>.
+{@const} is only allowed as an immediate child of a block - {#if ...}, {#each ...}, {#snippet ...} and so on - a <Component /> or a <svelte:boundary>.
 
 Edit this page on GitHub llms.txt
 
@@ -5527,11 +5527,11 @@ https://svelte.dev/docs/svelte/$derived
   - Misc
   - Reference
 
-Iterating over values can be done with an each block. The values in question can be arrays, array-like objects (i.e. anything with a length property), or iterables like Map and Set — in other words, anything that can be used with Array.from.
+Iterating over values can be done with an each block. The values in question can be arrays, array-like objects (i.e. anything with a length property), or iterables like Map and Set - in other words, anything that can be used with Array.from.
 
 An each block can also specify an index, equivalent to the second argument in an array.map(...) callback:
 
-If a key expression is provided — which must uniquely identify each list item — Svelte will use it to intelligently update the list when data changes by inserting, moving and deleting items, rather than adding or removing items at the end and updating the state in the middle.
+If a key expression is provided - which must uniquely identify each list item - Svelte will use it to intelligently update the list when data changes by inserting, moving and deleting items, rather than adding or removing items at the end and updating the state in the middle.
 
 The key can be any object, but strings and numbers are recommended since they allow identity to persist when the objects themselves change.
 
@@ -5592,7 +5592,7 @@ Your effects run after the component has been mounted to the DOM, and in a micro
 
 You can use $effect anywhere, not just at the top level of a component, as long as it is called while a parent effect is running.
 
-Svelte uses effects internally to represent logic and expressions in your template — this is how <h1>hello {name}!</h1> updates when name changes.
+Svelte uses effects internally to represent logic and expressions in your template - this is how <h1>hello {name}!</h1> updates when name changes.
 
 An effect can return a teardown function which will run immediately before the effect re-runs (demo).
 
@@ -5738,7 +5738,7 @@ console.log()
 
 Similar to $env/dynamic/private, but only includes variables that begin with config.kit.env.publicPrefix (which defaults to PUBLIC_), and can therefore safely be exposed to client-side code.
 
-Note that public dynamic environment variables must all be sent from the server to the client, causing larger network requests — when possible, use $env/static/public instead.
+Note that public dynamic environment variables must all be sent from the server to the client, causing larger network requests - when possible, use $env/static/public instead.
 
 The console module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
 
@@ -5876,7 +5876,7 @@ Unlike in runes mode, if the parent component changes a prop from a defined valu
 
 Props without default values are considered required, and Svelte will print a warning during development if no value is provided, which you can squelch by specifying undefined as the default value:
 
-An exported const, class or function declaration is not considered a prop — instead, it becomes part of the component’s API:
+An exported const, class or function declaration is not considered a prop - instead, it becomes part of the component’s API:
 
 The export keyword can appear separately from the declaration. This is useful for renaming props, for example in the case of a reserved word:
 
@@ -5986,7 +5986,7 @@ To inject raw HTML into your component, use the {@html ...} tag:
 
 Make sure that you either escape the passed string or only populate it with values that are under your control in order to prevent XSS attacks. Never render unsanitized content.
 
-The expression should be valid standalone HTML — this will not work, because </div> is not valid HTML:
+The expression should be valid standalone HTML - this will not work, because </div> is not valid HTML:
 
 It also will not compile Svelte code.
 
@@ -6075,7 +6075,7 @@ Edit this page on GitHub llms.txt
   - Misc
   - Reference
 
-The in: and out: directives are identical to transition:, except that the resulting transitions are not bidirectional — an in transition will continue to ‘play’ alongside the out transition, rather than reversing, if the block is outroed while the transition is in progress. If an out transition is aborted, transitions will restart from scratch.
+The in: and out: directives are identical to transition:, except that the resulting transitions are not bidirectional - an in transition will continue to ‘play’ alongside the out transition, rather than reversing, if the block is outroed while the transition is in progress. If an out transition is aborted, transitions will restart from scratch.
 
 Edit this page on GitHub llms.txt
 
@@ -6304,7 +6304,7 @@ dispatch creates a CustomEvent. If a second argument is provided, it becomes the
 
 A consumer of this component can listen for the dispatched events:
 
-Component events do not bubble — a parent component can only listen for events on its immediate children.
+Component events do not bubble - a parent component can only listen for events on its immediate children.
 
 Other than once, modifiers are not valid on component event handlers.
 
@@ -6391,7 +6391,7 @@ Declares the props that a component accepts. Example:
 
 https://svelte.dev/docs/svelte/$props
 
-References to a prop inside a component update when the prop itself updates — when count changes in App.svelte, it will also change inside Child.svelte. But the child component is able to temporarily override the prop value, which can be useful for unsaved ephemeral state (demo):
+References to a prop inside a component update when the prop itself updates - when count changes in App.svelte, it will also change inside Child.svelte. But the child component is able to temporarily override the prop value, which can be useful for unsaved ephemeral state (demo):
 
 While you can temporarily reassign props, you should not mutate props unless they are bindable.
 
@@ -6399,9 +6399,9 @@ If the prop is a regular object, the mutation will have no effect (demo):
 
 If the prop is a reactive state proxy, however, then mutations will have an effect but you will see an ownership_invalid_mutation warning, because the component is mutating state that does not ‘belong’ to it (demo):
 
-The fallback value of a prop not declared with $bindable is left untouched — it is not turned into a reactive state proxy — meaning mutations will not cause updates (demo)
+The fallback value of a prop not declared with $bindable is left untouched - it is not turned into a reactive state proxy - meaning mutations will not cause updates (demo)
 
-In summary: don’t mutate props. Either use callback props to communicate changes, or — if parent and ch
+In summary: don’t mutate props. Either use callback props to communicate changes, or - if parent and ch
 
 *[Content truncated - see full docs]*
 
@@ -6495,7 +6495,7 @@ To render a snippet, use a {@render ...} tag.
 
 The expression can be an identifier like sum, or an arbitrary JavaScript expression:
 
-If the snippet is potentially undefined — for example, because it’s an incoming prop — then you can use optional chaining to only render it when it is defined:
+If the snippet is potentially undefined - for example, because it’s an incoming prop - then you can use optional chaining to only render it when it is defined:
 
 Alternatively, use an {#if ...} block with an :else clause to render fallback content:
 
@@ -6551,7 +6551,7 @@ If no slotted content is provided, a component can define fallback content by pu
 
 Slots can be rendered zero or more times and can pass values back to the parent using props. The parent exposes the values to the slot template using the let: directive.
 
-The usual shorthand rules apply — let:item is equivalent to let:item={item}, and <slot {item}> is equivalent to <slot item={item}>.
+The usual shorthand rules apply - let:item is equivalent to let:item={item}, and <slot {item}> is equivalent to <slot item={item}>.
 
 Named slots can also expose values. The let: directive goes on the element with the slot attribute.
 
@@ -6659,7 +6659,7 @@ As an authoring convenience, snippets declared directly inside a component impli
 
 Any content inside the component tags that is not a snippet declaration implicitly becomes part of the children snippet (demo):
 
-Note that you cannot have a prop called children if you also have content inside the component — for this reason, you should avoid having props with that name
+Note that you cannot have a prop called children if you also have content inside the component - for this reason, you should avoid having props with that name
 
 You can declare snippet props as being optional. You can either use optional chaining to not render anything if the snippet isn’t set...
 
@@ -6721,7 +6721,7 @@ Snippets declared at the top le
 
 The $state rune allows you to create reactive state, which means that your UI reacts when it changes.
 
-Unlike other frameworks you may have encountered, there is no API for interacting with state — count is just a number, rather than an object or a function, and you can update it like you would update any other variable.
+Unlike other frameworks you may have encountered, there is no API for interacting with state - count is just a number, rather than an object or a function, and you can update it like you would update any other variable.
 
 If $state is used with an array or a simple object, the result is a deeply reactive state proxy. Proxies allow Svelte to run code when you read or write properties, including via methods like array.push(...), triggering granular updates.
 
@@ -6739,7 +6739,7 @@ Appends new elements to the end of an array, and returns the new length of the a
 
 When you update properties of proxies, the original object is not mutated. If you need to use your own proxy handlers in a state proxy, you should wrap the object after wrapping it in $state.
 
-Note that if you destructure a reactive value, the references are not reactive — as in normal JavaScript, they are evaluated at the point of destructuring:
+Note that if you destructure a reactive value, the references are not reactive - as in normal JavaScript, they are evaluated at the point of destructuring:
 
 Class instances are not proxied. Instead, you can use $state in class fields (whether public or private), or as the first assignment to a property immediately inside the constructor:
 
@@ -6940,7 +6940,7 @@ class SvelteComponentTyped<Props extends Record<string, any> = Record<string, an
 
 Components are the building blocks of Svelte applications. They are written into .svelte files, using a superset of HTML.
 
-All three sections — script, styles and markup — are optional.
+All three sections - script, styles and markup - are optional.
 
 A <script> block contains JavaScript (or TypeScript, when adding the lang="ts" attribute) that runs when a component instance is created. Variables declared (or imported) at the top level can be referenced in the component’s markup.
 
@@ -7227,7 +7227,7 @@ For the boundary to do anything, one or more of the following must be provided.
 
 This snippet will be shown when the boundary is first created, and will remain visible until all the await expressions inside the boundary have resolved (demo):
 
-The pending snippet will not be shown for subsequent async updates — for these, you can use $effect.pending().
+The pending snippet will not be shown for subsequent async updates - for these, you can use $effect.pending().
 
 In the playground, your app is rendered inside a boundary with an empty pending snippet, so that you can use await without having to create one.
 
@@ -7359,7 +7359,7 @@ function compile(source: string, options: CompileOptions): CompileResult
 
 In runes mode, <MyComponent> will re-render if the value of MyComponent changes. See the Svelte 5 migration guide for an example.
 
-In legacy mode, it won’t — we must use <svelte:component>, which destroys and recreates the component instance when the value of its this expression changes:
+In legacy mode, it won’t - we must use <svelte:component>, which destroys and recreates the component instance when the value of its this expression changes:
 
 If this is falsy, no component is rendered.
 
@@ -8166,7 +8166,7 @@ Svelte provides reactive versions of various built-ins like Map, Set and URL tha
 
 Creates a media query and provides a current property that reflects whether or not it matches.
 
-Use it carefully — during server-side rendering, there is no way to know what the correct value should be, potentially causing content to change upon hydration. If you can use the media query in CSS to achieve the same effect, do that.
+Use it carefully - during server-side rendering, there is no way to know what the correct value should be, potentially causing content to change upon hydration. If you can use the media query in CSS to achieve the same effect, do that.
 
 A reactive version of the built-in Date object. Reading the date (whether with methods like date.getTime() or date.toString(), or via things like Intl.DateTimeFormat) in an effect or derived will cause it to be re-evaluated when the value of the date changes.
 
@@ -8191,7 +8191,7 @@ A reactive version of the built-in URLSearchParams object. Reading its contents 
 ```python
 import {
 	class MediaQueryCreates a media query and provides a current property that reflects whether or not it matches.
-Use it carefully — during server-side rendering, there is no way to know what the correct value should be, potentially causing content to change upon hydration.
+Use it carefully - during server-side rendering, there is no way to know what the correct value should be, potentially causing content to change upon hydration.
 If you can use the media query in CSS to achieve the same effect, do that.
 &#x3C;script>
 	import { MediaQuery } from 'svelte/reactivity';
@@ -8235,7 +8235,7 @@ class MediaQuery
 
 This module exports reactive versions of various window values, each of which has a reactive current property that you can reference in reactive contexts (templates, deriveds and effects) without using <svelte:window> bindings or manually creating your own event listeners.
 
-devicePixelRatio.current is a reactive view of window.devicePixelRatio. On the server it is undefined. Note that behaviour differs between browsers — on Chrome it will respond to the current zoom level, on Firefox and Safari it won’t.
+devicePixelRatio.current is a reactive view of window.devicePixelRatio. On the server it is undefined. Note that behaviour differs between browsers - on Chrome it will respond to the current zoom level, on Firefox and Safari it won’t.
 
 innerHeight.current is a reactive view of window.innerHeight. On the server it is undefined.
 
@@ -8257,7 +8257,7 @@ scrollY.current is a reactive view of window.scrollY. On the server it is undefi
 
 Available since 5.11.0
 
-devicePixelRatio.current is a reactive view of window.devicePixelRatio. On the server it is undefined. Note that behaviour differs between browsers — on Chrome it will respond to the current zoom level, on Firefox and Safari it won’t.
+devicePixelRatio.current is a reactive view of window.devicePixelRatio. On the server it is undefined. Note that behaviour differs between browsers - on Chrome it will respond to the current zoom level, on Firefox and Safari it won’t.
 
 Available since 5.11.0
 
@@ -8288,7 +8288,7 @@ import {
 	const devicePixelRatio: {
     readonly current: number | undefined;
 }devicePixelRatio.current is a reactive view of window.devicePixelRatio. On the server it is undefined.
-Note that behaviour differs between browsers — on Chrome it will respond to the current zoom level,
+Note that behaviour differs between browsers - on Chrome it will respond to the current zoom level,
 on Firefox and Safari it won’t.
 @since5.11.0devicePixelRatio,
 	const innerHeight: ReactiveValue<number | undefined>innerHeight.current is a reactive view of window.innerHeight. On the server it is undefined.
@@ -8592,7 +8592,7 @@ function crossfade({ fallback, ...defaults }: CrossfadeParams & {
 
 The <svelte:window> element allows you to add event listeners to the window object without worrying about removing them when the component is destroyed, or checking for the existence of window when server-side rendering.
 
-This element may only appear at the top level of your component — it cannot be inside a block or element.
+This element may only appear at the top level of your component - it cannot be inside a block or element.
 
 You can also bind to the following properties:
 
@@ -8654,13 +8654,13 @@ Transitions can have parameters.
 
 Transitions can use custom functions. If the returned object has a css function, Svelte will generate keyframes for a web animation.
 
-The t argument passed to css is a value between 0 and 1 after the easing function has been applied. In transitions run from 0 to 1, out transitions run from 1 to 0 — in other words, 1 is the element’s natural state, as though no transition had been applied. The u argument is equal to 1 - t.
+The t argument passed to css is a value between 0 and 1 after the easing function has been applied. In transitions run from 0 to 1, out transitions run from 1 to 0 - in other words, 1 is the element’s natural state, as though no transition had been applied. The u argument is equal to 1 - t.
 
 The function is called repeatedly before the transition begins, with different t and u arguments.
 
 A custom transition function can also return a tick function, which is called during the transition with the same t and u arguments.
 
-If it’s possible to use css instead of tick, do so — web animations can run off the main thread, preventing jank on slower devices.
+If it’s possible to use css instead of tick, do so - web animations can run off the main thread, preventing jank on slower devices.
 
 If a transition returns a function instead of a transition object, the function will be called in the next microtask. This allows multiple transitions to coordinate, making crossfade effects possible.
 
@@ -8724,11 +8724,11 @@ Actions are functions that are called when an element is mounted. They are added
 
 An action can be called with an argument:
 
-The action is only called once (but not during server-side rendering) — it will not run again if the argument changes.
+The action is only called once (but not during server-side rendering) - it will not run again if the argument changes.
 
 Prior to the $effect rune, actions could return an object with update and destroy methods, where update would be called with the latest value of the argument if it changed. Using effects is preferred.
 
-The Action interface receives three optional type arguments — a node type (which can be Element, if the action applies to everything), a parameter, and any custom event handlers created by the action:
+The Action interface receives three optional type arguments - a node type (which can be Element, if the action applies to everything), a parameter, and any custom event handlers created by the action:
 
 Edit this page on GitHub llms.txt
 

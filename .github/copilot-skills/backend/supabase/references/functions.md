@@ -219,7 +219,7 @@ Something's not right?
 
 Globally distributed TypeScript functions.
 
-Edge Functions are server-side TypeScript functions, distributed globally at the edge—close to your users. They can be used for listening to webhooks or integrating your Supabase project with third-parties like Stripe. Edge Functions are developed using Deno, which offers a few benefits to you as a developer:
+Edge Functions are server-side TypeScript functions, distributed globally at the edge-close to your users. They can be used for listening to webhooks or integrating your Supabase project with third-parties like Stripe. Edge Functions are developed using Deno, which offers a few benefits to you as a developer:
 
 Check out the Edge Function Examples in our GitHub repository.
 

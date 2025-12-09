@@ -460,7 +460,7 @@ To protect routes with middleware, refer to the Next.js middleware guide.
 
 Congratulations! You’ve successfully migrated from NextAuth.js to Better Auth. For a complete implementation with multiple authentication methods, check out the demo repository.
 
-Better Auth offers greater flexibility and more features—be sure to explore the documentation to unlock its full potential.
+Better Auth offers greater flexibility and more features-be sure to explore the documentation to unlock its full potential.
 
 **Examples**:
 
@@ -2934,7 +2934,7 @@ Microsoft has renamed Azure AD to Microsoft Entra ID, more information about the
 
 Log in to the Microsoft Entra admin center.
 
-In the left sidebar, navigate to Identity —> Applications —> App Registrations.
+In the left sidebar, navigate to Identity -> Applications -> App Registrations.
 
 Click on New registration.
 

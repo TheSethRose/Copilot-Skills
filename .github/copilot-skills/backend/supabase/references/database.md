@@ -1203,7 +1203,7 @@ Migrate from Postgres to Supabase
 
 Migrate your existing Postgres database to Supabase.
 
-This is a guide for migrating your Postgres database to Supabase. Supabase is a robust and open-source platform. Supabase provide all the backend features developers need to build a product: a Postgres database, authentication, instant APIs, edge functions, realtime subscriptions, and storage. Postgres is the core of Supabase—for example, you can use row-level security and there are more than 40 Postgres extensions available.
+This is a guide for migrating your Postgres database to Supabase. Supabase is a robust and open-source platform. Supabase provide all the backend features developers need to build a product: a Postgres database, authentication, instant APIs, edge functions, realtime subscriptions, and storage. Postgres is the core of Supabase-for example, you can use row-level security and there are more than 40 Postgres extensions available.
 
 This guide demonstrates how to migrate your Postgres database to Supabase to get the most out of Postgres while gaining access to all the features you need to build a project.
 
@@ -1252,7 +1252,7 @@ Migrate from Postgres to Supabase
 
 Migrate your existing Postgres database to Supabase.
 
-This is a guide for migrating your Postgres database to Supabase. Supabase is a robust and open-source platform. Supabase provide all the backend features developers need to build a product: a Postgres database, authentication, instant APIs, edge functions, realtime subscriptions, and storage. Postgres is the core of Supabase—for example, you can use row-level security and there are more than 40 Postgres extensions available.
+This is a guide for migrating your Postgres database to Supabase. Supabase is a robust and open-source platform. Supabase provide all the backend features developers need to build a product: a Postgres database, authentication, instant APIs, edge functions, realtime subscriptions, and storage. Postgres is the core of Supabase-for example, you can use row-level security and there are more than 40 Postgres extensions available.
 
 This guide demonstrates how to migrate your Postgres database to Supabase to get the most out of Postgres while gaining access to all the features you need to build a project.
 
@@ -1303,7 +1303,7 @@ Migrate your Render Postgres database to Supabase.
 
 Render is a popular Web Hosting service in the online services category that also has a managed Postgres service. Render has a great developer experience, allowing users to deploy straight from GitHub or GitLab. This is the core of their product and they do it really well. However, when it comes to Postgres databases, it may not be the best option.
 
-Supabase is one of the best free alternative to Render Postgres. Supabase provide all the backend features developers need to build a product: a Postgres database, authentication, instant APIs, edge functions, realtime subscriptions, and storage. Postgres is the core of Supabase—for example, you can use row-level security and there are more than 40 Postgres extensions available.
+Supabase is one of the best free alternative to Render Postgres. Supabase provide all the backend features developers need to build a product: a Postgres database, authentication, instant APIs, edge functions, realtime subscriptions, and storage. Postgres is the core of Supabase-for example, you can use row-level security and there are more than 40 Postgres extensions available.
 
 This guide demonstrates how to migrate from Render to Supabase to get the most out of Postgres while gaining access to all the features you need to build a project.
 
@@ -1350,7 +1350,7 @@ Migrate your Render Postgres database to Supabase.
 
 Render is a popular Web Hosting service in the online services category that also has a managed Postgres service. Render has a great developer experience, allowing users to deploy straight from GitHub or GitLab. This is the core of their product and they do it really well. However, when it comes to Postgres databases, it may not be the best option.
 
-Supabase is one of the best free alternative to Render Postgres. Supabase provide all the backend features developers need to build a product: a Postgres database, authentication, instant APIs, edge functions, realtime subscriptions, and storage. Postgres is the core of Supabase—for example, you can use row-level security and there are more than 40 Postgres extensions available.
+Supabase is one of the best free alternative to Render Postgres. Supabase provide all the backend features developers need to build a product: a Postgres database, authentication, instant APIs, edge functions, realtime subscriptions, and storage. Postgres is the core of Supabase-for example, you can use row-level security and there are more than 40 Postgres extensions available.
 
 This guide demonstrates how to migrate from Render to Supabase to get the most out of Postgres while gaining access to all the features you need to build a project.
 

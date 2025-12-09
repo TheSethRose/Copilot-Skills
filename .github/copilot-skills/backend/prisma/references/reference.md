@@ -58,7 +58,7 @@ Just call the $accelerate.invalidateAll API:
 
 This method offers better editor support (e.g. IntelliSense) than alternatives like invalidate("all").
 
-This clears cache for the entire environment—use with care.
+This clears cache for the entire environment-use with care.
 
 
 

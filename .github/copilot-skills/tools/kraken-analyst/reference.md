@@ -266,7 +266,7 @@ Maintains v1.0 rules for holding thresholds and volatility adjustments.
 
 ## Performance Characteristics
 
-(baseline remains valid; note added computational overhead for advanced indicators—approx. +15–25 ms per 100 candles)
+(baseline remains valid; note added computational overhead for advanced indicators-approx. +15–25 ms per 100 candles)
 
 ---
 

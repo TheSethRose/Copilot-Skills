@@ -20,7 +20,7 @@
 
 Before you can deploy your SvelteKit app, you need to adapt it for your deployment target. Adapters are small plugins that take the built app as input and generate output for deployment.
 
-Official adapters exist for a variety of platforms — these are documented on the following pages:
+Official adapters exist for a variety of platforms - these are documented on the following pages:
 
 Additional community-provided adapters exist for other platforms.
 
@@ -28,7 +28,7 @@ Your adapter is specified in svelte.config.js:
 
 Your adapter is run when executing vite build. It determines how the output is converted for different platforms.
 
-Some adapters may have access to additional information about the request. For example, Cloudflare Workers can access an env object containing KV namespaces etc. This can be passed to the RequestEvent used in hooks and server routes as the platform property — consult each adapter’s documentation to learn more.
+Some adapters may have access to additional information about the request. For example, Cloudflare Workers can access an env object containing KV namespaces etc. This can be passed to the RequestEvent used in hooks and server routes as the platform property - consult each adapter’s documentation to learn more.
 
 Edit this page on GitHub llms.txt
 
@@ -168,7 +168,7 @@ You will need to run npm run dev to have SvelteKit automatically generate the re
 
 The directory where SvelteKit keeps its stuff, including static assets (such as JS and CSS) and internally-used routes.
 
-If paths.assets is specified, there will be two app directories — ${paths.assets}/${appDir} and ${paths.base}/${appDir}.
+If paths.assets is specified, there will be two app directories - ${paths.assets}/${appDir} and ${paths.base}/${appDir}.
 
 Content Security Policy configuration. CSP helps to protect your users against cross-site scripting (XSS) attacks, by limiting the places resources can be loaded from. For example, a configuration like this...
 
@@ -285,7 +285,7 @@ When using <form>, client-side JavaScript is optional, but you can easily progre
 
 In the simplest case, a page declares a default action:
 
-To invoke this action from the /login page, just add a <form> — no JavaScript needed:
+To invoke this action from the /login page, just add a <form> - no JavaScript needed:
 
 If someone were to click the button, the browser would send the form data via POST request to the server, running the default action.
 
@@ -366,7 +366,7 @@ You can configure the location of these files with config.kit.files.hooks.
 
 The following hooks can be added to src/hooks.server.js:
 
-This function runs every time the SvelteKit server receives a request — whether that happens while the app is running, or during prerendering — and determines the response. It receives an event object representing the request and a function called resolve, which renders the route and generates a Response. This allows you to modify response headers or bodies, or bypass SvelteKit entirely (for implementing routes programmatically, for example).
+This function runs every time the SvelteKit server receives a request - whether that happens while the app is running, or during prerendering - and determines the response. It receives an event object representing the request and a function called resolve, which renders the route and generates a Response. This allows you to modify response headers or bodies, or bypass SvelteKit entirely (for implementing routes programmatically, for example).
 
 This Fetch API interface represents the response to a request.
 
@@ -659,11 +659,11 @@ const config: {
 
 Sometimes, you may need to observe how your application is behaving in order to improve performance or find the root cause of a pesky bug. To help with this, SvelteKit can emit server-side OpenTelemetry spans for the following:
 
-Just telling SvelteKit to emit spans won’t get you far, though — you need to actually collect them somewhere to be able to view them. SvelteKit provides src/instrumentation.server.ts as a place to write your tracing setup and instrumentation code. It’s guaranteed to be run prior to your application code being imported, providing your deployment platform supports it and your adapter is aware of it.
+Just telling SvelteKit to emit spans won’t get you far, though - you need to actually collect them somewhere to be able to view them. SvelteKit provides src/instrumentation.server.ts as a place to write your tracing setup and instrumentation code. It’s guaranteed to be run prior to your application code being imported, providing your deployment platform supports it and your adapter is aware of it.
 
 Both of these features are currently experimental, meaning they are likely to contain bugs and are subject to change without notice. You must opt in by adding the kit.experimental.tracing.server and kit.experimental.instrumentation.server option in your svelte.config.js:
 
-Tracing — and more significantly, observability instrumentation — can have a nontrivial overhead. Before you go all-in on tracing, consider whether or not you really need it, or if it might be more appropriate to turn it on in development and preview environments only.
+Tracing - and more significantly, observability instrumentation - can have a nontrivial overhead. Before you go all-in on tracing, consider whether or not you really need it, or if it might be more appropriate to turn it on in development and preview environments only.
 
 SvelteKit provides access to the root span and the current span on the request event. The root span is the one associated with your root handle function, and the current span could be associated with handle, load, a form action, or a remote function, depending on the context. You can annotate these spans with any attributes you wish to record:
 
@@ -820,7 +820,7 @@ This tells npm which files it will pack up and upload to npm. It should contain 
 
 By default, SvelteKit will render (or prerender) any component first on the server and send it to the client as HTML. It will then render the component again in the browser to make it interactive in a process called hydration. For this reason, you need to ensure that components can run in both places. SvelteKit will then initialize a router that takes over subsequent navigations.
 
-You can control each of these on a page-by-page basis by exporting options from +page.js or +page.server.js, or for groups of pages using a shared +layout.js or +layout.server.js. To define an option for the whole app, export it from the root layout. Child layouts and pages override values set in parent layouts, so — for example — you can enable prerendering for your entire app then disable it for pages that need to be dynamically rendered.
+You can control each of these on a page-by-page basis by exporting options from +page.js or +page.server.js, or for groups of pages using a shared +layout.js or +layout.server.js. To define an option for the whole app, export it from the root layout. Child layouts and pages override values set in parent layouts, so - for example - you can enable prerendering for your entire app then disable it for pages that need to be dynamically rendered.
 
 You can mix and match these options in different areas of your app. For example, you could prerender your marketing page for maximum speed, server-render your dynamic pages for SEO and accessibility and turn your admin section into an SPA by rendering it on the client only. This makes SvelteKit very versatile.
 
@@ -828,7 +828,7 @@ It’s likely that at least some routes of your app can be represented as a simp
 
 Alternatively, you can set export const prerender = true in your root +layout.js or +layout.server.js and prerender everything except pages that are explicitly marked as not prerenderable:
 
-Routes with prerender = true will be excluded from manifests used for dynamic SSR, making your server (or serverless/edge functions) smaller. In some cases you might want to prerender a route but also include it in the manifest (for example, with a route like /blog/[slug] where you want to prerender your most recent/popular content but server-render the long tail) — for these cases, there’s a third option, ‘auto’:
+Routes with prerender = true will be excluded from manifests used for dynamic SSR, making your server (or serverless/edge functions) smaller. In some cases you might want to prerender a route but also include it in the manifest (for example, with a route like /blog/[slug] where you want to prerender your most recent/popular content but server-render the long tail) - for these cases, there’s a third option, ‘auto’:
 
 If your entire app is suitable for prerendering, you can use adapter-static, which will output fil
 
@@ -985,13 +985,13 @@ Creates a remote query. When called from the browser, the function will be invok
 
 See Remote functions for full documentation.
 
-Throughout this page, you’ll see imports from fictional modules like $lib/server/database and $lib/server/auth. These are purely for illustrative purposes — you can use whatever database client and auth setup you like.
+Throughout this page, you’ll see imports from fictional modules like $lib/server/database and $lib/server/auth. These are purely for illustrative purposes - you can use whatever database client and auth setup you like.
 
 The db.sql function above is a tagged template function that escapes any interpolated values.
 
 The query returned from getPosts works as a Promise that resolves to posts:
 
-Until the promise resolves — and if it errors — the nearest <svelte:boundary> will be invoked.
+Until the promise resolves - and if it errors - the nearest <svelte:boundary> will be invoked.
 
 While using await is recomme
 
@@ -1087,7 +1087,7 @@ Any time you have public-facing code that imports server-only code (whether dire
 
 ...SvelteKit will error:
 
-Even though the public-facing code — src/routes/+page.svelte — only uses the add export and not the secret atlantisCoordinates export, the secret code could end up in JavaScript that the browser downloads, and so the import chain is considered unsafe.
+Even though the public-facing code - src/routes/+page.svelte - only uses the add export and not the secret atlantisCoordinates export, the secret code could end up in JavaScript that the browser downloads, and so the import chain is considered unsafe.
 
 This feature also works with dynamic imports, even interpolated ones like await import(`./${foo}.js`).
 
@@ -1296,7 +1296,7 @@ const const config: {
 }kit: {
 		adapter: anyadapter: import adapteradapter({
 			// default options are shown. On some platforms
-			// these options are set automatically — see below
+			// these options are set automatically - see below
 			pages: stringpages: 'build',
 			assets: stringassets: 'build',
 			fallback: undefinedfallba
@@ -1424,7 +1424,7 @@ When you create a new SvelteKit project with npx sv create, it installs adapter-
 
 It’s recommended to install the appropriate adapter to your devDependencies once you’ve settled on a target environment, since this will add the adapter to your lockfile and slightly improve install times on CI.
 
-To add configuration options, such as { edge: true } in adapter-vercel and adapter-netlify, you must install the underlying adapter — adapter-auto does not take any options.
+To add configuration options, such as { edge: true } in adapter-vercel and adapter-netlify, you must install the underlying adapter - adapter-auto does not take any options.
 
 You can add zero-config support for additional adapters by editing adapters.js and opening a pull request.
 
@@ -1504,11 +1504,11 @@ afterNavigate must be called during a component initialization. It remains activ
 
 A navigation interceptor that triggers before we navigate to a URL, whether by clicking a link, calling goto(...), or using the browser back/forward controls.
 
-Calling cancel() will prevent the navigation from completing. If navigation.type === 'leave' — meaning the user is navigating away from the app (or closing the tab) — calling cancel will trigger the native browser unload confirmation dialog. In this case, the navigation may or may not be cancelled depending on the user’s response.
+Calling cancel() will prevent the navigation from completing. If navigation.type === 'leave' - meaning the user is navigating away from the app (or closing the tab) - calling cancel will trigger the native browser unload confirmation dialog. In this case, the navigation may or may not be cancelled depending on the user’s response.
 
 When a navigation isn’t to a SvelteKit-owned route (and therefore controlled by SvelteKit’s client-side router), navigation.to.route.id will be null.
 
-If the navigation will (if not cancelled) cause the document to unload — in other words 'leave' navigations and 'link' navigations where navigation.to.route === null — navigation.willUnload is true.
+If the navigation will (if not cancelled) cause the document to unload - in other words 'leave' navigations and 'link' navigations where navigation.to.route === null - navigation.willUnload is true.
 
 beforeNavigate must be called during a component initialization. It remains active as long as the component is mounted.
 
